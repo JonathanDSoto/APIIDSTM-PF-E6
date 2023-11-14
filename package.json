@@ -6,7 +6,7 @@
         "build": "vite build",
         "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix resources/js/**",
         "pint": "./vendor/bin/pint",
-        "check": "npm run lint && npm run pint"
+        "fix": "npm run lint && npm run pint"
     },
     "devDependencies": {
         "@antfu/eslint-config": "^1.1.0",
