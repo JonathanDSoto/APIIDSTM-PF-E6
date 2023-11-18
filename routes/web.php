@@ -26,6 +26,26 @@ Route::get('/', function () {
     return Inertia::render('Index');
 });
 
+Route::get('/logint', function () {
+        return Inertia::render('Login');
+});
+
+Route::get('/clients', function () {
+    return Inertia::render('Clients');
+});
+
+Route::get('/products', function () {
+    return Inertia::render('Products');
+});
+
+Route::get('/shipment', function () {
+    return Inertia::render('Shipment');
+});
+
+Route::get('/categories', function () {
+    return Inertia::render('Categories');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
