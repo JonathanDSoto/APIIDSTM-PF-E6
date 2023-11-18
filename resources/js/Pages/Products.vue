@@ -10,6 +10,6 @@
 
 <template>
     <DefaultTemplate>
-        <p>Hola buenas tardes, este es el index</p>
+        <p>Hola buenas tardes, esta es la pagina de Productos</p>
     </DefaultTemplate>
 </template>
