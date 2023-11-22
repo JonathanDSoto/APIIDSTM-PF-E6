@@ -23,10 +23,16 @@
                     <li class="sidebar-menu-title">MENU</li>
                     <!-- Charts -->
                     <li class="">
-                        <a href="/clients" class="navItem">
+                        <a href="/users" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="heroicons:user-group" />
-                                <span>Clients</span>
+                                <span>Users</span>
+                            </span>
+                        </a>
+                        <a href="/coupons" class="navItem">
+                            <span class="flex items-center">
+                                <Icon class=" nav-icon" icon="teenyicons:star-circle-outline" />
+                                <span>Coupons</span>
                             </span>
                         </a>
                         <a href="/categories" class="navItem">
@@ -63,9 +69,9 @@
                     <div class="app-header z-[999] bg-white dark:bg-slate-800 shadow-sm dark:shadow-slate-700">
                         <div class="flex justify-between items-center h-full">
                             <div class="flex items-center md:space-x-4 space-x-4 rtl:space-x-reverse vertical-box">
-                                <a href="index.html" class="mobile-logo xl:hidden inline-block">
-                                    <img src="images/logo/logo-c.svg" class="black_logo" alt="logo">
-                                    <img src="images/logo/logo-c-white.svg" class="white_logo" alt="logo">
+                                <a href="/" class="mobile-logo xl:hidden inline-block">
+                                    <img src="images/logo/uabcs-logo.png" style="width: 20%" class="black_logo" alt="logo">
+                                    <img src="images/logo/uabcs-logo.png" style="width: 20%" class="white_logo" alt="logo">
                                 </a>
                                 <button
                                     class="smallDeviceMenuController open-sdiebar-controller hidden xl:hidden md:inline-block">
@@ -86,14 +92,14 @@
                             </div>
                             <!-- end vertcial -->
                             <div class="items-center space-x-4 rtl:space-x-reverse horizental-box">
-                                <a href="index.html" class="leading-0">
+                                <a href="/" class="leading-0">
                                 <span class="xl:inline-block hidden">
-                                <img src="images/logo/logo.svg" class="black_logo " alt="logo">
-                                <img src="images/logo/logo-white.svg" class="white_logo" alt="logo">
+                                <img src="images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">
+                                <img src="images/logo/uabcs-logo.png" style="width: 20%" class="white_logo" alt="logo">
                                 </span>
                                     <span class="xl:hidden inline-block">
-                                <img src="images/logo/logo-c.svg" class="black_logo " alt="logo">
-                                <img src="images/logo/logo-c-white.svg" class="white_logo " alt="logo">
+                                <img src="images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">
+                                <img src="images/logo/uabcs-logo.png" style="width: 20%" class="white_logo " alt="logo">
                                 </span>
                                 </a>
                                 <button
@@ -244,8 +250,7 @@
             <!-- FOOTER -->
             <!-- BEGIN: Footer For Desktop and tab -->
             <footer id="footer">
-                <div
-                    class="site-footer px-6 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-300 py-4 ltr:ml-[248px] rtl:mr-[248px]">
+                <div class="site-footer px-6 bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-300 py-4 ltr:ml-[248px] rtl:mr-[248px]">
                     <div class="grid md:grid-cols-2 grid-cols-1 md:gap-5">
                         <div class="text-center ltr:md:text-start rtl:md:text-right text-sm">
                             COPYRIGHT ©

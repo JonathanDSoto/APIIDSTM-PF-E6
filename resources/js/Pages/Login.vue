@@ -14,7 +14,7 @@
     <div class="lg-inner-column">
       <div class="left-column relative z-[1]">
         <div class="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
-          <a href="index.html">
+          <a href="/">
             <!-- LOGO -->
           </a>
           <h4>
@@ -30,7 +30,7 @@
         <div class="inner-content h-full flex flex-col bg-white dark:bg-slate-800">
           <div class="auth-box h-full flex flex-col justify-center">
             <div class="mobile-logo text-center mb-6 lg:hidden block">
-              <a href="index.html">
+              <a href="/">
                 <img src="images/logo/logo.svg" alt="" class="mb-10 dark_logo">
                 <img src="images/logo/logo-white.svg" alt="" class="mb-10 white_logo">
               </a>
@@ -42,7 +42,7 @@
               </div>
             </div>
             <!-- BEGIN: Login Form -->
-            <form class="space-y-4" action='index.html'>
+            <form class="space-y-4" action='/'>
               <div class="fromGroup">
                 <label class="block capitalize form-label">email</label>
                 <div class="relative ">
@@ -64,7 +64,7 @@
                     <span class="text-slate-500 dark:text-slate-400 text-sm leading-6">Keep me signed in</span>
                   </label>
                 </div>
-                <a class="text-sm text-slate-800 dark:text-slate-400 leading-6 font-medium" href="forget-password-one.html">Forgot Password?</a>
+                <a class="text-sm text-slate-800 dark:text-slate-400 leading-6 font-medium" href="/forgotpassword">Forgot Password?</a>
               </div>
               <button class="btn btn-dark block w-full text-center">Sign in</button>
             </form>
