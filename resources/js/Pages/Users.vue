@@ -8,8 +8,7 @@
 </script>
 
 <template>
-    <DefaultTemplate>.
-
+    <DefaultTemplate>
     <div class="mb-5">
       <ul class="m-0 p-0 list-none">
         <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
@@ -37,7 +36,7 @@
               <div class=" space-y-5">
                 <div class="card">
                   <header class=" card-header noborder">
-                    <h4 class="card-title">Users</h4>
+                    <h4 class="card-title">Clients</h4>
                   </header>
                   <div class="card-body px-6 pb-6">
                     <div class="overflow-x-auto -mx-6 dashcode-data-table">

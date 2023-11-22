@@ -44,7 +44,7 @@
                       <div class="flex-none">
                         <div class="md:h-[186px] md:w-[186px] h-[140px] w-[140px] md:ml-0 md:mr-0 ml-auto mr-auto md:mb-0 mb-4 rounded-full ring-4
                                 ring-slate-100 relative">
-                          <img :src="url" alt="" class="w-full h-full object-cover rounded-full">
+                          <img src="/images/users/user-1.jpg" alt="" class="w-full h-full object-cover rounded-full">
                           <a href="https://dashcode-html.codeshaper.tech/profile-setting" class="absolute right-2 h-8 w-8 bg-slate-50 text-slate-600 rounded-full shadow-sm flex flex-col items-center
                                     justify-center md:top-[140px] top-[100px]">
                             <iconify-icon icon="heroicons:pencil-square"></iconify-icon>

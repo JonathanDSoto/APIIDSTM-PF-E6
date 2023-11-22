@@ -59,7 +59,6 @@ class UsersDataController extends Controller
     }
 
     public function createUser(){
-        
         $flag = false;
         return Inertia::render('UserModifyInformation',[
             'flag' => $flag,

@@ -7,6 +7,8 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\UsersDataController;
 use App\Http\Controllers\CouponsController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +31,9 @@ Route::get('/', function () {
     return Inertia::render('Index');
 });
 
-Route::get('/logint', function () {
-        return Inertia::render('Login');
-});
-Route::get('/forgotpassword', function () {
-    return Inertia::render('Login');
-});
+Route::get('/logint', function () {return Inertia::render('Login');});
+Route::get('/forgotpassword', function () {return Inertia::render('ForgotPassword');});
+Route::get('/signup', function () {return Inertia::render('SignUp');});
 
 Route::get('/users', [UsersDataController::class, 'allUsers']);
 Route::get('/users/create-user', [UsersDataController::class, 'createUser']);
@@ -47,15 +46,18 @@ Route::get('/coupons/create-coupon', [CouponsController::class, 'createCoupon'])
 Route::get('/coupons/modify-coupons-information/{id}', [CouponsController::class, 'modifyInformation']);
 Route::get('/coupons/delete-coupon/{id}', [CouponsController::class, 'deleteInformation']);
 
-Route::get('/categories', function () {return Inertia::render('Categories');});
+Route::get('/products', [ProductsController::class, 'allProducts']);
+Route::get('/products/create-product/', [ProductsController::class, 'createProduct']);
+Route::get('/products/detailed-product-information/{id}', [ProductsController::class, 'detailedInformation']);
+Route::get('/products/modify-product-information/{id}', [ProductsController::class, 'modifyInformation']);
 
-Route::get('/products', function () {
-    return Inertia::render('Products');
-});
+Route::get('/categories/', [CategoriesController::class, 'allCategories']);
+Route::get('/categories/create-category/', [CategoriesController::class, 'createCategory']);
+Route::get('/categories/detailed-category-information/{id}', [CategoriesController::class, 'detailedInformation']);
+Route::get('/categories/modify-category-information/{id}', [CategoriesController::class, 'modifyInformation']);
 
-Route::get('/shipment', function () {
-    return Inertia::render('Shipment');
-});
+Route::get('/raw', function () {return Inertia::render('Maintenance');});
+Route::get('/inventory', function () {return Inertia::render('Maintenance');});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

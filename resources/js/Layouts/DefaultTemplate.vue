@@ -12,7 +12,7 @@
             <div id="bodyOverlay" class="w-screen h-screen fixed top-0 bg-slate-900 bg-opacity-50 backdrop-blur-sm z-10 hidden"></div>
             <div class="logo-segment">
                 <a class="flex items-center" href="/">
-                    <img src="images/logo/uabcs-logo.png" style="width: 25%" alt="logo">
+                    <img src="/images/logo/uabcs-logo.png" style="width: 25%" alt="logo">
                     <span class="ltr:ml-3 rtl:mr-3 text-xl font-Inter font-bold text-slate-900 dark:text-white">UABCS</span>
                 </a>
             </div>
@@ -47,10 +47,16 @@
                                 <span>Products</span>
                             </span>
                         </a>
-                        <a href="/shipment" class="navItem">
+                        <a href="/raw" class="navItem">
                             <span class="flex items-center">
-                                <Icon class=" nav-icon" icon="uil:ship" />
-                                <span>Shipment</span>
+                                <Icon class=" nav-icon" icon="gridicons:shutter" />
+                                <span>Raw Materials</span>
+                            </span>
+                        </a>
+                        <a href="/inventory" class="navItem">
+                            <span class="flex items-center">
+                                <Icon class=" nav-icon" icon="ic:twotone-inventory-2"/>
+                                <span>Inventory</span>
                             </span>
                         </a>
                     </li>
@@ -70,8 +76,8 @@
                         <div class="flex justify-between items-center h-full">
                             <div class="flex items-center md:space-x-4 space-x-4 rtl:space-x-reverse vertical-box">
                                 <a href="/" class="mobile-logo xl:hidden inline-block">
-                                    <img src="images/logo/uabcs-logo.png" style="width: 20%" class="black_logo" alt="logo">
-                                    <img src="images/logo/uabcs-logo.png" style="width: 20%" class="white_logo" alt="logo">
+                                    <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="black_logo" alt="logo">
+                                    <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="white_logo" alt="logo">
                                 </a>
                                 <button
                                     class="smallDeviceMenuController open-sdiebar-controller hidden xl:hidden md:inline-block">
@@ -94,12 +100,12 @@
                             <div class="items-center space-x-4 rtl:space-x-reverse horizental-box">
                                 <a href="/" class="leading-0">
                                 <span class="xl:inline-block hidden">
-                                <img src="images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">
-                                <img src="images/logo/uabcs-logo.png" style="width: 20%" class="white_logo" alt="logo">
+                                <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">
+                                <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo" alt="logo">
                                 </span>
                                     <span class="xl:hidden inline-block">
-                                <img src="images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">
-                                <img src="images/logo/uabcs-logo.png" style="width: 20%" class="white_logo " alt="logo">
+                                <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">
+                                <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo " alt="logo">
                                 </span>
                                 </a>
                                 <button
@@ -126,7 +132,7 @@
                                         inline-flex items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <div
                                             class="lg:h-8 lg:w-8 h-7 w-7 rounded-full flex-1 ltr:mr-[10px] rtl:ml-[10px]">
-                                            <img src="images/all-img/user.png" alt="user"
+                                            <img src="/images/all-img/user.png" alt="user"
                                                  class="block w-full h-full object-cover rounded-full">
                                         </div>
                                         <span
@@ -144,55 +150,23 @@
                                         overflow-hidden">
                                         <ul class="py-1 text-sm text-slate-800 dark:text-slate-200">
                                             <li>
-                                                <a href="index.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
+                                                <a href="/" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
                                                     dark:text-white font-normal">
-                                                    <Icon icon="heroicons-outline:user"
+                                                    <Icon icon=""
                                                                   class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1" />
                                                     <span class="font-Inter">Dashboard</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="chat.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
+                                                <a href="/users/detailed-information/1" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
                                                     dark:text-white font-normal">
-                                                    <Icon icon="heroicons-outline:chat"
+                                                    <Icon icon="heroicons-outline:user"
                                                                   class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1" />
-                                                    <span class="font-Inter">Chat</span>
+                                                    <span class="font-Inter">Profile</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="email.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
-                                                    dark:text-white font-normal">
-                                                    <Icon icon="heroicons-outline:mail"
-                                                                  class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1" />
-                                                    <span class="font-Inter">Email</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="todo.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
-                                                    dark:text-white font-normal">
-                                                    <Icon icon="heroicons-outline:clipboard-check"
-                                                                  class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1" />
-                                                    <span class="font-Inter">Todo</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="settings.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
-                                                    dark:text-white font-normal">
-                                                    <Icon icon="heroicons-outline:cog"
-                                                                  class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1" />
-                                                    <span class="font-Inter">Settings</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="pricing.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
-                                                    dark:text-white font-normal">
-                                                    <Icon icon="heroicons-outline:credit-card"
-                                                                  class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1" />
-                                                    <span class="font-Inter">Price</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="signin-one.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
+                                                <a href="/logint" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
                                                     dark:text-white font-normal">
                                                     <Icon icon="heroicons-outline:login"
                                                                   class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1" />
@@ -287,7 +261,7 @@
                 <a href="profile.html" class="relative bg-white bg-no-repeat backdrop-filter backdrop-blur-[40px] rounded-full footer-bg dark:bg-slate-700
                     h-[65px] w-[65px] z-[-1] -mt-[40px] flex justify-center items-center">
                     <div class="h-[50px] w-[50px] rounded-full relative left-[0px] hrefp-[0px] custom-dropshadow">
-                        <img src="images/users/user-1.jpg" alt=""
+                        <img src="/images/users/user-1.jpg" alt=""
                              class="w-full h-full rounded-full border-2 border-slate-100">
                     </div>
                 </a>

@@ -1,25 +1,17 @@
-<script setup>
-    import { Icon } from '@iconify/vue';
-</script>
-
 <template>
-    <body class=" font-inter skin-default">
-  <!-- [if IE]> <p class="browserupgrade">
-            You are using an <strong>outdated</strong> browser. Please
-            <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-            your experience and security.
-        </p> <![endif] -->
-
-  <div class="loginwrapper">
+    <div class="loginwrapper">
     <div class="lg-inner-column">
       <div class="left-column relative z-[1]">
         <div class="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
-          <a href="/">
-            <!-- LOGO -->
+          <a href="index.html">
+            <img src="images/logo/logo.svg" alt="" class="mb-10 dark_logo">
+            <img src="images/logo/logo-white.svg" alt="" class="mb-10 white_logo">
           </a>
           <h4>
             Unlock your Project
-            <span class="text-slate-800 dark:text-slate-400 font-bold">performance</span>
+            <span class="text-slate-800 dark:text-slate-400 font-bold">
+                            performance
+                        </span>
           </h4>
         </div>
         <div class="absolute left-0 2xl:bottom-[-160px] bottom-[-130px] h-full w-full z-[-1]">
@@ -30,7 +22,7 @@
         <div class="inner-content h-full flex flex-col bg-white dark:bg-slate-800">
           <div class="auth-box h-full flex flex-col justify-center">
             <div class="mobile-logo text-center mb-6 lg:hidden block">
-              <a href="/">
+              <a href="index.html">
                 <img src="images/logo/logo.svg" alt="" class="mb-10 dark_logo">
                 <img src="images/logo/logo-white.svg" alt="" class="mb-10 white_logo">
               </a>
@@ -41,34 +33,36 @@
                 Sign in to your account to start using Dashcode
               </div>
             </div>
-            <!-- BEGIN: Login Form -->
+            <!-- BEGIN: Registration Form -->
             <form class="space-y-4" action='/'>
+              <div class="fromGroup">
+                <label class="block capitalize form-label">Name</label>
+                <div class="relative ">
+                  <input type="text" name="name" class="  form-control py-2" placeholder="Enter your name">
+                </div>
+              </div>
               <div class="fromGroup">
                 <label class="block capitalize form-label">email</label>
                 <div class="relative ">
-                  <input type="email" name="email" class="form-control py-2" placeholder="Add placeholder" value="user-23-10@alu.uabcs.mx">
+                  <input type="email" name="email" class="form-control py-2" placeholder="Enter your email">
                 </div>
               </div>
               <div class="fromGroup">
                 <label class="block capitalize form-label">passwrod</label>
-                <div class="relative "><input type="password" name="password" class="  form-control py-2" placeholder="Add placeholder" value="vivamexico">
+                <div class="relative "><input type="password" name="password" class="  form-control py-2" placeholder="Enter your password">
                 </div>
               </div>
-              <div class="flex justify-between">
-
-                <div class="checkbox-area">
-                  <label class="inline-flex items-center cursor-pointer">
-                    <input type="checkbox" class="hidden" name="checkbox">
-                    <span class="h-4 w-4 border flex-none border-slate-100 dark:border-slate-800 rounded inline-flex ltr:mr-3 rtl:ml-3 relative transition-all duration-150 bg-slate-100 dark:bg-slate-900">
-                    <img src="images/icon/ck-white.svg" alt="" class="h-[10px] w-[10px] block m-auto opacity-0"></span>
-                    <span class="text-slate-500 dark:text-slate-400 text-sm leading-6">Keep me signed in</span>
-                  </label>
-                </div>
-                <a class="text-sm text-slate-800 dark:text-slate-400 leading-6 font-medium" href="/forgotpassword">Forgot Password?</a>
+              <div class="checkbox-area">
+                <label class="inline-flex items-center cursor-pointer">
+                  <input type="checkbox" class="hidden" name="checkbox">
+                  <span class="h-4 w-4 border flex-none border-slate-100 dark:border-slate-800 rounded inline-flex ltr:mr-3 rtl:ml-3 relative transition-all duration-150 bg-slate-100 dark:bg-slate-900">
+                <img src="images/icon/ck-white.svg" alt="" class="h-[10px] w-[10px] block m-auto opacity-0"></span>
+                  <span class="text-slate-500 dark:text-slate-400 text-sm leading-6">You accept our Terms and Conditions and Privacy Policy</span>
+                </label>
               </div>
-              <button class="btn btn-dark block w-full text-center">Sign in</button>
+              <button class="btn btn-dark block w-full text-center">Create an account</button>
             </form>
-            <!-- END: Login Form -->
+            <!-- END: Registration Form -->
             <div class="relative border-b-[#9AA2AF] border-opacity-[16%] border-b pt-6">
               <div class="absolute inline-block bg-white dark:bg-slate-800 dark:text-slate-400 left-1/2 top-1/2 transform -translate-x-1/2
                                     px-4 min-w-max text-sm text-slate-500 font-normal">
@@ -102,10 +96,11 @@
               </ul>
               <!-- END: Social Log In Area -->
             </div>
-            <div class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 mt-12 uppercase text-sm">
-              Don’t have an account?
-              <a href="/signup" class="text-slate-900 dark:text-white font-medium hover:underline">
-                Sign up
+            <div class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 mt-8 uppercase text-sm">
+              <span>ALREADY REGISTERED?
+                            </span>
+              <a href="/logint" class="text-slate-900 dark:text-white font-medium hover:underline">
+                Sign In
               </a>
             </div>
           </div>
@@ -116,6 +111,4 @@
       </div>
     </div>
   </div>
-
-</body>
 </template>

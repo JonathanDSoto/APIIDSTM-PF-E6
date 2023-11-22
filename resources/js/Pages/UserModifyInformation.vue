@@ -9,22 +9,24 @@
 
 <template>
     <DefaultTemplate>
-        <form>
+        <form action="/">
             
         <div class="mb-5">
             <ul class="m-0 p-0 list-none">
                 <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-                <a href="/">
-                    <iconify-icon icon="heroicons-outline:home"></iconify-icon>
-                    <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
-                </a>
+                    <a href="/">
+                        <iconify-icon icon="heroicons-outline:home"/>
+                        <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"/>
+                    </a>
                 </li>
                 <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                Users
-                <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
+                    Users
+                    <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"/>
                 </li>
-                <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                Modify information</li>
+                <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white" v-if=$page.props.flag>
+                Modify User Information</li>
+                <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white" v-else>
+                Create User</li>
             </ul>
         </div>
         <div>
@@ -32,7 +34,8 @@
                 <div class="card-body flex flex-col p-6">
                     <header class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5 -mx-6 px-6">
                         <div class="flex-1">
-                            <div class="card-title text-slate-900 dark:text-white">Change User Information</div>
+                            <div class="card-title text-slate-900 dark:text-white" v-if=$page.props.flag>Change User Information</div>
+                            <div class="card-title text-slate-900 dark:text-white" v-else>Create New User</div>
                         </div>
                     </header>
                     <div class="card-text h-full space-y-4">
