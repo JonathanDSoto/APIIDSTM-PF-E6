@@ -42,7 +42,7 @@
               </div>
             </div>
             <!-- BEGIN: Login Form -->
-            <form class="space-y-4" action='/'>
+            <form class="space-y-4" action='/index'>
               <div class="fromGroup">
                 <label class="block capitalize form-label">email</label>
                 <div class="relative ">
