@@ -1,5 +1,37 @@
+<script setup>
+import { ref } from 'vue';
+import { router } from '@inertiajs/vue3';
+
+const formData = {
+  email: '',
+  errors: {
+    email: null,
+  },
+  isFormValid: true,
+};
+
+const handleSubmit = () => {
+  // Restablecer mensajes de error y estado de formulario
+  formData.errors.email = null;
+  formData.isFormValid = true;
+
+  // Validar el correo electrónico
+  if (!formData.email.includes('@') || formData.email.length === 0) {
+    formData.errors.email = 'Ingresa un correo electrónico válido.';
+    formData.isFormValid = false;
+  }
+
+  // Si no hay errores puedes enviar el formulario
+  if (formData.isFormValid) {
+    router.visit('/');
+  }
+};
+
+console.log(formData.email);
+</script>
+
 <template>
-    <div class="loginwrapper">
+  <div class="loginwrapper">
     <div class="lg-inner-column">
       <div class="left-column relative z-[1]">
         <div class="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
@@ -10,8 +42,8 @@
           <h4>
             Unlock your Project
             <span class="text-slate-800 dark:text-slate-400 font-bold">
-                            performance
-                        </span>
+              performance
+            </span>
           </h4>
         </div>
         <div class="absolute left-0 2xl:bottom-[-160px] bottom-[-130px] h-full w-full z-[-1]">
@@ -33,18 +65,20 @@
                 Reset Password with Dashcode.
               </div>
             </div>
-            <div class="font-normal text-base text-slate-500 dark:text-slate-400 text-center px-2 bg-slate-100 dark:bg-slate-600 rounded
-                                py-3 mb-4 mt-10">
+            <div class="font-normal text-base text-slate-500 dark:text-slate-400 text-center px-2 bg-slate-100 dark:bg-slate-600 rounded py-3 mb-4 mt-10">
               Enter your Email and instructions will be sent to you!
             </div>
             <!-- BEGIN: Forgot Password Form -->
-            <form class="space-y-4" action='/logint'>
+            
+            <form class="space-y-4" @submit.prevent="handleSubmit">
               <div class="fromGroup">
                 <label class="block capitalize form-label">email</label>
                 <div class="relative ">
-                  <input type="email" name="email" class="form-control py-2" placeholder="Enter your Email">
+                  <input type="email" v-model="formData.email" name="email" class="form-control py-2" placeholder="Enter your Email">
+                  <span v-if="formData.errors.email" class="text-red-500">{{ formData.errors.email }}</span>
                 </div>
               </div>
+              <span v-if="!formData.isFormValid" class="text-red-500">Ingresa un correo electrónico válido.</span>
               <button class="btn btn-dark block w-full text-center">Send recovery email</button>
             </form>
             <!-- END: Forgot Password Form -->
