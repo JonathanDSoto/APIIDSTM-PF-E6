@@ -53,6 +53,7 @@ Route::get('/products', [ProductsController::class, 'allProducts']);
 Route::get('/products/create-product/', [ProductsController::class, 'createProduct']);
 Route::get('/products/detailed-product-information/{id}', [ProductsController::class, 'detailedInformation']);
 Route::get('/products/modify-product-information/{id}', [ProductsController::class, 'modifyInformation']);
+Route::get('/products/delete-product/{id}', [ProductsController::class, 'deleteInformation']);
 
 Route::get('/categories/', [CategoriesController::class, 'allCategories']);
 Route::get('/categories/create-category/', [CategoriesController::class, 'createCategory']);
@@ -60,7 +61,14 @@ Route::get('/categories/detailed-category-information/{id}', [CategoriesControll
 Route::get('/categories/modify-category-information/{id}', [CategoriesController::class, 'modifyInformation']);
 
 Route::get('/raw', function () {return Inertia::render('Maintenance');});
+Route::get('/categories/create-category/', [CategoriesController::class, 'createCategory']);
+Route::get('/categories/detailed-category-information/{id}', [CategoriesController::class, 'detailedInformation']);
+Route::get('/categories/modify-category-information/{id}', [CategoriesController::class, 'modifyInformation']);
+
 Route::get('/inventory', function () {return Inertia::render('Maintenance');});
+Route::get('/categories/create-category/', [CategoriesController::class, 'createCategory']);
+Route::get('/categories/detailed-category-information/{id}', [CategoriesController::class, 'detailedInformation']);
+Route::get('/categories/modify-category-information/{id}', [CategoriesController::class, 'modifyInformation']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

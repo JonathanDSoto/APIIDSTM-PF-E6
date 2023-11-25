@@ -41,8 +41,8 @@
                 <div class="card-text h-full ">
                     <form class="space-y-4">
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">ID</label>
-                            <input type="text" class="form-control" placeholder="" :value=$page.props.products[0] :disabled=$page.props.flag>
+                            <label for="largeInput" class="inline-inputLabel" v-if=$page.props.flag>ID</label>
+                            <input type="text" class="form-control" placeholder="" :value=$page.props.products[0] :disabled=$page.props.flag v-if=$page.props.flag>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Category Name</label>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Creation Date</label>
-                            <input type="" class="form-control" placeholder=""  :value=$page.props.products[2]>
+                            <input type="date" class="form-control" placeholder=""  :value=$page.props.products[2]>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Description</label>

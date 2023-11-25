@@ -51,4 +51,9 @@ class ProductsController extends Controller
             'products' => $placeHolderArray,
         ]);
     }
+
+    public function deleteInformation($id){
+        /* Delete user from the database */
+        return Inertia::render('Index',[]);       
+    }
 }

@@ -61,11 +61,11 @@
                         </div>
                         <div class="input-area">
                             <label for="readonly" class="form-label">Creation Date</label>
-                            <input id="readonly" type="text" class="form-control" :value="$page.props.userCreationDate" placeholder="12/23/2023" :disabled=$page.props.flag>
+                            <input id="readonly" type="date" class="form-control" :value="$page.props.userCreationDate" placeholder="12/23/2023" :disabled=$page.props.flag>
                         </div>
                         <div class="input-area">
                             <label for="readonly" class="form-label">Phone Number</label>
-                            <input id="readonly" type="text" class="form-control" :value="$page.props.userPhoneNumber" placeholder="6122309430" :disabled=$page.props.flag>
+                            <input id="readonly" type="text" class="form-control" :value="$page.props.userPhoneNumber" placeholder="6122309430">
                         </div>
                         <div class="input-area">
                             <label for="description" class="form-label">Change Reasons</label>

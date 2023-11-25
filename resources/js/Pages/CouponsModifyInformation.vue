@@ -45,8 +45,8 @@
                 <div class="card-text h-full ">
                     <form class="space-y-4">
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">ID</label>
-                            <input type="text" class="form-control" placeholder="" :value=$page.props.coupons[0] :disabled=$page.props.flag>
+                            <label for="largeInput" class="inline-inputLabel" v-if=$page.props.flag>ID</label>
+                            <input type="text" class="form-control" placeholder="" :value=$page.props.coupons[0] :disabled=$page.props.flag v-if=$page.props.flag>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Code</label>
@@ -54,11 +54,11 @@
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Started Date</label>
-                            <input type="" class="form-control" placeholder=""  :value=$page.props.coupons[2]>
+                            <input type="date" class="form-control" placeholder=""  :value=$page.props.coupons[2]>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">End Date</label>
-                            <input type="text" class="form-control" placeholder="" :value=$page.props.coupons[3]>
+                            <input type="date" class="form-control" placeholder="" :value=$page.props.coupons[3]>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Amount</label>

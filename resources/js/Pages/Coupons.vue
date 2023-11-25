@@ -1,14 +1,45 @@
 <script>
     import DefaultTemplate from "../layouts/DefaultTemplate.vue";
-
     export default {
+        data() {
+          return {
+            popUpDelete: false,
+          };
+        },
         components: {
             DefaultTemplate,
+        },
+        methods: {
+          deleteConfirmation(){
+            this.popUpDelete = true;
+          },
+          cancelElimination(){
+            this.popUpDelete = false;
+          },
+          confirmElimination(){
+            
+          },
         }
     }
 </script>
 
 <template>
+    <div id="deletepopup" v-if=popUpDelete style="width: 400px; height: 150px; background-color: #f1f5f9; padding: 20px; border-radius: 20px; display: flex;
+      justify-content: center; align-items: center; position: fixed; z-index: 10; top: 50%; left: 50%; transform: translate(-50%,-50%);">
+        <div style="padding: 2px; display: flex; justify-content: center; flex-direction: column; align-items: center; gap: 20px">
+          <p>
+            Are you sure you want to delete this element?
+          </p>
+          <div style="display: flex; gap: 20px;">
+            <button style="background-color: #50C793; padding: 5px; border-radius: 10px; color: white; font-weight: bold;" @click="confirmElimination">
+              Confirm
+            </button>
+            <button style="background-color: #F1595C; padding: 5px; border-radius: 10px; color: white; font-weight: bold;" @click="cancelElimination">
+              Cancel
+            </button>
+          </div>
+        </div>
+    </div>
     <DefaultTemplate>
         
         <div class="mb-5">
@@ -156,11 +187,9 @@
                                                 <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                             </button>
                                         </a>
-                                        <a href="/coupons/delete-coupon/1">
-                                            <button class="action-btn" type="button">
-                                                <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                            </button>
-                                        </a>
+                                        <button class="action-btn" type="button" @click="deleteConfirmation">
+                                            <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
