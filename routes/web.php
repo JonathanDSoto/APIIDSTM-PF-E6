@@ -9,6 +9,7 @@ use App\Http\Controllers\UsersDataController;
 use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +29,10 @@ Route::get('/', function () {
 //        'laravelVersion' => Application::VERSION,
 //        'phpVersion' => PHP_VERSION,
 //    ]);
-    return Inertia::render('Index');
+    return Inertia::render('Login');
 });
+
+Route::get('/index',[IndexController::class, 'loadIndex']);
 
 Route::get('/logint', function () {return Inertia::render('Login');});
 Route::get('/forgotpassword', function () {return Inertia::render('ForgotPassword');});

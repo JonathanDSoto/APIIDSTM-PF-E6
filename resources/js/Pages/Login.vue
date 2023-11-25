@@ -78,12 +78,21 @@
               </div>
             </div>
             <!-- BEGIN: Login Form -->
+<<<<<<< HEAD
                       <form class="space-y-4" @submit.prevent="handleSubmit">
             <div class="fromGroup">
               <label class="block capitalize form-label">email</label>
               <div class="relative">
                 <input v-model="formData.email" type="email" name="email" class="form-control py-2" placeholder="email">
                 <span v-if="formData.errors.email" class="text-red-500">{{ formData.errors.email }}</span>
+=======
+            <form class="space-y-4" action='/index'>
+              <div class="fromGroup">
+                <label class="block capitalize form-label">email</label>
+                <div class="relative ">
+                  <input type="email" name="email" class="form-control py-2" placeholder="Add placeholder" value="user-23-10@alu.uabcs.mx">
+                </div>
+>>>>>>> 7370a88084f4882ccd180934e1950c995a2193ec
               </div>
             </div>
             <div class="fromGroup">

@@ -11,7 +11,7 @@
         <div class="sidebar-wrapper group w-0 hidden xl:w-[248px] xl:block">
             <div id="bodyOverlay" class="w-screen h-screen fixed top-0 bg-slate-900 bg-opacity-50 backdrop-blur-sm z-10 hidden"></div>
             <div class="logo-segment">
-                <a class="flex items-center" href="/">
+                <a class="flex items-center" href="/index">
                     <img src="/images/logo/uabcs-logo.png" style="width: 25%" alt="logo">
                     <span class="ltr:ml-3 rtl:mr-3 text-xl font-Inter font-bold text-slate-900 dark:text-white">UABCS</span>
                 </a>
