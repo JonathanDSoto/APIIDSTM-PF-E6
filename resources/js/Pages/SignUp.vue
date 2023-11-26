@@ -1,5 +1,5 @@
 <template>
-    <div class="loginwrapper">
+  <div class="loginwrapper">
     <div class="lg-inner-column">
       <div class="left-column relative z-[1]">
         <div class="max-w-[520px] pt-20 ltr:pl-20 rtl:pr-20">
@@ -10,8 +10,8 @@
           <h4>
             Unlock your Project
             <span class="text-slate-800 dark:text-slate-400 font-bold">
-                            performance
-                        </span>
+              performance
+            </span>
           </h4>
         </div>
         <div class="absolute left-0 2xl:bottom-[-160px] bottom-[-130px] h-full w-full z-[-1]">
@@ -34,33 +34,37 @@
               </div>
             </div>
             <!-- BEGIN: Registration Form -->
-            <form class="space-y-4" action='/'>
+            <form class="space-y-4" action='/' @submit.prevent="handleSubmit">
               <div class="fromGroup">
                 <label class="block capitalize form-label">Name</label>
                 <div class="relative ">
-                  <input type="text" name="name" class="  form-control py-2" placeholder="Enter your name">
+                  <input v-model="formData.name" type="text" name="name" class="  form-control py-2" placeholder="Enter your name">
+                  <span v-if="formData.errors.name" class="text-red-500">{{ formData.errors.name }}</span>
                 </div>
               </div>
               <div class="fromGroup">
-                <label class="block capitalize form-label">email</label>
+                <label class="block capitalize form-label">Email</label>
                 <div class="relative ">
-                  <input type="email" name="email" class="form-control py-2" placeholder="Enter your email">
+                  <input v-model="formData.email" type="email" name="email" class="form-control py-2" placeholder="Enter your email">
+                  <span v-if="formData.errors.email" class="text-red-500">{{ formData.errors.email }}</span>
                 </div>
               </div>
               <div class="fromGroup">
-                <label class="block capitalize form-label">passwrod</label>
-                <div class="relative "><input type="password" name="password" class="  form-control py-2" placeholder="Enter your password">
+                <label class="block capitalize form-label">Password</label>
+                <div class="relative ">
+                  <input v-model="formData.password" type="password" name="password" class="  form-control py-2" placeholder="Enter your password">
+                  <span v-if="formData.errors.password" class="text-red-500">{{ formData.errors.password }}</span>
                 </div>
               </div>
               <div class="checkbox-area">
                 <label class="inline-flex items-center cursor-pointer">
                   <input type="checkbox" class="hidden" name="checkbox">
                   <span class="h-4 w-4 border flex-none border-slate-100 dark:border-slate-800 rounded inline-flex ltr:mr-3 rtl:ml-3 relative transition-all duration-150 bg-slate-100 dark:bg-slate-900">
-                <img src="images/icon/ck-white.svg" alt="" class="h-[10px] w-[10px] block m-auto opacity-0"></span>
+                    <img src="images/icon/ck-white.svg" alt="" class="h-[10px] w-[10px] block m-auto opacity-0"></span>
                   <span class="text-slate-500 dark:text-slate-400 text-sm leading-6">You accept our Terms and Conditions and Privacy Policy</span>
                 </label>
               </div>
-              <button class="btn btn-dark block w-full text-center">Create an account</button>
+              <button type="submit" class="btn btn-dark block w-full text-center">Create an account</button>
             </form>
             <!-- END: Registration Form -->
             <div class="relative border-b-[#9AA2AF] border-opacity-[16%] border-b pt-6">
@@ -70,7 +74,6 @@
               </div>
             </div>
             <div class="max-w-[242px] mx-auto mt-8 w-full">
-
               <!-- BEGIN: Social Log in Area -->
               <ul class="flex">
                 <li class="flex-1">
@@ -97,8 +100,7 @@
               <!-- END: Social Log In Area -->
             </div>
             <div class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 mt-8 uppercase text-sm">
-              <span>ALREADY REGISTERED?
-                            </span>
+              <span>ALREADY REGISTERED?</span>
               <a href="/logint" class="text-slate-900 dark:text-white font-medium hover:underline">
                 Sign In
               </a>
@@ -112,3 +114,45 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+import { router } from '@inertiajs/vue3';
+
+const formData = {
+  name: '',
+  email: '',
+  password: '',
+  errors: {
+    name: null,
+    email: null,
+    password: null,
+  },
+};
+
+const handleSubmit = () => {
+  formData.errors.name = null;
+  formData.errors.email = null;
+  formData.errors.password = null;
+
+  // Validar el nombre
+  if (!/^[a-zA-Z]+$/.test(formData.name)) {
+    formData.errors.name = 'Name must contain only letters.';
+  }
+
+  // Validar el correo electrónico
+  if (!formData.email.includes('@')) {
+    formData.errors.email = 'Enter a valid email.';
+  }
+
+  // Validar la contraseña
+  if (formData.password.length < 6) {
+    formData.errors.password = 'Password must be at least 6 characters.';
+  }
+
+  // Si no hay errores, puedes enviar el formulario
+  if (!formData.errors.name && !formData.errors.email && !formData.errors.password) {
+    router.visit('/index');
+  }
+};
+</script>
