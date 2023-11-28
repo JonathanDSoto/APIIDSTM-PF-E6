@@ -23,12 +23,12 @@
       formData.errors.email = 'Ingresa un correo electrónico válido.';
       
     }
-
+    
     // Validar la contraseña 
     if (formData.password.length < 6) {
       formData.errors.password = 'La contraseña debe tener al menos 6 caracteres.';
     }
-
+    
     // Si no hay errores puedes enviar el formulario
     if (!formData.errors.email && !formData.errors.password) {
       router.visit('/index');

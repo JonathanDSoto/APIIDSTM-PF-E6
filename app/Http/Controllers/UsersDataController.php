@@ -64,6 +64,37 @@ class UsersDataController extends Controller
             'flag' => $flag,
         ]);
     }
+    
+    
+    // public function handleCreateUser(Request $request)
+    // {
+    //     // Validar los datos del formulario
+    //     $validator = Validator::make($request->all(), [
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|email|unique:users|max:255',
+            
+    //     ]);
+
+    //     // Si la validación falla, redirigir de nuevo al formulario con errores
+    //     if ($validator->fails()) {
+    //         return redirect('/users/create-user')
+    //             ->withErrors($validator)
+    //             ->withInput();
+    //     }
+
+    //     // Lógica para crear el usuario en la base de datos
+    //     $user = new User();
+    //     $user->name = $request->input('name');
+    //     $user->email = $request->input('email');
+        
+    //     $user->save();
+
+    //     // Después de crear el usuario, puedes redirigir a una página de éxito o a donde lo desees.
+    //     return redirect('/users')->with('success', 'Usuario creado exitosamente.');
+    // }
+
+    
+
 
     public function modifyInformation($id){
         $placeHolderName = 'Kenneth de Guadalupe';

@@ -40,6 +40,7 @@ Route::get('/signup', function () {return Inertia::render('SignUp');});
 
 Route::get('/users', [UsersDataController::class, 'allUsers']);
 Route::get('/users/create-user', [UsersDataController::class, 'createUser']);
+//Route::post('/users/create-user', [UsersDataController::class, 'handleCreateUser']);
 Route::get('/users/detailed-information/{id}', [UsersDataController::class, 'detailedInformation']);
 Route::get('/users/modify-information/{id}', [UsersDataController::class, 'modifyInformation']);
 Route::get('/users/delete-user/{id}', [UsersDataController::class, 'deleteInformation']);

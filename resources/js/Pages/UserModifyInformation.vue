@@ -1,15 +1,45 @@
 <script>
     import DefaultTemplate from "../layouts/DefaultTemplate.vue";
-    export default {
-        components: {
-            DefaultTemplate,
-        }
-    }
+    import { Inertia } from '@inertiajs/inertia';
+//     export default {
+//         components: {
+//             DefaultTemplate,
+//         },
+//         data() {
+
+//         return {
+//             formData: {
+//                 name: this.$page.props.userName,
+//                 lastName: this.$page.props.userLastName,
+//                 //  se tienen que poner mas campos
+//             },
+//         };
+//     },
+//     methods: {
+//         submitForm() {
+//        // Determinar si es una operación de creación o modificación
+//        const endpoint = this.$page.props.flag ? '/users/modify-information/{id}' : '/users/create-user';
+
+//             // Inertia para enviar solicitud POST
+//             Inertia.post(endpoint, this.formData)
+//             Inertia.post('/users/create-user', this.formData)
+//                 .then(response => {
+//                     // Si responde
+                    
+//                     console.log(response);
+//                 })
+//                 .catch(error => {
+//                     // No responde
+//                     console.error(error);
+//                 });
+//         },
+//     },
+// };
 </script>
 
 <template>
     <DefaultTemplate>
-        <form action="/">
+        <form @submit.prevent="submitForm">
             
         <div class="mb-5">
             <ul class="m-0 p-0 list-none">
