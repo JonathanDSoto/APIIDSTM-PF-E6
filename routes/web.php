@@ -10,6 +10,9 @@ use App\Http\Controllers\CouponsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\RawController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,15 +64,24 @@ Route::get('/categories/create-category/', [CategoriesController::class, 'create
 Route::get('/categories/detailed-category-information/{id}', [CategoriesController::class, 'detailedInformation']);
 Route::get('/categories/modify-category-information/{id}', [CategoriesController::class, 'modifyInformation']);
 
-Route::get('/raw', function () {return Inertia::render('Maintenance');});
-Route::get('/categories/create-category/', [CategoriesController::class, 'createCategory']);
-Route::get('/categories/detailed-category-information/{id}', [CategoriesController::class, 'detailedInformation']);
-Route::get('/categories/modify-category-information/{id}', [CategoriesController::class, 'modifyInformation']);
+Route::get('/raw', [RawController::class, 'allRaw']);
+Route::get('/raw/create-raw/', [RawController::class, 'createRaw']);
+Route::get('/raw/detailed-raw-information/{id}', [RawController::class, 'detailedInformation']);
+Route::get('/raw/modify-raw-information/{id}', [RawController::class, 'modifyInformation']);
 
 Route::get('/inventory', function () {return Inertia::render('Maintenance');});
-Route::get('/categories/create-category/', [CategoriesController::class, 'createCategory']);
-Route::get('/categories/detailed-category-information/{id}', [CategoriesController::class, 'detailedInformation']);
-Route::get('/categories/modify-category-information/{id}', [CategoriesController::class, 'modifyInformation']);
+Route::get('/inventory/inventory-category/', [CategoriesController::class, 'createCategory']);
+Route::get('/inventory/detailed-inventory-information/{id}', [CategoriesController::class, 'detailedInformation']);
+Route::get('/inventory/modify-inventory-information/{id}', [CategoriesController::class, 'modifyInformation']);
+
+Route::get('/brand', [BrandController::class, 'allBrand']);
+Route::get('/brand/create-brand/', [BrandController::class, 'createBrand']);
+Route::get('/brand/modify-brand-information/{id}', [BrandController::class, 'modifyInformation']);
+
+Route::get('/order', [OrderController::class, 'allOrders']);
+Route::get('/order/create-order/', [OrderController::class, 'createOrder']);
+Route::get('/order/modify-order-information/{id}', [OrderController::class, 'modifyInformation']);
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

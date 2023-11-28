@@ -59,6 +59,24 @@
                                 <span>Inventory</span>
                             </span>
                         </a>
+                        <a href="/order" class="navItem">
+                            <span class="flex items-center">
+                                <Icon class=" nav-icon" icon="heroicons:wallet"/>
+                                <span>Orders</span>
+                            </span>
+                        </a>
+                        <a href="/inventory" class="navItem">
+                            <span class="flex items-center">
+                                <Icon class=" nav-icon" icon="heroicons:rectangle-stack"/>
+                                <span>Catalogues</span>
+                            </span>
+                        </a>
+                        <a href="/brand" class="navItem">
+                            <span class="flex items-center">
+                                <Icon class=" nav-icon" icon="tabler:brand-cake"/>
+                                <span>Brands</span>
+                            </span>
+                        </a>
                     </li>
                 </ul>
                 <!-- Upgrade Your Business Plan Card Start -->
