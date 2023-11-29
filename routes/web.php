@@ -36,13 +36,12 @@ Route::get('/', function () {
     return Inertia::render('Login');
 });
 
-Route::get('/index',[IndexController::class, 'loadIndex']);
-
-Route::get('/logint', function () {return Inertia::render('Login');});
 Route::get('/forgotpassword', function () {return Inertia::render('ForgotPassword');});
 Route::get('/signup', function () {return Inertia::render('SignUp');});
 
 Route::middleware('auth')->group(function () {
+    Route::get('/index', function () {return Inertia::render('Index');});
+    
     Route::get('/users', [UsersDataController::class, 'allUsers']);
     Route::get('/users/create-user', [UsersDataController::class, 'createUser']);
     Route::get('/users/detailed-information/{id}', [UsersDataController::class, 'detailedInformation']);
