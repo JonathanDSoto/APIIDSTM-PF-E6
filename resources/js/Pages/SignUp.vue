@@ -101,7 +101,7 @@
             </div>
             <div class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 mt-8 uppercase text-sm">
               <span>ALREADY REGISTERED?</span>
-              <a href="/logint" class="text-slate-900 dark:text-white font-medium hover:underline">
+              <a href="/login" class="text-slate-900 dark:text-white font-medium hover:underline">
                 Sign In
               </a>
             </div>
