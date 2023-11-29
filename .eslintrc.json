@@ -14,5 +14,8 @@
     },
     "plugins": [
         "vue"
-    ]
+    ],
+    "rules": {
+        "tailwindcss/no-custom-classname": "off"
+    }
 }
