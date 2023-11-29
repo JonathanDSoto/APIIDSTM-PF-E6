@@ -104,19 +104,19 @@
                     <form class="space-y-4" @submit.prevent="submitForm">
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel" v-if=$page.props.flag>ID</label>
-                            <input type="text" class="form-control" v-model="categoryData.categoryID" placeholder=""  :disabled=$page.props.flag v-if=$page.props.flag>
+                            <input type="text" class="form-control" v-model="categoryData.categoryID" placeholder=""  :disabled=$page.props.flag v-if=$page.props.flag required>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Category Name</label>
-                            <input type="text" class="form-control" v-model="categoryData.categoryName" placeholder="">
+                            <input type="text" class="form-control" v-model="categoryData.categoryName" placeholder="" required>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Creation Date</label>
-                            <input type="date" class="form-control" v-model="categoryData.creationDate" placeholder="">
+                            <input type="date" class="form-control" v-model="categoryData.creationDate" placeholder="" required>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Description</label>
-                            <input type="" class="form-control" v-model="categoryData.description" placeholder="">
+                            <input type="" class="form-control" v-model="categoryData.description" placeholder="" required>
                         </div>
                         <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                     </form>

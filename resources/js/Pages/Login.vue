@@ -1,51 +1,47 @@
-<script setup>
+<script>
     import { Icon } from '@iconify/vue';
     import { ref } from 'vue';
     import { router } from '@inertiajs/vue3';
 
 
-  const formData = {
-    email: 'user-23-10@alu.uabcs.mx',
-    password: 'vivamexico',
-    rememberMe: ref(false),
-    errors: {
-      email: null,
-      password: null,
-    },
-  };
-  const handleSubmit = () => {
-    // Restablecer mensajes de error
-    formData.errors.email = null;
-    formData.errors.password = null;
-
-    // Validar el correo electrónico
-    if (!formData.email.includes('@')) {
-      formData.errors.email = 'Ingresa un correo electrónico válido.';
-      
+    const userSession = localStorage.getItem('userSession');
+    if (!userSession) {
+      const myVariable = 'Hola, esto es un ejemplo';
+      localStorage.setItem('myVariable', myVariable);
+    } else {
+      console.log('La variable ya existe en el localStorage:', userSession);
     }
-    
-    // Validar la contraseña 
-    if (formData.password.length < 6) {
-      formData.errors.password = 'La contraseña debe tener al menos 6 caracteres.';
+    export default {
+      data() {
+        return {
+          passwordErrorMessage: null,
+          emailErrorMessage: null,
+          email: '',
+          password: '',
+        };
+      },
+      methods: {
+        handleSubmit(){
+          if (!this.email.includes('@')) {
+            this.emailErrorMessage = 'Ingresa un correo electrónico válido.';
+          }else{
+            this.emailErrorMessage = null;
+          }
+          if (this.password.length < 6) {
+            this.passwordErrorMessage = 'La contraseña debe tener al menos 6 caracteres.';
+          }else{
+            this.passwordErrorMessage = null;
+          }
+          if (!this.emailErrorMessage && !this.passwordErrorMessage) {
+            router.visit('/index');
+          }
+        }
+      }
     }
-    
-    // Si no hay errores puedes enviar el formulario
-    if (!formData.errors.email && !formData.errors.password) {
-      router.visit('/index');
-    }
-  };
-
-  console.log(formData.email);
 </script>
 
 <template>
     <body class=" font-inter skin-default">
-  <!-- [if IE]> <p class="browserupgrade">
-            You are using an <strong>outdated</strong> browser. Please
-            <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-            your experience and security.
-        </p> <![endif] -->
-
   <div class="loginwrapper">
     <div class="lg-inner-column">
       <div class="left-column relative z-[1]">
@@ -54,8 +50,9 @@
             <!-- LOGO -->
           </a>
           <h4>
-            Unlock your Project
-            <span class="text-slate-800 dark:text-slate-400 font-bold">performance</span>
+            <span v-if="emailErrorMessage" class="text-red-500">{{ emailErrorMessage }}</span><br><br>
+            <span v-if="passwordErrorMessage" class="text-red-500">{{ passwordErrorMessage }}</span>
+            <p v-else>Unlock your Project <span class="text-slate-800 dark:text-slate-400 font-bold">performance</span></p>
           </h4>
         </div>
         <div class="absolute left-0 2xl:bottom-[-160px] bottom-[-130px] h-full w-full z-[-1]">
@@ -78,25 +75,23 @@
               </div>
             </div>
             <!-- BEGIN: Login Form -->
-                      <form class="space-y-4" @submit.prevent="handleSubmit">
+          <form class="space-y-4" @submit.prevent="handleSubmit">
             <div class="fromGroup">
               <label class="block capitalize form-label">email</label>
               <div class="relative">
-                <input v-model="formData.email" type="email" name="email" class="form-control py-2" placeholder="email">
-                <span v-if="formData.errors.email" class="text-red-500">{{ formData.errors.email }}</span>
+                <input v-model="email" type="email" name="email" class="form-control py-2" placeholder="email">
               </div>
             </div>
             <div class="fromGroup">
               <label class="block capitalize form-label">password</label>
               <div class="relative">
-                <input v-model="formData.password" type="password" name="password" class="form-control py-2" placeholder="password">
-                <span v-if="formData.errors.password" class="text-red-500">{{ formData.errors.password }}</span>
+                <input v-model="password" type="password" name="password" class="form-control py-2" placeholder="password">
               </div>
             </div>
             <div class="flex justify-between">
               <div class="checkbox-area">
                 <label class="inline-flex items-center cursor-pointer">
-                  <input v-model="formData.rememberMe" type="checkbox" class="hidden" name="checkbox">
+                  <input type="checkbox" class="hidden" name="checkbox">
                   <span class="h-4 w-4 border flex-none border-slate-100 dark:border-slate-800 rounded inline-flex ltr:mr-3 rtl:ml-3 relative transition-all duration-150 bg-slate-100 dark:bg-slate-900">
                     <img src="images/icon/ck-white.svg" alt="" class="h-[10px] w-[10px] block m-auto opacity-0">
                   </span>
@@ -155,6 +150,5 @@
       </div>
     </div>
   </div>
-
 </body>
 </template>
