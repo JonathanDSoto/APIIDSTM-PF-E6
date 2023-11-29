@@ -3,6 +3,7 @@
     export default {
         data() {
           return {
+            selectedId: 0,
             popUpDelete: false,
             administratorsArray: [],
             regularUsersArray: [],
@@ -28,15 +29,33 @@
           }
         },
         methods: {
-          deleteConfirmation(){
+          deleteConfirmation(userId){
+            this.selectedId = userId;
             this.popUpDelete = true;
           },
           cancelElimination(){
             this.popUpDelete = false;
           },
-          confirmElimination(){
+          confirmElimination() {
+            const userIdToDelete = parseInt(this.selectedId);
             
-          },
+            let usersArray = JSON.parse(localStorage.getItem('usersArray')) || [];
+            
+            // Encontrar el índice del usuario que coincida con el ID proporcionado
+            const indexToDelete = usersArray.findIndex(user => user.userID === userIdToDelete);
+            
+            if (indexToDelete !== -1) {
+              // Eliminar el usuario del array usando splice()
+              usersArray.splice(indexToDelete, 1);
+              
+              // Actualizar el array en el localStorage
+              localStorage.setItem('usersArray', JSON.stringify(usersArray));
+              
+              // Luego puedes redirigir a otra página, mostrar un mensaje, etc.
+              // Dependiendo de tus necesidades
+            }
+            window.location.reload();
+          }
         }
     }
 </script>
@@ -159,7 +178,7 @@
                                         <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                         </button>
                                     </a>
-                                    <button class="action-btn" type="button" @click="deleteConfirmation">
+                                    <button class="action-btn" type="button" @click="deleteConfirmation(user.userID)">
                                       <iconify-icon icon="heroicons:trash"></iconify-icon>
                                     </button>
                                   </div>
@@ -250,7 +269,7 @@
                                         <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                         </button>
                                     </a>
-                                    <button class="action-btn" type="button" @click="deleteConfirmation">
+                                    <button class="action-btn" type="button" @click="deleteConfirmation(user.userID)">
                                       <iconify-icon icon="heroicons:trash"></iconify-icon>
                                     </button>
                                   </div>
@@ -341,7 +360,7 @@
                                         <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                         </button>
                                     </a>
-                                    <button class="action-btn" type="button" @click="deleteConfirmation">
+                                    <button class="action-btn" type="button" @click="deleteConfirmation(user.userID)">
                                       <iconify-icon icon="heroicons:trash"></iconify-icon>
                                     </button>
                                   </div>

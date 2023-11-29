@@ -24,14 +24,14 @@
      },
      mounted() {
         if (this.$page.props.flag) {
-            const userIdToModify = this.$page.props.id;
+                const userIdToModify = this.$page.props.id;
 
-            let usersArray = JSON.parse(localStorage.getItem('usersArray')) || [];
-            const userToUpdate = usersArray.find(user => user.userID === parseInt(userIdToModify));
+                let usersArray = JSON.parse(localStorage.getItem('usersArray')) || [];
+                const userToUpdate = usersArray.find(user => user.userID === parseInt(userIdToModify));
 
-            if (userToUpdate) {
-            // Inicializar userData con los datos encontrados en el localStorage
-            this.userData = { ...userToUpdate };
+                if (userToUpdate) {
+                // Inicializar userData con los datos encontrados en el localStorage
+                this.userData = { ...userToUpdate };
             }
         }
     },
@@ -127,47 +127,47 @@
                         <div class="card-text h-full space-y-4">
                             <div class="input-area">
                                 <label for="name" class="form-label">First Name</label>
-                                <input id="name" type="text" class="form-control" v-model="userData.firstName" placeholder="Guadalupe Victoria" v-on:keypress="isLetter($event)">
+                                <input id="name" type="text" class="form-control" v-model="userData.firstName" placeholder="Guadalupe Victoria" v-on:keypress="isLetter($event)" required>
                             </div>
                             <div class="input-area">
                                 <label for="name" class="form-label">Last Name</label>
-                                <input id="name" type="text" class="form-control" v-model="userData.lastName" placeholder="Rodriguez Barajas">
+                                <input id="name" type="text" class="form-control" v-model="userData.lastName" placeholder="Rodriguez Barajas" required>
                             </div>
                             <div class="input-area">
                                 <label for="name" class="form-label">Age</label>
-                                <input id="name" type="number" class="form-control" v-model="userData.age" placeholder="23">
+                                <input id="name" type="number" class="form-control" v-model="userData.age" placeholder="23" required>
                             </div>
                             <div class="input-area">
                                 <label for="name" class="form-label">Email</label>
-                                <input id="name" type="email" class="form-control" v-model="userData.email" placeholder="rovique44@hotmail.com">
+                                <input id="name" type="email" class="form-control" v-model="userData.email" placeholder="rovique44@hotmail.com" required>
                             </div>
                             <div class="input-area">
                                 <label for="name" class="form-label">Address</label>
-                                <input id="name" type="text" class="form-control" v-model="userData.address" placeholder="Biznaga 108 Indeco Col. el cajoncito">
+                                <input id="name" type="text" class="form-control" v-model="userData.address" placeholder="Biznaga 108 Indeco Col. el cajoncito" required>
                             </div>
                             <div class="input-area">
                                 <label for="readonly" class="form-label">Creation Date</label>
-                                <input id="readonly" type="date" class="form-control" v-model="userData.creationDate" placeholder="12/23/2023" :disabled=$page.props.flag>
+                                <input id="readonly" type="date" class="form-control" v-model="userData.creationDate" placeholder="12/23/2023" :disabled=$page.props.flag required>
                             </div>
                             <div class="input-area">
                                 <label for="readonly" class="form-label">Phone Number</label>
-                                <input id="readonly" type="text" class="form-control" v-model="userData.phoneNumber" placeholder="6122309430">
+                                <input id="readonly" type="text" class="form-control" v-model="userData.phoneNumber" placeholder="6122309430" required>
                             </div>
                             <div class="input-area">
                                 <label for="readonly" class="form-label">Password</label>
-                                <input id="readonly" type="text" class="form-control" v-model="userData.password" placeholder="1a3d55d3a1">
+                                <input id="readonly" type="text" class="form-control" v-model="userData.password" placeholder="1a3d55d3a1" required>
                             </div>
                             <div class="input-area">
                                 <label for="readonly" class="form-label">Country</label>
-                                <input id="readonly" type="text" class="form-control" v-model="userData.country" placeholder="Mexico">
+                                <input id="readonly" type="text" class="form-control" v-model="userData.country" placeholder="Mexico" required>
                             </div>
                             <div class="input-area">
                                 <label for="readonly" class="form-label">State</label>
-                                <input id="readonly" type="text" class="form-control" v-model="userData.state" placeholder="Baja California Sur">
+                                <input id="readonly" type="text" class="form-control" v-model="userData.state" placeholder="Baja California Sur" required>
                             </div>
                             <div class="input-area">
                                 <label for="readonly" class="form-label">City</label>
-                                <input id="readonly" type="text" class="form-control" v-model="userData.city" placeholder="La Paz">
+                                <input id="readonly" type="text" class="form-control" v-model="userData.city" placeholder="La Paz" required>
                             </div>
                             <div class="input-area" v-if=$page.props.flag>
                                 <label for="select" class="form-label">Select Option*</label>
