@@ -50,20 +50,20 @@
                 categoryID++;
                 localStorage.setItem('categoryID',JSON.stringify(categoryID));
             }else{
-                const categoryIdToModify = this.$page.props.id;
+                const categoryIdToModify = this.$page.props.categoryId;
                 let newCategoryData = {
                     categoryID: parseInt(categoryIdToModify),
                     categoryName: this.categoryData.categoryName,
                     creationDate: this.categoryData.creationDate,
                     description: this.categoryData.description,
                 }
-                const index = categoriesArray.findIndex(user => user.userID === parseInt(categoryIdToModify));
+                const index = categoriesArray.findIndex(category => category.categoryID === parseInt(categoryIdToModify));
                 if (index !== -1) {
                     categoriesArray[index] = newCategoryData;
-                    localStorage.setItem('categoriesArray', JSON.stringify(usersArray));
+                    localStorage.setItem('categoriesArray', JSON.stringify(categoriesArray));
                 }
             }
-            window.location.href = '/categories';
+            window.location.href ='/categories';
         },
      },
     }
