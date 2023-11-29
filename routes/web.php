@@ -13,6 +13,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RawController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,7 @@ Route::get('/products/detailed-product-information/{id}', [ProductsController::c
 Route::get('/products/modify-product-information/{id}', [ProductsController::class, 'modifyInformation']);
 Route::get('/products/delete-product/{id}', [ProductsController::class, 'deleteInformation']);
 
+//Route::resource('categories', CategoryController::class);
 Route::get('/categories/', [CategoriesController::class, 'allCategories']);
 Route::get('/categories/create-category/', [CategoriesController::class, 'createCategory']);
 Route::get('/categories/detailed-category-information/{id}', [CategoriesController::class, 'detailedInformation']);
@@ -86,10 +88,6 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/{any}', function () {
-    return Inertia::render('UrlError'); 
-})->where('any', '.*');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -97,3 +95,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/{any}', function () {
+    return Inertia::render('UrlError');
+})->where('any', '.*');
