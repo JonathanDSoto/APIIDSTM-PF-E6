@@ -4,10 +4,28 @@
         data() {
           return {
             popUpDelete: false,
+            administratorsArray: [],
+            regularUsersArray: [],
+            moderatorsArray: []
           };
         },
         components: {
             DefaultTemplate,
+        },
+        mounted() {
+          const storedUsers = localStorage.getItem('usersArray');
+          if (storedUsers) {
+            const users = JSON.parse(storedUsers);
+            
+            const administrators = users.filter(user => user.userType === 'Administrator');
+            const regularUsers = users.filter(user => user.userType === 'User');
+            const moderators = users.filter(user => user.userType === 'Moderator');
+            
+            // Store these categorized arrays in separate variables or properties
+            this.administratorsArray = administrators;
+            this.regularUsersArray = regularUsers;
+            this.moderatorsArray = moderators;
+          }
         },
         methods: {
           deleteConfirmation(){
@@ -84,19 +102,19 @@
                                 </th>
 
                                 <th scope="col" class=" table-th ">
-                                  User
+                                  First Name
                                 </th>
 
                                 <th scope="col" class=" table-th ">
-                                  Creation Date
+                                  Last Name
                                 </th>
 
                                 <th scope="col" class=" table-th ">
-                                  Purchases
+                                  Country
                                 </th>
 
                                 <th scope="col" class=" table-th ">
-                                   Total
+                                   City
                                 </th>
 
                                 <th scope="col" class=" table-th ">
@@ -106,36 +124,37 @@
                               </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                              <tr v-for="(user, index) in $page.props.users" :key="index">
-                                <td class="table-td">{{ user[0] }}</td>
+                              <tr v-for="(user, index) in regularUsersArray" :key="index">
+                                <td class="table-td">{{ user.userID }}</td>
                                 <td class="table-td">
                                     <span class="flex">
-                                    <span class="w-7 h-7 rounded-full ltr:mr-3 rtl:ml-3 flex-none">
+                                    <!-- <span class="w-7 h-7 rounded-full ltr:mr-3 rtl:ml-3 flex-none">
+                                        Espacio para la imagen de usuario
                                         <img src="images/all-img/customer_1.png" alt="1" class="object-cover w-full h-full rounded-full">
-                                    </span>
-                                    <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user[1] }}</span>
+                                    </span> -->
+                                    <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user.firstName }}</span>
                                     </span>
                                 </td>
-                                <td class="table-td ">{{ user[2] }}</td>
+                                <td class="table-td ">{{ user.lastName }}</td>
                                 <td class="table-td ">
                                     <div>
-                                      {{ user[3] }}
+                                      {{ user.country }}
                                     </div>
                                 </td>
                                 <td class="table-td ">
                                     <div>
-                                      {{ user[4] }}
+                                      {{ user.city }}
                                     </div>
                                 </td>
                                 <td class="table-td ">
                                   <div class="flex space-x-3 rtl:space-x-reverse">
                                     <!-- PASS THE USER ID -->
-                                    <a href="/users/detailed-information/1">
+                                    <a :href="`/users/detailed-information/${user.userID}`">
                                         <button class="action-btn" type="button">
                                         <iconify-icon icon="heroicons:eye"></iconify-icon>
                                         </button>
                                     </a>
-                                    <a href="/users/modify-information/1">
+                                    <a :href="`/users/modify-information/${user.userID}`">
                                         <button class="action-btn" type="button">
                                         <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                         </button>
@@ -161,171 +180,177 @@
                 <h4 class="card-title">Moderators</h4>
               </header>
               <div class="card-body px-6 pb-6">
-                <div class="overflow-x-auto -mx-6 dashcode-data-table">
-                  <span class=" col-span-8  hidden"></span>
-                  <span class="  col-span-4 hidden"></span>
-                  <div class="inline-block min-w-full align-middle">
-                    <div class="overflow-hidden ">
-                      <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700" id="data-table">
-                        <thead class=" border-t border-slate-100 dark:border-slate-800">
-                          <tr>
-                            <th scope="col" class=" table-th ">
-                              Id
-                            </th>
+                    <div class="overflow-x-auto -mx-6 dashcode-data-table">
+                      <span class=" col-span-8  hidden"></span>
+                      <span class="  col-span-4 hidden"></span>
+                      <div class="inline-block min-w-full align-middle">
+                        <div class="overflow-hidden ">
+                          <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700" id="data-table">
+                            <thead class=" border-t border-slate-100 dark:border-slate-800">
+                              <tr>
+                                <th scope="col" class=" table-th ">
+                                  Id
+                                </th>
 
-                            <th scope="col" class=" table-th ">
-                              User
-                            </th>
+                                <th scope="col" class=" table-th ">
+                                  First Name
+                                </th>
 
-                            <th scope="col" class=" table-th ">
-                              Creation Date
-                            </th>
+                                <th scope="col" class=" table-th ">
+                                  Last Name
+                                </th>
 
-                            <th scope="col" class=" table-th ">
-                              Purchases
-                            </th>
+                                <th scope="col" class=" table-th ">
+                                  Country
+                                </th>
 
-                            <th scope="col" class=" table-th ">
-                                Total
-                            </th>
+                                <th scope="col" class=" table-th ">
+                                   City
+                                </th>
 
-                            <th scope="col" class=" table-th ">
-                              Action
-                            </th>
+                                <th scope="col" class=" table-th ">
+                                  Action
+                                </th>
 
-                          </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                          <tr v-for="(user, index) in $page.props.users" :key="index">
-                            <td class="table-td">{{ user[0] }}</td>
-                            <td class="table-td">
-                                <span class="flex">
-                                <span class="w-7 h-7 rounded-full ltr:mr-3 rtl:ml-3 flex-none">
-                                    <img src="images/all-img/customer_1.png" alt="1" class="object-cover w-full h-full rounded-full">
-                                </span>
-                                <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user[1] }}</span>
-                                </span>
-                            </td>
-                            <td class="table-td ">{{ user[2] }}</td>
-                            <td class="table-td ">
-                                <div>
-                                  {{ user[3] }}
-                                </div>
-                            </td>
-                            <td class="table-td ">
-                                <div>
-                                  {{ user[4] }}
-                                </div>
-                            </td>
-                            <td class="table-td ">
-                              <div class="flex space-x-3 rtl:space-x-reverse">
-                                <!-- PASS THE USER ID -->
-                                <a href="/users/detailed-information/1">
-                                    <button class="action-btn" type="button">
-                                    <iconify-icon icon="heroicons:eye"></iconify-icon>
+                              </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
+                              <tr v-for="(user, index) in moderatorsArray" :key="index">
+                                <td class="table-td">{{ user.userID }}</td>
+                                <td class="table-td">
+                                    <span class="flex">
+                                    <!-- <span class="w-7 h-7 rounded-full ltr:mr-3 rtl:ml-3 flex-none">
+                                        Espacio para la imagen de usuario
+                                        <img src="images/all-img/customer_1.png" alt="1" class="object-cover w-full h-full rounded-full">
+                                    </span> -->
+                                    <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user.firstName }}</span>
+                                    </span>
+                                </td>
+                                <td class="table-td ">{{ user.lastName }}</td>
+                                <td class="table-td ">
+                                    <div>
+                                      {{ user.country }}
+                                    </div>
+                                </td>
+                                <td class="table-td ">
+                                    <div>
+                                      {{ user.city }}
+                                    </div>
+                                </td>
+                                <td class="table-td ">
+                                  <div class="flex space-x-3 rtl:space-x-reverse">
+                                    <!-- PASS THE USER ID -->
+                                    <a :href="`/users/detailed-information/${user.userID}`">
+                                        <button class="action-btn" type="button">
+                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
+                                        </button>
+                                    </a>
+                                    <a :href="`/users/modify-information/${user.userID}`">
+                                        <button class="action-btn" type="button">
+                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                        </button>
+                                    </a>
+                                    <button class="action-btn" type="button" @click="deleteConfirmation">
+                                      <iconify-icon icon="heroicons:trash"></iconify-icon>
                                     </button>
-                                </a>
-                                <a href="/users/modify-information/1">
-                                    <button class="action-btn" type="button">
-                                    <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                    </button>
-                                </a>
-                                <button class="action-btn" type="button" @click="deleteConfirmation">
-                                  <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
             </div>
             <br>
-            <div class="card">
-              <header class=" card-header noborder">
-                <h4 class="card-title">Administrator</h4>
-              </header>
-              <div class="card-body px-6 pb-6">
-                <div class="overflow-x-auto -mx-6 dashcode-data-table">
-                  <span class=" col-span-8  hidden"></span>
-                  <span class="  col-span-4 hidden"></span>
-                  <div class="inline-block min-w-full align-middle">
-                    <div class="overflow-hidden ">
-                      <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700" id="data-table">
-                        <thead class=" border-t border-slate-100 dark:border-slate-800">
-                          <tr>
-                            <th scope="col" class=" table-th ">
-                              Id
-                            </th>
+            <div id="content_layout">
+              <div class=" space-y-5">
+                <div class="card">
+                  <header class=" card-header noborder">
+                    <h4 class="card-title">Clients</h4>
+                  </header>
+                  <div class="card-body px-6 pb-6">
+                    <div class="overflow-x-auto -mx-6 dashcode-data-table">
+                      <span class=" col-span-8  hidden"></span>
+                      <span class="  col-span-4 hidden"></span>
+                      <div class="inline-block min-w-full align-middle">
+                        <div class="overflow-hidden ">
+                          <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700" id="data-table">
+                            <thead class=" border-t border-slate-100 dark:border-slate-800">
+                              <tr>
+                                <th scope="col" class=" table-th ">
+                                  Id
+                                </th>
 
-                            <th scope="col" class=" table-th ">
-                              User
-                            </th>
+                                <th scope="col" class=" table-th ">
+                                  First Name
+                                </th>
 
-                            <th scope="col" class=" table-th ">
-                              Creation Date
-                            </th>
+                                <th scope="col" class=" table-th ">
+                                  Last Name
+                                </th>
 
-                            <th scope="col" class=" table-th ">
-                              Purchases
-                            </th>
+                                <th scope="col" class=" table-th ">
+                                  Country
+                                </th>
 
-                            <th scope="col" class=" table-th ">
-                                Total
-                            </th>
+                                <th scope="col" class=" table-th ">
+                                   City
+                                </th>
 
-                            <th scope="col" class=" table-th ">
-                              Action
-                            </th>
+                                <th scope="col" class=" table-th ">
+                                  Action
+                                </th>
 
-                          </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                          <tr v-for="(user, index) in $page.props.users" :key="index">
-                            <td class="table-td">{{ user[0] }}</td>
-                            <td class="table-td">
-                                <span class="flex">
-                                <span class="w-7 h-7 rounded-full ltr:mr-3 rtl:ml-3 flex-none">
-                                    <img src="images/all-img/customer_1.png" alt="1" class="object-cover w-full h-full rounded-full">
-                                </span>
-                                <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user[1] }}</span>
-                                </span>
-                            </td>
-                            <td class="table-td ">{{ user[2] }}</td>
-                            <td class="table-td ">
-                                <div>
-                                  {{ user[3] }}
-                                </div>
-                            </td>
-                            <td class="table-td ">
-                                <div>
-                                  {{ user[4] }}
-                                </div>
-                            </td>
-                            <td class="table-td ">
-                              <div class="flex space-x-3 rtl:space-x-reverse">
-                                <!-- PASS THE USER ID -->
-                                <a href="/users/detailed-information/1">
-                                    <button class="action-btn" type="button">
-                                    <iconify-icon icon="heroicons:eye"></iconify-icon>
+                              </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
+                              <tr v-for="(user, index) in administratorsArray" :key="index">
+                                <td class="table-td">{{ user.userID }}</td>
+                                <td class="table-td">
+                                    <span class="flex">
+                                    <!-- <span class="w-7 h-7 rounded-full ltr:mr-3 rtl:ml-3 flex-none">
+                                        Espacio para la imagen de usuario
+                                        <img src="images/all-img/customer_1.png" alt="1" class="object-cover w-full h-full rounded-full">
+                                    </span> -->
+                                    <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user.firstName }}</span>
+                                    </span>
+                                </td>
+                                <td class="table-td ">{{ user.lastName }}</td>
+                                <td class="table-td ">
+                                    <div>
+                                      {{ user.country }}
+                                    </div>
+                                </td>
+                                <td class="table-td ">
+                                    <div>
+                                      {{ user.city }}
+                                    </div>
+                                </td>
+                                <td class="table-td ">
+                                  <div class="flex space-x-3 rtl:space-x-reverse">
+                                    <!-- PASS THE USER ID -->
+                                    <a :href="`/users/detailed-information/${user.userID}`">
+                                        <button class="action-btn" type="button">
+                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
+                                        </button>
+                                    </a>
+                                    <a :href="`/users/modify-information/${user.userID}`">
+                                        <button class="action-btn" type="button">
+                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                        </button>
+                                    </a>
+                                    <button class="action-btn" type="button" @click="deleteConfirmation">
+                                      <iconify-icon icon="heroicons:trash"></iconify-icon>
                                     </button>
-                                </a>
-                                <a href="/users/modify-information/1">
-                                    <button class="action-btn" type="button">
-                                    <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                    </button>
-                                </a>
-                                <button class="action-btn" type="button" @click="deleteConfirmation">
-                                  <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

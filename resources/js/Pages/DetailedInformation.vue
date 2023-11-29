@@ -7,12 +7,31 @@
         data() {
             return {
                 url: null,
+                userData: {
+                    firstName: '',
+                    lastName: '',
+                    age: '',
+                    email: '',
+                    password: '',
+                    address: '',
+                    creationDate: '',
+                    phoneNumber: '',
+                    userType: '',
+                    country: '',
+                    state: '',
+                    city: '',
+                },
             }
         },
         mounted() {
-            if (this.$page.props.userImage) {
-            this.url = this.$page.props.userImage;
-            }
+          const userIdToModify = this.$page.props.userId;
+
+          let usersArray = JSON.parse(localStorage.getItem('usersArray')) || [];
+          const userToUpdate = usersArray.find(user => user.userID === parseInt(userIdToModify));
+
+          if (userToUpdate) {
+            this.userData = { ...userToUpdate };
+          }
         },
     }
 </script>
@@ -53,10 +72,10 @@
                       </div>
                       <div class="flex-1">
                         <div class="text-2xl font-medium text-slate-900 dark:text-slate-200 mb-[3px]">
-                            {{ $page.props.userName }}
+                            {{ userData.firstName }}
                         </div>
                         <div class="text-sm font-light text-slate-600 dark:text-slate-400">
-                            {{ $page.props.userLastName }}
+                            {{ userData.lastName }}
                         </div>
                       </div>
                     </div>
@@ -110,7 +129,7 @@
                                 EMAIL
                               </div>
                               <a href="mailto:someone@example.com" class="text-base text-slate-600 dark:text-slate-50">
-                                {{ $page.props.userEmail }}
+                                {{ userData.email }}
                               </a>
                             </div>
                           </li>
@@ -124,7 +143,7 @@
                                 PHONE
                               </div>
                               <a href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
-                                {{ $page.props.userPhoneNumber }}
+                                {{ userData.phoneNumber }}
                               </a>
                             </div>
                           </li>
@@ -137,7 +156,7 @@
                                 Creation Date
                               </div>
                               <a href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
-                                {{ $page.props.userPhoneNumber }}
+                                {{ userData.creationDate }}
                               </a>
                             </div>
                           </li>
@@ -151,7 +170,7 @@
                                 LOCATION
                               </div>
                               <div class="text-base text-slate-600 dark:text-slate-50">
-                                {{ $page.props.userAddress }}
+                                {{ userData.country }}, {{ userData.state }}, {{ userData.city }}
                               </div>
                             </div>
                           </li>
