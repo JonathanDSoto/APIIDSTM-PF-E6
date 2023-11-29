@@ -3,22 +3,44 @@
     export default {
         data() {
           return {
+            selectedId: 0,
             popUpDelete: false,
+            categoriesArray: []
           };
         },
         components: {
             DefaultTemplate,
         },
+        mounted() {
+          const storedCategories = localStorage.getItem('categoriesArray');
+          if (storedCategories) {
+            const categories = JSON.parse(storedCategories);
+            this.categoriesArray = categories;
+          }
+        },
         methods: {
-          deleteConfirmation(){
+          deleteConfirmation(userId){
+            this.selectedId = userId;
             this.popUpDelete = true;
           },
           cancelElimination(){
             this.popUpDelete = false;
           },
-          confirmElimination(){
+          confirmElimination() {
+            const categoryToDelete = parseInt(this.selectedId);
             
-          },
+            let categoriesArray = JSON.parse(localStorage.getItem('categoriesArray')) || [];
+            
+            const indexToDelete = categoriesArray.findIndex(category => category.categoryID === categoryToDelete);
+            
+            if (indexToDelete !== -1) {
+                categoriesArray.splice(indexToDelete, 1);
+              
+              localStorage.setItem('categoriesArray', JSON.stringify(categoriesArray));
+              
+            }
+            window.location.reload();
+          }
         }
     }
 </script>
@@ -67,7 +89,7 @@
                         <div class=" space-y-5">
                             <div class="card">
                             <header class=" card-header noborder">
-                                <h4 class="card-title">Users</h4>
+                                <h4 class="card-title">Category</h4>
                             </header>
                             <div class="card-body px-6 pb-6">
                                 <div class="overflow-x-auto -mx-6 dashcode-data-table">
@@ -82,47 +104,42 @@
                                                     Id
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Product Name
+                                                    Category Name
                                                 </th>
                                                 <th scope="col" class=" table-th ">
                                                     Creation Date
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Price of Purchase
+                                                    Description
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Price of Sale
+                                                    Action
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                                            <tr v-for="(user, index) in $page.props.products" :key="index">
-                                                <td class="table-td">{{ user[0] }}</td>
+                                            <tr v-for="(category, index) in categoriesArray" :key="index">
+                                                <td class="table-td">{{ category.categoryID }}</td>
                                                 <td class="table-td">
                                                     <span class="flex">
-                                                        <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user[1] }}</span>
+                                                        <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ category.categoryName }}</span>
                                                     </span>
                                                 </td>
-                                                <td class="table-td ">{{ user[2] }}</td>
+                                                <td class="table-td ">{{ category.creationDate }}</td>
                                                 <td class="table-td ">
                                                     <div>
-                                                    {{ user[3] }}
-                                                    </div>
-                                                </td>
-                                                <td class="table-td ">
-                                                    <div>
-                                                    {{ user[4] }}
+                                                        {{ category.description }}
                                                     </div>
                                                 </td>
                                                 <td class="table-td ">
                                                     <div class="flex space-x-3 rtl:space-x-reverse">
                                                         <!-- PASS THE USER ID -->
-                                                        <a href="/categories/modify-category-information/1">
+                                                        <a :href="`/categories/modify-category-information/${category.categoryID}`">
                                                             <button class="action-btn" type="button">
                                                             <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                                             </button>
                                                         </a>
-                                                        <button class="action-btn" type="button" @click="deleteConfirmation">
+                                                        <button class="action-btn" type="button" @click="deleteConfirmation(category.categoryID)">
                                                             <iconify-icon icon="heroicons:trash"></iconify-icon>
                                                         </button>
                                                     </div>

@@ -6,20 +6,20 @@
          },
         data() {
          return {
-             userData: {
-                 firstName: '',
-                 lastName: '',
-                 age: '',
-                 email: '',
-                 password: '',
-                 address: '',
-                 creationDate: '',
-                 phoneNumber: '',
-                 userType: '',
-                 country: '',
-                 state: '',
-                 city: '',
-             },
+            userData: {
+                firstName: '',
+                lastName: '',
+                age: '',
+                email: '',
+                password: '',
+                address: '',
+                creationDate: '',
+                phoneNumber: '',
+                userType: '',
+                country: '',
+                state: '',
+                city: '',
+            },
          };
      },
      mounted() {

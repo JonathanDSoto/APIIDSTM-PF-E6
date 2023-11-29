@@ -3,7 +3,69 @@
     export default {
         components: {
             DefaultTemplate,
+        },
+        data() {
+         return {
+            categoryData: {
+                categoryID: 0,
+                categoryName: '',
+                creationDate: '',
+                description: '',
+            },
+         };
+     },
+     mounted() {
+        if (this.$page.props.flag) {
+                const categoryIdToModify = this.$page.props.categoryId;
+
+                let categoriesArray = JSON.parse(localStorage.getItem('categoriesArray')) || [];
+                const categoryToUpdate = categoriesArray.find(category => category.categoryID === parseInt(categoryIdToModify));
+                console.log(categoryIdToModify);
+                if (categoryToUpdate) {
+                // Inicializar userData con los datos encontrados en el localStorage
+                    this.categoryData = { ...categoryToUpdate };
+                    console.log(this.categoryData);
+                }   
         }
+    },
+     methods: {
+        isLetter(e) {
+            let char = String.fromCharCode(e.keyCode);
+            if(/^[A-Za-z]+$/.test(char)) return true;
+            else e.preventDefault(); 
+        },
+        submitForm() {
+            let categoryID = JSON.parse(localStorage.getItem('categoryID')) || 0;
+            let categoriesArray = JSON.parse(localStorage.getItem('categoriesArray')) || [];
+
+            if(!this.$page.props.flag){
+                let newCategoryData = {
+                    categoryID: categoryID,
+                    categoryName: this.categoryData.categoryName,
+                    creationDate: this.categoryData.creationDate,
+                    description: this.categoryData.description,
+                }
+                categoriesArray.push(newCategoryData);
+                localStorage.setItem('categoriesArray', JSON.stringify(categoriesArray));
+                categoryID++;
+                localStorage.setItem('categoryID',JSON.stringify(categoryID));
+            }else{
+                const categoryIdToModify = this.$page.props.id;
+                let newCategoryData = {
+                    categoryID: parseInt(categoryIdToModify),
+                    categoryName: this.categoryData.categoryName,
+                    creationDate: this.categoryData.creationDate,
+                    description: this.categoryData.description,
+                }
+                const index = categoriesArray.findIndex(user => user.userID === parseInt(categoryIdToModify));
+                if (index !== -1) {
+                    categoriesArray[index] = newCategoryData;
+                    localStorage.setItem('categoriesArray', JSON.stringify(usersArray));
+                }
+            }
+            window.location.href = '/categories';
+        },
+     },
     }
 </script>
 
@@ -39,22 +101,22 @@
                         </div>
                     </header>
                 <div class="card-text h-full ">
-                    <form class="space-y-4">
+                    <form class="space-y-4" @submit.prevent="submitForm">
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel" v-if=$page.props.flag>ID</label>
-                            <input type="text" class="form-control" placeholder="" :value=$page.props.products[0] :disabled=$page.props.flag v-if=$page.props.flag>
+                            <input type="text" class="form-control" v-model="categoryData.categoryID" placeholder=""  :disabled=$page.props.flag v-if=$page.props.flag>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Category Name</label>
-                            <input type="text" class="form-control" placeholder="" :value=$page.props.products[1]>
+                            <input type="text" class="form-control" v-model="categoryData.categoryName" placeholder="">
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Creation Date</label>
-                            <input type="date" class="form-control" placeholder=""  :value=$page.props.products[2]>
+                            <input type="date" class="form-control" v-model="categoryData.creationDate" placeholder="">
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Description</label>
-                            <input type="" class="form-control" placeholder=""  :value=$page.props.products[2]>
+                            <input type="" class="form-control" v-model="categoryData.description" placeholder="">
                         </div>
                         <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                     </form>

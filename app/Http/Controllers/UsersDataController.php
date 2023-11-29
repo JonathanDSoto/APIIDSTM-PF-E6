@@ -7,15 +7,16 @@ use Inertia\Inertia;
 class UsersDataController extends Controller
 {
     //
+    public function allUsers(){
+        return Inertia::render('Users');
+    }
+    
     public function detailedInformation($id){
         return Inertia::render('DetailedInformation',[
             'userId'=> $id,
         ]);
     }
 
-    public function allUsers(){
-        return Inertia::render('Users');
-    }
 
     public function createUser(){
         $flag = false;
