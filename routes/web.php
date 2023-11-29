@@ -33,7 +33,7 @@ Route::get('/', function () {
 //        'laravelVersion' => Application::VERSION,
 //        'phpVersion' => PHP_VERSION,
 //    ]);
-    return Inertia::render('Login');
+    return Inertia::render('Auth/Login');
 });
 
 Route::get('/forgotpassword', function () {return Inertia::render('ForgotPassword');});
@@ -41,7 +41,7 @@ Route::get('/signup', function () {return Inertia::render('SignUp');});
 
 Route::middleware('auth')->group(function () {
     Route::get('/index', function () {return Inertia::render('Index');});
-    
+
     Route::get('/users', [UsersDataController::class, 'allUsers']);
     Route::get('/users/create-user', [UsersDataController::class, 'createUser']);
     Route::get('/users/detailed-information/{id}', [UsersDataController::class, 'detailedInformation']);
