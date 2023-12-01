@@ -23,7 +23,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|min:3',
         ];
     }
 
@@ -38,6 +38,7 @@ class StoreCategoryRequest extends FormRequest
             'name.required' => 'The category name is required',
             'name.string' => 'The category name must be a string',
             'name.max' => 'The category name must be a maximum of 255 characters',
+            'name.min' => 'The category name must be a minimum of 3 characters',
         ];
     }
 }
