@@ -7,11 +7,9 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\UsersDataController;
 use App\Http\Controllers\CouponsController;
-use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RawController;
-use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 
@@ -59,11 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/products/modify-product-information/{id}', [ProductsController::class, 'modifyInformation']);
     Route::get('/products/delete-product/{id}', [ProductsController::class, 'deleteInformation']);
 
-    //Route::resource('categories', CategoryController::class);
-    Route::get('/categories/', [CategoriesController::class, 'allCategories']);
-    Route::get('/categories/create-category/', [CategoriesController::class, 'createCategory']);
-    Route::get('/categories/detailed-category-information/{id}', [CategoriesController::class, 'detailedInformation']);
-    Route::get('/categories/modify-category-information/{id}', [CategoriesController::class, 'modifyInformation']);
+    Route::resource('categories', CategoryController::class);
 
     Route::get('/raw', [RawController::class, 'allRaw']);
     Route::get('/raw/create-raw/', [RawController::class, 'createRaw']);

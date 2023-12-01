@@ -32,11 +32,8 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        if($request->errors()) {
-            return to_route('products.index')->withErrors($request->errors());
-        }
-
-        return to_route('products.index')->with('success', 'Category created successfully!');
+        Category::create($request->validated());
+        return to_route('categories.index')->with('success', 'Category created successfully!');
     }
 
     /**

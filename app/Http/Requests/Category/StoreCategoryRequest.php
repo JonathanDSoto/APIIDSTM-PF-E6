@@ -35,9 +35,9 @@ class StoreCategoryRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'El nombre de la categoría es requerido',
-            'name.string' => 'El nombre de la categoría debe ser una cadena de caracteres',
-            'name.max' => 'El nombre de la categoría debe tener máximo 255 caracteres',
+            'name.required' => 'The category name is required',
+            'name.string' => 'The category name must be a string',
+            'name.max' => 'The category name must be a maximum of 255 characters',
         ];
     }
 }
