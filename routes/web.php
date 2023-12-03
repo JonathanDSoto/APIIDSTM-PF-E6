@@ -13,6 +13,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,25 +48,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/modify-information/{id}', [UsersDataController::class, 'modifyInformation']);
     Route::get('/users/delete-user/{id}', [UsersDataController::class, 'deleteInformation']);
 
+    Route::resource('customers', CustomerController::class);
+
     Route::get('/coupons', [CouponsController::class, 'allCoupons']);
     Route::get('/coupons/create-coupon', [CouponsController::class, 'createCoupon']);
     Route::get('/coupons/modify-coupons-information/{id}', [CouponsController::class, 'modifyInformation']);
     Route::get('/coupons/delete-coupon/{id}', [CouponsController::class, 'deleteInformation']);
 
     Route::resource('products', ProductController::class);
-
     Route::resource('categories', CategoryController::class);
-
-    Route::get('/raw', [RawController::class, 'allRaw']);
-    Route::get('/raw/create-raw/', [RawController::class, 'createRaw']);
-    Route::get('/raw/detailed-raw-information/{id}', [RawController::class, 'detailedInformation']);
-    Route::get('/raw/modify-raw-information/{id}', [RawController::class, 'modifyInformation']);
-
-    Route::get('/inventory', function () {return Inertia::render('Maintenance');});
-    Route::get('/inventory/inventory-category/', [CategoriesController::class, 'createCategory']);
-    Route::get('/inventory/detailed-inventory-information/{id}', [CategoriesController::class, 'detailedInformation']);
-    Route::get('/inventory/modify-inventory-information/{id}', [CategoriesController::class, 'modifyInformation']);
-
     Route::resource('brands', BrandController::class);
 
     Route::get('/order', [OrderController::class, 'allOrders']);
