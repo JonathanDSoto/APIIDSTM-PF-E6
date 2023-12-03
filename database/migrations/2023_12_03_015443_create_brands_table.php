@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('website_1', 255)->nullable();
             $table->string('website_2', 255)->nullable();
-            $table->string('email', 255)->nullable();
-            $table->string('logo_file_name', 255)->nullable();
+            $table->string('email', 255)->nullable()->unique();
+            $table->string('logo_file_name')->nullable();
         });
     }
 
