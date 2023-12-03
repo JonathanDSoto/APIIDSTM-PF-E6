@@ -12,6 +12,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RawController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,9 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/inventory/detailed-inventory-information/{id}', [CategoriesController::class, 'detailedInformation']);
     Route::get('/inventory/modify-inventory-information/{id}', [CategoriesController::class, 'modifyInformation']);
 
-    Route::get('/brand', [BrandController::class, 'allBrand']);
-    Route::get('/brand/create-brand/', [BrandController::class, 'createBrand']);
-    Route::get('/brand/modify-brand-information/{id}', [BrandController::class, 'modifyInformation']);
+    Route::resource('brands', BrandController::class);
 
     Route::get('/order', [OrderController::class, 'allOrders']);
     Route::get('/order/create-order/', [OrderController::class, 'createOrder']);
