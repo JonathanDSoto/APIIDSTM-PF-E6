@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->char(16, 'code');
-            $table->float('discount');
+            $table->decimal('discount', 10, 2);
             $table->boolean('is_active');
             $table->integer('uses');
             $table->integer('max_uses');

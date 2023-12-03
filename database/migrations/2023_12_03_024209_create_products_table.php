@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name', 255);
             $table->char('sku', 15)->index();
             $table->text('description')->nullable();
-            $table->float('stock')->default(0);
-            $table->float('price')->default(0);
+            $table->decimal('stock', 10, 2)->default(0);
+            $table->decimal('price', 10, 2)->default(0);
             $table->foreignIdFor(Brand::class)->constrained();
         });
     }
