@@ -14,6 +14,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,11 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/delete-user/{id}', [UsersDataController::class, 'deleteInformation']);
 
     Route::resource('customers', CustomerController::class);
+    Route::resource('coupons', CouponController::class);
 
-    Route::get('/coupons', [CouponsController::class, 'allCoupons']);
-    Route::get('/coupons/create-coupon', [CouponsController::class, 'createCoupon']);
-    Route::get('/coupons/modify-coupons-information/{id}', [CouponsController::class, 'modifyInformation']);
-    Route::get('/coupons/delete-coupon/{id}', [CouponsController::class, 'deleteInformation']);
 
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
