@@ -1,17 +1,16 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShipmentAgencyController;
 use App\Http\Controllers\ShipmentController;
-use App\Http\Controllers\OrderController;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,20 +24,26 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::get('/', function () {
-//    return Inertia::render('Welcome', [
-//        'canLogin' => Route::has('login'),
-//        'canRegister' => Route::has('register'),
-//        'laravelVersion' => Application::VERSION,
-//        'phpVersion' => PHP_VERSION,
-//    ]);
+    //    return Inertia::render('Welcome', [
+    //        'canLogin' => Route::has('login'),
+    //        'canRegister' => Route::has('register'),
+    //        'laravelVersion' => Application::VERSION,
+    //        'phpVersion' => PHP_VERSION,
+    //    ]);
     return Inertia::render('Auth/Login');
 });
 
-Route::get('/forgotpassword', function () {return Inertia::render('ForgotPassword');});
-Route::get('/signup', function () {return Inertia::render('SignUp');});
+Route::get('/forgotpassword', function () {
+    return Inertia::render('ForgotPassword');
+});
+Route::get('/signup', function () {
+    return Inertia::render('SignUp');
+});
 
 Route::middleware('auth')->group(function () {
-    Route::get('/index', function () {return Inertia::render('Index');});
+    Route::get('/index', function () {
+        return Inertia::render('Index');
+    });
 
     Route::resource('customers', CustomerController::class);
     Route::resource('coupons', CouponController::class);
