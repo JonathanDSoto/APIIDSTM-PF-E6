@@ -11,6 +11,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ShipmentAgencyController;
 use App\Http\Controllers\ShipmentController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('customers', CustomerController::class);
     Route::resource('coupons', CouponController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('orders', OrderController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('brands', BrandController::class);
     Route::resource('shipments-agencies', ShipmentAgencyController::class);
