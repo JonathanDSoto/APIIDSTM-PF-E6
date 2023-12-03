@@ -7,12 +7,12 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\UsersDataController;
 use App\Http\Controllers\CouponsController;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\RawController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,11 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/coupons/modify-coupons-information/{id}', [CouponsController::class, 'modifyInformation']);
     Route::get('/coupons/delete-coupon/{id}', [CouponsController::class, 'deleteInformation']);
 
-    Route::get('/products', [ProductsController::class, 'allProducts']);
-    Route::get('/products/create-product/', [ProductsController::class, 'createProduct']);
-    Route::get('/products/detailed-product-information/{id}', [ProductsController::class, 'detailedInformation']);
-    Route::get('/products/modify-product-information/{id}', [ProductsController::class, 'modifyInformation']);
-    Route::get('/products/delete-product/{id}', [ProductsController::class, 'deleteInformation']);
+    Route::resource('products', ProductController::class);
 
     Route::resource('categories', CategoryController::class);
 
