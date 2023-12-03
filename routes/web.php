@@ -1,15 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-use App\Http\Controllers\UsersDataController;
-use App\Http\Controllers\CouponsController;
-use App\Http\Controllers\IndexController;
-use App\Http\Controllers\RawController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
@@ -43,24 +37,11 @@ Route::get('/signup', function () {return Inertia::render('SignUp');});
 Route::middleware('auth')->group(function () {
     Route::get('/index', function () {return Inertia::render('Index');});
 
-    Route::get('/users', [UsersDataController::class, 'allUsers']);
-    Route::get('/users/create-user', [UsersDataController::class, 'createUser']);
-    Route::get('/users/detailed-information/{id}', [UsersDataController::class, 'detailedInformation']);
-    Route::get('/users/modify-information/{id}', [UsersDataController::class, 'modifyInformation']);
-    Route::get('/users/delete-user/{id}', [UsersDataController::class, 'deleteInformation']);
-
     Route::resource('customers', CustomerController::class);
     Route::resource('coupons', CouponController::class);
-
-
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('brands', BrandController::class);
-
-    Route::get('/order', [OrderController::class, 'allOrders']);
-    Route::get('/order/create-order/', [OrderController::class, 'createOrder']);
-    Route::get('/order/modify-order-information/{id}', [OrderController::class, 'modifyInformation']);
-
 });
 
 Route::get('/dashboard', function () {
