@@ -71,7 +71,7 @@ import { Icon } from '@iconify/vue'
                                 <span>Catalogues</span>
                             </span>
                         </a>
-                        <Link href="/brands" class="navItem">
+                        <a href="/brands" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="tabler:brand-cake"/>
                                 <span>Brands</span>
