@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Http\Requests\Brand\StoreBrandRequest;
 
 class BrandController extends Controller
 {
@@ -31,9 +32,20 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBrandRequest $request)
     {
-        // TODO: Implement store() method.
+        $validated = $request->validated();
+
+        if ($validated->hasFile('logo')) {
+            $logo = $validated->file('logo');
+            $logo_name = time() . '_' . $logo->getClientOriginalName();
+            $logo->move(public_path('images'), $logo_name);
+            $validated['logo_file_name'] = $logo_name;
+        }
+
+        $brand = Brand::create($validated);
+
+        return to_route('brands.show', $brand)->with('success', 'Brand created successfully!');
     }
 
     /**
