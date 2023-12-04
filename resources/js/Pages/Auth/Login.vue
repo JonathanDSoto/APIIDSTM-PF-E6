@@ -42,7 +42,7 @@
           <h4>
             <span v-if="emailErrorMessage" class="text-red-500">{{ emailErrorMessage }}</span><br><br>
             <span v-if="passwordErrorMessage" class="text-red-500">{{ passwordErrorMessage }}</span>
-            <p v-else>Unlock your Project <span class="text-slate-800 dark:text-slate-400 font-bold">performance</span></p>
+            <p v-else>You can do<span class="text-slate-800 dark:text-slate-400 font-bold"> everything</span></p>
           </h4>
         </div>
         <div class="absolute left-0 2xl:bottom-[-160px] bottom-[-130px] h-full w-full z-[-1]">
@@ -61,7 +61,7 @@
             <div class="text-center 2xl:mb-10 mb-4">
               <h4 class="font-medium">Sign in</h4>
               <div class="text-slate-500 text-base">
-                Sign in to your account to start using Dashcode
+                Sign in to your account to start using our Dashboard
               </div>
             </div>
             <!-- BEGIN: Login Form -->
@@ -77,7 +77,7 @@
                     <TextInput
                         id="email"
                         type="email"
-                        class="mt-1 block w-full"
+                        class="mt-1 block w-full p-2"
                         v-model="form.email"
                         required
                         autofocus
@@ -93,7 +93,7 @@
                     <TextInput
                         id="password"
                         type="password"
-                        class="mt-1 block w-full"
+                        class="mt-1 block w-full p-2"
                         v-model="form.password"
                         required
                         autocomplete="current-password"
@@ -130,42 +130,12 @@
                 Or continue with
               </div>
             </div>
-            <div class="max-w-[242px] mx-auto mt-8 w-full">
-
-              <!-- BEGIN: Social Log in Area -->
-              <ul class="flex">
-                <li class="flex-1">
-                  <a href="#" class="inline-flex h-10 w-10 bg-[#1C9CEB] text-white text-2xl flex-col items-center justify-center rounded-full">
-                    <img src="images/icon/tw.svg" alt="">
-                  </a>
-                </li>
-                <li class="flex-1">
-                  <a href="#" class="inline-flex h-10 w-10 bg-[#395599] text-white text-2xl flex-col items-center justify-center rounded-full">
-                    <img src="images/icon/fb.svg" alt="">
-                  </a>
-                </li>
-                <li class="flex-1">
-                  <a href="#" class="inline-flex h-10 w-10 bg-[#0A63BC] text-white text-2xl flex-col items-center justify-center rounded-full">
-                    <img src="images/icon/in.svg" alt="">
-                  </a>
-                </li>
-                <li class="flex-1">
-                  <a href="#" class="inline-flex h-10 w-10 bg-[#EA4335] text-white text-2xl flex-col items-center justify-center rounded-full">
-                    <img src="images/icon/gp.svg" alt="">
-                  </a>
-                </li>
-              </ul>
-              <!-- END: Social Log In Area -->
-            </div>
             <div class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 mt-12 uppercase text-sm">
               Don’t have an account?
               <a href="/signup" class="text-slate-900 dark:text-white font-medium hover:underline">
                 Sign up
               </a>
             </div>
-          </div>
-          <div class="auth-footer text-center">
-            Copyright 2021, Dashcode All Rights Reserved.
           </div>
         </div>
       </div>
