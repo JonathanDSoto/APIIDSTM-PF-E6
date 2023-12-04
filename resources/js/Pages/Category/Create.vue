@@ -1,8 +1,27 @@
 <script>
 import DefaultTemplate from '../../layouts/DefaultTemplate.vue'
+import { router } from '@inertiajs/vue3'
+
 export default {
     components: {
         DefaultTemplate
+    },
+    props:{
+        errors: Object,
+    },
+    data() {
+        return{
+            form:{
+                name: 'papu',
+            }
+        }
+    },
+    methods: {
+        submit(){
+            router.post('/categories',this.form).catch(error => {
+                this.errors = error.response.data;
+            })
+        }
     }
 }
 </script>
@@ -21,10 +40,7 @@ export default {
                     Categories
                     <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
                 </li>
-                <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white" v-if=$page.props.flag>
-                    Modify Category Information
-                </li>
-                <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white" v-else>
+                <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
                     Create Category
                 </li>
             </ul>
@@ -39,22 +55,15 @@ export default {
                         </div>
                     </header>
                     <div class="card-text h-full ">
-                        <form class="space-y-4">
-                            <div class="input-area relative pl-28">
-                                <label for="largeInput" class="inline-inputLabel" v-if=$page.props.flag>ID</label>
-                                <input type="text" class="form-control" placeholder="" :value=$page.props.products[0] :disabled=$page.props.flag v-if=$page.props.flag>
-                            </div>
+                        <form class="space-y-4" @submit.prevent="submit">
+                            <ul v-for="(error, key) in errors" :key="key">
+                                <li>
+                                    {{ error }}
+                                </li>
+                            </ul>
                             <div class="input-area relative pl-28">
                                 <label for="largeInput" class="inline-inputLabel">Category Name</label>
-                                <input type="text" class="form-control" placeholder="" :value=$page.props.products[1]>
-                            </div>
-                            <div class="input-area relative pl-28">
-                                <label for="largeInput" class="inline-inputLabel">Creation Date</label>
-                                <input type="date" class="form-control" placeholder=""  :value=$page.props.products[2]>
-                            </div>
-                            <div class="input-area relative pl-28">
-                                <label for="largeInput" class="inline-inputLabel">Description</label>
-                                <input type="" class="form-control" placeholder=""  :value=$page.props.products[2]>
+                                <input type="text" class="form-control" placeholder="" v-model="form.name">
                             </div>
                             <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                         </form>
@@ -65,8 +74,7 @@ export default {
             <div class="xl:col-span-5 col-span-12 lg:col-span-7">
                 <div class="card h-full">
                     <div class="card-header">
-                        <h4 class="card-title" v-if=$page.props.flag >Rules to Modify a Category</h4>
-                        <h4 class="card-title" v-else>Rules to Create a Category</h4>
+                        <h4 class="card-title">Rules to Create a Category</h4>
                     </div>
                     <div class="card-body p-6">
                         <div>
