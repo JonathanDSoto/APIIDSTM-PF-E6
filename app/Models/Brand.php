@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class Brand extends Model
 {
@@ -53,5 +55,10 @@ class Brand extends Model
     public function websites(): BelongsToMany
     {
         return $this->belongsToMany(Website::class)->withTimestamps();
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
     }
 }
