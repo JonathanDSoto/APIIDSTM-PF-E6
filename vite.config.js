@@ -1,8 +1,8 @@
-import {defineConfig, loadEnv} from 'vite';
-import laravel from 'laravel-vite-plugin';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig, loadEnv } from 'vite'
+import laravel from 'laravel-vite-plugin'
+import vue from '@vitejs/plugin-vue'
 
-export default defineConfig(({command, mode}) => {
+export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
 
     const config = {
@@ -19,7 +19,7 @@ export default defineConfig(({command, mode}) => {
                     }
                 }
             })
-        ]
+        ],
     }
 
     if (env.USING_SAIL) {
