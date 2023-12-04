@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Brand extends Model
 {
@@ -11,9 +12,11 @@ class Brand extends Model
 
     protected $fillable = [
         'name',
-        'website_1',
-        'website_2',
-        'email',
         'logo_file_name',
     ];
+
+    public function emails(): BelongsToMany
+    {
+        return $this->belongsToMany(Email::class)->withTimestamps();
+    }
 }
