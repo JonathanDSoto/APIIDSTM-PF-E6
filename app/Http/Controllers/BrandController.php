@@ -13,7 +13,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::all();
+        $brands = Brand::with(['phone_numbers', 'websites'])->get();
 
         return Inertia::render('Brand/Index', [
             'brands' => $brands,
