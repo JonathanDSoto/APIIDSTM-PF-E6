@@ -23,55 +23,55 @@ import { Icon } from '@iconify/vue'
                     <li class="sidebar-menu-title">MENU</li>
                     <!-- Charts -->
                     <li class="">
-                        <a href="/users" class="navItem">
+                        <Link href="/users" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="heroicons:user-group" />
                                 <span>Users</span>
                             </span>
-                        </a>
-                        <a href="/coupons" class="navItem">
+                        </Link>
+                        <Link href="/coupons" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="teenyicons:star-circle-outline" />
                                 <span>Coupons</span>
                             </span>
-                        </a>
-                        <a href="/categories" class="navItem">
+                        </Link>
+                        <Link href="/categories" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="nimbus:accordion" />
                                 <span>Categories</span>
                             </span>
-                        </a>
-                        <a href="/products" class="navItem">
+                        </Link>
+                        <Link href="/products" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="ep:sell" />
                                 <span>Products</span>
                             </span>
-                        </a>
-                        <a href="/raw" class="navItem">
+                        </Link>
+                        <Link href="/raw" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="gridicons:shutter" />
                                 <span>Raw Materials</span>
                             </span>
-                        </a>
-                        <a href="/inventory" class="navItem">
+                        </Link>
+                        <Link href="/inventory" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="ic:twotone-inventory-2"/>
                                 <span>Inventory</span>
                             </span>
-                        </a>
-                        <a href="/order" class="navItem">
+                        </Link>
+                        <Link href="/order" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="heroicons:wallet"/>
                                 <span>Orders</span>
                             </span>
-                        </a>
-                        <a href="/inventory" class="navItem">
+                        </Link>
+                        <Link href="/inventory" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="heroicons:rectangle-stack"/>
                                 <span>Catalogues</span>
                             </span>
-                        </a>
-                        <a href="/brands" class="navItem">
+                        </Link>
+                        <Link href="/brands" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="tabler:brand-cake"/>
                                 <span>Brands</span>

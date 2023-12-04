@@ -14,18 +14,6 @@
             DefaultTemplate,
         },
         mounted() {
-          const storedUsers = localStorage.getItem('usersArray');
-          if (storedUsers) {
-            const users = JSON.parse(storedUsers);
-            
-            const administrators = users.filter(user => user.userType === 'Administrator');
-            const regularUsers = users.filter(user => user.userType === 'User');
-            const moderators = users.filter(user => user.userType === 'Moderator');
-            
-            this.administratorsArray = administrators;
-            this.regularUsersArray = regularUsers;
-            this.moderatorsArray = moderators;
-          }
         },
         methods: {
           deleteConfirmation(userId){

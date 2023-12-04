@@ -7,7 +7,6 @@
         },
         data() {
             return {
-                isDisabled: this.$page.props.flag,
             };
         }
     }
@@ -27,10 +26,8 @@
             Coupons
             <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
             </li>
-            <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white" v-if=$page.props.flag>
+            <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
             Modify Coupons Information</li>
-            <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white" v-else>
-            Create Coupon</li>
         </ul>
     </div>
     <div>
@@ -38,8 +35,7 @@
                 <div class="card-body flex flex-col p-6">
                     <header class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5 -mx-6 px-6">
                         <div class="flex-1">
-                            <div class="card-title text-slate-900 dark:text-white" v-if=$page.props.flag>Modify Coupon</div>
-                            <div class="card-title text-slate-900 dark:text-white" v-else>Create Coupon</div>
+                            <div class="card-title text-slate-900 dark:text-white" >Modify Coupon</div>
                         </div>
                     </header>
                 <div class="card-text h-full ">
@@ -73,22 +69,20 @@
         <div class="xl:col-span-5 col-span-12 lg:col-span-7">
             <div class="card h-full">
                 <div class="card-header">
-                    <h4 class="card-title" v-if=$page.props.flag>Rules to Modify a Coupon</h4>
-                    <h4 class="card-title" v-else>Rules to Create a Coupon</h4>
+                    <h4 class="card-title">Rules to Modify a Coupon</h4>
                 </div>
                 <div class="card-body p-6">
                     <div>
-                        <div class="text-base font-medium text-slate-800 dark:text-slate-100 mb-3">
-                            Pricinig, amount and other things
-                        </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-300">
-                            The coupons should pass al these requirement before sending the form.
-                        </p>
-                        <br/>
-                        <p class="text-sm text-slate-600 dark:text-slate-300">
-                            Coupons should not discount more that 2 of our lowest price products.<br>
-                            The max ammount of coupons should no surpass the limit stablished by the administrator (100).
-                        </p>
+                      <ul>
+                        <li><strong>Editable Coupon Code:</strong> Allow modification of the coupon's code if necessary.</li>
+                        <li><strong>Amount:</strong> Permit changes to the specific value or amount associated with the coupon.</li>
+                        <li><strong>Discount:</strong> Enable updates to the discount percentage or rate for the coupon.</li>
+                        <li><strong>Change History:</strong> Record and track modifications made to the coupon over time.</li>
+                        <li><strong>Impact Check:</strong> Review how modifications might affect coupon application or related data.</li>
+                        <li><strong>Validation Testing:</strong> Ensure the modified coupon details align with the system's requirements and constraints.</li>
+                      </ul>
+                      <br>
+                      <p><strong>Warning:</strong> Adhering to these rules is crucial to maintain accuracy and functionality when editing coupons. Failure to comply might result in incorrect discount application, inconsistencies, or disruptions in coupon usage within the system.</p>
                     </div>
                     </div>
                 </div>

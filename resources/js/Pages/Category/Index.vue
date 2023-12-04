@@ -1,6 +1,6 @@
 <script>
     import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
-import { router } from '@inertiajs/vue3'
+    import { router } from '@inertiajs/vue3'
     export default {
         data() {
           return {
@@ -127,22 +127,34 @@ import { router } from '@inertiajs/vue3'
                                                     </span>
                                                 </td>
                                                 <td class="table-td">{{ new Date(category.created_at).toISOString().slice(0, 10) }}</td>
-                                                <td class="table-td ">
-                                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                                        <!-- PASS THE USER ID -->
-                                                        <a :href="`/categories/${category.id}`">
-                                                            <button class="action-btn" type="button">
-                                                            <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                                            </button>
-                                                        </a>
-                                                        <a :href="`/categories/${category.id}/edit`">
-                                                            <button class="action-btn" type="button">
-                                                                <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                                            </button>
-                                                        </a>
-                                                        <button class="action-btn" type="button" @click="deleteConfirmation(category.id)">
-                                                            <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                                        </button>
+                                                <td class="table-td">
+                                                    <div class="dropstart relative">
+                                                    <button class="inline-flex justify-center items-center" type="button" id="tableDropdownMenuButton"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <Icon class="text-xl ltr:ml-2 rtl:mr-2" icon="heroicons-outline:dots-vertical"/>
+                                                    </button>
+                                                    <ul class="dropdown-menu min-w-max absolute text-sm text-slate-700 dark:text-white hidden bg-white dark:bg-slate-700 shadow z-[2] float-left overflow-hidden list-none text-left rounded-lg mt-1 m-0 bg-clip-padding border-none">
+                                                        <li>
+                                                        <Link :href="`/categories/${category.id}`"
+                                                            class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300  last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize  rtl:space-x-reverse">
+                                                            <Icon icon="heroicons-outline:eye"/>
+                                                            <span>View</span>
+                                                        </Link>
+                                                        </li>
+                                                        <li>
+                                                        <Link :href="`/categories/${category.id}/edit`" 
+                                                            class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
+                                                            <Icon icon="clarity:note-edit-line"/>
+                                                            <span>Edit</span>
+                                                        </Link>
+                                                        </li>
+                                                        <li>
+                                                        <button @click="deleteConfirmation(category.id)"
+                                                            class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
+                                                            <Icon icon="fluent:delete-28-regular"/>
+                                                            <span>Delete</span></button>
+                                                        </li>
+                                                    </ul>
                                                     </div>
                                                 </td>
                                             </tr>

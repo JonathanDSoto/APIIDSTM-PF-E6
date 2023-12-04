@@ -1,5 +1,6 @@
 <script>
     import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
+    import { router } from '@inertiajs/vue3'
 
     export default {
         components: {
@@ -7,8 +8,21 @@
         },
         data() {
             return {
-                isDisabled: this.$page.props.flag,
+                form:{
+                    Code: '',
+                    endDate: '',
+                    Uses: '',
+                    Discount: '',
+                }
             };
+        },
+        methods: {
+            submit(){
+                router.post('/coupons',this.form)
+                .catch(error => {
+                    this.errors = error.response.data;
+                })
+            }
         }
     }
 </script>
@@ -27,7 +41,8 @@
             Coupons
             <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
             </li>
-            <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">Create Coupon</li>
+            <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
+            Create Coupon</li>
         </ul>
     </div>
     <div>
@@ -39,18 +54,22 @@
                         </div>
                     </header>
                 <div class="card-text h-full ">
-                    <form class="space-y-4">
+                    <form class="space-y-4" @submit.prevent="submit">
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Code</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" v-model="form.Code">
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Amount</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <label for="largeInput" class="inline-inputLabel">End Date</label>
+                            <input type="date" class="form-control" placeholder="" v-model="form.endDate">
+                        </div>
+                        <div class="input-area relative pl-28">
+                            <label for="largeInput" class="inline-inputLabel">Uses</label>
+                            <input type="text" class="form-control" placeholder="" v-model="form.Uses">
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Discount</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" v-model="form.Discount">
                         </div>
                         <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                     </form>
@@ -65,13 +84,14 @@
                 </div>
                 <div class="card-body p-6">
                     <div>
-                        <ul class="flex flex-col gap-2">
-                          <li><strong>Coupon Code:</strong> Assign a unique and identifiable code for the coupon.</li>
-                          <li><strong>Amount:</strong> Define the specific value or amount associated with the coupon.</li>
-                          <li><strong>Discount:</strong> Determine the discount percentage or rate applicable for the coupon.</li>
-                        </ul>
-                        <br>
-                        <p><strong>Warning:</strong> Adhering to these rules is crucial to ensure proper functionality and accurate representation of the coupon within the system. Failure to follow these guidelines may result in confusion for users, incorrect discount calculations, or improper coupon application.</p>
+                      <ul class="flex flex-col gap-2">
+                        <li><strong>Coupon Code:</strong> Assign a unique and identifiable code for the coupon.</li>
+                        <li><strong>Uses:</strong> Define the specific uses associated with the coupon.</li>
+                        <li><strong>End Date:</strong> Specify when the coupon expires.</li>
+                        <li><strong>Discount:</strong> Determine the discount percentage or rate applicable for the coupon.</li>
+                      </ul>
+                      <br>
+                      <p><strong>Warning:</strong> Adhering to these rules is crucial to ensure proper functionality and accurate representation of the coupon within the system. Failure to follow these guidelines may result in confusion for users, incorrect discount calculations, or improper coupon application.</p>
                     </div>
                     </div>
                 </div>

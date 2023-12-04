@@ -121,7 +121,7 @@ export default {
 </template>
 
 <style scoped>
-.table-td-website {
-  text-transform: lowercase;
-}
+  .table-td-website {
+    text-transform: lowercase;
+  }
 </style>

@@ -1,24 +1,42 @@
 <script>
     import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
+    import { router } from '@inertiajs/vue3'
     export default {
         data() {
           return {
             popUpDelete: false,
           };
         },
-        components: {
-            DefaultTemplate,
+        components: {DefaultTemplate},
+        props: {
+          coupons: {
+            type: Array,
+            required: true
+          }
         },
         methods: {
-          deleteConfirmation(){
+          deleteConfirmation(userId){
+            this.selectedId = userId;
             this.popUpDelete = true;
+                console.log("Ey");
+                console.log(this.success);
           },
           cancelElimination(){
             this.popUpDelete = false;
           },
-          confirmElimination(){
-            
-          },
+          confirmElimination() {
+                this.popUpDelete = false;
+                router.delete(`/categories/${this.selectedId}`)
+                .then(() => {
+                    const index = this.categoriesArray.findIndex(category => category.id === this.selectedId);
+                    if (index !== -1) {
+                        this.categoriesArray.splice(index, 1); 
+                    }
+                })
+                .catch(error => {
+                    this.errors = error.response.data;
+                });
+            }
         }
     }
 </script>
@@ -115,10 +133,16 @@
                                     FINISHED DATE
                                 </th>
                                 <th scope="col" class=" table-th ">
-                                    AMOUNT
+                                    DISCOUNT
                                 </th>
                                 <th scope="col" class=" table-th ">
-                                    USED
+                                    TIMES USED
+                                </th>
+                                <th scope="col" class=" table-th ">
+                                    MAX USES
+                                </th>
+                                <th scope="col" class=" table-th ">
+                                    IS ACTIVE
                                 </th>
                                 <th scope="col" class=" table-th ">
                                     DISCOUNT
@@ -129,49 +153,48 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                            <tr v-for="(user, index) in $page.props.coupons" :key="index">
-                                <td class="table-td">{{ user[0] }}</td>
-                                    <td class="table-td">
-                                        <span class="flex">
-                                            <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user[1] }}</span>
-                                        </span>
-                                    </td>
-                                <td class="table-td ">{{ user[2] }}</td>
-                                <td class="table-td ">
-                                    <div>
-                                        {{ user[3] }}
-                                    </div>
-                                </td>
-                                <td class="table-td ">
-                                    <div>
-                                        {{ user[4] }}
-                                    </div>
-                                </td>
-                                <td class="table-td ">
-                                    <div>
-                                        {{ user[5] }}
-                                    </div>
-                                </td>
-                                <td class="table-td ">
-                                    <div>
-                                        {{ user[6] }}
-                                    </div>
-                                </td>
-                                <td class="table-td ">
-                                    <div class="flex space-x-3 rtl:space-x-reverse">
-                                        <!-- PASS THE COUPON ID -->
-                                        <a href="/coupons/modify-coupons-information/1">
-                                            <button class="action-btn" type="button">
-                                                <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                            </button>
-                                        </a>
-                                        <button class="action-btn" type="button" @click="deleteConfirmation">
-                                            <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                        </button>
-                                    </div>
-                                </td>
+                          <tr v-for="coupon in coupons">
+                              <td class="table-td">{{ coupon.id }}</td>
+                              <td class="table-td table-td-website">{{ coupon.code }}</td>
+                              <td class="table-td" >{{ new Date(coupon.created_at).toISOString().slice(0, 10) }}</td>
+                              <td class="table-td" >{{ new Date(coupon.end_date).toISOString().slice(0, 10) }}</td>
+                              <td class="table-td" >{{ coupon.discount }}</td>
+                              <td class="table-td" >{{ coupon.uses }}</td>
+                              <td class="table-td" >{{ coupon.max_uses }}</td>
+                              <td class="table-td" >{{ coupon.is_active }}</td>
+                              <td class="table-td">
+                                <div class="dropstart relative">
+                                  <button class="inline-flex justify-center items-center" type="button" id="tableDropdownMenuButton"
+                                          data-bs-toggle="dropdown" aria-expanded="false">
+                                    <Icon class="text-xl ltr:ml-2 rtl:mr-2" icon="heroicons-outline:dots-vertical"/>
+                                  </button>
+                                  <ul class="dropdown-menu min-w-max absolute text-sm text-slate-700 dark:text-white hidden bg-white dark:bg-slate-700 shadow z-[2] float-left overflow-hidden list-none text-left rounded-lg mt-1 m-0 bg-clip-padding border-none">
+                                    <li>
+                                      <Link :href="`/coupons/${coupon.id}`"
+                                        class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300  last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize  rtl:space-x-reverse">
+                                        <Icon icon="heroicons-outline:eye"/>
+                                        <span>View</span>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link :href="`/coupons/${coupon.id}/edit`"
+                                        class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
+                                        <Icon icon="clarity:note-edit-line"/>
+                                        <span>Edit</span>
+                                      
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <button @click="deleteConfirmation(category.id)"
+                                        class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
+                                        <Icon icon="fluent:delete-28-regular"/>
+                                        <span>Delete</span></button>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
                             </tr>
-                        </tbody>
+                          </tbody>
                         </table>
                     </div>
                     </div>
