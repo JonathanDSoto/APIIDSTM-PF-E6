@@ -1,0 +1,197 @@
+[
+  {
+    "name": "Nike",
+    "websites": [
+      "https://www.nike.com/us/en_us/"
+    ],
+    "phone_numbers": [
+      "1-800-806-6453"
+    ]
+  },
+  {
+    "name": "Adidas",
+    "websites": [
+      "https://www.adidas.com/us"
+    ],
+    "phone_numbers": [
+      "1-800-982-9337"
+    ]
+  },
+  {
+    "name": "Gucci",
+    "websites": [
+      "https://www.gucci.com/us/en/"
+    ],
+    "phone_numbers": [
+      "1-877-482-2430"
+    ]
+  },
+  {
+    "name": "Louis Vuitton",
+    "websites": [
+      "https://us.louisvuitton.com/eng-us/homepage"
+    ],
+    "phone_numbers": [
+      "1-866-884-8866"
+    ]
+  },
+  {
+    "name": "Chanel",
+    "websites": [
+      "https://www.chanel.com/en_US/"
+    ],
+    "phone_numbers": [
+      "1-800-550-0005"
+    ]
+  },
+  {
+    "name": "Hermes",
+    "websites": [
+      "https://www.hermes.com/index_us.html"
+    ],
+    "phone_numbers": [
+      "1-800-441-4488"
+    ]
+  },
+  {
+    "name": "Burberry",
+    "websites": [
+      "https://us.burberry.com/"
+    ],
+    "phone_numbers": [
+      "1-877-217-4085"
+    ]
+  },
+  {
+    "name": "Fendi",
+    "websites": [
+      "https://www.fendi.com/us"
+    ],
+    "phone_numbers": [
+      "1-800-336-3469"
+    ]
+  },
+  {
+    "name": "Versace",
+    "websites": [
+      "https://www.versace.com/us/en-us/home/"
+    ],
+    "phone_numbers": [
+      "1-888-721-7219"
+    ]
+  },
+  {
+    "name": "Givenchy",
+    "websites": [
+      "https://www.givenchy.com/en/"
+    ],
+    "phone_numbers": [
+      "1-800-650-0005"
+    ]
+  },
+  {
+    "name": "Balenciaga",
+    "websites": [
+      "https://www.balenciaga.com/us/"
+    ],
+    "phone_numbers": [
+      "1-877-772-8775"
+    ]
+  },
+  {
+    "name": "Saint Laurent",
+    "websites": [
+      "https://www.ysl.com/us"
+    ],
+    "phone_numbers": [
+      "1-800-832-0282"
+    ]
+  },
+  {
+    "name": "Alexander McQueen",
+    "websites": [
+      "https://www.alexandermcqueen.com/us"
+    ],
+    "phone_numbers": [
+      "1-212-645-1797"
+    ]
+  },
+  {
+    "name": "Valentino",
+    "websites": [
+      "https://www.valentino.com/us"
+    ],
+    "phone_numbers": [
+      "1-212-355-5811"
+    ]
+  },
+  {
+    "name": "Dolce & Gabbana",
+    "websites": [
+      "https://www.dolcegabbana.com/"
+    ]
+  },
+  {
+    "name": "H&M",
+    "websites": [
+      "https://www.hm.com/us/"
+    ],
+    "phone_numbers": [
+      "1-855-466-7467"
+    ]
+  },
+  {
+    "name": "Zara",
+    "websites": [
+      "https://www.zara.com/us/"
+    ],
+    "phone_numbers": [
+      "1-855-635-9272"
+    ]
+  },
+  {
+    "name": "Cartier",
+    "websites": [
+      "https://www.cartier.us/"
+    ],
+    "phone_numbers": [
+      "1-800-227-8437"
+    ]
+  },
+  {
+    "name": "Supreme",
+    "websites": [
+      "https://www.supremenewyork.com/"
+    ],
+    "phone_numbers": [
+      "1-212-966-7799"
+    ]
+  },
+  {
+    "name": "Dior",
+    "websites": [
+      "https://www.dior.com/home/en_us"
+    ],
+    "phone_numbers": [
+      "1-800-929-3467"
+    ]
+  },
+  {
+    "name": "Rolex",
+    "websites": [
+      "https://www.rolex.com/"
+    ],
+    "phone_numbers": [
+      "1-800-367-6539"
+    ]
+  },
+  {
+    "name": "Calvin Klein",
+    "websites": [
+      "https://www.calvinklein.com/shop/en/ck"
+    ],
+    "phone_numbers": [
+      "1-866-513-0513"
+    ]
+  }
+]
