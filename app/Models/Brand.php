@@ -24,4 +24,9 @@ class Brand extends Model
     {
         return $this->belongsToMany(PhoneNumber::class)->withTimestamps();
     }
+
+    public function websites(): BelongsToMany
+    {
+        return $this->belongsToMany(Website::class)->withTimestamps();
+    }
 }
