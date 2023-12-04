@@ -1,5 +1,5 @@
 <script setup>
-    import { Icon } from '@iconify/vue'
+import { Icon } from '@iconify/vue'
 </script>
 
 <template>
@@ -8,17 +8,17 @@
     <main class="app-wrapper">
         <!-- BEGIN: Sidebar -->
         <!-- BEGIN: Sidebar -->
-        <div class="sidebar-wrapper group w-0 hidden xl:w-[248px] xl:block">
-            <div id="bodyOverlay" class="w-screen h-screen fixed top-0 bg-slate-900 bg-opacity-50 backdrop-blur-sm z-10 hidden"></div>
+        <div class="sidebar-wrapper group hidden w-0 xl:block xl:w-[248px]">
+            <div id="bodyOverlay" class="fixed top-0 z-10 hidden h-screen w-screen bg-slate-900 bg-opacity-50 backdrop-blur-sm"></div>
             <div class="logo-segment">
                 <a class="flex items-center" href="/index">
                     <img src="/images/logo/uabcs-logo.png" style="width: 25%" alt="logo">
-                    <span class="ltr:ml-3 rtl:mr-3 text-xl font-Inter font-bold text-slate-900 dark:text-white">UABCS</span>
+                    <span class="font-Inter text-xl font-bold text-slate-900 ltr:ml-3 rtl:mr-3 dark:text-white">UABCS</span>
                 </a>
             </div>
-            <div id="nav_shadow" class="nav_shadow h-[60px] absolute top-[80px] nav-shadow z-[1] w-full transition-all duration-200 pointer-events-none
-                opacity-0"></div>
-            <div class="sidebar-menus bg-white dark:bg-slate-800 py-2 px-4 h-[calc(100%-80px)] z-50" id="sidebar_menus">
+            <div id="nav_shadow" class="nav_shadow nav-shadow pointer-events-none absolute top-[80px] z-[1] h-[60px] w-full opacity-0 transition-all
+                duration-200"></div>
+            <div class="sidebar-menus z-50 h-[calc(100%-80px)] bg-white px-4 py-2 dark:bg-slate-800" id="sidebar_menus">
                 <ul class="sidebar-menu">
                     <li class="sidebar-menu-title">MENU</li>
                     <!-- Charts -->
@@ -71,12 +71,12 @@
                                 <span>Catalogues</span>
                             </span>
                         </a>
-                        <a href="/brand" class="navItem">
+                        <Link href="/brands" class="navItem">
                             <span class="flex items-center">
                                 <Icon class=" nav-icon" icon="tabler:brand-cake"/>
                                 <span>Brands</span>
                             </span>
-                        </a>
+                        </Link>
                     </li>
                 </ul>
                 <!-- Upgrade Your Business Plan Card Start -->
@@ -85,43 +85,43 @@
         </div>
         <!-- End: Sidebar -->
         <!-- End: Sidebar -->
-        <div class="flex flex-col justify-between min-h-screen">
+        <div class="flex min-h-screen flex-col justify-between">
             <div>
                 <!-- BEGIN: Header -->
                 <!-- BEGIN: Header -->
                 <div class="z-[9]" id="app_header">
-                    <div class="app-header z-[999] bg-white dark:bg-slate-800 shadow-sm dark:shadow-slate-700">
-                        <div class="flex justify-between items-center h-full">
-                            <div class="flex items-center md:space-x-4 space-x-4 rtl:space-x-reverse vertical-box">
-                                <a href="/" class="mobile-logo xl:hidden inline-block">
+                    <div class="app-header z-[999] bg-white shadow-sm dark:bg-slate-800 dark:shadow-slate-700">
+                        <div class="flex h-full items-center justify-between">
+                            <div class="vertical-box flex items-center space-x-4 rtl:space-x-reverse md:space-x-4">
+                                <a href="/" class="mobile-logo inline-block xl:hidden">
                                     <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="black_logo" alt="logo">
                                     <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="white_logo" alt="logo">
                                 </a>
                                 <button
-                                    class="smallDeviceMenuController open-sdiebar-controller hidden xl:hidden md:inline-block">
+                                    class="smallDeviceMenuController open-sdiebar-controller hidden md:inline-block xl:hidden">
                                     <Icon
-                                        class="leading-none bg-transparent relative text-xl top-[2px] text-slate-900 dark:text-white"
+                                        class="relative top-[2px] bg-transparent text-xl leading-none text-slate-900 dark:text-white"
                                         icon="heroicons-outline:menu-alt-3" />
                                 </button>
                                 <button
-                                    class="sidebarOpenButton text-xl text-slate-900 dark:text-white !ml-0 hidden rtl:rotate-180">
+                                    class="sidebarOpenButton !ml-0 hidden text-xl text-slate-900 rtl:rotate-180 dark:text-white">
                                     <Icon icon="ph:arrow-right-bold" />
                                 </button>
-                                <button class="flex items-center xl:text-sm text-lg xl:text-slate-400 text-slate-800 dark:text-slate-300 focus:outline-none focus:shadow-none px-1 space-x-3
-                                    rtl:space-x-reverse search-modal" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                <button class="search-modal flex items-center space-x-3 px-1 text-lg text-slate-800 focus:shadow-none focus:outline-none rtl:space-x-reverse dark:text-slate-300
+                                    xl:text-sm xl:text-slate-400" data-bs-toggle="modal" data-bs-target="#searchModal">
                                     <Icon icon="heroicons-outline:search" />
-                                    <span class="xl:inline-block hidden">Search...
+                                    <span class="hidden xl:inline-block">Search...
                                     </span>
                                 </button>
                             </div>
                             <!-- end vertcial -->
-                            <div class="items-center space-x-4 rtl:space-x-reverse horizental-box">
+                            <div class="horizental-box items-center space-x-4 rtl:space-x-reverse">
                                 <a href="/" class="leading-0">
-                                <span class="xl:inline-block hidden">
+                                <span class="hidden xl:inline-block">
                                 <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">
                                 <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo" alt="logo">
                                 </span>
-                                    <span class="xl:hidden inline-block">
+                                    <span class="inline-block xl:hidden">
                                 <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">
                                 <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo " alt="logo">
                                 </span>
@@ -129,34 +129,34 @@
                                 <button
                                     class="smallDeviceMenuController open-sdiebar-controller hidden md:inline-block xl:hidden">
                                     <Icon
-                                        class="leading-none bg-transparent relative text-xl top-[2px] text-slate-900 dark:text-white"
+                                        class="relative top-[2px] bg-transparent text-xl leading-none text-slate-900 dark:text-white"
                                         icon="heroicons-outline:menu-alt-3" />
                                 </button>
-                                <button class="items-center xl:text-sm text-lg xl:text-slate-400 text-slate-800 dark:text-slate-300 focus:outline-none focus:shadow-none px-1 space-x-3
-                                    rtl:space-x-reverse search-modal inline-flex xl:hidden" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                <button class="search-modal inline-flex items-center space-x-3 px-1 text-lg text-slate-800 focus:shadow-none focus:outline-none rtl:space-x-reverse
+                                    dark:text-slate-300 xl:hidden xl:text-sm xl:text-slate-400" data-bs-toggle="modal" data-bs-target="#searchModal">
                                     <Icon icon="heroicons-outline:search" />
-                                    <span class="xl:inline-block hidden">Search...
+                                    <span class="hidden xl:inline-block">Search...
                                     </span>
                                 </button>
                             </div>
                             <!-- end horizental -->
                             <!-- end top menu -->
                             <!-- TOP RIGHT NAVBAR ICONS -->
-                            <div class="nav-tools flex items-center lg:space-x-5 space-x-3 rtl:space-x-reverse leading-0">
+                            <div class="nav-tools leading-0 flex items-center space-x-3 rtl:space-x-reverse lg:space-x-5">
                                 <!-- BEGIN: Profile Dropdown -->
                                 <!-- Profile DropDown Area -->
-                                <div class="md:block hidden w-full">
-                                    <button class="text-slate-800 dark:text-white focus:ring-0 focus:outline-none font-medium rounded-lg text-sm text-center
-                                        inline-flex items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="hidden w-full md:block">
+                                    <button class="inline-flex items-center rounded-lg text-center text-sm font-medium text-slate-800 focus:outline-none
+                                        focus:ring-0 dark:text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <div
-                                            class="lg:h-8 lg:w-8 h-7 w-7 rounded-full flex-1 ltr:mr-[10px] rtl:ml-[10px]">
+                                            class="h-7 w-7 flex-1 rounded-full ltr:mr-[10px] rtl:ml-[10px] lg:h-8 lg:w-8">
                                             <img src="/images/all-img/user.png" alt="user"
-                                                 class="block w-full h-full object-cover rounded-full">
+                                                 class="block h-full w-full rounded-full object-cover">
                                         </div>
                                         <span
-                                            class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">Albert Flores</span>
+                                            class="hidden flex-none items-center truncate text-sm font-normal text-slate-600 dark:text-white lg:flex">Albert Flores</span>
                                         <svg
-                                            class="w-[16px] h-[16px] dark:text-white hidden lg:inline-block text-base inline-block ml-[10px] rtl:mr-[10px]"
+                                            class="ml-[10px] inline-block hidden h-[16px] w-[16px] text-base rtl:mr-[10px] dark:text-white lg:inline-block"
                                             aria-hidden="true" fill="none" stroke="currentColor" viewbox="0 0 24 24"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -164,31 +164,31 @@
                                         </svg>
                                     </button>
                                     <!-- Dropdown menu -->
-                                    <div class="dropdown-menu z-10 hidden bg-white divide-y divide-slate-100 shadow w-44 dark:bg-slate-800 border dark:border-slate-700 !top-[23px] rounded-md
-                                        overflow-hidden">
+                                    <div class="dropdown-menu !top-[23px] z-10 hidden w-44 divide-y divide-slate-100 overflow-hidden rounded-md border bg-white shadow dark:border-slate-700
+                                        dark:bg-slate-800">
                                         <ul class="py-1 text-sm text-slate-800 dark:text-slate-200">
                                             <li>
-                                                <a href="/" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
-                                                    dark:text-white font-normal">
+                                                <a href="/" class="font-inter block px-4 py-2 text-sm font-normal text-slate-600 hover:bg-slate-100 dark:text-white
+                                                    dark:hover:bg-slate-600 dark:hover:text-white">
                                                     <span class="font-Inter">Dashboard</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/users/detailed-information/1" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
-                                                    dark:text-white font-normal">
+                                                <a href="/users/detailed-information/1" class="font-inter block px-4 py-2 text-sm font-normal text-slate-600 hover:bg-slate-100 dark:text-white
+                                                    dark:hover:bg-slate-600 dark:hover:text-white">
                                                     <span class="font-Inter">Profile</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <Link href="/logout" method="post" as="button" type="button" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
-                                                    dark:text-white font-normal">Logout</Link>
+                                                <Link href="/logout" method="post" as="button" type="button" class="font-inter block px-4 py-2 text-sm font-normal text-slate-600 hover:bg-slate-100 dark:text-white
+                                                    dark:hover:bg-slate-600 dark:hover:text-white">Logout</Link>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <!-- END: Header -->
-                                <button class="smallDeviceMenuController md:hidden block leading-0">
-                                    <Icon class="cursor-pointer text-slate-900 dark:text-white text-2xl"
+                                <button class="smallDeviceMenuController leading-0 block md:hidden">
+                                    <Icon class="cursor-pointer text-2xl text-slate-900 dark:text-white"
                                                   icon="heroicons-outline:menu-alt-3" />
                                 </button>
                                 <!-- end mobile menu -->
@@ -199,15 +199,15 @@
                 </div>
                 <!-- BEGIN: Search Modal -->
                 <div
-                    class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto inset-0 bg-slate-900/40 backdrop-filter backdrop-blur-sm backdrop-brightness-10"
+                    class="modal fade backdrop-brightness-10 fixed inset-0 hidden h-full w-full overflow-y-auto overflow-x-hidden bg-slate-900/40 outline-none backdrop-blur-sm"
                     id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-                    <div class="modal-dialog relative w-auto pointer-events-none top-1/4">
+                    <div class="modal-dialog pointer-events-none relative top-1/4 w-auto">
                         <div
-                            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white dark:bg-slate-900 bg-clip-padding rounded-md outline-none text-current">
+                            class="modal-content pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-slate-900">
                             <form>
                                 <div class="relative">
                                     <button
-                                        class="absolute left-0 top-1/2 -translate-y-1/2 w-9 h-full text-xl dark:text-slate-300 flex items-center justify-center">
+                                        class="absolute left-0 top-1/2 flex h-full w-9 -translate-y-1/2 items-center justify-center text-xl dark:text-slate-300">
                                         <Icon icon="heroicons-solid:search" />
                                     </button>
                                     <input type="text" class="form-control !py-[14px] !pl-10" placeholder="Search"
@@ -220,26 +220,46 @@
                 <!-- END: Search Modal -->
                 <!-- END: Header -->
                 <!-- END: Header -->
-                
+
                 <!-- MAIN CONTENT CONTAINER -->
                 <div class="content-wrapper transition-all duration-150 xl:ltr:ml-[248px] xl:rtl:mr-[248px]"
                      id="content_wrapper">
                     <div class="page-content">
                         <div id="content_layout">
-                            <slot/> 
+                            <slot/>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-white bg-no-repeat custom-dropshadow footer-bg dark:bg-slate-700 flex justify-around items-center
-                backdrop-filter backdrop-blur-[40px] fixed left-0 bottom-0 w-full z-[9999] bothrefm-0 py-[12px] px-4 md:hidden">
+            <!-- FOOTER -->
+            <!-- BEGIN: Footer For Desktop and tab -->
+            <footer id="footer">
+                <div class="site-footer bg-white px-6 py-4 text-slate-500 ltr:ml-[248px] rtl:mr-[248px] dark:bg-slate-800 dark:text-slate-300">
+                    <div class="grid grid-cols-1 md:grid-cols-2 md:gap-5">
+                        <div class="text-center text-sm ltr:md:text-start rtl:md:text-right">
+                            COPYRIGHT ©
+                            <span id="thisYear"></span>
+                            DashCode, All rights Reserved
+                        </div>
+                        <div class="text-center text-sm ltr:md:text-right rtl:md:text-end">
+                            Hand-crafted &amp; Made by
+                            <a href="https://codeshaper.net" target="_blank" class="text-primary-500 font-semibold">
+                                Codeshaper
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- END: Footer For Desktop and tab -->
+            <div class="custom-dropshadow footer-bg bothrefm-0 fixed bottom-0 left-0 z-[9999] flex
+                w-full items-center justify-around bg-white bg-no-repeat px-4 py-[12px] backdrop-blur-[40px] dark:bg-slate-700 md:hidden">
                 <a href="chat.html">
                     <div>
-                        <span class="relative cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center mb-1 dark:text-white
-                            text-slate-900 ">
+                        <span class="relative mb-1 flex cursor-pointer flex-col items-center justify-center rounded-full text-[20px] text-slate-900
+                            dark:text-white ">
                             <Icon icon="heroicons-outline:mail" />
-                            <span class="absolute right-[5px] lg:hrefp-0 -hrefp-2 h-4 w-4 bg-red-500 text-[8px] font-semibold flex flex-col items-center
-                                justify-center rounded-full text-white z-[99]">
+                            <span class="lg:hrefp-0 -hrefp-2 absolute right-[5px] z-[99] flex h-4 w-4 flex-col items-center justify-center rounded-full
+                                bg-red-500 text-[8px] font-semibold text-white">
                             10
                             </span>
                         </span>
@@ -248,20 +268,20 @@
                         </span>
                     </div>
                 </a>
-                <a href="profile.html" class="relative bg-white bg-no-repeat backdrop-filter backdrop-blur-[40px] rounded-full footer-bg dark:bg-slate-700
-                    h-[65px] w-[65px] z-[-1] -mt-[40px] flex justify-center items-center">
-                    <div class="h-[50px] w-[50px] rounded-full relative left-[0px] hrefp-[0px] custom-dropshadow">
+                <a href="profile.html" class="footer-bg relative z-[-1] -mt-[40px] flex h-[65px] w-[65px] items-center
+                    justify-center rounded-full bg-white bg-no-repeat backdrop-blur-[40px] dark:bg-slate-700">
+                    <div class="hrefp-[0px] custom-dropshadow relative left-[0px] h-[50px] w-[50px] rounded-full">
                         <img src="/images/users/user-1.jpg" alt=""
-                             class="w-full h-full rounded-full border-2 border-slate-100">
+                             class="h-full w-full rounded-full border-2 border-slate-100">
                     </div>
                 </a>
                 <a href="#">
                     <div>
-                        <span class=" relative cursor-pointer rounded-full text-[20px] flex flex-col items-center justify-center mb-1 dark:text-white
-                            text-slate-900">
+                        <span class=" relative mb-1 flex cursor-pointer flex-col items-center justify-center rounded-full text-[20px] text-slate-900
+                            dark:text-white">
                             <Icon icon="heroicons-outline:bell" />
-                            <span class="absolute right-[17px] lg:hrefp-0 -hrefp-2 h-4 w-4 bg-red-500 text-[8px] font-semibold flex flex-col items-center
-                                justify-center rounded-full text-white z-[99]">
+                            <span class="lg:hrefp-0 -hrefp-2 absolute right-[17px] z-[99] flex h-4 w-4 flex-col items-center justify-center rounded-full
+                                bg-red-500 text-[8px] font-semibold text-white">
                             2
                             </span>
                         </span>
