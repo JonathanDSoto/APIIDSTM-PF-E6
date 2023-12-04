@@ -4,6 +4,7 @@ use App\Models\Brand;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
 
 return new class extends Migration
 {
@@ -21,6 +22,8 @@ return new class extends Migration
             $table->decimal('stock', 10, 2)->default(0);
             $table->decimal('price', 10, 2)->default(0);
             $table->foreignIdFor(Brand::class)->constrained();
+            $table->foreignIdFor(User::class, 'created_by')->constrained('users');
+            $table->foreignIdFor(User::class, 'updated_by')->constrained('users');
         });
     }
 
