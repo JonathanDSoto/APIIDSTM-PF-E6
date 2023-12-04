@@ -12,13 +12,14 @@ export default {
     data() {
         return{
             form:{
-                name: 'papu',
+                name: '',
             }
         }
     },
     methods: {
         submit(){
-            router.post('/categories',this.form).catch(error => {
+            router.post('/categories',this.form)
+            .catch(error => {
                 this.errors = error.response.data;
             })
         }
@@ -56,16 +57,23 @@ export default {
                     </header>
                     <div class="card-text h-full ">
                         <form class="space-y-4" @submit.prevent="submit">
-                            <ul v-for="(error, key) in errors" :key="key">
+                            <ul v-for="(error, key) in errors" :key="key" class="w-1/2">
                                 <li>
-                                    {{ error }}
+                                    <div class="alert alert-danger">
+                                        <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                            <div class="flex-1">
+                                                
+                                                    {{ error }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                             <div class="input-area relative pl-28">
                                 <label for="largeInput" class="inline-inputLabel">Category Name</label>
-                                <input type="text" class="form-control" placeholder="" v-model="form.name">
+                                <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" pattern="[a-zA-Z]*">
                             </div>
-                            <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
+                            <button type="submit" class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -78,17 +86,27 @@ export default {
                     </div>
                     <div class="card-body p-6">
                         <div>
-                            <div class="text-base font-medium text-slate-800 dark:text-slate-100 mb-3">
-                                Pricinig, amount and other things
-                            </div>
                             <p class="text-sm text-slate-600 dark:text-slate-300">
-                                The coupons should pass al these requirement before sending the form.
+                                Category names must not contain any numbers.
                             </p>
                             <br/>
-                            <p class="text-sm text-slate-600 dark:text-slate-300">
-                                Coupons should not discount more that 2 of our lowest price products.<br>
-                                The max ammount of coupons should no surpass the limit stablished by the administrator (100).
-                            </p>
+                            <ul class="text-sm text-slate-600 dark:text-slate-300 flex flex-col gap-4">
+                                <li><b>Clear and Descriptive Name:</b> The category name must be clear and accurately represent the type of items or content it will contain.</li>
+
+                                <li><b>Name Length Limit:</b> Limit the length of the name to ensure readability and easy visualization within the interface.</li>
+
+                                <li><b>Avoid Duplicates:</b> Users cannot create categories with names identical to existing ones to prevent confusion or redundancy.</li>
+
+                                <li><b>Character Restrictions:</b> Implement constraints on the characters allowed in the category name, such as avoiding special symbols or non-alphanumeric characters.</li>
+
+                                <li><b>Review and Approval:</b> Consider implementing a review and approval process by an administrator or authorized user before the category is published or available for use.</li>
+
+                                <li><b>Appropriate Naming Policy:</b> Ensure that category names are appropriate and respectful, avoiding offensive, discriminatory, or inappropriate language.</li>
+
+                                <li><b>Consistency in Naming Convention:</b> Encourage consistency in category naming conventions to facilitate user understanding and searchability.</li>
+                            </ul>
+                            <br>
+                            <p>Adherence to these rules is crucial to maintain uniformity, clarity, and user-friendliness within the system. Consistency in naming conventions ensures a streamlined and organized structure, preventing confusion among users and facilitating efficient navigation. By following these guidelines, users contribute to a cohesive platform experience, enabling smoother interactions and better comprehension of the content. Straying from these rules can lead to disorder, duplication, or misunderstandings, ultimately compromising the functionality and usability of the system.</p>
                         </div>
                     </div>
                 </div>

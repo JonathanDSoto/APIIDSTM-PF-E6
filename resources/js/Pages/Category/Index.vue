@@ -1,5 +1,6 @@
 <script>
     import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
+import { router } from '@inertiajs/vue3'
     export default {
         data() {
           return {
@@ -12,30 +13,31 @@
             DefaultTemplate,
         },    
         props:{
-            errors: Object,
-            success: null
+            errors: Object
         },
         methods: {
           deleteConfirmation(userId){
             this.selectedId = userId;
             this.popUpDelete = true;
+                console.log("Ey");
+                console.log(this.success);
           },
           cancelElimination(){
             this.popUpDelete = false;
           },
           confirmElimination() {
-            const categoryToDelete = parseInt(this.selectedId);
-            
-            let categoriesArray = JSON.parse(localStorage.getItem('categoriesArray')) || [];
-            
-            const indexToDelete = categoriesArray.findIndex(category => category.categoryID === categoryToDelete);
-            
-            if (indexToDelete !== -1) {
-                categoriesArray.splice(indexToDelete, 1);
-                localStorage.setItem('categoriesArray', JSON.stringify(categoriesArray));
+                this.popUpDelete = false;
+                router.delete(`/categories/${this.selectedId}`)
+                .then(() => {
+                    const index = this.categoriesArray.findIndex(category => category.id === this.selectedId);
+                    if (index !== -1) {
+                        this.categoriesArray.splice(index, 1); 
+                    }
+                })
+                .catch(error => {
+                    this.errors = error.response.data;
+                });
             }
-            window.location.reload();
-          }
         }
     }
 </script>
@@ -71,18 +73,18 @@
                 </li>
             </ul>
         </div>
-        <br>
-        <a href="/categories/create-category">
-            <button class="btn inline-flex justify-center btn-primary w-full">Create new Category</button>
-        </a>
-        <br><br>
-        <div class="alert alert-success" v-if="success">
+        <div class="alert alert-success" v-if="$page.props.flash.success">
             <div class="flex items-start space-x-3 rtl:space-x-reverse">
                 <div class="flex-1">
-                    The new category has been added succesfully!
+                    {{$page.props.flash.success}}
                 </div>
             </div>
         </div>
+        <br>
+        <a href="/categories/create">
+            <button class="btn inline-flex justify-center btn-primary w-full">Create new Category</button>
+        </a>
+        <br><br>
         <div>
             <div>
                 <div>
@@ -128,7 +130,7 @@
                                                 <td class="table-td ">
                                                     <div class="flex space-x-3 rtl:space-x-reverse">
                                                         <!-- PASS THE USER ID -->
-                                                        <a :href="`/categories/${category.id}/show`">
+                                                        <a :href="`/categories/${category.id}`">
                                                             <button class="action-btn" type="button">
                                                             <iconify-icon icon="heroicons:eye"></iconify-icon>
                                                             </button>

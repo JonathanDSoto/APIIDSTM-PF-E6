@@ -20,13 +20,19 @@ export default {
         }
     },
     methods: {
-        submit(){
-            router.post(`/categories/${this.category}/edit`,this.form).catch(error => {
-                this.errors = error.response.data;
-            })
+    submit() {
+        const data = {
+            name: this.form.name,
+            description: this.form.description,
+        };
+
+        router.put(`/categories/${this.form.id}`, data)
+                .catch(error => {
+                    this.errors = error.response.data;
+                });
+            }
         }
     }
-}
 </script>
 
 <template>
@@ -65,7 +71,7 @@ export default {
                             </ul>
                             <div class="input-area relative pl-28">
                                 <label for="largeInput" class="inline-inputLabel">Category Name</label>
-                                <input type="text" class="form-control" placeholder="" v-model="form.name">
+                                <input type="text" class="form-control" placeholder="" v-model="form.name" pattern="[a-zA-Z]*" required>
                             </div>
                             <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                         </form>
@@ -80,17 +86,22 @@ export default {
                     </div>
                     <div class="card-body p-6">
                         <div>
-                            <div class="text-base font-medium text-slate-800 dark:text-slate-100 mb-3">
-                                Pricinig, amount and other things
-                            </div>
                             <p class="text-sm text-slate-600 dark:text-slate-300">
-                                The coupons should pass al these requirement before sending the form.
+                                Category names must not contain any numbers.
                             </p>
                             <br/>
-                            <p class="text-sm text-slate-600 dark:text-slate-300">
-                                Coupons should not discount more that 2 of our lowest price products.<br>
-                                The max ammount of coupons should no surpass the limit stablished by the administrator (100).
-                            </p>
+                            <ul class="flex flex-col gap-3">
+                                <li><strong>Editable Name:</strong> Allow modification of the category name.</li>
+                                <li><strong>New Name Validation:</strong> Apply similar constraints as category creation rules.</li>
+                                <li><strong>Change History:</strong> Record who and when the modification was made.</li>
+                                <li><strong>Impact Check:</strong> Verify how the modification will affect other areas of the system.</li>
+                                <li><strong>Change Notification:</strong> Inform users or stakeholders about the modification.</li>
+                                <li><strong>Authorization and Permissions:</strong> Limit modification to authorized users.</li>
+                                <li><strong>Update Consistency:</strong> Update connections related to the category.</li>
+                                <li><strong>Validity Testing:</strong> Ensure the modified category still serves its original purpose.</li>
+                            </ul>
+                            <br>
+                            <p>Adhering to these rules is crucial to maintain system integrity and consistency. Failure to follow these guidelines may lead to confusion among users, inconsistencies in data, and disruptions in system functionality.</p>
                         </div>
                     </div>
                 </div>
