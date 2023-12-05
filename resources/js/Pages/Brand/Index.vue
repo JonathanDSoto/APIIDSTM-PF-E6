@@ -16,30 +16,32 @@ export default {
 <template>
   <DefaultTemplate>
     <div class="md:flex justify-between items-center">
-    <!-- BEGIN: Breadcrumb -->
-    <div class="mb-5">
-      <ul class="m-0 p-0 list-none flex gap-2">
-        <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter">
-          <a href="index.html" class="flex gap-2">
-            <Icon icon="heroicons-outline:home"/>
-            <Icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"/>
-          </a>
-        </li>
-        <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-          Brands
-        </li>
-      </ul>
-    </div>
-    <!-- END: Breadcrumb -->
+      <!-- BEGIN: Breadcrumb -->
+      <div class="mb-5">
+        <ul class="m-0 p-0 list-none flex gap-2">
+          <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter">
+            <a href="index.html" class="flex gap-2">
+              <Icon icon="heroicons-outline:home"/>
+              <Icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"/>
+            </a>
+          </li>
+          <li class="inline-block relative text-sm text-primary-500 font-Inter ">
+            Brands
+          </li>
+        </ul>
+      </div>
+      <!-- END: Breadcrumb -->
 
-    <div>
-      <button class="btn inline-flex justify-center btn-dark dark:bg-slate-700 dark:text-slate-300 m-1 ">
+      <!-- BEGIN: Action Area -->
+      <div>
+        <Link href="/brands/create" class="btn inline-flex justify-center btn-dark dark:bg-slate-700 dark:text-slate-300 m-1 ">
         <span class="flex items-center">
           <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="ph:plus-bold"/>
           <span>Add Brand</span>
         </span>
-      </button>
-    </div>
+        </Link>
+      </div>
+      <!-- END: Action Area -->
     </div>
 
     <!-- BEGIN: Card Table  -->
