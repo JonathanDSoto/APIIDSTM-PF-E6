@@ -16,13 +16,19 @@ export default {
             }
         }
     },
+    
     methods: {
         submit(){
             router.post('/categories',this.form)
             .catch(error => {
                 this.errors = error.response.data;
             })
-        }
+        },
+        isLetter(e) {
+            let char = String.fromCharCode(e.keyCode);
+            if(/^[A-Za-z]+$/.test(char)) return true;
+            else e.preventDefault(); 
+        },
     }
 }
 </script>
