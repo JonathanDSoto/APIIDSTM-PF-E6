@@ -1,5 +1,5 @@
 <script>
-    import DefaultTemplate from "../layouts/DefaultTemplate.vue";
+    import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
     export default {
         data() {
           return {
@@ -83,28 +83,19 @@
                                                     Id
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Products Id
+                                                    Customer ID
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Client Id
+                                                    Orden Number
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Payment Method
+                                                    Total Price
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Total Amount
+                                                    Coupon ID
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Shipment Details
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                    Special Instructions
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                    Changes History
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                    Action
+                                                    Status
                                                 </th>
                                             </tr>
                                         </thead>
@@ -192,28 +183,19 @@
                                                     Id
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Products Id
+                                                    Customer ID
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Client Id
+                                                    Orden Number
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Payment Method
+                                                    Total Price
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Total Amount
+                                                    Coupon ID
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Shipment Details
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                    Special Instructions
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                    Changes History
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                    Action
+                                                    Status
                                                 </th>
                                             </tr>
                                         </thead>
@@ -301,28 +283,19 @@
                                                     Id
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Products Id
+                                                    Customer ID
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Client Id
+                                                    Orden Number
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Payment Method
+                                                    Total Price
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Total Amount
+                                                    Coupon ID
                                                 </th>
                                                 <th scope="col" class=" table-th ">
-                                                    Shipment Details
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                    Special Instructions
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                    Changes History
-                                                </th>
-                                                <th scope="col" class=" table-th ">
-                                                    Action
+                                                    Status
                                                 </th>
                                             </tr>
                                         </thead>

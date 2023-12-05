@@ -108,8 +108,9 @@
                         <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
                     </label>
                 </div>
+                <div class="flex items-center justify-center mt-4"><button type="submit" class="btn inline-flex justify-center btn-primary">Log In</button></div>
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-center mt-4">
                     <Link
                         v-if="canResetPassword"
                         :href="route('password.request')"
@@ -117,11 +118,8 @@
                     >
                         Forgot your password?
                     </Link>
-
-                    <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                        Log in
-                    </PrimaryButton>
                 </div>
+                
             </form>
             <!-- END: Login Form -->
             <div class="relative border-b-[#9AA2AF] border-opacity-[16%] border-b pt-6">

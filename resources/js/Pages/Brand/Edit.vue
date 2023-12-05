@@ -1,5 +1,5 @@
 <script>
-    import DefaultTemplate from "../layouts/DefaultTemplate.vue";
+    import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
     import { router } from '@inertiajs/vue3'
     export default {
         components: {
@@ -14,7 +14,7 @@
         },
         methods: {
             submit(){
-                router.post('/brands',this.form)
+                router.patch('/brands',this.form)
                 .catch(error => {
                     this.errors = error.response.data;
                 })
@@ -54,22 +54,22 @@
                     <form class="space-y-4">
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Brand Name</label>
+                            <input type="text" class="form-control" placeholder="" required>
+                        </div>
+                        <div class="input-area relative pl-28">
+                            <label for="largeInput" class="inline-inputLabel">Website</label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">URL 1</label>
+                            <label for="largeInput" class="inline-inputLabel">Website</label>
                             <input type="text" class="form-control" placeholder="">
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">URL 2</label>
-                            <input type="text" class="form-control" placeholder="">
-                        </div>
-                        <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Phone 1</label>
+                            <label for="largeInput" class="inline-inputLabel">Phone</label>
                             <input type="number" class="form-control" placeholder="">
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Phone 2</label>
+                            <label for="largeInput" class="inline-inputLabel">Phone</label>
                             <input type="number" class="form-control" placeholder="">
                         </div>
                         <div class="input-area relative pl-28">
@@ -80,45 +80,11 @@
                             <label for="largeInput" class="inline-inputLabel">Logo</label>
                             <input type="image" class="form-control" placeholder="">
                         </div>
-                        <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Serial Number</label>
-                            <input type="number" class="form-control" placeholder="">
-                        </div>
                         <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
-        <br>
-        <div class="xl:col-span-5 col-span-12 lg:col-span-7">
-            <div class="card h-full">
-                <div class="card-header">
-                    <h4 class="card-title">Rules to Modify a Brand</h4>
-                </div>
-                <div class="card-body p-6">
-                    <div>
-                        <div class="text-base font-medium text-slate-800 dark:text-slate-100 mb-3">
-                            Pricinig, amount and other things
-                        </div>
-                        <p class="text-sm text-slate-600 dark:text-slate-300">
-                            The coupons should pass al these requirement before sending the form.
-                        </p>
-                        <h2>Rules for Modifying a Brand:</h2>
-                        <ul>
-                          <li><strong>Editable Brand Name:</strong> Allow modification of the brand's name.</li>
-                          <li><strong>Serial Number:</strong> Keep the serial number unique and avoid duplications while modifying.</li>
-                          <li><strong>Email:</strong> Permit updates to the associated email address, ensuring uniqueness.</li>
-                          <li><strong>Logo:</strong> Allow modifications to the brand's logo, maintaining high quality.</li>
-                          <li><strong>URL1 and URL2:</strong> Enable changes to the URLs associated with the brand.</li>
-                          <li><strong>Phone 1 and Phone 2:</strong> Allow updates to phone numbers while maintaining accuracy.</li>
-                          <li><strong>Change History:</strong> Record and track modifications made to the brand over time.</li>
-                          <li><strong>Impact Check:</strong> Review how modifications might affect other connected data or systems.</li>
-                          <li><strong>Validation Testing:</strong> Ensure the modified brand information aligns with the system's requirements and constraints.</li>
-                        </ul>
-                    </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </DefaultTemplate>
 </template>

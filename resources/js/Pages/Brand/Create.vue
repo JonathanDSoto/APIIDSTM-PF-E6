@@ -53,12 +53,8 @@
             <div class="card-text h-full ">
               <form class="space-y-4" @submit.prevent="submit">
                   <div class="input-area relative pl-28">
-                      <label for="largeInput" class="inline-inputLabel">Brand Name</label>
-                      <input type="text" class="form-control" placeholder="" >
-                  </div>
-                  <div class="input-area relative pl-28">
-                      <label for="largeInput" class="inline-inputLabel">Serial Number</label>
-                      <input type="number" class="form-control" placeholder="">
+                      <label for="largeInput" class="inline-inputLabel">Name</label>
+                      <input type="text" class="form-control" placeholder="" required>
                   </div>
                   <div class="input-area relative pl-28">
                       <label for="largeInput" class="inline-inputLabel">Email</label>
@@ -69,19 +65,19 @@
                       <input type="file" class="form-control" placeholder="">
                   </div>
                   <div class="input-area relative pl-28">
-                      <label for="largeInput" class="inline-inputLabel">URL 1</label>
+                      <label for="largeInput" class="inline-inputLabel">Website</label>
                       <input type="text" class="form-control" placeholder="">
                   </div>
                   <div class="input-area relative pl-28">
-                      <label for="largeInput" class="inline-inputLabel">URL 2</label>
+                      <label for="largeInput" class="inline-inputLabel">Website</label>
                       <input type="text" class="form-control" placeholder="">
                   </div>
                   <div class="input-area relative pl-28">
-                      <label for="largeInput" class="inline-inputLabel">Phone 1</label>
+                      <label for="largeInput" class="inline-inputLabel">Phone</label>
                       <input type="number" class="form-control" placeholder="">
                   </div>
                   <div class="input-area relative pl-28">
-                      <label for="largeInput" class="inline-inputLabel">Phone 2</label>
+                      <label for="largeInput" class="inline-inputLabel">Phone</label>
                       <input type="number" class="form-control" placeholder="">
                   </div>
                   <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
@@ -90,27 +86,7 @@
           </div>
         </div>
         <br>
-        <div class="xl:col-span-5 col-span-12 lg:col-span-7">
-            <div class="card h-full">
-                <div class="card-header">
-                    <h5>Rules for Creating a Brand:</h5>
-                </div>
-                <div class="card-body p-6">
-                    <div>
-                      <ul class="flex flex-col gap-2">
-                        <li><strong>Brand Name:</strong> Provide a unique and descriptive name for the brand.</li>
-                        <li><strong>Serial Number:</strong> Ensure a unique identifier for the brand without duplications.</li>
-                        <li><strong>Email:</strong> Collect a valid and unique email address associated with the brand.</li>
-                        <li><strong>Logo:</strong> Accept a high-quality logo representing the brand's identity.</li>
-                        <li><strong>URL1 and URL2:</strong> Verify and store valid URLs relevant to the brand.</li>
-                        <li><strong>Phone 1 and Phone 2:</strong> Collect accurate phone numbers associated with the brand.</li>
-                      </ul>
-                      <br>
-                      <p><strong>Warning:</strong> Adhering to these rules is crucial to ensure accurate brand information and proper functionality. Failure to follow these guidelines may result in inaccurate data representation, miscommunication, or improper brand representation within the system.</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
+        
         </div>
     </DefaultTemplate>
 </template>

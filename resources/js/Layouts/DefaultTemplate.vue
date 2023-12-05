@@ -231,26 +231,6 @@ import { Icon } from '@iconify/vue'
                     </div>
                 </div>
             </div>
-            <!-- FOOTER -->
-            <!-- BEGIN: Footer For Desktop and tab -->
-            <footer id="footer">
-                <div class="site-footer bg-white px-6 py-4 text-slate-500 ltr:ml-[248px] rtl:mr-[248px] dark:bg-slate-800 dark:text-slate-300">
-                    <div class="grid grid-cols-1 md:grid-cols-2 md:gap-5">
-                        <div class="text-center text-sm ltr:md:text-start rtl:md:text-right">
-                            COPYRIGHT ©
-                            <span id="thisYear"></span>
-                            DashCode, All rights Reserved
-                        </div>
-                        <div class="text-center text-sm ltr:md:text-right rtl:md:text-end">
-                            Hand-crafted &amp; Made by
-                            <a href="https://codeshaper.net" target="_blank" class="text-primary-500 font-semibold">
-                                Codeshaper
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!-- END: Footer For Desktop and tab -->
             <div class="custom-dropshadow footer-bg bothrefm-0 fixed bottom-0 left-0 z-[9999] flex
                 w-full items-center justify-around bg-white bg-no-repeat px-4 py-[12px] backdrop-blur-[40px] dark:bg-slate-700 md:hidden">
                 <a href="chat.html">
