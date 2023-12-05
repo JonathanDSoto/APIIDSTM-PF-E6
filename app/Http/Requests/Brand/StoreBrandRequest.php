@@ -28,6 +28,11 @@ class StoreBrandRequest extends FormRequest
         ];
     }
 
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return string[]
+     */
     public function messages(): array
     {
         return [
