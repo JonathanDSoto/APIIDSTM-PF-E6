@@ -6,6 +6,7 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Http\Requests\Brand\StoreBrandRequest;
+use App\Http\Requests\Brand\UpdateBrandRequest;
 
 class BrandController extends Controller
 {
@@ -71,9 +72,24 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Brand $brand)
+    public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        // TODO: Implement update() method.
+        $validated = $request->validated();
+
+        if ($validated->hasFile('logo')) {
+            if ($brand->logo_file_name) {
+                unlink(public_path('images/' . $brand->logo_file_name));
+            }
+
+            $logo = $validated->file('logo');
+            $logo_name = time() . '_' . $logo->getClientOriginalName();
+            $logo->move(public_path('images'), $logo_name);
+            $validated['logo_file_name'] = $logo_name;
+        }
+
+        $brand->update($validated);
+
+        return to_route('brands.show', $brand)->with('success', 'Brand updated successfully!');
     }
 
     /**
