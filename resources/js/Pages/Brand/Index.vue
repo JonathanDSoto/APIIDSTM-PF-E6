@@ -3,13 +3,13 @@ import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
 
 export default {
   name: 'Index',
-  components: {DefaultTemplate},
+  components: { DefaultTemplate },
   props: {
     brands: {
       type: Array,
       required: true
     }
-  },
+  }
 }
 </script>
 
@@ -18,12 +18,16 @@ export default {
     <div class="md:flex justify-between items-center">
       <!-- BEGIN: Breadcrumb -->
       <div class="mb-5">
-        <ul class="m-0 p-0 list-none flex gap-2">
+        <ul class="m-0 p-0 list-none">
           <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter">
-            <a href="index.html" class="flex gap-2">
-              <Icon icon="heroicons-outline:home"/>
+          <a href="index.html">
+            <span class="inline-block align-[0px]">
+              <Icon icon="heroicons-outline:home" />
+            </span>
+            <span class="inline-block align-[0px]">
               <Icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"/>
-            </a>
+            </span>
+          </a>
           </li>
           <li class="inline-block relative text-sm text-primary-500 font-Inter ">
             Brands
@@ -61,6 +65,9 @@ export default {
                     ID
                   </th>
                   <th scope="col" class="table-th">
+                    Logo
+                  </th>
+                  <th scope="col" class="table-th">
                     Name
                   </th>
                   <th scope="col" class="table-th">
@@ -75,10 +82,15 @@ export default {
                 </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                <tr v-for="brand in brands">
+                <tr v-for="brand in brands" v-bind:key="brand.id">
                   <td class="table-td">{{ brand.id }}</td>
-                  <td class="table-td">{{ brand.name }}</td>
-                  <td class="table-td table-td-website">{{ brand.websites[0].website }}</td>
+                  <td class="table-td" v-if="brand.logo_file_name">
+                    <img class="rounded-full w-10" :src="'/images/' + brand.logo_file_name" alt="">
+                  </td>
+                  <td class="table-td" v-else>-</td>
+                  <td class="table-td">{{ brand.name}}</td>
+                  <td class="table-td table-td-website" v-if="brand.websites[0]">{{ brand.websites[0].website }}</td>
+                  <td class="table-td table-td-website" v-else>-</td>
                   <td class="table-td" v-if="brand.phone_numbers[0]">{{ brand.phone_numbers[0].phone_number }}</td>
                   <td class="table-td" v-else>-</td>
                   <td class="table-td">
@@ -89,22 +101,25 @@ export default {
                       </button>
                       <ul class="dropdown-menu min-w-max absolute text-sm text-slate-700 dark:text-white hidden bg-white dark:bg-slate-700 shadow z-[2] float-left overflow-hidden list-none text-left rounded-lg mt-1 m-0 bg-clip-padding border-none">
                         <li>
-                          <a href="project-details.html"
+                          <Link :href="'/brands/' + brand.id"
                              class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300  last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize  rtl:space-x-reverse">
                             <Icon icon="heroicons-outline:eye"/>
-                            <span>View</span></a>
+                            <span>View</span>
+                          </Link>
                         </li>
                         <li>
-                          <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"
+                          <Link :href="'/brands/' + brand.id + '/edit'" data-bs-toggle="modal" data-bs-target="#editModal"
                              class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
                             <Icon icon="clarity:note-edit-line"/>
-                            <span>Edit</span></a>
+                            <span>Edit</span>
+                          </Link>
                         </li>
                         <li>
-                          <a href="#"
+                          <Link href="#"
                              class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
                             <Icon icon="fluent:delete-28-regular"/>
-                            <span>Delete</span></a>
+                            <span>Delete</span>
+                          </Link>
                         </li>
                       </ul>
                     </div>

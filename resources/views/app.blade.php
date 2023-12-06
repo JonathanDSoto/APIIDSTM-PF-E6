@@ -20,15 +20,15 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
-        <script src="{{ asset('js/store.js') }}"></script>
+{{--        <script src="{{ asset('js/store.js') }}"></script>--}}
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
     </head>
     <body class="font-sans antialiased dashcode-app" id="body_class" style>
         @inertia
-        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
-        <script src="{{ asset('js/rt-plugins.js') }}"></script>
-        <script src="{{ asset('js/app.js') }}"></script>
+{{--        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>--}}
+{{--        <script src="{{ asset('js/rt-plugins.js') }}"></script>--}}
+{{--        <script src="{{ asset('js/app.js') }}"></script>--}}
     </body>
 </html>

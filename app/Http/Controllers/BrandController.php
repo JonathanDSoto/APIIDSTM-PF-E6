@@ -37,8 +37,8 @@ class BrandController extends Controller
     {
         $validated = $request->validated();
 
-        if ($validated->hasFile('logo')) {
-            $logo = $validated->file('logo');
+        if (isset($validated['logo'])) {
+            $logo = $request->file('logo');
             $logo_name = time() . '_' . $logo->getClientOriginalName();
             $logo->move(public_path('images'), $logo_name);
             $validated['logo_file_name'] = $logo_name;
@@ -54,8 +54,16 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
+        $brand->load([
+            'create_author',
+            'update_author',
+            'emails',
+            'phone_numbers',
+            'websites',
+        ]);
+
         return Inertia::render('Brand/Show', [
-            'brand' => $brand,
+            'brand' => $brand
         ]);
     }
 

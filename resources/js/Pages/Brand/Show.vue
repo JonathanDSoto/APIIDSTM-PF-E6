@@ -1,132 +1,119 @@
 <script>
-    import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
-    export default {
-        data() {
-          return {
-                name: this.$page.props.category.name,
-                id: this.$page.props.category.id,
-                creationDate: this.$page.props.category.created_at,
-                updatedDate: this.$page.props.category.updated_at,
-                creator: this.$page.props.category.creator,
-                email: this.$page.props.category.email,
-                firstWebsite: this.$page.props.category.firstWebsite,
-                secondWebsite: this.$page.props.category.secondWebsite,
-          };
-        },
-        components: {
-            DefaultTemplate,
-        },    
-        props:{
-            errors: Object,
-            success: null
-        },
-        methods: {
-        }
-    }
+import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
+
+export default {
+  name: 'Show',
+  components: { DefaultTemplate },
+  props: {
+    brand: Object,
+    errors: Object,
+    success: null
+  }
+}
 </script>
 
 <template>
-    <DefaultTemplate>        
-        <div class="mb-5">
-            <ul class="m-0 p-0 list-none">
-                <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-                    <a href="/">
-                        <iconify-icon icon="heroicons-outline:home"></iconify-icon>
-                        <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
-                    </a>
-                </li>
-                <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                    Brand
-                    <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
-                </li>
-                <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                    Show Brand
-                </li>
-            </ul>
+  <DefaultTemplate>
+    <div class="mb-5">
+      <ul class="m-0 list-none p-0">
+        <li class="text-primary-500 font-Inter relative top-[3px] inline-block text-base ">
+          <a href="/">
+            <Icon icon="heroicons-outline:home" />
+            <Icon icon="heroicons-outline:chevron-right" class="relative text-sm text-slate-500 rtl:rotate-180" />
+          </a>
+        </li>
+        <li class="text-primary-500 font-Inter relative inline-block text-sm ">
+          Brand
+          <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180" />
+        </li>
+        <li class="font-Inter relative inline-block text-sm text-slate-500 dark:text-white">
+          Show Brand
+        </li>
+      </ul>
+    </div>
+    <div class="card p-6">
+      <div class="grid grid-cols-1 place-content-center gap-5 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+        <div class="flex h-full items-center space-x-4 rtl:space-x-reverse">
+          <div class="flex-1">
+            <h4 class="mb-2 text-xl font-medium">
+              <span class="block font-light">You are seeing</span>
+              <span class="block">{{ brand.name }}</span>
+            </h4>
+            <p class="text-sm dark:text-slate-300">With the id: {{ brand.id }}</p>
+          </div>
         </div>
-        <div class="card p-6">
-            <div class="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5 place-content-center">
-                <div class="flex space-x-4 h-full items-center rtl:space-x-reverse">
-                    <div class="flex-1">
-                        <h4 class="text-xl font-medium mb-2">
-                            <span class="block font-light">You are seeing</span>
-                            <span class="block">{{ name }}</span>
-                        </h4>
-                        <p class="text-sm dark:text-slate-300">With the id: {{ id }}</p>
-                    </div>
-                </div>
-                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
-                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
-                        Creation Date
-                    </div>
-                    <div class="text-slate-900 dark:text-white text-lg font-medium">
-                        {{ new Date(creationDate).toISOString().slice(0, 10) }}
-                    </div>
-                    <div class="ml-auto max-w-[124px]">
-                        <div id="clmn_chart_1">By: Alexby11</div>
-                    </div>
-                </div>
 
-                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
-                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
-                        Modification Date
-                    </div>
-                    <div class="text-slate-900 dark:text-white text-lg font-medium">
-                        {{ new Date(updatedDate).toISOString().slice(0, 10) }}
-                    </div>
-                    <div class="ml-auto max-w-[124px]">
-                        <div id="clmn_chart_2">By: Willyrex</div>
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
-                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
-                        First Website Url
-                    </div>
-                    <div class="text-slate-900 dark:text-white text-lg font-medium">
-                        <a>{{ firstWebsite }}</a>
-                    </div>
-                    <div class="ml-auto max-w-[124px]">
-                        <div id="clmn_chart_2"></div>
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
-                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
-                        Second Website Date
-                    </div>
-                    <div class="text-slate-900 dark:text-white text-lg font-medium">
-                        <a>{{ secondWebsite }}</a>
-                    </div>
-                    <div class="ml-auto max-w-[124px]">
-                        <div id="clmn_chart_2"></div>
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
-                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
-                        Email
-                    </div>
-                    <div class="text-slate-900 dark:text-white text-lg font-medium">
-                        {{ email }}
-                    </div>
-                    <div class="ml-auto max-w-[124px]">
-                        <div id="clmn_chart_2"></div>
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
-                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
-                        Logo
-                    </div>
-                    <div class="text-slate-900 dark:text-white text-lg font-medium">
-                        {{ logo }}
-                    </div>
-                    <div class="ml-auto max-w-[124px]">
-                        <div id="clmn_chart_2"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Creation Date
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white">
+            {{ new Date(brand.created_at).toISOString().slice(0, 10)  }}
+          </div>
+          <div class="ml-auto max-w-[124px]">
+            <div id="clmn_chart_1" v-if="brand.create_author">By: {{ brand.create_author.name}}</div>
+            <div id="clmn_chart_1" v-else>By: -</div>
+          </div>
         </div>
-    </DefaultTemplate>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Modification Date
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white">
+            {{ new Date(brand.updated_at).toISOString().slice(0, 10) }}
+          </div>
+          <div class="ml-auto max-w-[124px]">
+            <div id="clmn_chart_2" v-if="brand.update_author">By: {{ brand.update_author.name }}</div>
+            <div id="clmn_chart_2" v-else>By: -</div>
+          </div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Website
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.websites[0]">
+            <a>{{ brand.websites[0].website }}</a>
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            -
+          </div>
+          <div class="ml-auto max-w-[124px]">
+            <div id="clmn_chart_2"></div>
+          </div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Email
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.emails[0]">
+            {{ brand.emails[0].email }}
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            -
+          </div>
+          <div class="ml-auto max-w-[124px]">
+            <div id="clmn_chart_2"></div>
+          </div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Logo
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.logo_file_name">
+            <img :src="'/images/' + brand.logo_file_name" alt="">
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            -
+          </div>
+          <div class="ml-auto max-w-[124px]">
+            <div id="clmn_chart_2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </DefaultTemplate>
 </template>
