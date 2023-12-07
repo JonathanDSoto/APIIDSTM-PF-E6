@@ -25,18 +25,18 @@
 <template>
     <DefaultTemplate>        
         <div class="mb-5">
-            <ul class="m-0 p-0 list-none">
-                <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-                    <a href="/">
-                        <iconify-icon icon="heroicons-outline:home"></iconify-icon>
-                        <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
+            <ul class="m-0 p-0 list-none flex gap-2">
+                <li class="relative top-[3px] text-base text-primary-500 font-Inter flex gap-2">
+                    <a href="/" class="flex gap-2">
+                        <Icon icon="heroicons-outline:home"></Icon>
+                        <Icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></Icon>
                     </a>
                 </li>
-                <li class="inline-block relative text-sm text-primary-500 font-Inter ">
+                <li class="flex gap-2 relative text-sm text-primary-500 font-Inter ">
                     Categories
-                    <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
+                    <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></Icon>
                 </li>
-                <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
+                <li class="flex gap-2 relative text-sm text-slate-500 font-Inter dark:text-white">
                     Show Category
                 </li>
             </ul>

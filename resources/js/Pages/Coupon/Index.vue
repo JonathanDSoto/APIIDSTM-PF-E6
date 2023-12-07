@@ -36,7 +36,7 @@
                 .catch(error => {
                     this.errors = error.response.data;
                 });
-            }
+          }
         }
     }
 </script>
@@ -59,52 +59,27 @@
         </div>
     </div>
     <DefaultTemplate>
-        
-        <div class="mb-5">
-            <ul class="m-0 p-0 list-none">
+        <div class="mb-5 flex justify-between">
+            <ul class="m-0 p-0 list-none flex gap-2">
                 <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-                <a href="/">
-                    <iconify-icon icon="heroicons-outline:home"></iconify-icon>
-                    <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
+                <a href="/" class="flex gap-2">
+                    <Icon icon="heroicons-outline:home"></Icon>
+                    <Icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></Icon>
                 </a>
                 </li>
                 <li class="inline-block relative text-sm text-primary-500 font-Inter ">
                 Coupons
                 </li>
             </ul>
-        </div>
-        <div class="xl:col-span-8 col-span-12">
-            <div class="grid sm:grid-cols-2 grid-cols-1 gap-3">
-                <!-- BEGIN: Group Chart5 -->
-                <div class=" bg-info-500 rounded-md p-4 bg-opacity-[0.15] dark:bg-opacity-50 text-center">
-                    <div class="text-info-500 mx-auto h-10 w-10 flex flex-col items-center justify-center rounded-full bg-white text-2xl mb-4">
-                        <iconify-icon icon=heroicons-outline:menu-alt-1></iconify-icon>
-                    </div>
-                    <span class="block text-sm text-slate-600 font-medium dark:text-white mb-1">
-                        Total Coupons
-                    </span>
-                    <span class="block mb- text-2xl text-slate-900 dark:text-white font-medium">
-                        3
-                    </span>
-                </div>
-                <div class=" bg-success-500 rounded-md p-4 bg-opacity-[0.15] dark:bg-opacity-50 text-center">
-                    <div class="text-success-500 mx-auto h-10 w-10 flex flex-col items-center justify-center rounded-full bg-white text-2xl mb-4">
-                        <iconify-icon icon=heroicons-outline:calculator></iconify-icon>
-                    </div>
-                    <span class="block text-sm text-slate-600 font-medium dark:text-white mb-1">
-                        Amount
-                    </span>
-                    <span class="block mb- text-2xl text-slate-900 dark:text-white font-medium">
-                        340
-                    </span>
-                </div>
+            <div>
+              <Link href="/coupons/create" class="btn btn-dark m-1 inline-flex justify-center dark:bg-slate-700 dark:text-slate-300 ">
+                <span class="flex items-center">
+                  <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="ph:plus-bold"/>
+                  <span>Add Coupon</span>
+                </span>
+              </Link>
             </div>
         </div>
-        <br>
-        <a href="/coupons/create">
-            <button class="btn inline-flex justify-center btn-primary w-full">Create new coupon</button>
-        </a>
-        <br><br>
         <div id="content_layout">
             <div class=" space-y-5">
             <div class="card">

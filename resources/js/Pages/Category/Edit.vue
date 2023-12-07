@@ -38,16 +38,16 @@ export default {
 <template>
     <DefaultTemplate>
         <div class="mb-5">
-            <ul class="m-0 p-0 list-none">
+            <ul class="m-0 p-0 list-none flex gap-2">
                 <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-                    <a href="/">
-                        <iconify-icon icon="heroicons-outline:home"></iconify-icon>
-                        <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
+                    <a href="/" class="flex gap-2">
+                        <Icon icon="heroicons-outline:home"></Icon>
+                        <Icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></Icon>
                     </a>
                 </li>
-                <li class="inline-block relative text-sm text-primary-500 font-Inter ">
+                <li class="relative text-sm text-primary-500 font-Inter flex gap-2">
                     Categories
-                    <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
+                    <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></Icon>
                 </li>
                 <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
                     Modify Category
@@ -79,33 +79,6 @@ export default {
                 </div>
             </div>
             <br>
-            <div class="xl:col-span-5 col-span-12 lg:col-span-7">
-                <div class="card h-full">
-                    <div class="card-header">
-                        <h4 class="card-title">Rules to Edit a Category</h4>
-                    </div>
-                    <div class="card-body p-6">
-                        <div>
-                            <p class="text-sm text-slate-600 dark:text-slate-300">
-                                Category names must not contain any numbers.
-                            </p>
-                            <br/>
-                            <ul class="flex flex-col gap-3">
-                                <li><strong>Editable Name:</strong> Allow modification of the category name.</li>
-                                <li><strong>New Name Validation:</strong> Apply similar constraints as category creation rules.</li>
-                                <li><strong>Change History:</strong> Record who and when the modification was made.</li>
-                                <li><strong>Impact Check:</strong> Verify how the modification will affect other areas of the system.</li>
-                                <li><strong>Change Notification:</strong> Inform users or stakeholders about the modification.</li>
-                                <li><strong>Authorization and Permissions:</strong> Limit modification to authorized users.</li>
-                                <li><strong>Update Consistency:</strong> Update connections related to the category.</li>
-                                <li><strong>Validity Testing:</strong> Ensure the modified category still serves its original purpose.</li>
-                            </ul>
-                            <br>
-                            <p>Adhering to these rules is crucial to maintain system integrity and consistency. Failure to follow these guidelines may lead to confusion among users, inconsistencies in data, and disruptions in system functionality.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </DefaultTemplate>
 </template>

@@ -29,10 +29,6 @@
                 this.popUpDelete = false;
                 router.delete(`/categories/${this.selectedId}`)
                 .then(() => {
-                    const index = this.categoriesArray.findIndex(category => category.id === this.selectedId);
-                    if (index !== -1) {
-                        this.categoriesArray.splice(index, 1); 
-                    }
                 })
                 .catch(error => {
                     this.errors = error.response.data;
@@ -61,11 +57,11 @@
     </div>
     <DefaultTemplate>
         <div class="mb-5">
-            <ul class="m-0 p-0 list-none">
+            <ul class="m-0 p-0 list-none flex gap-2">
                 <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-                <a href="/">
-                    <iconify-icon icon="heroicons-outline:home"></iconify-icon>
-                    <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
+                <a href="/" class="flex gap-2">
+                    <Icon icon="heroicons-outline:home"></Icon>
+                    <Icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></Icon>
                 </a>
                 </li>
                 <li class="inline-block relative text-sm text-primary-500 font-Inter ">
@@ -127,34 +123,21 @@
                                                     </span>
                                                 </td>
                                                 <td class="table-td">{{ new Date(category.created_at).toISOString().slice(0, 10) }}</td>
-                                                <td class="table-td">
-                                                    <div class="dropstart relative">
-                                                    <button class="inline-flex justify-center items-center" type="button" id="tableDropdownMenuButton"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <Icon class="text-xl ltr:ml-2 rtl:mr-2" icon="heroicons-outline:dots-vertical"/>
-                                                    </button>
-                                                    <ul class="dropdown-menu min-w-max absolute text-sm text-slate-700 dark:text-white hidden bg-white dark:bg-slate-700 shadow z-[2] float-left overflow-hidden list-none text-left rounded-lg mt-1 m-0 bg-clip-padding border-none">
-                                                        <li>
-                                                        <Link :href="`/categories/${category.id}`"
-                                                            class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300  last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize  rtl:space-x-reverse">
-                                                            <Icon icon="heroicons-outline:eye"/>
-                                                            <span>View</span>
+                                                <td class="table-td ">
+                                                    <div class="flex space-x-3 rtl:space-x-reverse">
+                                                        <Link :href="`/categories/${ category.id }`">
+                                                            <button class="action-btn" type="button">
+                                                            <Icon icon="heroicons:eye"></Icon>
+                                                            </button>
                                                         </Link>
-                                                        </li>
-                                                        <li>
-                                                        <Link :href="`/categories/${category.id}/edit`" 
-                                                            class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
-                                                            <Icon icon="clarity:note-edit-line"/>
-                                                            <span>Edit</span>
+                                                        <Link :href="`/categories/${ category.id }/edit`">
+                                                            <button class="action-btn" type="button">
+                                                            <Icon icon="heroicons:pencil-square"></Icon>
+                                                            </button>
                                                         </Link>
-                                                        </li>
-                                                        <li>
-                                                        <button @click="deleteConfirmation(category.id)"
-                                                            class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
-                                                            <Icon icon="fluent:delete-28-regular"/>
-                                                            <span>Delete</span></button>
-                                                        </li>
-                                                    </ul>
+                                                        <button class="action-btn" type="button" @click="deleteConfirmation(category.id)">
+                                                            <Icon icon="heroicons:trash"></Icon>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>

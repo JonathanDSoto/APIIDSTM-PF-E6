@@ -1,19 +1,62 @@
 <script>
 import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
+import { router } from '@inertiajs/vue3'
 
 export default {
   name: 'Index',
   components: { DefaultTemplate },
+  data() {
+    return{
+      popUpDelete: false,
+      selectedId: 0,
+    };
+  },
   props: {
     brands: {
       type: Array,
       required: true
     }
+  },
+  methods: {
+    deleteConfirmation(brandId){
+      this.selectedId = brandId;
+      this.popUpDelete = true;
+          console.log("Ey");
+          console.log(this.success);
+    },
+    cancelElimination(){
+      this.popUpDelete = false;
+    },
+    confirmElimination() {
+          this.popUpDelete = false;
+          router.delete(`/brands/${this.selectedId}`)
+          .then(() => {
+          })
+          .catch(error => {
+              this.errors = error.response.data;
+          });
+      }
   }
 }
 </script>
 
 <template>
+  <div id="deletepopup" v-if=popUpDelete style="width: 400px; height: 150px; background-color: #f1f5f9; padding: 20px; border-radius: 20px; display: flex;
+    justify-content: center; align-items: center; position: fixed; z-index: 10; top: 50%; left: 50%; transform: translate(-50%,-50%);">
+      <div style="padding: 2px; display: flex; justify-content: center; flex-direction: column; align-items: center; gap: 20px">
+        <p>
+          Are you sure you want to delete this element?
+        </p>
+        <div style="display: flex; gap: 20px;">
+          <button style="background-color: #50C793; padding: 5px; border-radius: 10px; color: white; font-weight: bold;" @click="confirmElimination">
+            Confirm
+          </button>
+          <button style="background-color: #F1595C; padding: 5px; border-radius: 10px; color: white; font-weight: bold;" @click="cancelElimination">
+            Cancel
+          </button>
+        </div>
+      </div>
+  </div>
   <DefaultTemplate>
     <div class="items-center justify-between md:flex">
       <!-- BEGIN: Breadcrumb -->
@@ -115,11 +158,11 @@ export default {
                           </Link>
                         </li>
                         <li>
-                          <Link href="#"
+                          <Button @click="deleteConfirmation(brand.id)"
                              class="flex w-full cursor-pointer items-center space-x-2 border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm capitalize first:rounded-t last:mb-0 last:rounded-b hover:bg-slate-900 hover:text-white rtl:space-x-reverse dark:text-slate-300 dark:hover:bg-slate-600 dark:hover:bg-opacity-70">
                             <Icon icon="fluent:delete-28-regular"/>
                             <span>Delete</span>
-                          </Link>
+                          </Button>
                         </li>
                       </ul>
                     </div>

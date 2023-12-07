@@ -1,5 +1,6 @@
 <script>
 import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
+import { router } from '@inertiajs/vue3'
 
 export default {
   name: 'Show',
@@ -8,6 +9,8 @@ export default {
     brand: Object,
     errors: Object,
     success: null
+  },
+  methods: {
   }
 }
 </script>
@@ -15,14 +18,14 @@ export default {
 <template>
   <DefaultTemplate>
     <div class="mb-5">
-      <ul class="m-0 list-none p-0">
+      <ul class="m-0 list-none p-0 flex gap-2">
         <li class="text-primary-500 font-Inter relative top-[3px] inline-block text-base ">
-          <a href="/">
+          <a href="/" class="flex gap-2">
             <Icon icon="heroicons-outline:home" />
             <Icon icon="heroicons-outline:chevron-right" class="relative text-sm text-slate-500 rtl:rotate-180" />
           </a>
         </li>
-        <li class="text-primary-500 font-Inter relative inline-block text-sm ">
+        <li class="text-primary-500 font-Inter relative text-sm flex gap-2">
           Brand
           <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180" />
         </li>

@@ -54,10 +54,10 @@
                 <span>Raw Materials</span>
               </span>
             </Link>
-            <Link href="/inventory" class="navItem">
+            <Link href="/customers" class="navItem">
               <span class="flex items-center">
-                <Icon class=" nav-icon" icon="ic:twotone-inventory-2"/>
-                <span>Inventory</span>
+                <Icon class=" nav-icon" icon="raphael:customer"/>
+                <span>Customers</span>
               </span>
             </Link>
             <Link href="/order" class="navItem">

@@ -76,26 +76,6 @@
                 </div>
             </div>
         </div>
-        <br>
-        <div class="xl:col-span-5 col-span-12 lg:col-span-7">
-            <div class="card h-full">
-                <div class="card-header">
-                    <h4 class="card-title">Rules to Create a Coupon</h4>
-                </div>
-                <div class="card-body p-6">
-                    <div>
-                      <ul class="flex flex-col gap-2">
-                        <li><strong>Coupon Code:</strong> Assign a unique and identifiable code for the coupon.</li>
-                        <li><strong>Uses:</strong> Define the specific uses associated with the coupon.</li>
-                        <li><strong>End Date:</strong> Specify when the coupon expires.</li>
-                        <li><strong>Discount:</strong> Determine the discount percentage or rate applicable for the coupon.</li>
-                      </ul>
-                      <br>
-                      <p><strong>Warning:</strong> Adhering to these rules is crucial to ensure proper functionality and accurate representation of the coupon within the system. Failure to follow these guidelines may result in confusion for users, incorrect discount calculations, or improper coupon application.</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </DefaultTemplate>
 </template>

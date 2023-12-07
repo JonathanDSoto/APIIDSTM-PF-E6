@@ -66,27 +66,7 @@
             </div>
         </div>
         <br>
-        <div class="xl:col-span-5 col-span-12 lg:col-span-7">
-            <div class="card h-full">
-                <div class="card-header">
-                    <h4 class="card-title">Rules to Modify a Coupon</h4>
-                </div>
-                <div class="card-body p-6">
-                    <div>
-                      <ul>
-                        <li><strong>Editable Coupon Code:</strong> Allow modification of the coupon's code if necessary.</li>
-                        <li><strong>Amount:</strong> Permit changes to the specific value or amount associated with the coupon.</li>
-                        <li><strong>Discount:</strong> Enable updates to the discount percentage or rate for the coupon.</li>
-                        <li><strong>Change History:</strong> Record and track modifications made to the coupon over time.</li>
-                        <li><strong>Impact Check:</strong> Review how modifications might affect coupon application or related data.</li>
-                        <li><strong>Validation Testing:</strong> Ensure the modified coupon details align with the system's requirements and constraints.</li>
-                      </ul>
-                      <br>
-                      <p><strong>Warning:</strong> Adhering to these rules is crucial to maintain accuracy and functionality when editing coupons. Failure to comply might result in incorrect discount application, inconsistencies, or disruptions in coupon usage within the system.</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
+        
         </div>
     </DefaultTemplate>
 </template>

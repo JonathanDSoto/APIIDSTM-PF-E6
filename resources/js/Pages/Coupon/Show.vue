@@ -1,5 +1,6 @@
 <script>
     import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
+    import { router } from '@inertiajs/vue3'
     export default {
         data() {
           return {
@@ -18,6 +19,24 @@
             success: null
         },
         methods: {
+          deleteConfirmation(userId){
+            this.selectedId = userId;
+            this.popUpDelete = true;
+                console.log("Ey");
+                console.log(this.success);
+          },
+          cancelElimination(){
+            this.popUpDelete = false;
+          },
+          confirmElimination() {
+                this.popUpDelete = false;
+                router.delete(`/categories/${this.selectedId}`)
+                .then(() => {
+                })
+                .catch(error => {
+                    this.errors = error.response.data;
+                });
+            }
         }
     }
 </script>
