@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Coupon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Http\Requests\Coupon\StoreCouponRequest;
+use App\Http\Requests\Coupon\UpdateCouponRequest;
 
 class CouponController extends Controller
 {
@@ -31,9 +33,13 @@ class CouponController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCouponRequest $request)
     {
-        // TODO: Implement store() method.
+        $validated = $request->validated();
+
+        $coupon = Coupon::create($validated);
+
+        return to_route('coupons.index')->with('success', 'Coupon created successfully!');
     }
 
     /**
@@ -59,9 +65,13 @@ class CouponController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Coupon $coupon)
+    public function update(UpdateCouponRequest $request, Coupon $coupon)
     {
-        // TODO: Implement update() method.
+        $validated = $request->validated();
+
+        $coupon->update($validated);
+
+        return to_route('coupons.show', $coupon)->with('success', 'Coupon updated successfully!');
     }
 
     /**
