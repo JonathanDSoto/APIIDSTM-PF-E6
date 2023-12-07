@@ -1,37 +1,33 @@
-<script setup>
-    import Checkbox from '@/Components/Checkbox.vue'
-    import GuestLayout from '@/Layouts/GuestLayout.vue'
-    import InputError from '@/Components/InputError.vue'
-    import InputLabel from '@/Components/InputLabel.vue'
-    import PrimaryButton from '@/Components/PrimaryButton.vue'
-    import TextInput from '@/Components/TextInput.vue'
-    import { Head, Link, useForm } from '@inertiajs/vue3'
+<script>
+import { router } from '@inertiajs/vue3'
 
-    defineProps({
-        canResetPassword: {
-            type: Boolean
-        },
-        status: {
-            type: String
-        }
-    })
-
-    const form = useForm({
+export default {
+  name: 'Login',
+  props: {
+    status: String,
+    canResetPassword: Boolean,
+    emailErrorMessage: String,
+    passwordErrorMessage: String
+  },
+  data () {
+    return {
+      form: {
         email: '',
         password: '',
         remember: false
-    })
-
-    const submit = () => {
-        form.post(route('login'), {
-            onFinish: () => form.reset('password')
-        })
+      }
     }
+  },
+  methods: {
+    submit () {
+      router.post('/login', this.form)
+    }
+  }
+}
 </script>
 
-
 <template>
-    <body class=" font-inter skin-default">
+  <body class=" font-inter skin-default">
   <div class="loginwrapper">
     <div class="lg-inner-column">
       <div class="left-column relative z-[1]">
@@ -42,104 +38,73 @@
           <h4>
             <span v-if="emailErrorMessage" class="text-red-500">{{ emailErrorMessage }}</span><br><br>
             <span v-if="passwordErrorMessage" class="text-red-500">{{ passwordErrorMessage }}</span>
-            <p v-else>You can do<span class="text-slate-800 dark:text-slate-400 font-bold"> everything</span></p>
+            <p v-else>You can do<span class="font-bold text-slate-800 dark:text-slate-400"> everything</span></p>
           </h4>
         </div>
-        <div class="absolute left-0 2xl:bottom-[-160px] bottom-[-130px] h-full w-full z-[-1]">
+        <div class="absolute bottom-[-130px] left-0 z-[-1] h-full w-full 2xl:bottom-[-160px]">
           <img src="images/auth/ils1.svg" alt="" class=" h-full w-full object-contain">
         </div>
       </div>
       <div class="right-column  relative">
-        <div class="inner-content h-full flex flex-col bg-white dark:bg-slate-800">
-          <div class="auth-box h-full flex flex-col justify-center">
-            <div class="mobile-logo text-center mb-6 lg:hidden block">
+        <div class="inner-content flex h-full flex-col bg-white dark:bg-slate-800">
+          <div class="auth-box flex h-full flex-col justify-center">
+            <div class="mobile-logo mb-6 block text-center lg:hidden">
               <a href="/">
-                <img src="images/logo/logo.svg" alt="" class="mb-10 dark_logo">
-                <img src="images/logo/logo-white.svg" alt="" class="mb-10 white_logo">
+                <img src="images/logo/logo.svg" alt="" class="dark_logo mb-10">
+                <img src="images/logo/logo-white.svg" alt="" class="white_logo mb-10">
               </a>
             </div>
-            <div class="text-center 2xl:mb-10 mb-4">
+            <div class="mb-4 text-center 2xl:mb-10">
               <h4 class="font-medium">Sign in</h4>
-              <div class="text-slate-500 text-base">
+              <div class="text-base text-slate-500">
                 Sign in to your account to start using our Dashboard
               </div>
             </div>
             <!-- BEGIN: Login Form -->
-            <Head title="Log in" />
-            <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-                {{ status }}
-            </div>
-
-            <form @submit.prevent="submit" style="background-color: lightcyan; padding: 20px; border-radius: 20px">
-                <div>
-                    <InputLabel for="email" value="Email" style="color: black"/>
-
-                    <TextInput
-                        id="email"
-                        type="email"
-                        class="mt-1 block w-full p-2 text-black"
-                        style="background-color: white;"
-                        v-model="form.email"
-                        required
-                        autofocus
-                        autocomplete="username"
-                    />
-
-                    <InputError class="mt-2" :message="form.errors.email" />
+            <!--            <Head title="Log in" />-->
+            <!--            <div v-if="status" class="mb-4 text-sm font-medium text-green-600">-->
+            <!--              {{ status }}-->
+            <!--            </div>-->
+            <form class="space-y-4" @submit.prevent="submit">
+              <div class="fromGroup">
+                <label class="form-label block capitalize">email</label>
+                <div class="relative">
+                  <input type="email" name="email" class="form-control py-2" placeholder="Enter your email" required  autofocus  v-model="this.form.email">
                 </div>
-
-                <div class="mt-4">
-                    <InputLabel for="password" value="Password" />
-
-                    <TextInput
-                        id="password"
-                        type="password"
-                        class="mt-1 block w-full p-2 text-black"
-                        style="background-color: white;"
-                        v-model="form.password"
-                        required
-                        autocomplete="current-password"
-                    />
-
-                    <InputError class="mt-2" :message="form.errors.password" />
+              </div>
+              <div class="fromGroup">
+                <label class="form-label block capitalize">password</label>
+                <div class="relative">
+                  <input type="password" name="password" class="form-control py-2" placeholder="Enter your password" v-model="this.form.password" required>
                 </div>
-
-                <div class="block mt-4">
-                    <label class="flex items-center">
-                        <Checkbox name="remember" v-model:checked="form.remember" />
-                        <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
-                    </label>
+              </div>
+              <div class="flex justify-between">
+                <div class="checkbox-area">
+                  <label class="inline-flex cursor-pointer items-center">
+                    <input type="checkbox" class="hidden" name="checkbox">
+                    <span class="relative inline-flex h-4 w-4 flex-none rounded border border-slate-100 bg-slate-100 transition-all duration-150 ltr:mr-3 rtl:ml-3 dark:border-slate-800 dark:bg-slate-900">
+                    <img src="assets/images/icon/ck-white.svg" alt="" class="m-auto block h-[10px] w-[10px] opacity-0"></span>
+                    <span class="text-sm leading-6 text-slate-500 dark:text-slate-400">Keep me signed in</span>
+                  </label>
                 </div>
-                <div class="flex items-center justify-center mt-4"><button type="submit" class="btn inline-flex justify-center btn-primary">Log In</button></div>
-
-                <div class="flex items-center justify-center mt-4">
-                    <Link
-                        v-if="canResetPassword"
-                        :href="route('password.request')"
-                        class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                    >
-                        Forgot your password?
-                    </Link>
-                </div>
-                
+                <a class="text-sm font-medium leading-6 text-slate-800 dark:text-slate-400" href="forget-password-one.html">Forgot Password?</a>
+              </div>
+              <button class="btn btn-dark block w-full text-center">Sign in</button>
             </form>
             <!-- END: Login Form -->
-            <div class="relative border-b-[#9AA2AF] border-opacity-[16%] border-b pt-6">
-              <div class="absolute inline-block bg-white dark:bg-slate-800 dark:text-slate-400 left-1/2 top-1/2 transform -translate-x-1/2
-                                    px-4 min-w-max text-sm text-slate-500 font-normal">
-                Or continue with
-              </div>
-            </div>
-            <div class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 mt-12 uppercase text-sm">
+            <div class="mx-auto mt-12 text-sm font-normal uppercase text-slate-500 dark:text-slate-400 md:max-w-[345px]">
               Don’t have an account?
-              <a href="/signup" class="text-slate-900 dark:text-white font-medium hover:underline">
+              <a href="/signup" class="font-medium text-slate-900 hover:underline dark:text-white">
                 Sign up
               </a>
             </div>
+          </div>
+          <div class="auth-footer text-center">
+            Copyright 2021, MonkeyDevs All Rights Reserved.
           </div>
         </div>
       </div>
     </div>
   </div>
-</body>
+  </body>
 </template>

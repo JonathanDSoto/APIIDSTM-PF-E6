@@ -24,24 +24,19 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    //    return Inertia::render('Welcome', [
-    //        'canLogin' => Route::has('login'),
-    //        'canRegister' => Route::has('register'),
-    //        'laravelVersion' => Application::VERSION,
-    //        'phpVersion' => PHP_VERSION,
-    //    ]);
     return Inertia::render('Auth/Login');
 });
 
-Route::get('/forgotpassword', function () {
-    return Inertia::render('ForgotPassword');
-});
-Route::get('/signup', function () {
-    return Inertia::render('SignUp');
-});
+//Route::get('/forgotpassword', function () {
+//    return Inertia::render('ForgotPassword');
+//});
+
+//Route::get('/signup', function () {
+//    return Inertia::render('SignUp');
+//});
 
 Route::middleware('auth')->group(function () {
-    Route::get('/index', function () {
+    Route::get('/', function () {
         return Inertia::render('Index');
     });
 
@@ -53,16 +48,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('brands', BrandController::class);
     Route::resource('shipments-agencies', ShipmentAgencyController::class);
     Route::resource('shipments', ShipmentController::class);
-});
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
