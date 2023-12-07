@@ -1,18 +1,18 @@
 <script>
-import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
-import { router } from '@inertiajs/vue3'
+  import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
+  import { router } from '@inertiajs/vue3'
 
-export default {
-  name: 'Show',
-  components: { DefaultTemplate },
-  props: {
-    shipment_agency: Object,
-    errors: Object,
-    success: null
-  },
-  methods: {
+  export default {
+    name: 'Show',
+    components: { DefaultTemplate },
+    props: {
+      shipment: Object,
+      errors: Object,
+      success: null
+    },
+    methods: {
+    }
   }
-}
 </script>
 
 <template>
@@ -26,11 +26,11 @@ export default {
           </a>
         </li>
         <li class="text-primary-500 font-Inter relative text-sm flex gap-2">
-          Shipment Agency
+          Shipment
           <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180" />
         </li>
         <li class="font-Inter relative inline-block text-sm text-slate-500 dark:text-white">
-          Show Shipment Agency
+          Show Shipment
         </li>
       </ul>
     </div>
@@ -64,8 +64,8 @@ export default {
             {{ new Date(brand.created_at).toISOString().slice(0, 10)  }}
           </div>
           <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_1" v-if="brand.create_author">By: {{ brand.create_author.name}}</div>
-            <div id="clmn_chart_1" v-else>By: -</div>
+            <div v-if="brand.create_author">By: {{ brand.create_author.name}}</div>
+            <div v-else>By: -</div>
           </div>
         </div>
 
@@ -82,7 +82,7 @@ export default {
 
         <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
           <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Website
+            Shipment Agency
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.websites[0]">
             <a>{{ brand.websites[0].website }}</a>
@@ -90,14 +90,11 @@ export default {
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
             -
           </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
-          </div>
         </div>
 
         <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
           <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Email
+            Status
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.emails[0]">
             {{ brand.emails[0].email }}
@@ -105,29 +102,11 @@ export default {
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
             -
           </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
-          </div>
         </div>
 
         <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
           <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Phone
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.emails[0]">
-            {{ brand.emails[0].email }}
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            -
-          </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
-          </div>
-        </div>
-
-        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
-          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Logo
+            Estimated Delivery Time
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.logo_file_name">
             <img :src="'/images/' + brand.logo_file_name" alt="">
@@ -135,8 +114,53 @@ export default {
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
             -
           </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Actual Delivery Date 
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.logo_file_name">
+            <img :src="'/images/' + brand.logo_file_name" alt="">
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            -
+          </div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Shipment Cost
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.logo_file_name">
+            <img :src="'/images/' + brand.logo_file_name" alt="">
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            -
+          </div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Shipment Total
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.logo_file_name">
+            <img :src="'/images/' + brand.logo_file_name" alt="">
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            -
+          </div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Shipment Notes
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.logo_file_name">
+            <img :src="'/images/' + brand.logo_file_name" alt="">
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            -
           </div>
         </div>
       </div>

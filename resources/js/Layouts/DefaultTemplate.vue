@@ -13,12 +13,10 @@
            class="fixed top-0 z-10 hidden h-screen w-screen bg-slate-900 bg-opacity-50 backdrop-blur-sm"></div>
       <div class="logo-segment">
         <Link class="flex items-center" href="/index">
-<!--          <img src="/images/logo/uabcs-logo.png" style="width: 25%" alt="logo">-->
           <img src="/images/logo/logo-c.svg" class="black_logo" alt="logo">
           <img src="/images/logo/logo-c-white.svg" class="white_logo" alt="logo">
           <span class="font-Inter text-xl font-bold text-slate-900 ltr:ml-3 rtl:mr-3 dark:text-white">DashCode</span>
         </Link>
-        <!-- Sidebar Type Button -->
         <div id="sidebar_type" class="cursor-pointer text-lg text-slate-900 dark:text-white">
           <Icon class="sidebarDotIcon extend-icon text-slate-900 dark:text-slate-200" icon="fa-regular:dot-circle" />
           <Icon class="sidebarDotIcon collapsed-icon text-slate-900 dark:text-slate-200" icon="material-symbols:circle-outline" />
@@ -58,12 +56,6 @@
                 <span>Products</span>
               </span>
             </Link>
-            <Link href="/raw" class="navItem">
-              <span class="flex items-center">
-                <Icon class=" nav-icon" icon="gridicons:shutter"/>
-                <span>Raw Materials</span>
-              </span>
-            </Link>
             <Link href="/customers" class="navItem">
               <span class="flex items-center">
                 <Icon class=" nav-icon" icon="raphael:customer"/>
@@ -76,16 +68,22 @@
                 <span>Orders</span>
               </span>
             </Link>
-            <Link href="/inventory" class="navItem">
-              <span class="flex items-center">
-                <Icon class=" nav-icon" icon="heroicons:rectangle-stack"/>
-                <span>Catalogues</span>
-              </span>
-            </Link>
             <Link href="/brands" class="navItem">
               <span class="flex items-center">
                 <Icon class=" nav-icon" icon="tabler:brand-cake"/>
                 <span>Brands</span>
+              </span>
+            </Link>
+            <Link href="/shipments-agencies" class="navItem">
+              <span class="flex items-center">
+                <Icon class=" nav-icon" icon="mdi:cargo-ship"/>
+                <span>Shipments Agencys</span>
+              </span>
+            </Link>
+            <Link href="/shipments" class="navItem">
+              <span class="flex items-center">
+                <Icon class=" nav-icon" icon="streamline:shipment-check"/>
+                <span>Shipments</span>
               </span>
             </Link>
           </li>

@@ -28,7 +28,11 @@
             confirmElimination () {
                 this.popUpDelete = false
                 router.delete(`/categories/${this.selectedId}`)
-            }
+            },
+            formatCouponCode(code) {
+                const formattedCode = code.replace(/-/g, '');
+                return formattedCode.replace(/(.{4})/g, '$1-').slice(0, -1);
+            },
         }
     }
 </script>
@@ -118,6 +122,9 @@
                                     FINISHED DATE
                                 </th>
                                 <th scope="col" class=" table-th ">
+                                    DISCOUNT
+                                </th>
+                                <th scope="col" class=" table-th ">
                                     TIMES USED
                                 </th>
                                 <th scope="col" class=" table-th ">
@@ -127,9 +134,6 @@
                                     IS ACTIVE
                                 </th>
                                 <th scope="col" class=" table-th ">
-                                    DISCOUNT
-                                </th>
-                                <th scope="col" class=" table-th ">
                                     Action
                                 </th>
                             </tr>
@@ -137,13 +141,14 @@
                         <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
                           <tr v-for="coupon in coupons">
                               <td class="table-td">{{ coupon.id }}</td>
-                              <td class="table-td table-td-website">{{ coupon.code }}</td>
+                              <td class="table-td table-td-website">{{ formatCouponCode(coupon.code) }}</td>
                               <td class="table-td" >{{ new Date(coupon.created_at).toISOString().slice(0, 10) }}</td>
                               <td class="table-td" >{{ new Date(coupon.end_date).toISOString().slice(0, 10) }}</td>
                               <td class="table-td" >{{ coupon.discount }}</td>
                               <td class="table-td" >{{ coupon.uses }}</td>
                               <td class="table-td" >{{ coupon.max_uses }}</td>
-                              <td class="table-td" >{{ coupon.is_active }}</td>
+                              <td class="table-td" v-if="coupon.is_active==1">true</td>
+                              <td class="table-td" v-else>false</td>
                               <td class="table-td">
                                 <div class="dropstart relative">
                                   <button class="inline-flex justify-center items-center" type="button" id="tableDropdownMenuButton"

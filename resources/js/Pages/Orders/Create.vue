@@ -8,17 +8,22 @@ export default {
   data () {
     return {
       form: {
-        name: null,
-        website: null,
-        email: null,
-        phone: null,
-        logo: null
+        customer: null,
+        totalPrice: null,
+        totalTax: null,
+        totalDiscount: null,
+        coupon: null, 
+        status: null,
+        notes: null
       }
     }
   },
   methods: {
     submit () {
-      router.post('/brands', this.form)
+      router.post('/orders', this.form)
+      .catch(error => {
+          this.errors = error.response.data;
+      })
     },
     onFileChange (e) {
       this.form.logo = e.target.files[0]

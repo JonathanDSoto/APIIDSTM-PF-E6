@@ -70,14 +70,15 @@
                 {{ status }}
             </div>
 
-            <form @submit.prevent="submit">
+            <form @submit.prevent="submit" style="background-color: lightcyan; padding: 20px; border-radius: 20px">
                 <div>
-                    <InputLabel for="email" value="Email" />
+                    <InputLabel for="email" value="Email" style="color: black"/>
 
                     <TextInput
                         id="email"
                         type="email"
-                        class="mt-1 block w-full p-2"
+                        class="mt-1 block w-full p-2 text-black"
+                        style="background-color: white;"
                         v-model="form.email"
                         required
                         autofocus
@@ -93,7 +94,8 @@
                     <TextInput
                         id="password"
                         type="password"
-                        class="mt-1 block w-full p-2"
+                        class="mt-1 block w-full p-2 text-black"
+                        style="background-color: white;"
                         v-model="form.password"
                         required
                         autocomplete="current-password"

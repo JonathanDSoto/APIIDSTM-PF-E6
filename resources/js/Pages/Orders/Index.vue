@@ -108,7 +108,7 @@
                                                                     Total Price
                                                                 </th>
                                                                 <th scope="col" class=" table-th ">
-                                                                    Coupon ID
+                                                                    Taxes
                                                                 </th>
                                                                 <th scope="col" class=" table-th ">
                                                                     Status

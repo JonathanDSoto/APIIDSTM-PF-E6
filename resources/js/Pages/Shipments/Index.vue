@@ -13,7 +13,7 @@ export default {
     }
   },
   props: {
-    shipments_agencies: {
+    shipments: {
       type: Array,
       required: true
     }
@@ -29,7 +29,7 @@ export default {
     },
     confirmElimination () {
       this.popUpDelete = false
-      router.delete(`/shipments-agencies/${this.selectedId}`)
+      router.delete(`/shipments/${this.selectedId}`)
     }
   }
 }
@@ -76,7 +76,7 @@ export default {
       <div class="mb-5">
         <ul class="m-0 list-none p-0">
           <li class="text-primary-500 font-Inter relative top-[3px] inline-block text-base">
-          <a href="/">
+          <a href="index.html">
             <span class="inline-block align-[0px]">
               <Icon icon="heroicons-outline:home" />
             </span>
@@ -86,7 +86,7 @@ export default {
           </a>
           </li>
           <li class="text-primary-500 font-Inter relative inline-block text-sm ">
-            Shipments Agencies
+            Shipments
           </li>
         </ul>
       </div>
@@ -94,10 +94,10 @@ export default {
 
       <!-- BEGIN: Action Area -->
       <div>
-        <Link href="/shipments-agencies/create" class="btn btn-dark m-1 inline-flex justify-center dark:bg-slate-700 dark:text-slate-300 ">
+        <Link href="/brands/create" class="btn btn-dark m-1 inline-flex justify-center dark:bg-slate-700 dark:text-slate-300 ">
         <span class="flex items-center">
           <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="ph:plus-bold"/>
-          <span>Add Brand</span>
+          <span>Add Shipments</span>
         </span>
         </Link>
       </div>
@@ -117,7 +117,7 @@ export default {
     <!--    <div class="grid grid-cols-1 gap-5">-->
     <div class="card mt-6">
       <header class=" card-header noborder">
-        <h4 class="card-title">Brands</h4>
+        <h4 class="card-title">Shipments</h4>
       </header>
       <div class="card-body px-6 pb-6">
         <div class="overflow-x-auto">
@@ -130,19 +130,19 @@ export default {
                     ID
                   </th>
                   <th scope="col" class="table-th">
-                    Name
+                    Tracking Number
                   </th>
                   <th scope="col" class="table-th">
-                    Website
+                    Status
                   </th>
                   <th scope="col" class="table-th">
-                    Phone
+                    Shipment Agency 
                   </th>
                   <th scope="col" class="table-th">
-                    Email
+                    Sent Date
                   </th>
                   <th scope="col" class="table-th">
-                    Action
+                    Estimated Delivery Date
                   </th>
                 </tr>
                 </thead>
@@ -166,25 +166,25 @@ export default {
                       </button>
                       <ul class="dropdown-menu absolute z-[2] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-sm text-slate-700 shadow dark:bg-slate-700 dark:text-white">
                         <li>
-                          <Link :href="'/shipments-agencies/' + brand.id"
+                          <Link :href="'/shipments/' + brand.id"
                              class="flex w-full cursor-pointer items-center space-x-2 border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm capitalize  first:rounded-t last:mb-0 last:rounded-b hover:bg-slate-900 hover:text-white rtl:space-x-reverse dark:text-slate-300 dark:hover:bg-slate-600  dark:hover:bg-opacity-70">
                             <Icon icon="heroicons-outline:eye"/>
                             <span>View</span>
                           </Link>
                         </li>
                         <li>
-                          <Link :href="'/shipments-agencies/' + brand.id + '/edit'"
+                          <Link :href="'/shipments/' + brand.id + '/edit'"
                              class="flex w-full cursor-pointer items-center space-x-2 border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm capitalize first:rounded-t last:mb-0 last:rounded-b hover:bg-slate-900 hover:text-white rtl:space-x-reverse dark:text-slate-300 dark:hover:bg-slate-600 dark:hover:bg-opacity-70">
                             <Icon icon="clarity:note-edit-line"/>
                             <span>Edit</span>
                           </Link>
                         </li>
                         <li>
-                          <button @click="deleteConfirmation(brand)"
+                          <Button @click="deleteConfirmation(brand)"
                              class="flex w-full cursor-pointer items-center space-x-2 border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm capitalize first:rounded-t last:mb-0 last:rounded-b hover:bg-slate-900 hover:text-white rtl:space-x-reverse dark:text-slate-300 dark:hover:bg-slate-600 dark:hover:bg-opacity-70">
                             <Icon icon="fluent:delete-28-regular"/>
                             <span>Delete</span>
-                          </button>
+                          </Button>
                         </li>
                       </ul>
                     </div>
@@ -197,8 +197,6 @@ export default {
         </div>
       </div>
     </div>
-    <!--    </div>-->
-    <!-- END: Card Table  -->
   </DefaultTemplate>
 </template>
 

@@ -66,32 +66,48 @@ export default {
           <div class="card-text h-full ">
             <form class="space-y-4" @submit.prevent="submit">
               <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Customer</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.name" required>
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Total Price</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.website">
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Total Tax</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.phone">
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Total Discount</label>
-                <input type="email" class="form-control" placeholder="" v-model="form.email">
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Coupon</label>
-                <input type="email" class="form-control" placeholder="" v-model="form.email">
+                <label for="largeInput" class="inline-inputLabel">Tracking Number</label>
+                <input type="number" class="form-control" placeholder="" required v-model="form.name">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Status</label>
+                <input type="text" class="form-control" placeholder="" v-model="form.website">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Shipment Agency</label>
                 <input type="email" class="form-control" placeholder="" v-model="form.email">
               </div>
               <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Notes</label>
-                <input type="email" class="form-control" placeholder="" v-model="form.email">
+                <label for="largeInput" class="inline-inputLabel">Sent Date</label>
+                <input type="number" class="form-control" placeholder="" v-model="form.phone">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Estimated Delivery Date</label>
+                <input type="date" class="form-control" placeholder="" v-model="form.phone">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Actual Delivery State</label>
+                <input type="date" class="form-control" placeholder="" v-model="form.phone">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Shipment Cost</label>
+                <input type="number" class="form-control" placeholder="" v-model="form.phone">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Shipment Tax</label>
+                <input type="number" class="form-control" placeholder="" v-model="form.phone">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Shipment Discount</label>
+                <input type="number" class="form-control" placeholder="" v-model="form.phone">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Shipment Total</label>
+                <input type="number" class="form-control" placeholder="" v-model="form.phone">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Shipment Notes</label>
+                <input type="text" class="form-control" placeholder="" v-model="form.phone">
               </div>
               <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
             </form>
