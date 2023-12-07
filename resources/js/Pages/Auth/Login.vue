@@ -83,7 +83,7 @@ export default {
                   <label class="inline-flex cursor-pointer items-center">
                     <input type="checkbox" class="hidden" name="checkbox">
                     <span class="relative inline-flex h-4 w-4 flex-none rounded border border-slate-100 bg-slate-100 transition-all duration-150 ltr:mr-3 rtl:ml-3 dark:border-slate-800 dark:bg-slate-900">
-                    <img src="assets/images/icon/ck-white.svg" alt="" class="m-auto block h-[10px] w-[10px] opacity-0"></span>
+                    <img src="/images/icon/ck-white.svg" alt="" class="m-auto block h-[10px] w-[10px] opacity-0"></span>
                     <span class="text-sm leading-6 text-slate-500 dark:text-slate-400">Keep me signed in</span>
                   </label>
                 </div>
