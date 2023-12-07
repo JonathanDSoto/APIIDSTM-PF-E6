@@ -5,11 +5,11 @@ import { router } from '@inertiajs/vue3'
 export default {
   name: 'Index',
   components: { DefaultTemplate },
-  data() {
-    return{
+  data () {
+    return {
       popUpDelete: false,
-      selectedId: 0,
-    };
+      selectedId: 0
+    }
   },
   props: {
     brands: {
@@ -18,24 +18,17 @@ export default {
     }
   },
   methods: {
-    deleteConfirmation(brandId){
-      this.selectedId = brandId;
-      this.popUpDelete = true;
-          console.log("Ey");
-          console.log(this.success);
+    deleteConfirmation (brandId) {
+      this.selectedId = brandId
+      this.popUpDelete = true
     },
-    cancelElimination(){
-      this.popUpDelete = false;
+    cancelElimination () {
+      this.popUpDelete = false
     },
-    confirmElimination() {
-          this.popUpDelete = false;
-          router.delete(`/brands/${this.selectedId}`)
-          .then(() => {
-          })
-          .catch(error => {
-              this.errors = error.response.data;
-          });
-      }
+    confirmElimination () {
+      this.popUpDelete = false
+      router.delete(`/brands/${this.selectedId}`)
+    }
   }
 }
 </script>
