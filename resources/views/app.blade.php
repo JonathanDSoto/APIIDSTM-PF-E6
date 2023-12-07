@@ -27,8 +27,8 @@
     </head>
     <body class="font-sans antialiased dashcode-app" id="body_class" style>
         @inertia
-{{--        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>--}}
-{{--        <script src="{{ asset('js/rt-plugins.js') }}"></script>--}}
-{{--        <script src="{{ asset('js/app.js') }}"></script>--}}
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('js/rt-plugins.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

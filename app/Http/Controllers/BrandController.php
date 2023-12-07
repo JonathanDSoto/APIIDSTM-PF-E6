@@ -72,6 +72,12 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
+        $brand->load([
+            'emails',
+            'phone_numbers',
+            'websites',
+        ]);
+
         return Inertia::render('Brand/Edit', [
             'brand' => $brand,
         ]);
@@ -84,7 +90,7 @@ class BrandController extends Controller
     {
         $validated = $request->validated();
 
-        if ($validated->hasFile('logo')) {
+        if (isset($validated['logo'])) {
             if ($brand->logo_file_name) {
                 unlink(public_path('images/' . $brand->logo_file_name));
             }

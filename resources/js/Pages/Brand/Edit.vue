@@ -1,90 +1,95 @@
 <script>
-    import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
-    import { router } from '@inertiajs/vue3'
-    export default {
-        components: {
-            DefaultTemplate,
-        },
-        data() {
-          return{
-              form:{
-                  name: '',
-              }
-          }
-        },
-        methods: {
-            submit(){
-                router.patch('/brands',this.form)
-                .catch(error => {
-                    this.errors = error.response.data;
-                })
-            }
-        }
+import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
+import { router } from '@inertiajs/vue3'
+
+export default {
+  name: 'Edit',
+  components: { DefaultTemplate },
+  props: {
+    brand: Object
+  },
+  data () {
+    return {
+      form: {
+        name: this.brand.name,
+        website: this.brand.websites[0] !== undefined ? this.brand.websites[0].website : null,
+        email: this.brand.emails[0] !== undefined ? this.brand.emails[0].email : null,
+        phone: this.brand.phone_numbers[0] !== undefined ? this.brand.phone_numbers[0].phone_number : null,
+        logo: null
+      }
     }
+  },
+  methods: {
+    submit () {
+      router.put('/brands/' + this.brand.id, this.form)
+    },
+    onFileChange (e) {
+      this.form.logo = e.target.files[0]
+    }
+  }
+}
 </script>
 
 <template>
-    <DefaultTemplate>
-        <div class="mb-5">
-        <ul class="m-0 p-0 list-none">
-            <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-            <a href="/">
-                <iconify-icon icon="heroicons-outline:home"></iconify-icon>
-                <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
-            </a>
-            </li>
-            <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                Brand
-            <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
-            </li>
-            <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                Modify Brand Information
-            </li>
-        </ul>
+  <DefaultTemplate>
+    <div class="mb-5">
+      <ul class="m-0 list-none p-0">
+        <li class="text-primary-500 font-Inter relative top-[3px] inline-block text-base ">
+          <a href="/">
+            <span class="inline-block align-[0px]">
+              <Icon icon="heroicons-outline:home" />
+            </span>
+            <span class="inline-block align-[0px]">
+              <Icon icon="heroicons-outline:chevron-right" class="relative text-sm text-slate-500 rtl:rotate-180" />
+            </span>
+          </a>
+        </li>
+        <li class="text-primary-500 font-Inter relative inline-block text-sm ">
+          Brand
+          <span class="inline-block align-[0px]">
+            <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180" />
+          </span>
+        </li>
+        <li class="font-Inter relative inline-block text-sm text-slate-500 dark:text-white">
+          Modify Brand Information
+        </li>
+      </ul>
     </div>
     <div>
-            <div class="card">
-                <div class="card-body flex flex-col p-6">
-                    <header class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5 -mx-6 px-6">
-                        <div class="flex-1">
-                            <div class="card-title text-slate-900 dark:text-white">Modify Brand</div>
-                        </div>
-                    </header>
-                <div class="card-text h-full ">
-                    <form class="space-y-4">
-                        <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Brand Name</label>
-                            <input type="text" class="form-control" placeholder="" required>
-                        </div>
-                        <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Website</label>
-                            <input type="text" class="form-control" placeholder="">
-                        </div>
-                        <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Website</label>
-                            <input type="text" class="form-control" placeholder="">
-                        </div>
-                        <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Phone</label>
-                            <input type="number" class="form-control" placeholder="">
-                        </div>
-                        <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Phone</label>
-                            <input type="number" class="form-control" placeholder="">
-                        </div>
-                        <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Email</label>
-                            <input type="email" class="form-control" placeholder="">
-                        </div>
-                        <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Logo</label>
-                            <input type="image" class="form-control" placeholder="">
-                        </div>
-                        <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
-                    </form>
-                </div>
+      <div class="card">
+        <div class="card-body flex flex-col p-6">
+          <header class="-mx-6 mb-5 flex items-center border-b border-slate-100 px-6 pb-5 dark:border-slate-700">
+            <div class="flex-1">
+              <div class="card-title text-slate-900 dark:text-white">Modify Brand</div>
             </div>
+          </header>
+          <div class="card-text h-full ">
+            <form class="space-y-4" @submit.prevent="submit">
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Brand Name</label>
+                <input type="text" class="form-control" placeholder="" v-model="form.name" required>
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Website</label>
+                <input type="text" class="form-control" placeholder="" v-model="form.website">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Phone</label>
+                <input type="text" class="form-control" placeholder="" v-model="form.phone">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Email</label>
+                <input type="email" class="form-control" placeholder="" v-model="form.email">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Logo</label>
+                <input type="image" class="form-control" placeholder="" v-on:change="onFileChange">
+              </div>
+              <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
+            </form>
+          </div>
         </div>
-        </div>
-    </DefaultTemplate>
+      </div>
+    </div>
+  </DefaultTemplate>
 </template>

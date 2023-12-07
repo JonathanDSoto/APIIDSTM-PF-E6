@@ -3,9 +3,8 @@ import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
 import { router } from '@inertiajs/vue3'
 
 export default {
-  components: {
-    DefaultTemplate
-  },
+  name: 'Create',
+  components: { DefaultTemplate },
   data () {
     return {
       form: {
@@ -31,18 +30,24 @@ export default {
 <template>
   <DefaultTemplate>
     <div class="mb-5">
-      <ul class="m-0 p-0 list-none">
-        <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
+      <ul class="m-0 list-none p-0">
+        <li class="text-primary-500 font-Inter relative top-[3px] inline-block text-base ">
           <a href="/">
-            <Icon icon="heroicons-outline:home" />
-            <Icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180" />
+            <span class="inline-block align-[0px]">
+              <Icon icon="heroicons-outline:home" />
+            </span>
+            <span class="inline-block align-[0px]">
+              <Icon icon="heroicons-outline:chevron-right" class="relative text-sm text-slate-500 rtl:rotate-180" />
+            </span>
           </a>
         </li>
-        <li class="inline-block relative text-sm text-primary-500 font-Inter ">
+        <li class="text-primary-500 font-Inter relative inline-block text-sm ">
           Brand
-          <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180" />
+          <span class="inline-block align-[0px]">
+            <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180" />
+          </span>
         </li>
-        <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
+        <li class="font-Inter relative inline-block text-sm text-slate-500 dark:text-white">
           Create Brand
         </li>
       </ul>
@@ -50,7 +55,7 @@ export default {
     <div>
       <div class="card">
         <div class="card-body flex flex-col p-6">
-          <header class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5 -mx-6 px-6">
+          <header class="-mx-6 mb-5 flex items-center border-b border-slate-100 px-6 pb-5 dark:border-slate-700">
             <div class="flex-1">
               <div class="card-title text-slate-900 dark:text-white">Create Brand</div>
             </div>
@@ -77,7 +82,7 @@ export default {
                 <label for="largeInput" class="inline-inputLabel">Logo</label>
                 <input type="file" class="form-control" placeholder="" v-on:change="onFileChange">
               </div>
-              <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
+              <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
             </form>
           </div>
         </div>

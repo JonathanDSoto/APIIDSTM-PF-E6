@@ -15,21 +15,21 @@ export default {
 
 <template>
   <DefaultTemplate>
-    <div class="md:flex justify-between items-center">
+    <div class="items-center justify-between md:flex">
       <!-- BEGIN: Breadcrumb -->
       <div class="mb-5">
-        <ul class="m-0 p-0 list-none">
-          <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter">
+        <ul class="m-0 list-none p-0">
+          <li class="text-primary-500 font-Inter relative top-[3px] inline-block text-base">
           <a href="index.html">
             <span class="inline-block align-[0px]">
               <Icon icon="heroicons-outline:home" />
             </span>
             <span class="inline-block align-[0px]">
-              <Icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"/>
+              <Icon icon="heroicons-outline:chevron-right" class="relative text-sm text-slate-500 rtl:rotate-180"/>
             </span>
           </a>
           </li>
-          <li class="inline-block relative text-sm text-primary-500 font-Inter ">
+          <li class="text-primary-500 font-Inter relative inline-block text-sm ">
             Brands
           </li>
         </ul>
@@ -38,7 +38,7 @@ export default {
 
       <!-- BEGIN: Action Area -->
       <div>
-        <Link href="/brands/create" class="btn inline-flex justify-center btn-dark dark:bg-slate-700 dark:text-slate-300 m-1 ">
+        <Link href="/brands/create" class="btn btn-dark m-1 inline-flex justify-center dark:bg-slate-700 dark:text-slate-300 ">
         <span class="flex items-center">
           <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="ph:plus-bold"/>
           <span>Add Brand</span>
@@ -55,10 +55,10 @@ export default {
         <h4 class="card-title">Brands</h4>
       </header>
       <div class="card-body px-6 pb-6">
-        <div class="overflow-x-auto -mx-6">
+        <div class="overflow-x-auto">
           <div class="inline-block min-w-full align-middle">
-            <div class="overflow-hidden ">
-              <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
+            <div class="overflow-hidden">
+              <table class="min-w-full table-fixed divide-y divide-slate-100 dark:divide-slate-700">
                 <thead class=" border-t border-slate-100 dark:border-slate-800">
                 <tr>
                   <th scope="col" class="table-th">
@@ -81,42 +81,42 @@ export default {
                   </th>
                 </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
+                <tbody class="divide-y divide-slate-100 bg-white dark:divide-slate-700 dark:bg-slate-800">
                 <tr v-for="brand in brands" v-bind:key="brand.id">
                   <td class="table-td">{{ brand.id }}</td>
                   <td class="table-td" v-if="brand.logo_file_name">
-                    <img class="rounded-full w-10" :src="'/images/' + brand.logo_file_name" alt="">
+                    <img class="w-10 rounded-full" :src="'/images/' + brand.logo_file_name" alt="">
                   </td>
                   <td class="table-td" v-else>-</td>
                   <td class="table-td">{{ brand.name}}</td>
-                  <td class="table-td table-td-website" v-if="brand.websites[0]">{{ brand.websites[0].website }}</td>
+                  <td class="table-td table-td-website whitespace-nowrap" v-if="brand.websites[0]">{{ brand.websites[0].website }}</td>
                   <td class="table-td table-td-website" v-else>-</td>
-                  <td class="table-td" v-if="brand.phone_numbers[0]">{{ brand.phone_numbers[0].phone_number }}</td>
+                  <td class="table-td table-td-phone_number whitespace-nowrap" v-if="brand.phone_numbers[0]">{{ brand.phone_numbers[0].phone_number }}</td>
                   <td class="table-td" v-else>-</td>
                   <td class="table-td">
                     <div class="dropstart relative">
-                      <button class="inline-flex justify-center items-center" type="button" id="tableDropdownMenuButton"
+                      <button class="inline-flex items-center justify-center" type="button" id="tableDropdownMenuButton"
                               data-bs-toggle="dropdown" aria-expanded="false">
                         <Icon class="text-xl ltr:ml-2 rtl:mr-2" icon="heroicons-outline:dots-vertical"/>
                       </button>
-                      <ul class="dropdown-menu min-w-max absolute text-sm text-slate-700 dark:text-white hidden bg-white dark:bg-slate-700 shadow z-[2] float-left overflow-hidden list-none text-left rounded-lg mt-1 m-0 bg-clip-padding border-none">
+                      <ul class="dropdown-menu absolute z-[2] float-left m-0 mt-1 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-sm text-slate-700 shadow dark:bg-slate-700 dark:text-white">
                         <li>
                           <Link :href="'/brands/' + brand.id"
-                             class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300  last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize  rtl:space-x-reverse">
+                             class="flex w-full cursor-pointer items-center space-x-2 border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm capitalize  first:rounded-t last:mb-0 last:rounded-b hover:bg-slate-900 hover:text-white rtl:space-x-reverse dark:text-slate-300 dark:hover:bg-slate-600  dark:hover:bg-opacity-70">
                             <Icon icon="heroicons-outline:eye"/>
                             <span>View</span>
                           </Link>
                         </li>
                         <li>
-                          <Link :href="'/brands/' + brand.id + '/edit'" data-bs-toggle="modal" data-bs-target="#editModal"
-                             class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
+                          <Link :href="'/brands/' + brand.id + '/edit'"
+                             class="flex w-full cursor-pointer items-center space-x-2 border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm capitalize first:rounded-t last:mb-0 last:rounded-b hover:bg-slate-900 hover:text-white rtl:space-x-reverse dark:text-slate-300 dark:hover:bg-slate-600 dark:hover:bg-opacity-70">
                             <Icon icon="clarity:note-edit-line"/>
                             <span>Edit</span>
                           </Link>
                         </li>
                         <li>
                           <Link href="#"
-                             class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
+                             class="flex w-full cursor-pointer items-center space-x-2 border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm capitalize first:rounded-t last:mb-0 last:rounded-b hover:bg-slate-900 hover:text-white rtl:space-x-reverse dark:text-slate-300 dark:hover:bg-slate-600 dark:hover:bg-opacity-70">
                             <Icon icon="fluent:delete-28-regular"/>
                             <span>Delete</span>
                           </Link>
