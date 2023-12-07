@@ -12,10 +12,20 @@
       <div id="bodyOverlay"
            class="fixed top-0 z-10 hidden h-screen w-screen bg-slate-900 bg-opacity-50 backdrop-blur-sm"></div>
       <div class="logo-segment">
-        <a class="flex items-center" href="/index">
-          <img src="/images/logo/uabcs-logo.png" style="width: 25%" alt="logo">
-          <span class="font-Inter text-xl font-bold text-slate-900 ltr:ml-3 rtl:mr-3 dark:text-white">UABCS</span>
-        </a>
+        <Link class="flex items-center" href="/index">
+<!--          <img src="/images/logo/uabcs-logo.png" style="width: 25%" alt="logo">-->
+          <img src="/images/logo/logo-c.svg" class="black_logo" alt="logo">
+          <img src="/images/logo/logo-c-white.svg" class="white_logo" alt="logo">
+          <span class="font-Inter text-xl font-bold text-slate-900 ltr:ml-3 rtl:mr-3 dark:text-white">DashCode</span>
+        </Link>
+        <!-- Sidebar Type Button -->
+        <div id="sidebar_type" class="cursor-pointer text-lg text-slate-900 dark:text-white">
+          <Icon class="sidebarDotIcon extend-icon text-slate-900 dark:text-slate-200" icon="fa-regular:dot-circle" />
+          <Icon class="sidebarDotIcon collapsed-icon text-slate-900 dark:text-slate-200" icon="material-symbols:circle-outline" />
+        </div>
+        <button class="sidebarCloseIcon inline-block text-2xl md:hidden">
+          <Icon class="text-slate-900 dark:text-slate-200" icon="clarity:window-close-line" />
+        </button>
       </div>
       <div id="nav_shadow" class="nav_shadow nav-shadow pointer-events-none absolute top-[80px] z-[1] h-[60px] w-full opacity-0 transition-all
                 duration-200"></div>
@@ -80,8 +90,6 @@
             </Link>
           </li>
         </ul>
-        <!-- Upgrade Your Business Plan Card Start -->
-        <!-- Upgrade Your Business Plan Card Start -->
       </div>
     </div>
     <!-- End: Sidebar -->
@@ -94,8 +102,10 @@
             <div class="flex h-full items-center justify-between">
               <div class="vertical-box flex items-center space-x-4 rtl:space-x-reverse md:space-x-4">
                 <a href="/" class="mobile-logo inline-block xl:hidden">
-                  <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="black_logo" alt="logo">
-                  <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="white_logo" alt="logo">
+<!--                  <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="black_logo" alt="logo">-->
+<!--                  <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="white_logo" alt="logo">-->
+                  <img src="/images/logo/logo-c.svg" class="black_logo" alt="logo">
+                  <img src="/images/logo/logo-c-white.svg" class="white_logo" alt="logo">
                 </a>
                 <button class="smallDeviceMenuController open-sdiebar-controller hidden md:inline-block xl:hidden">
                   <Icon class="relative top-[2px] bg-transparent text-xl leading-none text-slate-900 dark:text-white"
@@ -115,12 +125,16 @@
               <div class="horizental-box items-center space-x-4 rtl:space-x-reverse">
                 <a href="/" class="leading-0">
                   <span class="hidden xl:inline-block">
-                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">
-                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo" alt="logo">
+<!--                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">-->
+<!--                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo" alt="logo">-->
+          <img src="/images/logo/logo-c.svg" class="black_logo" alt="logo">
+          <img src="/images/logo/logo-c-white.svg" class="white_logo" alt="logo">
                   </span>
                   <span class="inline-block xl:hidden">
-                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">
-                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo " alt="logo">
+<!--                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">-->
+<!--                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo " alt="logo">-->
+          <img src="/images/logo/logo-c.svg" class="black_logo" alt="logo">
+          <img src="/images/logo/logo-c-white.svg" class="white_logo" alt="logo">
                   </span>
                 </a>
                 <button class="smallDeviceMenuController open-sdiebar-controller hidden md:inline-block xl:hidden">
@@ -298,3 +312,5 @@
     </div>
   </main>
 </template>
+<script setup>
+</script>
