@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('brand_website', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('brand_id')->constrained();
-            $table->foreignId('website_id')->constrained();
+            $table->foreignId('brand_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('website_id')->constrained()->cascadeOnDelete();
         });
     }
 
