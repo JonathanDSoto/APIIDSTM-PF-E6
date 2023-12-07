@@ -34,6 +34,16 @@ export default {
         </li>
       </ul>
     </div>
+    <div class="alert alert-success" v-if="$page.props.flash.success">
+        <div class="flex items-start space-x-3 rtl:space-x-reverse">
+            <div class="flex-1">
+                {{$page.props.flash.success}}
+            </div>
+        </div>
+    </div>
+    <div v-if="$page.props.flash.success">
+        <br>
+    </div>
     <div class="card p-6">
       <div class="grid grid-cols-1 place-content-center gap-5 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
         <div class="flex h-full items-center space-x-4 rtl:space-x-reverse">
@@ -66,10 +76,8 @@ export default {
           <div class="text-lg font-medium text-slate-900 dark:text-white">
             {{ new Date(brand.updated_at).toISOString().slice(0, 10) }}
           </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2" v-if="brand.update_author">By: {{ brand.update_author.name }}</div>
-            <div id="clmn_chart_2" v-else>By: -</div>
-          </div>
+            <div v-if="brand.create_author">By: {{ brand.create_author.name }}</div>
+            <div v-else>By: Unknown author</div>
         </div>
 
         <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">

@@ -1,5 +1,5 @@
 <script>
-import DefaultTemplate from '../../layouts/DefaultTemplate.vue'
+import DefaultTemplate from '@/layouts/DefaultTemplate.vue'
 import { router } from '@inertiajs/vue3'
 
 export default {
@@ -16,7 +16,6 @@ export default {
             }
         }
     },
-    
     methods: {
         submit(){
             router.post('/categories',this.form)
@@ -57,8 +56,7 @@ export default {
                 <div class="card-body flex flex-col p-6">
                     <header class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5 -mx-6 px-6">
                         <div class="flex-1">
-                            <div class="card-title text-slate-900 dark:text-white" v-if=$page.props.flag>Modify Category</div>
-                            <div class="card-title text-slate-900 dark:text-white" v-else>Create Category</div>
+                            <div class="card-title text-slate-900 dark:text-white">Create Category</div>
                         </div>
                     </header>
                     <div class="card-text h-full ">
@@ -76,7 +74,7 @@ export default {
                             </ul>
                             <div class="input-area relative pl-28">
                                 <label for="largeInput" class="inline-inputLabel">Category Name</label>
-                                <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" pattern="[a-zA-Z]*">
+                                <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" pattern="[a-zA-Z]*" @keypress="isLetter($event)">
                             </div>
                             <button type="submit" class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                         </form>

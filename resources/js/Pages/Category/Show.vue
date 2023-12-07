@@ -1,19 +1,11 @@
 <script>
-    import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
+    import DefaultTemplate from "@/layouts/DefaultTemplate.vue";
     export default {
-        data() {
-          return {
-                name: this.$page.props.category.name,
-                id: this.$page.props.category.id,
-                creationDate: this.$page.props.category.created_at,
-                updatedDate: this.$page.props.category.updated_at,
-                creator: this.$page.props.category.creator,
-          };
-        },
         components: {
             DefaultTemplate,
         },    
         props:{
+            category: Object,
             errors: Object,
             success: null
         },
@@ -41,6 +33,16 @@
                 </li>
             </ul>
         </div>
+        <div class="alert alert-success" v-if="$page.props.flash.success">
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                <div class="flex-1">
+                    {{$page.props.flash.success}}
+                </div>
+            </div>
+        </div>
+        <div v-if="$page.props.flash.success">
+            <br>
+        </div>
         <div class="card p-6">
             <div class="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5 place-content-center">
                 <div class="flex space-x-4 h-full items-center rtl:space-x-reverse">
@@ -57,10 +59,11 @@
                         Creation Date
                     </div>
                     <div class="text-slate-900 dark:text-white text-lg font-medium">
-                        {{ new Date(creationDate).toISOString().slice(0, 10) }}
+                        {{ new Date(category.created_at).toISOString().slice(0, 10) }}
                     </div>
                     <div class="ml-auto max-w-[124px]">
-                        <div id="clmn_chart_1">By: Alexby11</div>
+                        <div v-if="category.create_author">By: {{ category.create_author.name }}</div>
+                        <div v-else>By: Unknown author</div>
                     </div>
                 </div>
 
@@ -69,10 +72,11 @@
                         Modification Date
                     </div>
                     <div class="text-slate-900 dark:text-white text-lg font-medium">
-                        {{ new Date(updatedDate).toISOString().slice(0, 10) }}
+                        {{ new Date(category.updated_at).toISOString().slice(0, 10) }}
                     </div>
                     <div class="ml-auto max-w-[124px]">
-                        <div id="clmn_chart_2">By: Willyrex</div>
+                        <div v-if="category.update_autor">By: {{ category.update_autor.name }}</div>
+                        <div v-else>By: Unknown author</div>
                     </div>
                 </div>
             </div>

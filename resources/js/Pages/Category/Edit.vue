@@ -1,5 +1,5 @@
 <script>
-import DefaultTemplate from '../../layouts/DefaultTemplate.vue'
+import DefaultTemplate from '@/layouts/DefaultTemplate.vue'
 import { router } from '@inertiajs/vue3'
 import { defineComponent } from 'vue'
 
@@ -15,18 +15,12 @@ export default {
             category: this.$page.props.category,
             form:{
                 name: this.$page.props.category.name,
-                id: this.$page.props.category.id,
             }
         }
     },
     methods: {
     submit() {
-        const data = {
-            name: this.form.name,
-            description: this.form.description,
-        };
-
-        router.put(`/categories/${this.form.id}`, data)
+        router.put(`/categories/${this.form.id}`, form)
                 .catch(error => {
                     this.errors = error.response.data;
                 });
@@ -71,7 +65,7 @@ export default {
                             </ul>
                             <div class="input-area relative pl-28">
                                 <label for="largeInput" class="inline-inputLabel">Category Name</label>
-                                <input type="text" class="form-control" placeholder="" v-model="form.name" pattern="[a-zA-Z]*" required>
+                                <input type="text" class="form-control" placeholder="" v-model="form.name" pattern="[a-zA-Z]*" @keypress="isLetter($event)" required>
                             </div>
                             <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                         </form>
