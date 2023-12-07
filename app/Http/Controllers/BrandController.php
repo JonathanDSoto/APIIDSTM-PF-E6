@@ -46,7 +46,7 @@ class BrandController extends Controller
 
         $brand = Brand::create($validated);
 
-        return to_route('brands.show', $brand)->with('success', 'Brand created successfully!');
+        return to_route('brands.index')->with('success', 'Brand created successfully!');
     }
 
     /**

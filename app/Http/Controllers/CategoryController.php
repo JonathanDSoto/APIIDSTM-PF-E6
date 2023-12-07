@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with(['create_author', 'update_author'])->get();
 
         return Inertia::render('Category/Index', [
             'categories' => $categories,
@@ -44,6 +44,12 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        $category->load([
+            'create_author',
+            'update_author',
+            'products'
+        ]);
+
         return Inertia::render('Category/Show', [
             'category' => $category,
         ]);
@@ -66,7 +72,7 @@ class CategoryController extends Controller
     {
         $category->update($request->validated());
 
-        return to_route('categories.index')->with('success', 'Category updated successfully!');
+        return to_route('categories.show', $category)->with('success', 'Category updated successfully!');
     }
 
     /**
