@@ -38,20 +38,38 @@
 </script>
 
 <template>
-    <div id="deletepopup" v-if=popUpDelete style="width: 400px; height: 150px; background-color: #f1f5f9; padding: 20px; border-radius: 20px; display: flex;
-      justify-content: center; align-items: center; position: fixed; z-index: 10; top: 50%; left: 50%; transform: translate(-50%,-50%);">
-        <div style="padding: 2px; display: flex; justify-content: center; flex-direction: column; align-items: center; gap: 20px">
-          <p>
-            Are you sure you want to delete this element?
-          </p>
-          <div style="display: flex; gap: 20px;">
-            <button style="background-color: #50C793; padding: 5px; border-radius: 10px; color: white; font-weight: bold;" @click="confirmElimination">
-              Confirm
+    <div class="relative rounded-lg shadow " id="deletepopup" v-if=popUpDelete style="border-radius: 20px; background-color: white;
+        justify-content: center; align-items: center; position: fixed; z-index: 10; top: 50%; left: 50%; transform: translate(-50%,-50%);">
+        <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-danger-500">
+            <h3 class="text-base font-medium text-white dark:text-white capitalize">
+                Delete Element
+            </h3>
+            <button type="button" class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
+                                    dark:hover:bg-slate-600 dark:hover:text-white" data-bs-dismiss="modal" @click="cancelElimination">
+                <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10
+                                            11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="sr-only">Close modal</span>
             </button>
-            <button style="background-color: #F1595C; padding: 5px; border-radius: 10px; color: white; font-weight: bold;" @click="cancelElimination">
-              Cancel
-            </button>
-          </div>
+        </div>
+        <div class="p-6 space-y-4">
+        <p class="text-base dark:text-black text-black leading-6">
+            Are you sure to delete this element?
+        </p>
+        <p class="text-base text-slate-600 leading-6">
+            Once the element gets deleted, there is no possible way to recover <br> the data without calling an administrator.<br><br>
+            Please confirm the element you choose is the one listed below:
+            <ul>
+                <li><strong>ID: {{ selectedElement.id }}</strong></li>
+                <li><strong>Name: {{ selectedElement.name }}</strong></li>
+                <li><strong>Creation Date: {{ selectedElement.created_at }}</strong></li>
+            </ul>
+        </p>
+        </div>
+            <div class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+            <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-danger-500"  @click="confirmElimination">Accept</button>
+            <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-green-500"  @click="cancelElimination">Cancel</button>
         </div>
     </div>
     <DefaultTemplate>

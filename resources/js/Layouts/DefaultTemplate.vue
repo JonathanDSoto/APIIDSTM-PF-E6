@@ -70,7 +70,7 @@
                 <span>Customers</span>
               </span>
             </Link>
-            <Link href="/order" class="navItem">
+            <Link href="/orders" class="navItem">
               <span class="flex items-center">
                 <Icon class=" nav-icon" icon="heroicons:wallet"/>
                 <span>Orders</span>

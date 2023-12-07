@@ -49,7 +49,7 @@
                     <div class="flex-1">
                         <h4 class="text-xl font-medium mb-2">
                             <span class="block font-light">You are seeing</span>
-                            <span class="block">{{ name }}</span>
+                            <span class="block">{{ category.name }}</span>
                         </h4>
                         <p class="text-sm dark:text-slate-300">With the id: {{ id }}</p>
                     </div>
@@ -66,16 +66,15 @@
                         <div v-else>By: Unknown author</div>
                     </div>
                 </div>
-
-                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4" v-if="category.update_author">
                     <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
                         Modification Date
                     </div>
-                    <div class="text-slate-900 dark:text-white text-lg font-medium">
+                    <div class="text-slate-900 dark:text-white text-lg font-medium" >
                         {{ new Date(category.updated_at).toISOString().slice(0, 10) }}
                     </div>
                     <div class="ml-auto max-w-[124px]">
-                        <div v-if="category.update_autor">By: {{ category.update_autor.name }}</div>
+                        <div v-if="category.update_author">By: {{ category.update_author.name }}</div>
                         <div v-else>By: Unknown author</div>
                     </div>
                 </div>
