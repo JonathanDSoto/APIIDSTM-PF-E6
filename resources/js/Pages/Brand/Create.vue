@@ -32,20 +32,22 @@ export default {
     <div class="mb-5">
       <ul class="m-0 list-none p-0">
         <li class="text-primary-500 font-Inter relative top-[3px] inline-block text-base ">
-          <a href="/">
+          <Link href="/">
             <span class="inline-block align-[0px]">
               <Icon icon="heroicons-outline:home" />
             </span>
             <span class="inline-block align-[0px]">
               <Icon icon="heroicons-outline:chevron-right" class="relative text-sm text-slate-500 rtl:rotate-180" />
             </span>
-          </a>
+          </Link>
         </li>
         <li class="text-primary-500 font-Inter relative inline-block text-sm ">
-          Brand
-          <span class="inline-block align-[0px]">
-            <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180" />
-          </span>
+          <Link href="/brands">
+            Brands
+            <span class="inline-block align-[0px]">
+              <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180" />
+            </span>
+          </Link>
         </li>
         <li class="font-Inter relative inline-block text-sm text-slate-500 dark:text-white">
           Create Brand
