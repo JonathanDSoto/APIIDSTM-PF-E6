@@ -16,6 +16,9 @@ export default {
       }
     }
   },
+  props: {
+    errors: Object
+  },
   methods: {
     submit () {
       router.post('/brands', this.form)
@@ -64,6 +67,16 @@ export default {
           </header>
           <div class="card-text h-full ">
             <form class="space-y-4" @submit.prevent="submit">
+              <div style="display: flex; gap: 10px; height: 50px;">
+                  <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
+                  style="padding: 5px; border-radius: 10px;" >
+                      <div class="flex items-start">
+                          <div>
+                                  {{ error }}
+                          </div>
+                      </div>
+                  </div>
+              </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Name</label>
                 <input type="text" class="form-control" placeholder="" required v-model="form.name">

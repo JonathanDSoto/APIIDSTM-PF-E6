@@ -12,7 +12,7 @@
       <div id="bodyOverlay"
            class="fixed top-0 z-10 hidden h-screen w-screen bg-slate-900 bg-opacity-50 backdrop-blur-sm"></div>
       <div class="logo-segment">
-        <Link class="flex items-center" href="/index">
+        <Link class="flex items-center" href="/">
           <img src="/images/logo/logo-c.svg" class="black_logo" alt="logo">
           <img src="/images/logo/logo-c-white.svg" class="white_logo" alt="logo">
           <span class="font-Inter text-xl font-bold text-slate-900 ltr:ml-3 rtl:mr-3 dark:text-white">DashCode</span>

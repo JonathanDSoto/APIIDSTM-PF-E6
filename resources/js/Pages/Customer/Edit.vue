@@ -27,6 +27,10 @@ export default {
       }
     }
   },
+  props: {
+      customer: Object,
+      errors: Object
+  },
   methods: {
     submit () {
       router.put('/customers/' + this.customer.id, this.form)
@@ -73,6 +77,16 @@ export default {
           </header>
           <div class="card-text h-full ">
             <form class="space-y-4" @submit.prevent="submit">
+              <div style="display: flex; gap: 10px; height: 50px;">
+                  <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
+                  style="padding: 5px; border-radius: 10px;" >
+                      <div class="flex items-start">
+                          <div>
+                                  {{ error }}
+                          </div>
+                      </div>
+                  </div>
+              </div>
               <div class="flex justify-evenly gap-4">
                 <div class="w-full flex flex-col gap-4">
                   <div class="input-area relative pl-28">
