@@ -25,7 +25,17 @@ export default {
     },
     onFileChange (e) {
       this.form.logo = e.target.files[0]
-    }
+    },
+    isNumber(e) {
+      let char = String.fromCharCode(e.keyCode);
+      if (/^[0-9-]+$/.test(char)) return true;
+      else e.preventDefault();
+    },
+    isLetter(e) {
+      let char = String.fromCharCode(e.keyCode);
+      if (/^[A-Za-z\s]+$/.test(char)) return true;
+      else e.preventDefault();
+    },
   }
 }
 </script>
@@ -79,7 +89,7 @@ export default {
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Name</label>
-                <input type="text" class="form-control" placeholder="" required v-model="form.name">
+                <input type="text" class="form-control" placeholder="" required v-model="form.name" @keypress="isLetter($event)">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Website</label>
@@ -91,7 +101,7 @@ export default {
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Phone</label>
-                <input type="number" class="form-control" placeholder="" v-model="form.phone_number">
+                <input type="text" class="form-control" placeholder="" v-model="form.phone_number"  @keypress="isNumber($event)">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Logo</label>

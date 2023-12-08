@@ -22,7 +22,12 @@ export default {
             .catch(error => {
                 this.errors = error.response.data;
             })
-        }
+        },
+        isLetter(e) {
+            let char = String.fromCharCode(e.keyCode);
+            if (/^[A-Za-z\s]+$/.test(char)) return true;
+            else e.preventDefault();
+        },
     }
 }
 </script>
@@ -68,7 +73,7 @@ export default {
                             </div>
                             <div class="input-area relative pl-28">
                                 <label for="nameInput" class="inline-inputLabel">Nombre</label>
-                                <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" pattern="[A-Za-z\s]+" title="Solo letras y espacios permitidos">
+                                <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" @keypress="isLetter($event)">
                             </div>
                             <button type="submit" class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                         </form>
