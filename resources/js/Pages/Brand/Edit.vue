@@ -95,7 +95,7 @@ export default {
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Phone</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.phone" @keypress="isNumber($event)">
+                <input type="text" class="form-control" placeholder="" v-model="form.phone_number" @keypress="isNumber($event)">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Logo</label>
