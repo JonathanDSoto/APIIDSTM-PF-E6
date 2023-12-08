@@ -38,18 +38,18 @@
         "file_name": "bota-city-classic-4.jpeg"
       }
     ],
-    "inventory": [
+    "inventories": [
       {
         "size": "6",
-        "stock": 1
+        "stock": 8
       },
       {
         "size": "7",
-        "stock": 1
+        "stock": 3
       },
       {
         "size": "8",
-        "stock": 1
+        "stock": 5
       }
     ]
   },
@@ -90,18 +90,18 @@
         "file_name": "jordan-essentials-4.webp"
       }
     ],
-    "inventory": [
+    "inventories": [
       {
         "size": "6",
-        "stock": 1
+        "stock": 2
       },
       {
         "size": "7",
-        "stock": 1
+        "stock": 8
       },
       {
         "size": "8",
-        "stock": 1
+        "stock": 3
       }
     ]
   },
@@ -144,18 +144,18 @@
         "file_name": "air-jordan-1-mid-4.jpeg"
       }
     ],
-    "inventory": [
+    "inventories": [
       {
         "size": "6",
-        "stock": 1
+        "stock": 7
       },
       {
         "size": "7",
-        "stock": 1
+        "stock": 3
       },
       {
         "size": "8",
-        "stock": 1
+        "stock": 9
       }
     ]
   }

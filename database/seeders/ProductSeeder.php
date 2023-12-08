@@ -67,6 +67,14 @@ class ProductSeeder extends Seeder
                 }
             }
 
+            if (isset($value->inventories)) {
+                foreach ($value->inventories as $json_inventory) {
+                    $product->inventories()->create([
+                        'size' => $json_inventory->size,
+                        'stock' => $json_inventory->stock,
+                    ]);
+                }
+            }
         }
     }
 }

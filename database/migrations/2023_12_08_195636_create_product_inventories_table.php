@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Product;
 
 return new class extends Migration
 {
@@ -16,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('size')->nullable();
             $table->decimal('stock', 10, 2)->default(0);
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Product::class)->constrained();
         });
     }
 
