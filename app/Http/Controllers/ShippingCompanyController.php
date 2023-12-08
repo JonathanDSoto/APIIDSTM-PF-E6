@@ -34,7 +34,11 @@ class ShippingCompanyController extends Controller
      */
     public function store(StoreShippingCompanyRequest $request)
     {
-        // TODO: Implement store() method.
+        $validated = $request->validated();
+
+        $shippingCompany = ShippingCompany::create($validated);
+
+        return to_route('shipping-companies.index')->with('success', 'Shipping company created successfully!');
     }
 
     /**
@@ -64,7 +68,11 @@ class ShippingCompanyController extends Controller
      */
     public function update(UpdateShippingCompanyRequest $request, ShippingCompany $shippingCompany)
     {
-        // TODO: Implement update() method.
+        $validated = $request->validated();
+
+        $shippingCompany->update($validated);
+
+        return to_route('shipping-companies.show', $shippingCompany)->with('success', 'Shipping company updated successfully!');
     }
 
     /**
