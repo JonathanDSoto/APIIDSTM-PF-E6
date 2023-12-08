@@ -82,7 +82,7 @@ export default {
         <div class="card-body flex flex-col p-6">
           <header class="-mx-6 mb-5 flex items-center border-b border-slate-100 px-6 pb-5 dark:border-slate-700">
             <div class="flex-1">
-              <div class="card-title text-slate-900 dark:text-white">Modify Brand</div>
+              <div class="card-title text-slate-900 dark:text-white">Modify Customer</div>
             </div>
           </header>
           <div class="card-text h-full ">
