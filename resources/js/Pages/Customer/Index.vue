@@ -40,7 +40,7 @@ export default {
     getAvatar (name, lastname) {
       return avatar
         .text(name[0] + lastname[0])
-        .size(32)
+        .size(40)
         .bgColor('#b8c0cc')
         .textColor('#342f2f')
         .generate()
@@ -167,8 +167,8 @@ export default {
                 <tbody class="divide-y divide-slate-100 bg-white dark:divide-slate-700 dark:bg-slate-800">
                 <tr v-for="customer in customers" v-bind:key="customer.id">
                   <td class="table-td">{{ customer.id }}</td>
-                  <td class="table-td" v-if="customer.logo_file_name">
-                    <img class="w-10 rounded-full" :src="'/images/' + customer.logo_file_name" alt="">
+                  <td class="table-td" v-if="customer.profile_photo_file_name">
+                    <img class="w-10 rounded-full" :src="'/images/' + customer.profile_photo_file_name" alt="">
                   </td>
                   <td class="table-td" v-else>
                     <div v-html="this.getAvatar(customer.name, customer.last_name)"></div>

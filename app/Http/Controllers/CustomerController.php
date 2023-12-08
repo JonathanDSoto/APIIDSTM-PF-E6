@@ -39,6 +39,13 @@ class CustomerController extends Controller
 
         $validated['password'] = Hash::make($validated['password']);
 
+        if (isset($validated['profile_photo'])) {
+            $profile_photo = $request->file('profile_photo');
+            $profile_photo_file_name = time() . '_' . $profile_photo->getClientOriginalName();
+            $profile_photo->move(public_path('images'), $profile_photo_file_name);
+            $validated['profile_photo_file_name'] = $profile_photo_file_name;
+        }
+
         Customer::create($validated);
 
         return to_route('customers.index')->with('success', 'Customer created successfully!');
@@ -72,6 +79,17 @@ class CustomerController extends Controller
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
         $validated = $request->validated();
+
+        if (isset($validated['profile_photo'])) {
+            if ($customer->profile_photo_file_name) {
+                unlink(public_path('images/' . $customer->profile_photo_file_name));
+            }
+
+            $profile_photo = $request->file('profile_photo');
+            $profile_photo_file_name = time() . '_' . $profile_photo->getClientOriginalName();
+            $profile_photo->move(public_path('images'), $profile_photo_file_name);
+            $validated['profile_photo_file_name'] = $profile_photo_file_name;
+        }
 
         $customer->update($validated);
 

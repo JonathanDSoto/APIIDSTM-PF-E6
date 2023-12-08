@@ -24,6 +24,7 @@ class Customer extends Model
         'address_line_1',
         'address_line_2',
         'address_line_3',
+        'profile_photo_file_name',
     ];
 
     protected $hidden = [
