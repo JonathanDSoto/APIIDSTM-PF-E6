@@ -61,19 +61,19 @@
                     <div class="text-slate-900 dark:text-white text-lg font-medium">
                         {{ new Date(category.created_at).toISOString().slice(0, 10) }}
                     </div>
-                    <div class="ml-auto max-w-[124px]">
+                    <div>
                         <div v-if="category.create_author">By: {{ category.create_author.name }}</div>
                         <div v-else>By: Unknown author</div>
                     </div>
                 </div>
-                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4" v-if="category.update_author">
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
                     <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
                         Modification Date
                     </div>
                     <div class="text-slate-900 dark:text-white text-lg font-medium" >
                         {{ new Date(category.updated_at).toISOString().slice(0, 10) }}
                     </div>
-                    <div class="ml-auto max-w-[124px]">
+                    <div>
                         <div v-if="category.update_author">By: {{ category.update_author.name }}</div>
                         <div v-else>By: Unknown author</div>
                     </div>

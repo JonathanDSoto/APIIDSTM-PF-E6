@@ -64,8 +64,8 @@ export default {
             {{ new Date(brand.created_at).toISOString().slice(0, 10)  }}
           </div>
           <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_1" v-if="brand.create_author">By: {{ brand.create_author.name}}</div>
-            <div id="clmn_chart_1" v-else>By: -</div>
+            <div v-if="brand.create_author">By: {{ brand.create_author.name}}</div>
+            <div v-else>By: Unknown</div>
           </div>
         </div>
 
@@ -88,10 +88,43 @@ export default {
             <a>{{ brand.websites[0].website }}</a>
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            -
+            No website
           </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Website 2
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.websites[0]">
+            <a>{{ brand.websites[0].website }}</a>
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            No website
+          </div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Phone
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.phone_numbers[0]">
+            {{ brand.phone_numbers[0].phone_number }}
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            No email
+          </div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Phone 2
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.phone_numbers[1]">
+            {{ brand.phone_numbers[1].phone_number }}
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            No phone
           </div>
         </div>
 
@@ -103,10 +136,19 @@ export default {
             {{ brand.emails[0].email }}
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            -
+            No email
           </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Email 2
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.emails[1]">
+            {{ brand.emails[1].email }}
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            No email
           </div>
         </div>
 
@@ -118,10 +160,7 @@ export default {
             <img :src="'/images/' + brand.logo_file_name" alt="">
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            -
-          </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
+            No logo
           </div>
         </div>
       </div>

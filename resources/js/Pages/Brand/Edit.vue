@@ -6,7 +6,7 @@ export default {
   name: 'Edit',
   components: { DefaultTemplate },
   props: {
-    error: Object,
+    errors: Object,
     brand: Object
   },
   data () {
@@ -14,8 +14,10 @@ export default {
       form: {
         name: this.brand.name,
         website: this.brand.websites[0] !== undefined ? this.brand.websites[0].website : null,
+        website_two: this.brand.websites[1] !== undefined ? this.brand.websites[1].website : null,
         email: this.brand.emails[0] !== undefined ? this.brand.emails[0].email : null,
         phone: this.brand.phone_numbers[0] !== undefined ? this.brand.phone_numbers[0].phone_number : null,
+        phone_two: this.brand.phone_numbers[1] !== undefined ? this.brand.phone_numbers[1].phone_number : null,
         logo: null
       }
     }
@@ -26,7 +28,12 @@ export default {
     },
     onFileChange (e) {
       this.form.logo = e.target.files[0]
-    }
+    },
+    isNumber(e) {
+      let char = String.fromCharCode(e.keyCode);
+      if (/^[0-9-]+$/.test(char)) return true;
+      else e.preventDefault();
+    },
   }
 }
 </script>
@@ -66,7 +73,7 @@ export default {
           </header>
           <div class="card-text h-full ">
             <form class="space-y-4" @submit.prevent="submit">
-              <div style="display: flex; gap: 10px; height: 50px;">
+              <div style="display: flex; gap: 10px;">
                   <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
                   style="padding: 5px; border-radius: 10px;" >
                       <div class="flex items-start">
@@ -77,24 +84,28 @@ export default {
                   </div>
               </div>
               <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Brand Name</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.name" required>
+                <label for="largeInput" class="inline-inputLabel">Name</label>
+                <input type="text" class="form-control" placeholder="" required v-model="form.name">
               </div>
-              <div class="input-area relative pl-28">
+              <div class="input-area relative pl-28" v-if="form.website && form.website[0]">
                 <label for="largeInput" class="inline-inputLabel">Website</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.website">
+                <input type="text" class="form-control" placeholder="" v-model="form.website[0]">
               </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Phone</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.phone">
+              <div class="input-area relative pl-28" v-if="form.website_two && form.website_two[1]">
+                <label for="largeInput" class="inline-inputLabel">Website</label>
+                <input type="text" class="form-control" placeholder="" v-model="form.website_two[1]">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Email</label>
                 <input type="email" class="form-control" placeholder="" v-model="form.email">
               </div>
               <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Phone</label>
+                <input type="text" class="form-control" placeholder="" v-model="form.phone" @keypress="isNumber($event)">
+              </div>
+              <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Logo</label>
-                <input type="image" class="form-control" placeholder="" v-on:change="onFileChange">
+                <input type="file" class="form-control" placeholder="" v-on:change="onFileChange">
               </div>
               <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
             </form>
