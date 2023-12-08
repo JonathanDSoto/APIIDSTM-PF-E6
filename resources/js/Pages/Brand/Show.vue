@@ -94,18 +94,6 @@ export default {
 
         <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
           <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Website 2
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.websites[0]">
-            <a>{{ brand.websites[0].website }}</a>
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            No website
-          </div>
-        </div>
-
-        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
-          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
             Phone
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.phone_numbers[0]">
@@ -118,34 +106,10 @@ export default {
 
         <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
           <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Phone 2
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.phone_numbers[1]">
-            {{ brand.phone_numbers[1].phone_number }}
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            No phone
-          </div>
-        </div>
-
-        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
-          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
             Email
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.emails[0]">
             {{ brand.emails[0].email }}
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            No email
-          </div>
-        </div>
-
-        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
-          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Email 2
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.emails[1]">
-            {{ brand.emails[1].email }}
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
             No email
