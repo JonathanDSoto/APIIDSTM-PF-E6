@@ -4,24 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Auth;
 
-class Customer extends Model
+class ShippingCompany extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'email',
+        'website',
         'phone',
-        'address',
-        'city',
-        'state',
-        'zip_code',
+        'email',
     ];
 
-    static public function boot()
+    public static function boot(): void
     {
         parent::boot();
 

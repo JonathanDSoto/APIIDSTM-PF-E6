@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Http\Requests\Customer\StoreCustomerRequest;
+use App\Http\Requests\Customer\UpdateCustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -31,9 +33,13 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCustomerRequest $request)
     {
-        // TODO: Implement store() method.
+        $validated = $request->validated();
+
+        $customer = Customer::create($validated);
+
+        return to_route('customers.index')->with('success', 'Customer created successfully!');
     }
 
     /**
@@ -41,6 +47,8 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
+        $customer->load('create_author', 'update_author');
+
         return Inertia::render('Customer/Show', [
             'customer' => $customer,
         ]);
@@ -59,9 +67,13 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Customer $customer)
+    public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        // TODO: Implement update() method.
+        $validated = $request->validated();
+
+        $customer->update($validated);
+
+        return to_route('customers.show', $customer)->with('success', 'Customer updated successfully!');
     }
 
     /**
@@ -71,6 +83,6 @@ class CustomerController extends Controller
     {
         $customer->delete();
 
-        return redirect()->route('customers.index')->with('success', 'Customer deleted successfully!');
+        return to_route('customers.index')->with('success', 'Customer deleted successfully!');
     }
 }

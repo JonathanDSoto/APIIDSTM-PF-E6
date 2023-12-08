@@ -74,10 +74,10 @@
                 <span>Brands</span>
               </span>
             </Link>
-            <Link href="/shipments-agencies" class="navItem">
+            <Link href="/shipping-companies" class="navItem whitespace-nowrap">
               <span class="flex items-center">
                 <Icon class=" nav-icon" icon="mdi:cargo-ship"/>
-                <span>Shipments Agencys</span>
+                <span>Shipping Companies</span>
               </span>
             </Link>
             <Link href="/shipments" class="navItem">

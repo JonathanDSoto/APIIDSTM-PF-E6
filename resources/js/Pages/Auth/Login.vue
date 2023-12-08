@@ -31,7 +31,7 @@ export default {
     <div class="lg-inner-column">
       <div class="left-column relative z-[1]" style="display: flex; justify-content: center;">
         <div class="h-1/2 w-1/2">
-          <Icon icon="fluent-emoji-high-contrast:banana" class="h-full w-full text-gray-900"/>
+          <Icon icon="fluent-emoji-high-contrast:banana" class="light:text-gray-900 h-full w-full dark:text-white"/>
         </div>
       </div>
       <div class="right-column  relative">
@@ -46,7 +46,7 @@ export default {
             <div class="mb-4 text-center 2xl:mb-10">
               <h4 class="font-medium">Sign in</h4>
               <div class="text-base text-slate-500">
-                Sign in to your account to start using <span class="font-semibold text-gray-900 underline">DashBanana</span>
+                Sign in to your account to start using <span class="font-semibold text-gray-900 underline dark:text-white">DashBanana</span>
               </div>
             </div>
             <!-- BEGIN: Login Form -->

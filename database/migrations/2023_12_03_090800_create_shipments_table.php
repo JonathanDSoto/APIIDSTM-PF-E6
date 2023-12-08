@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\ShipmentAgency;
+use App\Models\ShippingCompany;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('tracking_number');
             $table->enum('status', ['pending', 'sent', 'delivered', 'returned', 'cancelled']);
-            $table->foreignIdFor(ShipmentAgency::class)->constrained();
+            $table->foreignIdFor(ShippingCompany::class)->constrained();
             $table->date('sent_date');
             $table->date('estimated_delivery_date');
             $table->date('actual_delivery_date');
