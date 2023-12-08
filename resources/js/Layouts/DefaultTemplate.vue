@@ -15,7 +15,7 @@
         <Link class="flex items-center" href="/">
           <img src="/images/logo/logo-c.svg" class="black_logo" alt="logo">
           <img src="/images/logo/logo-c-white.svg" class="white_logo" alt="logo">
-          <span class="font-Inter text-xl font-bold text-slate-900 ltr:ml-3 rtl:mr-3 dark:text-white">DashCode</span>
+          <span class="font-Inter text-xl font-bold text-slate-900 ltr:ml-3 rtl:mr-3 dark:text-white">DashBanana</span>
         </Link>
         <div id="sidebar_type" class="cursor-pointer text-lg text-slate-900 dark:text-white">
           <Icon class="sidebarDotIcon extend-icon text-slate-900 dark:text-slate-200" icon="fa-regular:dot-circle" />
@@ -31,6 +31,14 @@
         <ul class="sidebar-menu">
           <li class="sidebar-menu-title">MENU</li>
           <!-- Charts -->
+          <li class="">
+            <Link href="/products" class="navItem">
+              <span class="flex items-center">
+                <Icon class=" nav-icon" icon="material-symbols:empty-dashboard-outline"/>
+                <span>Dashboard</span>
+              </span>
+            </Link>
+          </li>
           <li class="">
             <Link href="/products" class="navItem">
               <span class="flex items-center">
