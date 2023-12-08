@@ -14,10 +14,8 @@ export default {
       form: {
         name: this.brand.name,
         website: this.brand.websites[0] !== undefined ? this.brand.websites[0].website : null,
-        website_two: this.brand.websites[1] !== undefined ? this.brand.websites[1].website : null,
         email: this.brand.emails[0] !== undefined ? this.brand.emails[0].email : null,
         phone: this.brand.phone_numbers[0] !== undefined ? this.brand.phone_numbers[0].phone_number : null,
-        phone_two: this.brand.phone_numbers[1] !== undefined ? this.brand.phone_numbers[1].phone_number : null,
         logo: null
       }
     }
@@ -87,7 +85,7 @@ export default {
                 <label for="largeInput" class="inline-inputLabel">Name</label>
                 <input type="text" class="form-control" placeholder="" required v-model="form.name">
               </div>
-              <div class="input-area relative pl-28" v-if="form.website">
+              <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Website</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.website">
               </div>
