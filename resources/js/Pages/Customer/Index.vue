@@ -130,7 +130,13 @@
                     ID
                   </th>
                   <th scope="col" class="table-th">
+                    Logo
+                  </th>
+                  <th scope="col" class="table-th">
                     Name
+                  </th>
+                  <th scope="col" class="table-th">
+                    Last Name
                   </th>
                   <th scope="col" class="table-th">
                     Email
@@ -149,12 +155,13 @@
                   <td class="table-td" v-if="customer.logo_file_name">
                     <img class="w-10 rounded-full" :src="'/images/' + customer.logo_file_name" alt="">
                   </td>
-                  <td class="table-td" v-else>-</td>
+                  <td class="table-td" v-else>
+                    Undefined
+                  </td>
                   <td class="table-td">{{ customer.name}}</td>
-                  <td class="table-td table-td-website whitespace-nowrap" v-if="customer.websites[0]">{{ customer.websites[0].website }}</td>
-                  <td class="table-td table-td-website" v-else>-</td>
-                  <td class="table-td table-td-phone_number whitespace-nowrap" v-if="customer.phone_numbers[0]">{{ customer.phone_numbers[0].phone_number }}</td>
-                  <td class="table-td" v-else>-</td>
+                  <td class="table-td table-td-website whitespace-nowrap">{{ customer.last_name }}</td>
+                  <td class="table-td table-td-phone_number whitespace-nowrap">{{ customer.email }}</td>
+                  <td class="table-td table-td-phone_number whitespace-nowrap">{{ customer.phone_number }}</td>
                   <td class="table-td">
                     <div class="dropstart relative">
                       <button class="inline-flex items-center justify-center" type="button" id="tableDropdownMenuButton"

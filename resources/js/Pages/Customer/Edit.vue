@@ -15,11 +15,11 @@ export default {
         lastName: this.customer.last_name,
         email: this.customer.email,
         password: this.customer.password,
-        phone: this.customer.phone,
+        phone: this.customer.phone_number,
         country: this.customer.country,
         city: this.customer.city,
         state: this.customer.state,
-        postalCode: this.customer.postal_code,
+        postal_code: this.customer.zip_code,
         addressOne: this.customer.address_line_1,
         addressTwo: this.customer.address_line_2,
         addressThree: this.customer.address_line_3,
@@ -37,7 +37,17 @@ export default {
     },
     onFileChange (e) {
       this.form.logo = e.target.files[0]
-    }
+    },
+    isNumber(e) {
+      let char = String.fromCharCode(e.keyCode);
+      if (/^[0-9-]+$/.test(char)) return true;
+      else e.preventDefault();
+    },
+    isLetter(e) {
+      let char = String.fromCharCode(e.keyCode);
+      if (/^[A-Za-z\s]+$/.test(char)) return true;
+      else e.preventDefault();
+    },
   }
 }
 </script>
@@ -91,11 +101,11 @@ export default {
                 <div class="w-full flex flex-col gap-4">
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Name</label>
-                    <input type="text" class="form-control" placeholder="" required v-model="form.name">
+                    <input type="text" class="form-control" placeholder="" required v-model="form.name" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Last Name</label>
-                    <input type="text" class="form-control" placeholder="" required v-model="form.lastName">
+                    <input type="text" class="form-control" placeholder="" required v-model="form.lastName"  @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Picture</label>
@@ -106,42 +116,38 @@ export default {
                     <input type="email" class="form-control" placeholder="" v-model="form.email">
                   </div>
                   <div class="input-area relative pl-28">
-                    <label for="largeInput" class="inline-inputLabel">Password</label>
-                    <input type="password" class="form-control" placeholder="" v-model="form.password" required>
-                  </div>
-                  <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Phone</label>
                     <input type="number" class="form-control" placeholder="" v-model="form.phone">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Postal Code</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.postalCode">
+                    <input type="text" class="form-control" placeholder="" v-model="form.postal_code" @keypress="isNumber($event)">
                   </div>
                 </div>
                 <div class="w-full flex flex-col gap-4">
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Country</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.country">
+                    <input type="text" class="form-control" placeholder="" v-model="form.country" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">State</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.state">
+                    <input type="text" class="form-control" placeholder="" v-model="form.state" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">City</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.city">
+                    <input type="text" class="form-control" placeholder="" v-model="form.city" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Address 1</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.addressOne">
+                    <input type="text" class="form-control" placeholder="" v-model="form.addressOne">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Address 2</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.addressTwo">
+                    <input type="text" class="form-control" placeholder="" v-model="form.addressTwo">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Address 3</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.addressThree">
+                    <input type="text" class="form-control" placeholder="" v-model="form.addressThree">
                   </div>
                 </div>
               </div>

@@ -1,41 +1,51 @@
 <script>
-import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
-import { router } from '@inertiajs/vue3'
+  import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
+  import { router } from '@inertiajs/vue3'
 
-export default {
-  name: 'Create',
-  components: { DefaultTemplate },
-  data () {
-    return {
-      form: {
-        name: null,
-        lastName: null,
-        email: null,
-        password: null,
-        phone: null,
-        country: null,
-        city: null,
-        state: null,
-        logo: null,
-        postalCode: null,
-        addressOne: null,
-        addressTwo: null,
-        addressThree: null,
+  export default {
+    name: 'Create',
+    components: { DefaultTemplate },
+    data () {
+      return {
+        form: {
+          name: null,
+          last_name: null,
+          email: null,
+          password: null,
+          phone_number: null,
+          country: null,
+          city: null,
+          state: null,
+          profile_photo: null,
+          zip_code: null,
+          address_line_1: null,
+          address_line_2: null,
+          address_line_3: null,
+        }
       }
-    }
-  },
-  props: {
-      errors: Object
-  },
-  methods: {
-    submit () {
-      router.post('/customers', this.form)
     },
-    onFileChange (e) {
-      this.form.logo = e.target.files[0]
+    props: {
+        errors: Object
+    },
+    methods: {
+      submit () {
+        router.post('/customers', this.form)
+      },
+      onFileChange (e) {
+        this.form.profile_photo = e.target.files[0]
+      },
+      isNumber(e) {
+        let char = String.fromCharCode(e.keyCode);
+        if (/^[0-9-]+$/.test(char)) return true;
+        else e.preventDefault();
+      },
+      isLetter(e) {
+        let char = String.fromCharCode(e.keyCode);
+        if (/^[A-Za-z\s]+$/.test(char)) return true;
+        else e.preventDefault();
+      },
     }
   }
-}
 </script>
 
 <template>
@@ -87,11 +97,11 @@ export default {
                 <div class="w-full flex flex-col gap-4">
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Name</label>
-                    <input type="text" class="form-control" placeholder="" required v-model="form.name">
+                    <input type="text" class="form-control" placeholder="" required v-model="form.name" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Last Name</label>
-                    <input type="text" class="form-control" placeholder="" required v-model="form.lastName">
+                    <input type="text" class="form-control" placeholder="" required v-model="form.last_name" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Picture</label>
@@ -107,37 +117,37 @@ export default {
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Phone</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.phone">
+                    <input type="number" class="form-control" placeholder="" v-model="form.phone_number">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Postal Code</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.postalCode">
+                    <input type="number" class="form-control" placeholder="" v-model="form.zip_code">
                   </div>
                 </div>
                 <div class="w-full flex flex-col gap-4">
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Country</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.country">
+                    <input type="text" class="form-control" placeholder="" v-model="form.country" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">State</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.state">
+                    <input type="text" class="form-control" placeholder="" v-model="form.state" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">City</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.city">
+                    <input type="text" class="form-control" placeholder="" v-model="form.city" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Address 1</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.addressOne">
+                    <input type="text" class="form-control" placeholder="" v-model="form.address_line_1">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Address 2</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.addressTwo">
+                    <input type="text" class="form-control" placeholder="" v-model="form.address_line_2">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Address 3</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.addressThree">
+                    <input type="text" class="form-control" placeholder="" v-model="form.address_line_3">
                   </div>
                 </div>
               </div>
