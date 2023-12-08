@@ -1,54 +1,65 @@
 <script>
-    import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
-    import { router } from '@inertiajs/vue3'
-    export default {
-        data () {
-            return {
-                popUpDelete: false,
-                selectedId: 0,
-                selectedElement: null
-            }
-        },
-        components: {DefaultTemplate},
-        props: {
-          customers: {
-            type: Array,
-            required: true
-          }
-        },
-        methods: {
-            deleteConfirmation (customer) {
-                this.selectedElement = customer
-                this.selectedId = this.selectedElement.id
-                this.popUpDelete = true
-            },
-            cancelElimination () {
-                this.popUpDelete = false
-            },
-            confirmElimination () {
-                this.popUpDelete = false
-                router.delete(`/customers/${this.selectedId}`)
-            },
-            numberFormat(numero) {
-              const numeroLimpio = numero.replace(/\D/g, '');
-              return numeroLimpio.replace(/^(\d{3})(\d{3})(\d+)/, '$1-$2-$3');
-            }
-        }
+import DefaultTemplate from '../../layouts/DefaultTemplate.vue'
+import { router } from '@inertiajs/vue3'
+import UIAvatarSvg from 'ui-avatar-svg'
+
+const avatar = new UIAvatarSvg()
+
+export default {
+  data () {
+    return {
+      popUpDelete: false,
+      selectedId: 0,
+      selectedElement: null
     }
+  },
+  components: { DefaultTemplate },
+  props: {
+    customers: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    deleteConfirmation (customer) {
+      this.selectedElement = customer
+      this.selectedId = this.selectedElement.id
+      this.popUpDelete = true
+    },
+    cancelElimination () {
+      this.popUpDelete = false
+    },
+    confirmElimination () {
+      this.popUpDelete = false
+      router.delete(`/customers/${this.selectedId}`)
+    },
+    numberFormat (numero) {
+      const numeroLimpio = numero.replace(/\D/g, '')
+      return numeroLimpio.replace(/^(\d{3})(\d{3})(\d+)/, '$1-$2-$3')
+    },
+    getAvatar (name, lastname) {
+      return avatar
+        .text(name[0] + lastname[0])
+        .size(32)
+        .bgColor('#b8c0cc')
+        .textColor('#342f2f')
+        .generate()
+    }
+  }
+}
 </script>
 
-
 <template>
-  <div class="relative bg-white rounded-lg shadow dark:bg-slate-700" id="deletepopup" v-if=popUpDelete style="background-color: #f1f5f9; border-radius: 20px; 
+  <div class="relative rounded-lg bg-white shadow dark:bg-slate-700" id="deletepopup" v-if=popUpDelete style="background-color: #f1f5f9; border-radius: 20px;
           justify-content: center; align-items: center; position: fixed; z-index: 10; top: 50%; left: 50%; transform: translate(-50%,-50%);">
           <!-- Modal header -->
-    <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-danger-500">
-      <h3 class="text-base font-medium text-white dark:text-white capitalize">
+    <div class="bg-danger-500 flex items-center justify-between rounded-t border-b p-5 dark:border-slate-600">
+      <h3 class="text-base font-medium capitalize text-white dark:text-white">
           Delete Element
       </h3>
-      <button type="button" class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
+      <button type="button" class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-slate-400 hover:text-slate-900
                               dark:hover:bg-slate-600 dark:hover:text-white" data-bs-dismiss="modal" @click="cancelElimination">
-          <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <svg aria-hidden="true" class="h-5 w-5" fill="#ffffff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10
                                       11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
           </svg>
@@ -56,11 +67,11 @@
       </button>
       </div>
       <!-- Modal body -->
-      <div class="p-6 space-y-4">
-      <h6 class="text-base text-slate-900 dark:text-white leading-6">
+      <div class="space-y-4 p-6">
+      <h6 class="text-base leading-6 text-slate-900 dark:text-white">
           Are you sure to delete this element?
       </h6>
-      <p class="text-base text-slate-600 dark:text-slate-400 leading-6">
+      <p class="text-base leading-6 text-slate-600 dark:text-slate-400">
           Once the element gets deleted, there is no possible way to recover <br> the data without calling an administrator.<br><br>
           Please confirm the element you choose is the one listed below:
           <ul>
@@ -71,9 +82,9 @@
       </p>
       </div>
       <!-- Modal footer -->
-      <div class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-      <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-danger-500"  @click="confirmElimination">Accept</button>
-      <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-green-500"  @click="cancelElimination">Cancel</button>
+      <div class="flex items-center space-x-2 rounded-b border-t border-slate-200 p-6 dark:border-slate-600">
+      <button data-bs-dismiss="modal" class="btn bg-danger-500 inline-flex justify-center text-white"  @click="confirmElimination">Accept</button>
+      <button data-bs-dismiss="modal" class="btn inline-flex justify-center bg-green-500 text-white"  @click="cancelElimination">Cancel</button>
     </div>
   </div>
   <DefaultTemplate>
@@ -160,7 +171,7 @@
                     <img class="w-10 rounded-full" :src="'/images/' + customer.logo_file_name" alt="">
                   </td>
                   <td class="table-td" v-else>
-                    Undefined
+                    <div v-html="this.getAvatar(customer.name, customer.last_name)"></div>
                   </td>
                   <td class="table-td">{{ customer.name}}</td>
                   <td class="table-td ">{{ customer.last_name }}</td>
@@ -190,7 +201,7 @@
                         </li>
                         <li>
                             <button @click="deleteConfirmation(customer)"
-                                class="hover:bg-slate-900 dark:hover:bg-slate-600 dark:hover:bg-opacity-70 hover:text-white w-full border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm dark:text-slate-300 last:mb-0 cursor-pointer first:rounded-t last:rounded-b flex space-x-2 items-center capitalize rtl:space-x-reverse">
+                                class="flex w-full cursor-pointer items-center space-x-2 border-b border-b-gray-500 border-opacity-10 px-4 py-2 text-sm capitalize first:rounded-t last:mb-0 last:rounded-b hover:bg-slate-900 hover:text-white rtl:space-x-reverse dark:text-slate-300 dark:hover:bg-slate-600 dark:hover:bg-opacity-70">
                                 <Icon icon="fluent:delete-28-regular"/>
                                 <span>Delete</span>
                             </button>
