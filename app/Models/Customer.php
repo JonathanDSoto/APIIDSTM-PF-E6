@@ -14,13 +14,20 @@ class Customer extends Model
     protected $fillable = [
         'name',
         'last_name',
-        'password',
         'email',
-        'phone',
-        'address',
-        'city',
+        'password',
+        'phone_number',
+        'country',
         'state',
+        'city',
         'zip_code',
+        'address_line_1',
+        'address_line_2',
+        'address_line_3',
+    ];
+
+    protected $hidden = [
+        'password',
     ];
 
     static public function boot()

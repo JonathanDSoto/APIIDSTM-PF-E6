@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Http\Requests\Customer\StoreCustomerRequest;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -37,7 +37,9 @@ class CustomerController extends Controller
     {
         $validated = $request->validated();
 
-        $customer = Customer::create($validated);
+        $validated['password'] = Hash::make($validated['password']);
+
+        Customer::create($validated);
 
         return to_route('customers.index')->with('success', 'Customer created successfully!');
     }

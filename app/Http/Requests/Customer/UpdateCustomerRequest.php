@@ -22,19 +22,20 @@ class UpdateCustomerRequest extends FormRequest
      */
     public function rules(): array
     {
+        $customer = $this->route('customer');
+
         return [
             'name' => 'required|string|max:255|min:1',
             'last_name' => 'required|string|max:255|min:1',
-            'password' => 'required|string|max:255|min:1',
-            'email' => 'required|string|max:255|min:1|unique:customers,email',
-            'phone_number' => 'string|max:255|min:1',
-            'country' => 'string|max:255|min:1',
-            'state' => 'string|max:255|min:1',
-            'city' => 'string|max:255|min:1',
-            'zip_code' => 'string|max:255|min:1',
-            'address_line_1' => 'string|max:255|min:1',
-            'address_line_2' => 'string|max:255|min:1',
-            'address_line_3' => 'string|max:255|min:1',
+            'email' => 'required|string|max:255|min:1|unique:customers,email,' . $customer->id,
+            'phone_number' => 'nullable|string|max:255|min:1',
+            'country' => 'nullable|string|max:255|min:1',
+            'state' => 'nullable|string|max:255|min:1',
+            'city' => 'nullable|string|max:255|min:1',
+            'zip_code' => 'nullable|string|max:255|min:1',
+            'address_line_1' => 'nullable|string|max:255|min:1',
+            'address_line_2' => 'nullable|string|max:255|min:1',
+            'address_line_3' => 'nullable|string|max:255|min:1',
             'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
@@ -55,10 +56,6 @@ class UpdateCustomerRequest extends FormRequest
             'last_name.string' => 'The customer last name must be a string',
             'last_name.max' => 'The customer last name must be a maximum of 255 characters',
             'last_name.min' => 'The customer last name must be a minimum of 1 characters',
-            'password.required' => 'The customer password is required',
-            'password.string' => 'The customer password must be a string',
-            'password.max' => 'The customer password must be a maximum of 255 characters',
-            'password.min' => 'The customer password must be a minimum of 1 characters',
             'email.required' => 'The customer email is required',
             'email.string' => 'The customer email must be a string',
             'email.max' => 'The customer email must be a maximum of 255 characters',
