@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             CategorySeeder::class,
             CouponsSeeder::class,
-            ShippingCompanySeeder::class
+            ShippingCompanySeeder::class,
+            CustomerSeeder::class,
         ]);
     }
 }

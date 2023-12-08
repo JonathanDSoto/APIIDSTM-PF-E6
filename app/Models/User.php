@@ -83,4 +83,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(ShippingCompany::class, 'updated_by');
     }
+
+    public function created_customers(): HasMany
+    {
+        return $this->hasMany(Customer::class, 'created_by');
+    }
+
+    public function updated_customers(): HasMany
+    {
+        return $this->hasMany(Customer::class, 'updated_by');
+    }
 }
