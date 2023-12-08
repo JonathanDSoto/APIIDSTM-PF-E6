@@ -10,6 +10,10 @@
             success: null
         },
         methods: {
+            numberFormat(numero) {
+              const numeroLimpio = numero.replace(/\D/g, '');
+              return numeroLimpio.replace(/^(\d{3})(\d{3})(\d+)/, '$1-$2-$3');
+            }
         }
     }
 </script>
@@ -94,10 +98,33 @@
                         Phone
                     </div>
                     <div class="text-slate-900 dark:text-white text-lg font-medium" v-if="customer.phone_number">
-                        {{ customer.phone_number }}
+                        {{ numberFormat(customer.phone_number) }}
                     </div>
                     <div class="text-slate-900 dark:text-white text-lg font-medium" v-else>
                         Undefined
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        Location
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium" >
+                        Country: {{ customer.country }}<br>
+                        State: {{ customer.state }}<br>
+                        City: {{ customer.city }}
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        Adresses
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium" >
+                        1: {{ customer.address_line_1 }}<br>
+                        2: {{ customer.address_line_2 }}<br>
+                        3: {{ customer.address_line_3 }}<br>
+                        Zip Code: {{ customer.zip_code }}
                     </div>
                 </div>
             </div>

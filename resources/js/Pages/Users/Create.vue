@@ -70,15 +70,15 @@
                         </header>
                         <div class="card-text h-full space-y-4">
                             <div class="input-area">
-                                <label for="name" class="form-label">First Name</label>
+                                <label for="name" class="form-label">Name</label>
                                 <input id="name" type="text" class="form-control" v-model="form.firstName" placeholder="Guadalupe Victoria" v-on:keypress="isLetter($event)" required>
                             </div>
                             <div class="input-area">
-                                <label for="name" class="form-label">Last Name</label>
+                                <label for="name" class="form-label">Email</label>
                                 <input id="name" type="text" class="form-control" v-model="form.lastName" placeholder="Rodriguez Barajas" v-on:keypress="isLetter($event)" required>
                             </div>
                             <div class="input-area">
-                                <label for="name" class="form-label">Age</label>
+                                <label for="name" class="form-label">Role</label>
                                 <input id="name" type="number" class="form-control" v-model="form.age" placeholder="23" required>
                             </div>
                             <div class="input-area">
