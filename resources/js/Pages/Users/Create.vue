@@ -1,5 +1,5 @@
 <script>
-    import DefaultTemplate from "../layouts/DefaultTemplate.vue";
+    import DefaultTemplate from "@/layouts/DefaultTemplate.vue";
     import { router } from '@inertiajs/vue3';
      export default {
          components: {

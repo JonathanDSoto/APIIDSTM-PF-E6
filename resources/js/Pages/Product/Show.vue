@@ -1,5 +1,5 @@
 <script>
-    import DefaultTemplate from "../layouts/DefaultTemplate.vue";
+    import DefaultTemplate from "@/layouts/DefaultTemplate.vue";
     export default {
         components: {
             DefaultTemplate,
