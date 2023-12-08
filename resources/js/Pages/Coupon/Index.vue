@@ -94,6 +94,16 @@
               </Link>
             </div>
         </div>
+        <div class="alert alert-success" v-if="$page.props.flash.success">
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                <div class="flex-1">
+                    {{$page.props.flash.success}}
+                </div>
+            </div>
+        </div>
+        <div v-if="$page.props.flash.success">
+            <br>
+        </div>
         <div id="content_layout">
             <div class=" space-y-5">
             <div class="card">

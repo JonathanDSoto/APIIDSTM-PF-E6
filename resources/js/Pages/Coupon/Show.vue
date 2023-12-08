@@ -60,6 +60,16 @@
                 </li>
             </ul>
         </div>
+        <div class="alert alert-success" v-if="$page.props.flash.success">
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                <div class="flex-1">
+                    {{$page.props.flash.success}}
+                </div>
+            </div>
+        </div>
+        <div v-if="$page.props.flash.success">
+            <br>
+        </div>
         <div class="card p-6">
             <div class="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5 place-content-center">
                 <div class="flex space-x-4 h-full items-center rtl:space-x-reverse">
