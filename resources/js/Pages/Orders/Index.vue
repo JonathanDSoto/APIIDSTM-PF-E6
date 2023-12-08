@@ -1,25 +1,37 @@
 <script>
     import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
+    import { router } from '@inertiajs/vue3'
     export default {
         data() {
           return {
             popUpDelete: false,
+            selectedId: 0,
+            selectedElement: null
           };
         },
         components: {
             DefaultTemplate,
         },
         methods: {
-          deleteConfirmation(){
-            this.popUpDelete = true;
-          },
-          cancelElimination(){
-            this.popUpDelete = false;
-          },
-          confirmElimination(){
-            
-          },
-        }
+            deleteConfirmation (brand) {
+            this.selectedElement = brand
+            this.selectedId = brand.id
+            this.popUpDelete = true
+            },
+            cancelElimination () {
+            this.popUpDelete = false
+            },
+            confirmElimination () {
+            this.popUpDelete = false
+            router.delete(`/brands/${this.selectedId}`)
+            }
+        },
+        props: {
+            orders: {
+            type: Array,
+            required: true
+            }
+        },
     }
 </script>
 
@@ -59,7 +71,7 @@
         </div>
     </div>
     <DefaultTemplate>
-        <div class="mb-5">
+        <div class="mb-5 flex justify-between">
             <ul class="m-0 p-0 list-none">
                 <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
                 <a href="/">
@@ -71,11 +83,25 @@
                     Order
                 </li>
             </ul>
+            <div>
+            <Link href="/orders/create" class="btn btn-dark m-1 inline-flex justify-center dark:bg-slate-700 dark:text-slate-300 ">
+                <span class="flex items-center">
+                    <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="ph:plus-bold"/>
+                    <span>Add Order</span>
+                </span>
+            </Link>
         </div>
-        <a href="/orders/create">
-            <button class="btn inline-flex justify-center btn-primary w-full">Add New Order</button>
-        </a>
-        <br><br>
+        </div>
+        <div class="alert alert-success" v-if="$page.props.flash.success">
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                <div class="flex-1">
+                    {{$page.props.flash.success}}
+                </div>
+            </div>
+        </div>
+        <div v-if="$page.props.flash.success">
+            <br>
+        </div>
         <div>
             <div>
                 <div>

@@ -50,6 +50,16 @@ export default {
         </li>
       </ul>
     </div>
+    <div class="alert alert-success" v-if="$page.props.flash.success">
+        <div class="flex items-start space-x-3 rtl:space-x-reverse">
+            <div class="flex-1">
+                {{$page.props.flash.success}}
+            </div>
+        </div>
+    </div>
+    <div v-if="$page.props.flash.success">
+        <br>
+    </div>
     <div class="card p-6">
       <div class="grid grid-cols-1 place-content-center gap-5 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
         <div class="flex h-full items-center space-x-4 rtl:space-x-reverse">
