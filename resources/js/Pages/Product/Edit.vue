@@ -15,11 +15,10 @@ export default {
       form: {
         name: this.product.name !== undefined ? this.product.name : null,
         sku: this.product.sku !== undefined ? this.product.sku : null,
-        description: this.product.description !== undefined ? this.brand.description : null,
-        stock: this.product.stock !== undefined ? this.brand.stock : null,
-        price: this.product.price !== undefined ? this.brand.price : null,
-        brand: this.product.brand !== undefined ? this.brand.brand : null,
-        logo: null
+        description: this.product.description !== undefined ? this.product.description : null,
+        stock: this.product.stock !== undefined ? this.product.stock : null,
+        price: this.product.price !== undefined ? this.product.price : null,
+        brand: this.product.brand !== undefined ? this.product.brand : null
       }
     }
   },
