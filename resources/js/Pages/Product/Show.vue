@@ -4,6 +4,10 @@
         components: {
             DefaultTemplate,
         },
+        props:{
+          success: null,
+          product: Object,
+        }
     }
 </script>
 
@@ -11,6 +15,16 @@
     <DefaultTemplate>
         <div class="flex-1">
                   <div class="grid grid-cols-1 gap-5">
+                    <div class="alert alert-success" v-if="$page.props.flash.success">
+                        <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                            <div class="flex-1">
+                                {{$page.props.flash.success}}
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="$page.props.flash.success">
+                        <br>
+                    </div>
                     <div class="card p-6">
                       <div class=" h-[248px] w-full mb-6 ">
                         <img src=/images/all-img/post-1.png alt="" class=" w-full h-full  object-cover">
