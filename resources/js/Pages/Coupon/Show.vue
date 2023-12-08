@@ -2,19 +2,11 @@
     import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
     import { router } from '@inertiajs/vue3'
     export default {
-        data() {
-          return {
-                id: this.$page.props.coupon.id,
-                creationDate: this.$page.props.coupon.created_at,
-                updatedDate: this.$page.props.coupon.updated_at,
-                creator: this.$page.props.coupon.creator,
-                modify: this.$page.props.coupon.modifier,
-          };
-        },
         components: {
             DefaultTemplate,
         },    
         props:{
+            coupon: Object,
             errors: Object,
             success: null
         },
@@ -52,11 +44,11 @@
                     </a>
                 </li>
                 <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                    Brands
+                    Coupons
                     <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
                 </li>
                 <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                    Show Brand
+                    Show Coupon
                 </li>
             </ul>
         </div>
@@ -76,9 +68,9 @@
                     <div class="flex-1">
                         <h4 class="text-xl font-medium mb-2">
                             <span class="block font-light">You are seeing</span>
-                            <span class="block">{{ name }}</span>
+                            <span class="block">{{ coupon.code }}</span>
                         </h4>
-                        <p class="text-sm dark:text-slate-300">With the id: {{ id }}</p>
+                        <p class="text-sm dark:text-slate-300">With the id: {{ coupon.id }}</p>
                     </div>
                 </div>
                 <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
@@ -86,10 +78,13 @@
                         Creation Date
                     </div>
                     <div class="text-slate-900 dark:text-white text-lg font-medium">
-                        {{ new Date(creationDate).toISOString().slice(0, 10) }}
+                        {{ new Date(coupon.created_at).toISOString().slice(0, 10) }}
                     </div>
-                    <div class="ml-auto max-w-[124px]">
-                        <div id="clmn_chart_1">By: Alexby11</div>
+                    <div class="ml-auto max-w-[124px]" v-if="coupon.created_by">
+                        <div>By: {{ coupon.created_by }}</div>
+                    </div>
+                    <div class="ml-auto max-w-[124px]" v-else>
+                        <div>By: Unknow</div>
                     </div>
                 </div>
 
@@ -98,10 +93,77 @@
                         Modification Date
                     </div>
                     <div class="text-slate-900 dark:text-white text-lg font-medium">
-                        {{ new Date(updatedDate).toISOString().slice(0, 10) }}
+                        {{ new Date(coupon.updated_at).toISOString().slice(0, 10) }}
                     </div>
-                    <div class="ml-auto max-w-[124px]">
-                        <div id="clmn_chart_2">By: Willyrex</div>
+                    <div class="ml-auto max-w-[124px]" v-if="coupon.updated_by">
+                        <div>By: {{ coupon.updated_by }}</div>
+                    </div>
+                    <div class="ml-auto max-w-[124px]" v-else>
+                        <div>By: Unknow</div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        Start Date
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium">
+                        {{ new Date(coupon.start_date).toISOString().slice(0, 10) }}
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        End Date
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium">
+                        {{ new Date(coupon.end_date).toISOString().slice(0, 10) }}
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        Description
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium">
+                        {{ coupon.description }}
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        Discount
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium">
+                        {{ coupon.discount }}
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        Is Active
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium">
+                        <p v-if="coupon.is_active == 1">True</p>
+                        <p v-else>False</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        Max uses
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium">
+                        {{ coupon.max_uses }}
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        Uses
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium">
+                        {{ coupon.uses }}
                     </div>
                 </div>
             </div>

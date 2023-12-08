@@ -1,17 +1,33 @@
 <script>
     import DefaultTemplate from "../../layouts/DefaultTemplate.vue";
+    import { router } from '@inertiajs/vue3'
 
     export default {
         components: {
             DefaultTemplate,
         },
         props: {
-            category: Object,
+            coupon: Object,
             errors: Object
         },
         data() {
             return {
+                form:{
+                    code: this.coupon.code,
+                    is_active: this.coupon.is_active,
+                    uses: this.coupon.uses,
+                    description: this.coupon.description,
+                    max_uses: this.coupon.max_uses,
+                    discount: this.coupon.discount,
+                    start_date: this.coupon.start_date,
+                    end_date: this.coupon.end_date,
+                }
             };
+        },
+        methods: {
+            submit(){
+                router.put(`/coupons/${this.coupon.id}`, this.form)
+            }
         }
     }
 </script>
@@ -43,8 +59,8 @@
                         </div>
                     </header>
                 <div class="card-text h-full ">
-                    <form class="space-y-4">
-                        <div style="display: flex; gap: 10px; height: 50px;">
+                    <form class="space-y-4"  @submit.prevent="submit">
+                        <div style="display: flex; gap: 10px;">
                             <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
                             style="padding: 5px; border-radius: 10px;" >
                                 <div class="flex items-start">
@@ -56,23 +72,38 @@
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Code</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="number" class="form-control" placeholder="" v-model="form.code">
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">End Date</label>
-                            <input type="date" class="form-control" placeholder="">
+                            <div class="form-control">
+                                <div>
+                                    <input type="date" class="" placeholder="" v-model="form.end_date">
+                                </div>
+                            </div>
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Amount</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <label for="largeInput" class="inline-inputLabel">Uses</label>
+                            <input type="text" class="form-control" placeholder=""  v-model="form.uses">
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Times Used</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <label for="largeInput" class="inline-inputLabel">Max Uses</label>
+                            <input type="text" class="form-control" placeholder="" v-model="form.max_uses">
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Discount</label>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" v-model="form.discount">
+                        </div>
+                        <div class="input-area relative pl-28">
+                            <label for="largeInput" class="inline-inputLabel">Description</label>
+                            <input type="text" class="form-control" placeholder="" v-model="form.description">
+                        </div>
+                        <div class="input-area relative pl-28">
+                            <label for="booleanInput" class="inline-inputLabel">Is Active</label>
+                            <select class="form-control" v-model="form.is_active">
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
                         </div>
                         <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                     </form>

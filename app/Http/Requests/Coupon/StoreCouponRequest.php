@@ -28,7 +28,7 @@ class StoreCouponRequest extends FormRequest
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
             'is_active' => 'required|boolean',
-            'uses' => 'required|numeric|min:1',
+            /* 'uses' => 'required|numeric|min:1', */
             'max_uses' => 'required|numeric|min:1',
             'description' => 'nullable|string',
         ];

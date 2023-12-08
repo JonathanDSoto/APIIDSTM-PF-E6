@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->boolean('is_active');
-            $table->integer('uses');
+            $table->integer('uses')->default(0);
             $table->integer('max_uses');
             $table->text('description')->nullable();
             $table->foreignIdFor(User::class, 'created_by')->nullable();

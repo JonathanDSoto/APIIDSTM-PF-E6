@@ -15,8 +15,10 @@ class Coupon extends Model
         'code',
         'discount',
         'is_active',
-        'uses',
         'max_uses',
+        'uses',
+        'start_date',
+        'end_date'
     ];
 
     public static function boot()

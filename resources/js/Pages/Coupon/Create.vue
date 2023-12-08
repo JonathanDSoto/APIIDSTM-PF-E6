@@ -12,10 +12,13 @@
         data() {
             return {
                 form:{
-                    Code: '',
+                    code: '',
                     is_active: '',
                     max_uses: '',
                     discount: '',
+                    end_date: '',
+                    start_date: '',
+                    description: '',
                 }
             };
         },
@@ -58,7 +61,7 @@
                     </header>
                 <div class="card-text h-full ">
                     <form class="space-y-4" @submit.prevent="submit">
-                        <div style="display: flex; gap: 10px; height: 50px;">
+                        <div style="display: flex; gap: 10px;">
                             <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
                             style="padding: 5px; border-radius: 10px;" >
                                 <div class="flex items-start">
@@ -70,20 +73,50 @@
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Code</label>
-                            <input type="text" class="form-control" placeholder="" v-model="form.Code">
+                            <input type="number" class="form-control" placeholder="" v-model="form.code">
+                        </div>
+                        <div class="input-area relative pl-28">
+                            <label for="largeInput" class="inline-inputLabel">Start Date</label>
+                            <div class="form-control">
+                                <div>
+                                    <input type="date" class="" placeholder="" v-model="form.start_date">
+                                </div>
+                            </div>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">End Date</label>
-                            <input type="date" class="form-control" placeholder="" v-model="form.endDate">
+                            <div class="form-control">
+                                <div>
+                                    <input type="date" class="" placeholder="" v-model="form.end_date">
+                                </div>
+                            </div>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Max Uses</label>
-                            <input type="text" class="form-control" placeholder="" v-model="form.maxUses">
+                            <input type="number" class="form-control" placeholder="" v-model="form.max_uses">
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Discount</label>
-                            <input type="text" class="form-control" placeholder="" v-model="form.Discount">
+                            <input type="number" class="form-control" placeholder="" v-model="form.discount">
                         </div>
+                        <div class="input-area relative pl-28">
+                            <label for="largeInput" class="inline-inputLabel">Description</label>
+                            <input type="text" class="form-control" placeholder="" v-model="form.description">
+                        </div>
+                        <div class="input-area relative pl-28">
+                            <label class="inline-inputLabel">Status</label>
+                            <div style="display: flex; gap: 20px">
+                                <div style="display:flex; gap:10px">
+                                    <input type="radio" id="trueOption" value="1" v-model="form.is_active">
+                                    <label for="trueOption">True</label>
+                                </div>
+                                <div style="display:flex; gap:10px">
+                                    <input type="radio" id="falseOption" value="0" v-model="form.is_active">
+                                    <label for="falseOption">False</label>
+                                </div>
+                            </div>
+                        </div>
+
                         <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                     </form>
                 </div>

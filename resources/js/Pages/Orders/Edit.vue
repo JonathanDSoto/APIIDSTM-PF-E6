@@ -9,7 +9,6 @@ export default {
     order: Object,
     errors: Object
   },
-  },
   data () {
     return {
       form: {
