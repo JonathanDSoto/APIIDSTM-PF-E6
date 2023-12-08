@@ -32,7 +32,7 @@
           <li class="sidebar-menu-title">MENU</li>
           <!-- Charts -->
           <li class="">
-            <Link href="/products" class="navItem">
+            <Link href="/" class="navItem">
               <span class="flex items-center">
                 <Icon class=" nav-icon" icon="material-symbols:empty-dashboard-outline"/>
                 <span>Dashboard</span>
