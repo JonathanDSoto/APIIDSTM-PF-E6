@@ -139,9 +139,6 @@ export default {
                     Website
                   </th>
                   <th scope="col" class="table-th">
-                    Phone Number
-                  </th>
-                  <th scope="col" class="table-th">
                     Action
                   </th>
                 </tr>
@@ -156,7 +153,6 @@ export default {
                   <td class="table-td">{{ brand.name}}</td>
                   <td class="table-td table-td-website whitespace-nowrap" v-if="brand.website">{{ brand.website }}</td>
                   <td class="table-td table-td-website" v-else>-</td>
-                  <td class="table-td table-td-phone_number whitespace-nowrap" v-if="brand.phone_number">{{ brand.phone_number }}</td>
                   <td class="table-td" v-else>-</td>
                   <td class="table-td">
                     <div class="dropstart relative">
