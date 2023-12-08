@@ -84,8 +84,8 @@ export default {
           <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
             Website
           </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.websites[0]">
-            <a>{{ brand.websites[0].website }}</a>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.website">
+            <a>{{ brand.website }}</a>
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
             No website
@@ -96,8 +96,8 @@ export default {
           <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
             Phone
           </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.phone_numbers[0]">
-            {{ brand.phone_numbers[0].phone_number }}
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.phone_number">
+            {{ brand.phone_number }}
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
             No email
@@ -108,8 +108,8 @@ export default {
           <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
             Email
           </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.emails[0]">
-            {{ brand.emails[0].email }}
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.email">
+            {{ brand.email }}
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
             No email

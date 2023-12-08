@@ -154,9 +154,9 @@ export default {
                   </td>
                   <td class="table-td" v-else>-</td>
                   <td class="table-td">{{ brand.name}}</td>
-                  <td class="table-td table-td-website whitespace-nowrap" v-if="brand.websites[0]">{{ brand.websites[0].website }}</td>
+                  <td class="table-td table-td-website whitespace-nowrap" v-if="brand.website">{{ brand.website }}</td>
                   <td class="table-td table-td-website" v-else>-</td>
-                  <td class="table-td table-td-phone_number whitespace-nowrap" v-if="brand.phone_numbers[0]">{{ brand.phone_numbers[0].phone_number }}</td>
+                  <td class="table-td table-td-phone_number whitespace-nowrap" v-if="brand.phone_number">{{ brand.phone_number }}</td>
                   <td class="table-td" v-else>-</td>
                   <td class="table-td">
                     <div class="dropstart relative">

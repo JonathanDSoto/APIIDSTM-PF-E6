@@ -14,9 +14,7 @@ export default {
       selectedFileName: '',
       form: {
         name: this.brand.name,
-        website: this.brand.websites[0] !== undefined ? this.brand.websites[0].website : null,
-        email: this.brand.emails[0] !== undefined ? this.brand.emails[0].email : null,
-        phone_number: this.brand.phone_numbers[0] !== undefined ? this.brand.phone_numbers[0].phone_number : null,
+        website: this.brand.website !== undefined ? this.brand.website : null,
         logo: null
       }
     }
@@ -26,14 +24,14 @@ export default {
       router.put('/brands/' + this.brand.id, this.form)
     },
     onFileChange (e) {
-      const file = event.target.files[0];
+      const file = event.target.file;
         if (file) {
           this.selectedFileName = file.name;
         } else {
           this.selectedFileName = '';
         }
         
-      this.form.logo = e.target.files[0]
+      this.form.logo = e.target.file
     },
     isNumber(e) {
       let char = String.fromCharCode(e.keyCode);
@@ -101,14 +99,6 @@ export default {
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Website</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.website">
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Email</label>
-                <input type="email" class="form-control" placeholder="" v-model="form.email">
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Phone</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.phone_number" @keypress="isNumber($event)">
               </div>
               <div class="input-area relative pl-28">
                 <div class="alert alert-danger light-mode" v-if="errors.profile_photo">

@@ -11,8 +11,6 @@ export default {
       form: {
         name: null,
         website: null,
-        email: null,
-        phone_number: null,
         logo: null
       }
     }
@@ -102,14 +100,6 @@ export default {
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Website</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.website">
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Email</label>
-                <input type="email" class="form-control" placeholder="" v-model="form.email">
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Phone</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.phone_number"  @keypress="isNumber($event)">
               </div>
               <div class="input-area relative pl-28">
                 <div class="alert alert-danger light-mode" v-if="errors.profile_photo">
