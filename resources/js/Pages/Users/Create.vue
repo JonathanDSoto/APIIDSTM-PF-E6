@@ -11,25 +11,26 @@
         data() {
          return {
             form: {
-                firstName: '',
-                lastName: '',
-                age: '',
-                email: '',
                 password: '',
-                address: '',
-                phoneNumber: '',
-                userType: '',
+                name: '',
+                role: '',
+                email: '',
             },
          };
      },
      methods: {
+        isNumber(e) {
+            let char = String.fromCharCode(e.keyCode);
+            if (/^[0-9-]+$/.test(char)) return true;
+            else e.preventDefault();
+        },
         isLetter(e) {
             let char = String.fromCharCode(e.keyCode);
-            if(/^[A-Za-z]+$/.test(char)) return true;
-            else e.preventDefault(); 
+            if (/^[A-Za-z\s]+$/.test(char)) return true;
+            else e.preventDefault();
         },
         submit(){
-            router.post('/categories',this.form)
+            router.post('/users',this.form)
             .catch(error => {
                 this.errors = error.response.data;
             })
@@ -53,10 +54,7 @@
                         Users
                         <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"/>
                     </li>
-                    <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white" v-if=$page.props.flag>
-                    Modify User Information</li>
-                    <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white" v-else>
-                    Create User</li>
+                    <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">Create User</li>
                 </ul>
             </div>
             <div>
@@ -64,56 +62,57 @@
                     <div class="card-body flex flex-col p-6">
                         <header class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5 -mx-6 px-6">
                             <div class="flex-1">
-                                <div class="card-title text-slate-900 dark:text-white" v-if=$page.props.flag>Change User Information</div>
-                                <div class="card-title text-slate-900 dark:text-white" v-else>Create New User</div>
+                                <div class="card-title text-slate-900 dark:text-white">Create New User</div>
                             </div>
                         </header>
+                        
                         <div class="card-text h-full space-y-4">
                             <div class="input-area">
+                                <div class="alert alert-danger light-mode" v-if="errors.name">
+                                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                        <div class="flex-1">
+                                        {{ errors.name }}
+                                        </div>
+                                    </div>
+                                </div>
                                 <label for="name" class="form-label">Name</label>
-                                <input id="name" type="text" class="form-control" v-model="form.firstName" placeholder="Guadalupe Victoria" v-on:keypress="isLetter($event)" required>
+                                <input id="name" type="text" class="form-control" v-model="form.name" @keypress="isLetter($event)" required>
                             </div>
+                            
                             <div class="input-area">
+                                <div class="alert alert-danger light-mode" v-if="errors.email">
+                                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                        <div class="flex-1">
+                                        {{ errors.email }}
+                                        </div>
+                                    </div>
+                                </div>
                                 <label for="name" class="form-label">Email</label>
-                                <input id="name" type="text" class="form-control" v-model="form.lastName" placeholder="Rodriguez Barajas" v-on:keypress="isLetter($event)" required>
-                            </div>
+                                <input id="name" type="text" class="form-control" v-model="form.email" @keypress="isLetter($event)" required>
+                            </div>                            
                             <div class="input-area">
-                                <label for="name" class="form-label">Role</label>
-                                <input id="name" type="number" class="form-control" v-model="form.age" placeholder="23" required>
+                                <div class="alert alert-danger light-mode" v-if="errors.password">
+                                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                        <div class="flex-1">
+                                        {{ errors.password }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <label for="name" class="form-label">Password</label>
+                                <input id="name" type="password" class="form-control" v-model="form.password "@keypress="isLetter($event)" required>
                             </div>
-                            <div class="input-area">
-                                <label for="name" class="form-label">Email</label>
-                                <input id="name" type="email" class="form-control" v-model="form.email" placeholder="rovique44@hotmail.com" required>
-                            </div>
-                            <div class="input-area">
-                                <label for="name" class="form-label">Address</label>
-                                <input id="name" type="text" class="form-control" v-model="form.address" placeholder="Biznaga 108 Indeco Col. el cajoncito" required>
-                            </div>
-                            <div class="input-area">
-                                <label for="readonly" class="form-label">Phone Number</label>
-                                <input id="readonly" type="number" class="form-control" v-model="form.phoneNumber" placeholder="6122309430" required>
-                            </div>
-                            <div class="input-area">
-                                <label for="readonly" class="form-label">Password</label>
-                                <input id="readonly" type="password" class="form-control" v-model="form.password" placeholder="1a3d55d3a1" required>
-                            </div>
-                            <div class="input-area">
-                                <label for="readonly" class="form-label">Country</label>
-                                <input id="readonly" type="text" class="form-control" v-model="form.country" placeholder="Mexico" v-on:keypress="isLetter($event)" required>
-                            </div>
-                            <div class="input-area">
-                                <label for="readonly" class="form-label">State</label>
-                                <input id="readonly" type="text" class="form-control" v-model="form.state" placeholder="Baja California Sur" v-on:keypress="isLetter($event)" required>
-                            </div>
-                            <div class="input-area">
-                                <label for="readonly" class="form-label">City</label>
-                                <input id="readonly" type="text" class="form-control" v-model="form.city" placeholder="La Paz" v-on:keypress="isLetter($event)" required>
-                            </div>
-                            <div class="input-area">
-                                <label for="select" class="form-label">Select User Type*</label>
-                                <select id="select" class="form-control" v-model="form.userType" required>
-                                    <option value="Administrator" class="dark:bg-slate-700">Administrator</option>
-                                    <option value="User" class="dark:bg-slate-700">User</option>
+                            <div class="input-area relative pl-28">
+                                <div class="alert alert-danger light-mode" v-if="errors.role">
+                                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                        <div class="flex-1">
+                                        {{ errors.role }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <label for="booleanInput" class="inline-inputLabel">Role*</label>
+                                <select class="form-control" v-model="form.role" required>
+                                    <option value="admin">Administrator</option>
+                                    <option value="user">User</option>
                                 </select>
                             </div>
                         </div>

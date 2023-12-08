@@ -61,17 +61,14 @@ export default {
                     </header>
                     <div class="card-text h-full ">
                         <form class="space-y-4" @submit.prevent="submit">
-                            <div style="display: flex; gap: 10px; height: 50px;">
-                                <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
-                                style="padding: 5px; border-radius: 10px;" >
-                                    <div class="flex items-start">
-                                        <div>
-                                                {{ error }}
+                            <div class="input-area relative pl-28">
+                                <div class="alert alert-danger light-mode" v-if="errors.name">
+                                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                        <div class="flex-1">
+                                            {{ errors.name }}
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="input-area relative pl-28">
                                 <label for="nameInput" class="inline-inputLabel">Name*</label>
                                 <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" @keypress="isLetter($event)" required>
                             </div>

@@ -62,21 +62,26 @@
                     </header>
                 <div class="card-text h-full ">
                     <form class="space-y-4" @submit.prevent="submit">
-                        <div style="display: flex; gap: 10px;">
-                            <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
-                            style="padding: 5px; border-radius: 10px;" >
-                                <div class="flex items-start">
-                                    <div>
-                                            {{ error }}
+                        <div class="input-area relative pl-28">
+                            <div class="alert alert-danger light-mode" v-if="errors.code">
+                                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                        <div class="flex-1">
+                                        {{ errors.code }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Code*</label>
                             <input type="number" class="form-control" placeholder="" v-model="form.code" required>
                         </div>
+                        
                         <div class="input-area relative pl-28">
+                            <div class="alert alert-danger light-mode" v-if="errors.start_date">
+                                <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                    <div class="flex-1">
+                                    {{ errors.start_date }}
+                                    </div>
+                                </div>
+                            </div>
                             <label for="largeInput" class="inline-inputLabel">Start Date*</label>
                             <div class="form-control">
                                 <div>
@@ -85,6 +90,13 @@
                             </div>
                         </div>
                         <div class="input-area relative pl-28">
+                            <div class="alert alert-danger light-mode" v-if="errors.end_date">
+                                <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                    <div class="flex-1">
+                                    {{ errors.end_date }}
+                                    </div>
+                                </div>
+                            </div>
                             <label for="largeInput" class="inline-inputLabel">End Date*</label>
                             <div class="form-control">
                                 <div>
@@ -93,18 +105,46 @@
                             </div>
                         </div>
                         <div class="input-area relative pl-28">
+                            <div class="alert alert-danger light-mode" v-if="errors.max_uses">
+                                <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                    <div class="flex-1">
+                                    {{ errors.email }}
+                                    </div>
+                                </div>
+                            </div>
                             <label for="largeInput" class="inline-inputLabel">Max Uses*</label>
                             <input type="number" class="form-control" placeholder="" v-model="form.max_uses" required>
                         </div>
                         <div class="input-area relative pl-28">
+                            <div class="alert alert-danger light-mode" v-if="errors.discount">
+                                <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                    <div class="flex-1">
+                                    {{ errors.discount }}
+                                    </div>
+                                </div>
+                            </div>
                             <label for="largeInput" class="inline-inputLabel">Discount*</label>
                             <input type="number" class="form-control" placeholder="" v-model="form.discount" title="Ingresa un número válido" required>
                         </div>
                         <div class="input-area relative pl-28">
+                            <div class="alert alert-danger light-mode" v-if="errors.description">
+                                <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                    <div class="flex-1">
+                                    {{ errors.description }}
+                                    </div>
+                                </div>
+                            </div>
                             <label for="largeInput" class="inline-inputLabel">Description</label>
                             <input type="text" class="form-control" placeholder="" v-model="form.description">
                         </div>
                         <div class="input-area relative pl-28">
+                            <div class="alert alert-danger light-mode" v-if="errors.is_active">
+                                <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                                    <div class="flex-1">
+                                    {{ errors.is_active }}
+                                    </div>
+                                </div>
+                            </div>
                             <label for="booleanInput" class="inline-inputLabel">Is Active*</label>
                             <select class="form-control" v-model="form.is_active" required>
                                 <option value="1">True</option>

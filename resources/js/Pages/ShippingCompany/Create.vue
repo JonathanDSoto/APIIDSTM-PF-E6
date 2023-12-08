@@ -76,29 +76,47 @@ export default {
           </header>
           <div class="card-text h-full ">
             <form class="space-y-4" @submit.prevent="submit">
-              <div style="display: flex; gap: 10px;">
-                  <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
-                  style="padding: 5px; border-radius: 10px;">
-                      <div class="flex items-start">
-                          <div>
-                                  {{ error }}
-                          </div>
-                      </div>
-                  </div>
-              </div>
               <div class="input-area relative pl-28">
+                <div class="alert alert-danger light-mode" v-if="errors.name">
+                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                        <div class="flex-1">
+                        {{ errors.name }}
+                        </div>
+                    </div>
+                </div>
                 <label for="largeInput" class="inline-inputLabel">Name*</label>
                 <input type="text" class="form-control" placeholder="" required v-model="form.name"  @keypress="isLetter($event)">
               </div>
               <div class="input-area relative pl-28">
+                <div class="alert alert-danger light-mode" v-if="errors.website">
+                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                        <div class="flex-1">
+                        {{ errors.website }}
+                        </div>
+                    </div>
+                </div>
                 <label for="largeInput" class="inline-inputLabel">Website*</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.website" required>
               </div>
               <div class="input-area relative pl-28">
+                <div class="alert alert-danger light-mode" v-if="errors.email">
+                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                        <div class="flex-1">
+                        {{ errors.email }}
+                        </div>
+                    </div>
+                </div>
                 <label for="largeInput" class="inline-inputLabel">Email*</label>
                 <input type="email" class="form-control" placeholder="" v-model="form.email" required>
               </div>
               <div class="input-area relative pl-28">
+                <div class="alert alert-danger light-mode" v-if="errors.phone">
+                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                        <div class="flex-1">
+                        {{ errors.phone }}
+                        </div>
+                    </div>
+                </div>
                 <label for="largeInput" class="inline-inputLabel">Phone*</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.phone" @keypress="isNumber($event)" required>
               </div>
