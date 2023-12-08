@@ -20,9 +20,9 @@ export default {
         city: this.customer.city,
         state: this.customer.state,
         zip_code: this.customer.zip_code,
-        addressOne: this.customer.address_line_1,
-        addressTwo: this.customer.address_line_2,
-        addressThree: this.customer.address_line_3,
+        address_line_1: this.customer.address_line_1,
+        address_line_2: this.customer.address_line_2,
+        address_line_3: this.customer.address_line_3,
         logo: this.customer.profile_photo_file_name
       }
     }
@@ -105,7 +105,7 @@ export default {
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Last Name*</label>
-                    <input type="text" class="form-control" placeholder="" required v-model="form.lastName"  @keypress="isLetter($event)" >
+                    <input type="text" class="form-control" placeholder="" required v-model="form.last_name"  @keypress="isLetter($event)" >
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Picture</label>
@@ -117,11 +117,11 @@ export default {
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Phone</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.phone" @keypress="isNumber($event)">
+                    <input type="number" class="form-control" placeholder="" v-model="form.phone_number" @keypress="isNumber($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Zip Code*</label>
-                    <input type="text" class="form-control" placeholder="" v-model="form.postal_code" @keypress="isNumber($event)">
+                    <input type="text" class="form-control" placeholder="" v-model="form.zip_code" @keypress="isNumber($event)">
                   </div>
                 </div>
                 <div class="w-full flex flex-col gap-4">

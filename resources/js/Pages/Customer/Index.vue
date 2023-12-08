@@ -159,8 +159,8 @@
                     Undefined
                   </td>
                   <td class="table-td">{{ customer.name}}</td>
-                  <td class="table-td table-td-website whitespace-nowrap">{{ customer.last_name }}</td>
-                  <td class="table-td table-td-phone_number whitespace-nowrap">{{ customer.email }}</td>
+                  <td class="table-td">{{ customer.last_name }}</td>
+                  <td class="table-td whitespace-nowrap">{{ customer.email }}</td>
                   <td class="table-td table-td-phone_number whitespace-nowrap">{{ customer.phone_number }}</td>
                   <td class="table-td">
                     <div class="dropstart relative">
