@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('brand_website', function (Blueprint $table) {
+        Schema::create('product_inventories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('brand_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('website_id')->constrained()->cascadeOnDelete();
+            $table->string('size')->nullable();
+            $table->decimal('stock', 10, 2)->default(0);
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('brand_website');
+        Schema::dropIfExists('product_inventories');
     }
 };

@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Nike City Classic",
+    "type": "footwear",
+    "sku": "R9X4P2QJ",
+    "description": "The Nike City Classic Boot combines a high-top design with a synthetic leather upper and rubber sole for a classic look and durable traction.",
+    "price": 1999,
+    "categories": [
+      {
+        "name": "nike"
+      },
+      {
+        "name": "city"
+      },
+      {
+        "name": "classic"
+      },
+      {
+        "name": "footwear"
+      }
+    ],
+    "brand": {
+      "name": "Nike",
+      "logo_file_name": "nike-logo.jpeg",
+      "website": "https://www.nike.com/"
+    },
+    "images": [
+      {
+        "file_name": "bota-city-classic-1.jpeg"
+      },
+      {
+        "file_name": "bota-city-classic-2.jpeg"
+      },
+      {
+        "file_name": "bota-city-classic-3.webp"
+      },
+      {
+        "file_name": "bota-city-classic-4.jpeg"
+      }
+    ],
+    "inventory": [
+      {
+        "size": "6",
+        "stock": 1
+      },
+      {
+        "size": "7",
+        "stock": 1
+      },
+      {
+        "size": "8",
+        "stock": 1
+      }
+    ]
+  },
+  {
+    "name": "Jordan Essentials",
+    "type": "clothing",
+    "sku": "A7B3K6D1",
+    "description": "No intense cold will stop you with this jacket. It's lightweight, water-repellent and insulated to keep you comfortable during the wet days ahead.",
+    "stock": 5,
+    "price": 3999,
+    "categories": [
+      {
+        "name": "jordan"
+      },
+      {
+        "name": "essentials"
+      },
+      {
+        "name": "clothing"
+      }
+    ],
+    "brand": {
+      "name": "Jordan",
+      "logo_file_name": "jordan-logo.jpeg",
+      "website": "https://www.nike.com/jordan"
+    },
+    "images": [
+      {
+        "file_name": "jordan-essentials-1.webp"
+      },
+      {
+        "file_name": "jordan-essentials-2.webp"
+      },
+      {
+        "file_name": "jordan-essentials-3.webp"
+      },
+      {
+        "file_name": "jordan-essentials-4.webp"
+      }
+    ],
+    "inventory": [
+      {
+        "size": "6",
+        "stock": 1
+      },
+      {
+        "size": "7",
+        "stock": 1
+      },
+      {
+        "size": "8",
+        "stock": 1
+      }
+    ]
+  },
+  {
+    "name": "Air Jordan 1 Mid",
+    "type": "footwear",
+    "sku": "G5H2F8L7",
+    "description": "The Air Jordan 1 Mid Shoe is inspired by the first AJ1, offering OG fans a look at how far the Jordan brand has come since 1985.",
+    "price": 2999,
+    "categories": [
+      {
+        "name": "air"
+      },
+      {
+        "name": "jordan"
+      },
+      {
+        "name": "mid"
+      },
+      {
+        "name": "footwear"
+      }
+    ],
+    "brand": {
+      "name": "Jordan",
+      "logo_file_name": "jordan-logo.png",
+      "website": "https://www.nike.com/jordan"
+    },
+    "images": [
+      {
+        "file_name": "air-jordan-1-mid-1.webp"
+      },
+      {
+        "file_name": "air-jordan-1-mid-2.webp"
+      },
+      {
+        "file_name": "air-jordan-1-mid-3.webp"
+      },
+      {
+        "file_name": "air-jordan-1-mid-4.jpeg"
+      }
+    ],
+    "inventory": [
+      {
+        "size": "6",
+        "stock": 1
+      },
+      {
+        "size": "7",
+        "stock": 1
+      },
+      {
+        "size": "8",
+        "stock": 1
+      }
+    ]
+  }
+]

@@ -4,11 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Product;
 
 class Brand extends Model
 {
@@ -16,6 +14,7 @@ class Brand extends Model
 
     protected $fillable = [
         'name',
+        'website',
         'logo_file_name',
     ];
 
@@ -40,21 +39,6 @@ class Brand extends Model
     public function update_author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by');
-    }
-
-    public function emails(): BelongsToMany
-    {
-        return $this->belongsToMany(Email::class)->withTimestamps();
-    }
-
-    public function phone_numbers(): BelongsToMany
-    {
-        return $this->belongsToMany(PhoneNumber::class)->withTimestamps();
-    }
-
-    public function websites(): BelongsToMany
-    {
-        return $this->belongsToMany(Website::class)->withTimestamps();
     }
 
     public function products(): HasMany

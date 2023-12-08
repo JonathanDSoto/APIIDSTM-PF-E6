@@ -46,24 +46,6 @@ class BrandController extends Controller
 
         $brand = Brand::create($validated);
 
-        if (isset($validated['website'])) {
-            $brand->websites()->create([
-                'website' => $validated['website'],
-            ]);
-        }
-
-        if (isset($validated['phone_number'])) {
-            $brand->phone_numbers()->create([
-                'phone_number' => $validated['phone_number'],
-            ]);
-        }
-
-        if (isset($validated['email'])) {
-            $brand->emails()->create([
-                'email' => $validated['email'],
-            ]);
-        }
-
         return to_route('brands.index')->with('success', 'Brand created successfully!');
     }
 
@@ -75,9 +57,6 @@ class BrandController extends Controller
         $brand->load([
             'create_author',
             'update_author',
-            'emails',
-            'phone_numbers',
-            'websites',
         ]);
 
         return Inertia::render('Brand/Show', [
@@ -90,12 +69,6 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        $brand->load([
-            'emails',
-            'phone_numbers',
-            'websites',
-        ]);
-
         return Inertia::render('Brand/Edit', [
             'brand' => $brand,
         ]);
@@ -117,27 +90,6 @@ class BrandController extends Controller
             $logo_name = time() . '_' . $logo->getClientOriginalName();
             $logo->move(public_path('images'), $logo_name);
             $validated['logo_file_name'] = $logo_name;
-        }
-
-        if (isset($validated['website'])) {
-            $brand->websites()->delete();
-            $brand->websites()->create([
-                'website' => $validated['website'],
-            ]);
-        }
-
-        if (isset($validated['phone_number'])) {
-            $brand->phone_numbers()->delete();
-            $brand->phone_numbers()->create([
-                'phone_number' => $validated['phone_number'],
-            ]);
-        }
-
-        if (isset($validated['email'])) {
-            $brand->emails()->delete();
-            $brand->emails()->create([
-                'email' => $validated['email'],
-            ]);
         }
 
         $brand->update($validated);

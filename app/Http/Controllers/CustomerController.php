@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Http\Requests\Customer\StoreCustomerRequest;
 use App\Http\Requests\Customer\UpdateCustomerRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -76,9 +77,15 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCustomerRequest $request, Customer $customer)
+    public function update(Request $request, Customer $customer)
     {
-        $validated = $request->validated();
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255', 'min:1'],
+            'last_name' => ['required', 'string', 'max:255', 'min:1'],
+            'email' => ['required', 'email', 'max:255', 'unique:customers,email,' . $customer->id],
+        ]);
+
+//        $validated = $request->validated();
         if (isset($validated['profile_photo'])) {
             if ($customer->profile_photo_file_name) {
                 unlink(public_path('images/' . $customer->profile_photo_file_name));
@@ -89,7 +96,6 @@ class CustomerController extends Controller
             $profile_photo->move(public_path('images'), $profile_photo_file_name);
             $validated['profile_photo_file_name'] = $profile_photo_file_name;
         }
-
         $customer->update($validated);
 
         return to_route('customers.show', $customer)->with('success', 'Customer updated successfully!');
