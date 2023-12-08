@@ -87,10 +87,20 @@
       </ul>
     </div>
     <br>
-        <a href="/users/create">
-            <button class="btn inline-flex justify-center btn-primary w-full">Create new User</button>
-        </a>
-        <br><br>
+    <a href="/users/create">
+        <button class="btn inline-flex justify-center btn-primary w-full">Create new User</button>
+    </a>
+    <br>
+    <div class="alert alert-success" v-if="$page.props.flash.success">
+        <div class="flex items-start space-x-3 rtl:space-x-reverse">
+            <div class="flex-1">
+                {{$page.props.flash.success}}
+            </div>
+        </div>
+    </div>
+    <div v-if="$page.props.flash.success">
+        <br>
+    </div>
     <div >
       <div>
         <!-- ROLLO -->

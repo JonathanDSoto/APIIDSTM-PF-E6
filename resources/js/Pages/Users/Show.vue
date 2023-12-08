@@ -30,6 +30,16 @@
                 Detailed Information</li>
             </ul>
         </div>
+        <div class="alert alert-success" v-if="$page.props.flash.success">
+            <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                <div class="flex-1">
+                    {{$page.props.flash.success}}
+                </div>
+            </div>
+        </div>
+        <div v-if="$page.props.flash.success">
+            <br>
+        </div>
         <div class="space-y-5 profile-page">
                 <div class="profiel-wrap px-[35px] pb-10 md:pt-[84px] pt-10 rounded-lg bg-white dark:bg-slate-800 lg:flex lg:space-y-0
                 space-y-6 justify-between items-end relative z-[1]">
