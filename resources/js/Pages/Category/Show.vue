@@ -51,7 +51,7 @@
                             <span class="block font-light">You are seeing</span>
                             <span class="block">{{ category.name }}</span>
                         </h4>
-                        <p class="text-sm dark:text-slate-300">With the id: {{ id }}</p>
+                        <p class="text-sm dark:text-slate-300">With the id: {{ category.id }}</p>
                     </div>
                 </div>
                 <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">

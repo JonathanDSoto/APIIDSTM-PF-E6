@@ -9,9 +9,9 @@ export default {
     return {
       form: {
         name: null,
-        websites: [''],
-        emails: [''],
-        phone_numbers: [''],
+        website: null,
+        email: null,
+        phone_number: null,
         logo: null
       }
     }
@@ -83,27 +83,15 @@ export default {
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Website</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.websites[0]">
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Website 2</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.websites[1]">
+                <input type="text" class="form-control" placeholder="" v-model="form.website">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Email</label>
-                <input type="email" class="form-control" placeholder="" v-model="form.emails[0]">
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Email 2</label>
-                <input type="email" class="form-control" placeholder="" v-model="form.emails[1]">
+                <input type="email" class="form-control" placeholder="" v-model="form.email">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Phone</label>
-                <input type="number" class="form-control" placeholder="" v-model="form.phone_numbers[0]">
-              </div>
-              <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Phone 2</label>
-                <input type="number" class="form-control" placeholder="" v-model="form.phone_numbers[1]">
+                <input type="number" class="form-control" placeholder="" v-model="form.phone_number">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Logo</label>

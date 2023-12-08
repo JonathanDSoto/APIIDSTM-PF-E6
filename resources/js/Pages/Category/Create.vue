@@ -22,12 +22,7 @@ export default {
             .catch(error => {
                 this.errors = error.response.data;
             })
-        },
-        isLetter(e) {
-            let char = String.fromCharCode(e.keyCode);
-            if(/^[A-Za-z]+$/.test(char)) return true;
-            else e.preventDefault(); 
-        },
+        }
     }
 }
 </script>
@@ -71,20 +66,9 @@ export default {
                                     </div>
                                 </div>
                             </div>
-                            <ul v-for="(error, key) in errors" :key="key" class="w-1/2">
-                                <li>
-                                    <div class="alert alert-danger">
-                                        <div class="flex items-start space-x-3 rtl:space-x-reverse">
-                                            <div class="flex-1">
-                                                    {{ error }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
                             <div class="input-area relative pl-28">
-                                <label for="largeInput" class="inline-inputLabel">Category Name</label>
-                                <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" pattern="[a-zA-Z]*" @keypress="isLetter($event)">
+                                <label for="nameInput" class="inline-inputLabel">Nombre</label>
+                                <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" pattern="[A-Za-z\s]+" title="Solo letras y espacios permitidos">
                             </div>
                             <button type="submit" class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                         </form>

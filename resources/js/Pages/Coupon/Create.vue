@@ -24,6 +24,7 @@
         },
         methods: {
             submit(){
+                this.form.code = this.form.code.toString();
                 router.post('/coupons',this.form)
                 .catch(error => {
                     this.errors = error.response.data;
@@ -97,7 +98,7 @@
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Discount</label>
-                            <input type="number" class="form-control" placeholder="" v-model="form.discount">
+                            <input type="number" class="form-control" placeholder="" v-model="form.discount" title="Ingresa un número válido">
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Description</label>

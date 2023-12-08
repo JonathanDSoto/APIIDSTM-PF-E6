@@ -26,6 +26,7 @@
         },
         methods: {
             submit(){
+                this.form.code = this.form.code.toString();
                 router.put(`/coupons/${this.coupon.id}`, this.form)
             }
         }
@@ -84,15 +85,15 @@
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Uses</label>
-                            <input type="text" class="form-control" placeholder=""  v-model="form.uses">
+                            <input type="number" class="form-control" placeholder=""  v-model="form.uses">
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Max Uses</label>
-                            <input type="text" class="form-control" placeholder="" v-model="form.max_uses">
+                            <input type="number" class="form-control" placeholder="" v-model="form.max_uses">
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Discount</label>
-                            <input type="text" class="form-control" placeholder="" v-model="form.discount">
+                            <input type="number" class="form-control" placeholder="" v-model="form.discount">
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Description</label>

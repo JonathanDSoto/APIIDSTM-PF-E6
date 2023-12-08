@@ -164,18 +164,13 @@
                 <div class="hidden w-full md:block">
                   <button class="inline-flex items-center rounded-lg text-center text-sm font-medium text-slate-800 focus:outline-none
                                         focus:ring-0 dark:text-white" type="button" data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                    <div
-                        class="h-7 w-7 flex-1 rounded-full ltr:mr-[10px] rtl:ml-[10px] lg:h-8 lg:w-8">
-                      <img src="/images/all-img/user.png" alt="user"
-                           class="block h-full w-full rounded-full object-cover">
+                          aria-expanded="false" style="display: flex; gap: 10px;">
+                    <div class="h-7 w-7 flex-1 rounded-full ltr:mr-[10px] rtl:ml-[10px] lg:h-8 lg:w-8">
+                      <img src="/images/all-img/user.png" alt="user" class="block h-full w-full rounded-full object-cover">
                     </div>
-                    <span
-                        class="hidden flex-none items-center truncate text-sm font-normal text-slate-600 dark:text-white lg:flex">Albert Flores</span>
-                    <svg
-                        class="ml-[10px] inline-block hidden h-[16px] w-[16px] text-base rtl:mr-[10px] dark:text-white lg:inline-block"
-                        aria-hidden="true" fill="none" stroke="currentColor" viewbox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <span class="hidden flex-none items-center truncate text-sm font-normal text-slate-600 dark:text-white lg:flex">Albert Flores</span>
+                    <svg aria-hidden="true" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M19 9l-7 7-7-7"></path>
                     </svg>

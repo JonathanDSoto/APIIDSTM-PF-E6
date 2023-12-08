@@ -87,13 +87,9 @@ export default {
                 <label for="largeInput" class="inline-inputLabel">Name</label>
                 <input type="text" class="form-control" placeholder="" required v-model="form.name">
               </div>
-              <div class="input-area relative pl-28" v-if="form.website && form.website[0]">
+              <div class="input-area relative pl-28" v-if="form.website">
                 <label for="largeInput" class="inline-inputLabel">Website</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.website[0]">
-              </div>
-              <div class="input-area relative pl-28" v-if="form.website_two && form.website_two[1]">
-                <label for="largeInput" class="inline-inputLabel">Website</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.website_two[1]">
+                <input type="text" class="form-control" placeholder="" v-model="form.website">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Email</label>
