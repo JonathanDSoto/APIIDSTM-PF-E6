@@ -15,7 +15,7 @@ export default {
         name: this.brand.name,
         website: this.brand.websites[0] !== undefined ? this.brand.websites[0].website : null,
         email: this.brand.emails[0] !== undefined ? this.brand.emails[0].email : null,
-        phone: this.brand.phone_numbers[0] !== undefined ? this.brand.phone_numbers[0].phone_number : null,
+        phone_number: this.brand.phone_numbers[0] !== undefined ? this.brand.phone_numbers[0].phone_number : null,
         logo: null
       }
     }
