@@ -121,7 +121,7 @@
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Zip Code</label>
-                    <input type="text" class="form-control" placeholder="" v-model="form.zip_code" @keypress="isNumber($event)">
+                    <input type="text" class="form-control" placeholder="" v-model="form.zip_code">
                   </div>
                 </div>
                 <div class="w-full flex flex-col gap-4">

@@ -49,7 +49,7 @@
                     <div class="flex-1">
                         <h4 class="text-xl font-medium mb-2">
                             <span class="block font-light">You are seeing</span>
-                            <span class="block">{{ customer.name }}</span>
+                            <span class="block">{{ customer.name }} {{ customer.last_name }}</span>
                         </h4>
                         <p class="text-sm dark:text-slate-300">With the id: {{ customer.id }}</p>
                     </div>
@@ -72,6 +72,19 @@
                     </div>
                     <div class="text-slate-900 dark:text-white text-lg font-medium" >
                         {{ new Date(customer.updated_at).toISOString().slice(0, 10) }}
+                    </div>
+                    <div>
+                        <div v-if="customer.update_author">By: {{ customer.update_author.name }}</div>
+                        <div v-else>By: Unknown author</div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        Email
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium" >
+                        {{ customer.email }}
                     </div>
                     <div>
                         <div v-if="customer.update_author">By: {{ customer.update_author.name }}</div>

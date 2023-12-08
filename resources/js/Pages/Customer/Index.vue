@@ -28,6 +28,10 @@
             confirmElimination () {
                 this.popUpDelete = false
                 router.delete(`/customers/${this.selectedId}`)
+            },
+            numberFormat(numero) {
+              const numeroLimpio = numero.replace(/\D/g, '');
+              return numeroLimpio.replace(/^(\d{3})(\d{3})(\d+)/, '$1-$2-$3');
             }
         }
     }
@@ -130,7 +134,7 @@
                     ID
                   </th>
                   <th scope="col" class="table-th">
-                    Logo
+                    Photo
                   </th>
                   <th scope="col" class="table-th">
                     Name
@@ -159,9 +163,10 @@
                     Undefined
                   </td>
                   <td class="table-td">{{ customer.name}}</td>
-                  <td class="table-td">{{ customer.last_name }}</td>
-                  <td class="table-td whitespace-nowrap">{{ customer.email }}</td>
-                  <td class="table-td table-td-phone_number whitespace-nowrap">{{ customer.phone_number }}</td>
+                  <td class="table-td ">{{ customer.last_name }}</td>
+                  <td class="table-td table-td-website whitespace-nowrap">{{ customer.email }}</td>
+                  <td class="table-td table-td-phone_number whitespace-nowrap" v-if="customer.phone_number">{{ numberFormat(customer.phone_number) }}</td>
+                  <td class="table-td table-td-phone_number whitespace-nowrap" v-else>Undefined</td>
                   <td class="table-td">
                     <div class="dropstart relative">
                       <button class="inline-flex items-center justify-center" type="button" id="tableDropdownMenuButton"
