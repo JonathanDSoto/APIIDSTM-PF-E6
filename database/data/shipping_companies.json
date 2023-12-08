@@ -1,0 +1,26 @@
+[
+  {
+    "name": "DHL",
+    "website": "http://www.dhl.com/en.html",
+    "phone": "1-800-225-5345",
+    "email": ""
+  },
+  {
+    "name": "FedEx",
+    "website": "http://www.fedex.com/us/",
+    "phone": "1-800-463-3339",
+    "email": ""
+  },
+  {
+    "name": "UPS",
+    "website": "https://www.ups.com/",
+    "phone": "1-800-742-5877",
+    "email": ""
+  },
+  {
+    "name": "USPS",
+    "website": "https://www.usps.com/",
+    "phone": "1-800-275-8777",
+    "email": ""
+  }
+]

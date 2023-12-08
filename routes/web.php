@@ -7,7 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ShipmentAgencyController;
+use App\Http\Controllers\ShippingCompanyController;
 use App\Http\Controllers\ShipmentController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('orders', OrderController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('brands', BrandController::class);
-    Route::resource('shipments-agencies', ShipmentAgencyController::class);
+    Route::resource('shipping-companies', ShippingCompanyController::class);
     Route::resource('shipments', ShipmentController::class);
 });
 

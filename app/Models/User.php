@@ -63,4 +63,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product::class, 'updated_by');
     }
+
+    public function created_categories(): HasMany
+    {
+        return $this->hasMany(Category::class, 'created_by');
+    }
+
+    public function updated_categories(): HasMany
+    {
+        return $this->hasMany(Category::class, 'updated_by');
+    }
+
+    public function created_shipping_companies(): HasMany
+    {
+        return $this->hasMany(ShippingCompany::class, 'created_by');
+    }
+
+    public function updated_shipping_companies(): HasMany
+    {
+        return $this->hasMany(ShippingCompany::class, 'updated_by');
+    }
 }
