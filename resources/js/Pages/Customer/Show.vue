@@ -1,5 +1,9 @@
 <script>
     import DefaultTemplate from "@/layouts/DefaultTemplate.vue";
+import UIAvatarSvg from 'ui-avatar-svg'
+
+const avatar = new UIAvatarSvg()
+
     export default {
         components: {
             DefaultTemplate,
@@ -9,6 +13,16 @@
             errors: Object,
             success: null
         },
+        methods: {
+          getAvatar (name, lastname) {
+            return avatar
+              .text(name[0] + lastname[0])
+              .size(186)
+              .bgColor('#b8c0cc')
+              .textColor('#342f2f')
+              .generate()
+          }
+        }
     }
 </script>
 
@@ -49,11 +63,8 @@
                       <div class="flex-none">
                         <div class="md:h-[186px] md:w-[186px] h-[140px] w-[140px] md:ml-0 md:mr-0 ml-auto mr-auto md:mb-0 mb-4 rounded-full ring-4
                                 ring-slate-100 relative">
-                          <img src="/images/users/user-1.jpg" alt="" class="w-full h-full object-cover rounded-full">
-                          <a href="https://dashcode-html.codeshaper.tech/profile-setting" class="absolute right-2 h-8 w-8 bg-slate-50 text-slate-600 rounded-full shadow-sm flex flex-col items-center
-                                    justify-center md:top-[140px] top-[100px]">
-                            <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                          </a>
+                          <img v-if="customer.profile_photo_file_name" class="w-full h-full object-cover rounded-full" :src="'/images/' + customer.profile_photo_file_name" alt="" >
+                          <div class="w-full h-full object-cover rounded-full" v-html="this.getAvatar(customer.name, customer.last_name)"></div>
                         </div>
                       </div>
                       <div class="flex-1">
@@ -72,7 +83,7 @@
                     <div>
                         <Link :href="`/customers/${customer.id}/edit`" class="btn btn-dark m-1 inline-flex justify-center dark:bg-slate-700 dark:text-slate-300 ">
                             <span class="flex items-center">
-                                <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="oi:pencil"/>
+                                <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="material-symbols:edit-square-outline"/>
                                 <span>Modify Customer</span>
                             </span>
                         </Link>
@@ -149,57 +160,78 @@
                                 </div>
                             </div>
                         </li>
-                          <!-- end single list -->
-                          <li class="flex space-x-3 rtl:space-x-reverse">
-                            <div class="flex-none text-2xl text-slate-600 dark:text-slate-300">
-                              <iconify-icon icon="heroicons:map"></iconify-icon>
-                            </div>
-                            <div class="flex-1">
-                              <div class="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
-                                LOCATION
-                              </div>
-                              <div class="text-base text-slate-600 dark:text-slate-50">
-                                The city of {{ customer.city }} in the country {{ customer.country }} in the state of {{ customer.state }}.
-                              </div>
-                            </div>
-                          </li>
-                          <!-- end single list -->
                         </ul>
                       </div>
                     </div>
                   </div>
+
                   <!-- START OF THE TABLES -->
-                  <div class="lg:col-span-4 col-span-12">
-                    <div class="card ">
-                        <div class="card-body">
-                          <div class="card">
-                            <header class=" card-header noborder">
-                              <h4 class="card-title">Adresses
-                              </h4>
-                            </header>
-                            <div class="card-body px-6 pb-6">
-                              <div class="overflow-x-auto -mx-6">
-                                <div class="inline-block min-w-full align-middle">
-                                  <div class="overflow-hidden ">
-                                    <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
-                                      <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                                        <tr>
-                                          <td class="table-td">{{ customer.address_line_1 }}</td>
-                                        </tr>
-                                        <tr>
-                                          <td class="table-td">{{ customer.address_line_2 }}</td>
-                                        </tr>
-                                        <tr>
-                                          <td class="table-td">{{ customer.address_line_3 }}</td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                              </div>
+                  <div class="lg:col-span-8 col-span-12">
+                    <div class="card h-full">
+                      <header class="card-header">
+                        <h4 class="card-title">Location</h4>
+                      </header>
+                      <div class="card-body p-6">
+                        <ul class="list space-y-8">
+                          <li class="flex space-x-3 rtl:space-x-reverse">
+                            <div class="flex-none text-2xl text-slate-600 dark:text-slate-300">
+                              <iconify-icon icon="material-symbols:map-outline"></iconify-icon>
                             </div>
-                          </div>
-                        </div>
+                            <div class="flex-1">
+                              <div class="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
+                                Country
+                              </div>
+                              <a href="mailto:someone@example.com" class="text-base text-slate-600 dark:text-slate-50">
+                                {{ customer.country }}
+                              </a>
+                            </div>
+                          </li>
+                          <!-- end single list -->
+                          <li class="flex space-x-3 rtl:space-x-reverse">
+                            <div class="flex-none text-2xl text-slate-600 dark:text-slate-300">
+                              <iconify-icon icon="healthicons:city"></iconify-icon>
+                            </div>
+                            <div class="flex-1">
+                              <div class="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
+                                City
+                              </div>
+                              <a href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
+                                {{ customer.city }}
+                              </a>
+                            </div>
+                          </li>
+                        <li class="flex space-x-3 rtl:space-x-reverse">
+                            <div class="flex-none text-2xl text-slate-600 dark:text-slate-300">
+                                <iconify-icon icon="arcticons:50-us-states-map"></iconify-icon>
+                            </div>
+                            <div class="flex-1">
+                                <div class="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
+                                    State
+                                </div>
+                                <a href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
+                                    {{ customer.state }}
+                                </a>
+                            </div>
+                        </li>
+                        <li class="flex space-x-3 rtl:space-x-reverse">
+                            <div class="flex-none text-2xl text-slate-600 dark:text-slate-300">
+                                <iconify-icon icon="entypo:address"></iconify-icon>
+                            </div>
+                            <div class="flex-1">
+                                <div class="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
+                                    Addresses
+                                </div>
+                                <a href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
+                                    <ol>
+                                      <li>{{ customer.address_line_1 }}</li>
+                                      <li>{{ customer.address_line_2 }}</li>
+                                      <li>{{ customer.address_line_3 }}</li>
+                                    </ol>
+                                </a>
+                            </div>
+                        </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>

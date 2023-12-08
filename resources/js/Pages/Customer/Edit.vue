@@ -101,7 +101,7 @@ export default {
                     <div class="alert alert-danger light-mode" v-if="errors.name">
                         <div class="flex items-start space-x-3 rtl:space-x-reverse">
                             <div class="flex-1">
-                            {{ errors.code }}
+                            {{ errors.name }}
                             </div>
                         </div>
                     </div>
