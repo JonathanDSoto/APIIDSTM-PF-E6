@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name', 255);
-            $table->char('sku', 15)->index();
+            $table->enum('type', ['footwear', 'clothing', 'accessories', 'other']);
+            $table->char('sku', 8)->index()->unique();
             $table->text('description')->nullable();
-            $table->decimal('stock', 10, 2)->default(0);
             $table->decimal('price', 10, 2)->default(0);
             $table->foreignIdFor(Brand::class)->constrained();
-            $table->foreignIdFor(User::class, 'created_by')->constrained('users');
-            $table->foreignIdFor(User::class, 'updated_by')->constrained('users');
+            $table->foreignIdFor(User::class, 'created_by')->nullable();
+            $table->foreignIdFor(User::class, 'updated_by')->nullable();
         });
     }
 
