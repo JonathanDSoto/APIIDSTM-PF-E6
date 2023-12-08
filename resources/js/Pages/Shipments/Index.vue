@@ -94,7 +94,7 @@ export default {
 
       <!-- BEGIN: Action Area -->
       <div>
-        <Link href="/brands/create" class="btn btn-dark m-1 inline-flex justify-center dark:bg-slate-700 dark:text-slate-300 ">
+        <Link href="/shipments/create" class="btn btn-dark m-1 inline-flex justify-center dark:bg-slate-700 dark:text-slate-300 ">
         <span class="flex items-center">
           <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="ph:plus-bold"/>
           <span>Add Shipments</span>

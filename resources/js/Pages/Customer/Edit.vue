@@ -10,7 +10,7 @@ export default {
   },
   data () {
     return {
-      selectedFileName: '',
+      selectedFileName: this.customer.profile_photo_file_name,
       form: {
         name: this.customer.name,
         last_name: this.customer.last_name,

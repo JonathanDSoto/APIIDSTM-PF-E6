@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     submit () {
-      router.put('/brands/' + this.brand.id, this.form)
+      router.put('/orders/' + this.brand.id, this.form)
     },
     onFileChange (e) {
       this.form.logo = e.target.files[0]
@@ -46,13 +46,13 @@ export default {
           </a>
         </li>
         <li class="text-primary-500 font-Inter relative inline-block text-sm ">
-          Brand
+          Order
           <span class="inline-block align-[0px]">
             <Icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180" />
           </span>
         </li>
         <li class="font-Inter relative inline-block text-sm text-slate-500 dark:text-white">
-          Modify Brand Information
+          Modify Order Information
         </li>
       </ul>
     </div>
@@ -61,7 +61,7 @@ export default {
         <div class="card-body flex flex-col p-6">
           <header class="-mx-6 mb-5 flex items-center border-b border-slate-100 px-6 pb-5 dark:border-slate-700">
             <div class="flex-1">
-              <div class="card-title text-slate-900 dark:text-white">Modify Brand</div>
+              <div class="card-title text-slate-900 dark:text-white">Modify Order</div>
             </div>
           </header>
           <div class="card-text h-full ">

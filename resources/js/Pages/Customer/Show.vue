@@ -72,7 +72,7 @@
                     <div>
                         <Link :href="`/customers/${customer.id}/edit`" class="btn btn-dark m-1 inline-flex justify-center dark:bg-slate-700 dark:text-slate-300 ">
                             <span class="flex items-center">
-                                <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="ph:plus-bold"/>
+                                <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="oi:pencil"/>
                                 <span>Modify Customer</span>
                             </span>
                         </Link>
@@ -126,7 +126,7 @@
                                 <a href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
                                     {{ new Date(customer.created_at).toISOString().slice(0, 10) }}
                                 </a>
-                                <div style="font-size: 13px">
+                                <div style="font-size: 13px" class="dark:text-slate-300">
                                     <div v-if="customer.create_author">By: {{ customer.create_author.name }}</div>
                                     <div v-else>By: Unknown author</div>
                                 </div>
@@ -143,7 +143,7 @@
                                 <a href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
                                     {{ new Date(customer.updated_at).toISOString().slice(0, 10) }}
                                 </a>
-                                <div style="font-size: 13px">
+                                <div style="font-size: 13px" class="dark:text-slate-300">
                                     <div v-if="customer.update_author">By: {{ customer.update_author.name }}</div>
                                     <div v-else>By: Unknown author</div>
                                 </div>
