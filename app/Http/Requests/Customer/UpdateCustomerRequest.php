@@ -26,7 +26,7 @@ class UpdateCustomerRequest extends FormRequest
             'name' => 'required|string|max:255|min:1',
             'last_name' => 'required|string|max:255|min:1',
             'password' => 'required|string|max:255|min:1',
-            'email' => 'required|string|max:255|min:1|unique:customers,email' . $this->customer->id,
+            'email' => 'required|string|max:255|min:1|unique:customers,email',
             'phone_number' => 'string|max:255|min:1',
             'country' => 'string|max:255|min:1',
             'state' => 'string|max:255|min:1',
