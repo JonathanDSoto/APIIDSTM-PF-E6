@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Brand;
 
 class ProductController extends Controller
 {
@@ -29,7 +30,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Product/Create');
+        $brands = Brand::all();
+
+        return Inertia::render('Product/Create', [
+            'brands' => $brands,
+        ]);
     }
 
     /**
@@ -55,8 +60,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $brands = Brand::all();
+
         return Inertia::render('Product/Edit', [
             'product' => $product,
+            'brands' => $brands,
         ]);
     }
 
