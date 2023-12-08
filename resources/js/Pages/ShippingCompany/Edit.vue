@@ -89,20 +89,20 @@ export default {
                   </div>
               </div>
               <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Name</label>
+                <label for="largeInput" class="inline-inputLabel">Name*</label>
                 <input type="text" class="form-control" placeholder="" required v-model="form.name" @keypress="isLetter($event)">
               </div>
               <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Website</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.website">
+                <label for="largeInput" class="inline-inputLabel">Website*</label>
+                <input type="text" class="form-control" placeholder="" v-model="form.website" required>
               </div>
               <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Email</label>
-                <input type="email" class="form-control" placeholder="" v-model="form.email">
+                <label for="largeInput" class="inline-inputLabel">Email*</label>
+                <input type="email" class="form-control" placeholder="" v-model="form.email" required>
               </div>
               <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Phone</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.phone" @keypress="isNumber($event)">
+                <label for="largeInput" class="inline-inputLabel">Phone*</label>
+                <input type="text" class="form-control" placeholder="" v-model="form.phone" @keypress="isNumber($event)" required>
               </div>
               <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
             </form>

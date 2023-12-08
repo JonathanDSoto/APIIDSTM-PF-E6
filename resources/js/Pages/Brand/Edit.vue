@@ -87,7 +87,7 @@ export default {
                   </div>
               </div>
               <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Name</label>
+                <label for="largeInput" class="inline-inputLabel">Name*</label>
                 <input type="text" class="form-control" placeholder="" required v-model="form.name" @keypress="isLetter($event)">
               </div>
               <div class="input-area relative pl-28">

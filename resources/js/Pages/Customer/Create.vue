@@ -96,11 +96,11 @@
               <div class="flex justify-evenly gap-4">
                 <div class="w-full flex flex-col gap-4">
                   <div class="input-area relative pl-28">
-                    <label for="largeInput" class="inline-inputLabel">Name</label>
+                    <label for="largeInput" class="inline-inputLabel">Name*</label>
                     <input type="text" class="form-control" placeholder="" required v-model="form.name" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
-                    <label for="largeInput" class="inline-inputLabel">Last Name</label>
+                    <label for="largeInput" class="inline-inputLabel">Last Name*</label>
                     <input type="text" class="form-control" placeholder="" required v-model="form.last_name" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
@@ -108,20 +108,20 @@
                     <input type="file" class="form-control" placeholder="" v-on:change="onFileChange">
                   </div>
                   <div class="input-area relative pl-28">
-                    <label for="largeInput" class="inline-inputLabel">Email</label>
-                    <input type="email" class="form-control" placeholder="" v-model="form.email">
+                    <label for="largeInput" class="inline-inputLabel">Email*</label>
+                    <input type="email" class="form-control" placeholder="" v-model="form.email" required>
                   </div>
                   <div class="input-area relative pl-28">
-                    <label for="largeInput" class="inline-inputLabel">Password</label>
+                    <label for="largeInput" class="inline-inputLabel">Password*</label>
                     <input type="password" class="form-control" placeholder="" v-model="form.password" required>
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Phone</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.phone_number">
+                    <input type="text" class="form-control" placeholder="" v-model="form.phone_number" @keypress="isNumber($event)"> 
                   </div>
                   <div class="input-area relative pl-28">
-                    <label for="largeInput" class="inline-inputLabel">Postal Code</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.zip_code">
+                    <label for="largeInput" class="inline-inputLabel">Zip Code</label>
+                    <input type="text" class="form-control" placeholder="" v-model="form.zip_code" @keypress="isNumber($event)">
                   </div>
                 </div>
                 <div class="w-full flex flex-col gap-4">

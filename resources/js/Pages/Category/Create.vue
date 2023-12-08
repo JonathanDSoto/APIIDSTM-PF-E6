@@ -72,8 +72,8 @@ export default {
                                 </div>
                             </div>
                             <div class="input-area relative pl-28">
-                                <label for="nameInput" class="inline-inputLabel">Nombre</label>
-                                <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" @keypress="isLetter($event)">
+                                <label for="nameInput" class="inline-inputLabel">Name*</label>
+                                <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" @keypress="isLetter($event)" required>
                             </div>
                             <button type="submit" class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                         </form>

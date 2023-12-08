@@ -12,14 +12,14 @@ export default {
     return {
       form: {
         name: this.customer.name,
-        lastName: this.customer.last_name,
+        last_name: this.customer.last_name,
         email: this.customer.email,
         password: this.customer.password,
-        phone: this.customer.phone_number,
+        phone_number: this.customer.phone_number,
         country: this.customer.country,
         city: this.customer.city,
         state: this.customer.state,
-        postal_code: this.customer.zip_code,
+        zip_code: this.customer.zip_code,
         addressOne: this.customer.address_line_1,
         addressTwo: this.customer.address_line_2,
         addressThree: this.customer.address_line_3,
@@ -100,27 +100,27 @@ export default {
               <div class="flex justify-evenly gap-4">
                 <div class="w-full flex flex-col gap-4">
                   <div class="input-area relative pl-28">
-                    <label for="largeInput" class="inline-inputLabel">Name</label>
+                    <label for="largeInput" class="inline-inputLabel">Name*</label>
                     <input type="text" class="form-control" placeholder="" required v-model="form.name" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
-                    <label for="largeInput" class="inline-inputLabel">Last Name</label>
-                    <input type="text" class="form-control" placeholder="" required v-model="form.lastName"  @keypress="isLetter($event)">
+                    <label for="largeInput" class="inline-inputLabel">Last Name*</label>
+                    <input type="text" class="form-control" placeholder="" required v-model="form.lastName"  @keypress="isLetter($event)" >
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Picture</label>
                     <input type="file" class="form-control" placeholder="" v-on:change="onFileChange">
                   </div>
                   <div class="input-area relative pl-28">
-                    <label for="largeInput" class="inline-inputLabel">Email</label>
+                    <label for="largeInput" class="inline-inputLabel">Email*</label>
                     <input type="email" class="form-control" placeholder="" v-model="form.email">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Phone</label>
-                    <input type="number" class="form-control" placeholder="" v-model="form.phone">
+                    <input type="number" class="form-control" placeholder="" v-model="form.phone" @keypress="isNumber($event)">
                   </div>
                   <div class="input-area relative pl-28">
-                    <label for="largeInput" class="inline-inputLabel">Postal Code</label>
+                    <label for="largeInput" class="inline-inputLabel">Zip Code*</label>
                     <input type="text" class="form-control" placeholder="" v-model="form.postal_code" @keypress="isNumber($event)">
                   </div>
                 </div>
@@ -139,15 +139,15 @@ export default {
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Address 1</label>
-                    <input type="text" class="form-control" placeholder="" v-model="form.addressOne">
+                    <input type="text" class="form-control" placeholder="" v-model="form.address_line_1">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Address 2</label>
-                    <input type="text" class="form-control" placeholder="" v-model="form.addressTwo">
+                    <input type="text" class="form-control" placeholder="" v-model="form.address_line_2">
                   </div>
                   <div class="input-area relative pl-28">
                     <label for="largeInput" class="inline-inputLabel">Address 3</label>
-                    <input type="text" class="form-control" placeholder="" v-model="form.addressThree">
+                    <input type="text" class="form-control" placeholder="" v-model="form.address_line_3">
                   </div>
                 </div>
               </div>

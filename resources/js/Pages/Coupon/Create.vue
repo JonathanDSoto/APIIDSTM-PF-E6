@@ -73,49 +73,43 @@
                             </div>
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Code</label>
-                            <input type="number" class="form-control" placeholder="" v-model="form.code">
+                            <label for="largeInput" class="inline-inputLabel">Code*</label>
+                            <input type="number" class="form-control" placeholder="" v-model="form.code" required>
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Start Date</label>
+                            <label for="largeInput" class="inline-inputLabel">Start Date*</label>
                             <div class="form-control">
                                 <div>
-                                    <input type="date" class="" placeholder="" v-model="form.start_date">
+                                    <input type="date" class="" placeholder="" v-model="form.start_date" required>
                                 </div>
                             </div>
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">End Date</label>
+                            <label for="largeInput" class="inline-inputLabel">End Date*</label>
                             <div class="form-control">
                                 <div>
-                                    <input type="date" class="" placeholder="" v-model="form.end_date">
+                                    <input type="date" class="" placeholder="" v-model="form.end_date" required>
                                 </div>
                             </div>
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Max Uses</label>
-                            <input type="number" class="form-control" placeholder="" v-model="form.max_uses">
+                            <label for="largeInput" class="inline-inputLabel">Max Uses*</label>
+                            <input type="number" class="form-control" placeholder="" v-model="form.max_uses" required>
                         </div>
                         <div class="input-area relative pl-28">
-                            <label for="largeInput" class="inline-inputLabel">Discount</label>
-                            <input type="number" class="form-control" placeholder="" v-model="form.discount" title="Ingresa un número válido">
+                            <label for="largeInput" class="inline-inputLabel">Discount*</label>
+                            <input type="number" class="form-control" placeholder="" v-model="form.discount" title="Ingresa un número válido" required>
                         </div>
                         <div class="input-area relative pl-28">
                             <label for="largeInput" class="inline-inputLabel">Description</label>
                             <input type="text" class="form-control" placeholder="" v-model="form.description">
                         </div>
                         <div class="input-area relative pl-28">
-                            <label class="inline-inputLabel">Status</label>
-                            <div style="display: flex; gap: 20px">
-                                <div style="display:flex; gap:10px">
-                                    <input type="radio" id="trueOption" value="1" v-model="form.is_active">
-                                    <label for="trueOption">True</label>
-                                </div>
-                                <div style="display:flex; gap:10px">
-                                    <input type="radio" id="falseOption" value="0" v-model="form.is_active">
-                                    <label for="falseOption">False</label>
-                                </div>
-                            </div>
+                            <label for="booleanInput" class="inline-inputLabel">Is Active*</label>
+                            <select class="form-control" v-model="form.is_active" required>
+                                <option value="1">True</option>
+                                <option value="0">False</option>
+                            </select>
                         </div>
 
                         <button class="btn inline-flex justify-center btn-dark ml-28">Submit</button>

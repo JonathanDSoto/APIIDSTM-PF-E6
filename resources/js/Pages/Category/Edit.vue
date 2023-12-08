@@ -64,8 +64,8 @@ export default {
                   </div>
               </div>
               <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Category Name</label>
-                <input type="text" class="form-control" placeholder="" v-model="form.name" pattern="[a-zA-Z]*"  required>
+                <label for="largeInput" class="inline-inputLabel">Name*</label>
+                <input type="text" class="form-control" placeholder="" v-model="form.name" pattern="[a-zA-Z]*" required>
               </div>
               <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
             </form>
