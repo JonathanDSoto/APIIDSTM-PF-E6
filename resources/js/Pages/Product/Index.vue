@@ -131,6 +131,12 @@ export default {
                     ID
                   </th>
                   <th scope="col" class="table-th">
+                    Brand
+                  </th>
+                  <th scope="col" class="table-th">
+                    Image
+                  </th>
+                  <th scope="col" class="table-th">
                     Name
                   </th>
                   <th scope="col" class="table-th">
@@ -142,24 +148,20 @@ export default {
                   <th scope="col" class="table-th">
                     Price
                   </th>
-                  <th scope="col" class="table-th">
-                    Brand
-                  </th>
                 </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 bg-white dark:divide-slate-700 dark:bg-slate-800">
                 <tr v-for="product in products" v-bind:key="product.id">
                   <td class="table-td">{{ product.id }}</td>
-                  <td class="table-td" v-if="product.logo_file_name">
-                    <img class="w-10 rounded-full" :src="'/images/' + product.logo_file_name" alt="">
+                  <td class="table-td">{{ product.brand.name }}</td>
+                  <td class="table-td" v-if="product.images[0]">
+                    <img class="w-10 object-cover rounded-full" style="height: 42px; width: 42px" :src="'/images/' + product.images[0].file_name" alt="">
                   </td>
-                  <td class="table-td" v-else>-</td>
-                  <td class="table-td">{{ product.name}}</td>
-                  <td class="table-td table-td-website whitespace-nowrap">{{ product.name }}</td>
-                  <td class="table-td table-td-website whitespace-nowrap">{{ product.sku }}</td>
+                  <td class="table-td" v-else>Undefined</td>
+                  <td class="table-td">{{ product.name }}</td>
+                  <td class="table-th  whitespace-nowrap">{{ product.sku }}</td>
                   <td class="table-td table-td-website whitespace-nowrap">{{ product.stock }}</td>
                   <td class="table-td table-td-website whitespace-nowrap">{{ product.price }}</td>
-                  <td class="table-td table-td-website whitespace-nowrap">{{ product.brand }}</td>
                   <td class="table-td">
                     <div class="dropstart relative">
                       <button class="inline-flex items-center justify-center" type="button" id="tableDropdownMenuButton"
