@@ -34,7 +34,7 @@
           <li class="">
             <Link href="/" class="navItem">
               <span class="flex items-center">
-                <Icon class=" nav-icon" icon="material-symbols:empty-dashboard-outline"/>
+                <Icon class=" nav-icon" icon="material-symbols:dashboard-rounded"/>
                 <span>Dashboard</span>
               </span>
             </Link>
@@ -42,7 +42,7 @@
           <li class="">
             <Link href="/products" class="navItem">
               <span class="flex items-center">
-                <Icon class=" nav-icon" icon="material-symbols:border-all-rounded"/>
+                <Icon class=" nav-icon" icon="material-symbols:local-mall"/>
                 <span>Products</span>
               </span>
             </Link>
