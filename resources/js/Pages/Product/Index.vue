@@ -39,24 +39,24 @@ export default {
 <template>
   <div class="relative rounded-lg shadow " id="deletepopup" v-if=popUpDelete style="border-radius: 20px; background-color: white;
       justify-content: center; align-items: center; position: fixed; z-index: 10; top: 50%; left: 50%; transform: translate(-50%,-50%);">
-      <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-danger-500">
-          <h3 class="text-base font-medium text-white dark:text-white capitalize">
+      <div class="bg-danger-500 flex items-center justify-between rounded-t border-b p-5 dark:border-slate-600">
+          <h3 class="text-base font-medium capitalize text-white dark:text-white">
               Delete Element
           </h3>
-          <button type="button" class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
+          <button type="button" class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-slate-400 hover:text-slate-900
                                   dark:hover:bg-slate-600 dark:hover:text-white" data-bs-dismiss="modal" @click="cancelElimination">
-              <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <svg aria-hidden="true" class="h-5 w-5" fill="#ffffff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10
                                           11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
               </svg>
               <span class="sr-only">Close modal</span>
           </button>
       </div>
-      <div class="p-6 space-y-4">
-      <p class="text-base dark:text-black text-black leading-6">
+      <div class="space-y-4 p-6">
+      <p class="text-base leading-6 text-black dark:text-black">
           Are you sure to delete this element?
       </p>
-      <p class="text-base text-slate-600 leading-6">
+      <p class="text-base leading-6 text-slate-600">
           Once the element gets deleted, there is no possible way to recover <br> the data without calling an administrator.<br><br>
           Please confirm the element you choose is the one listed below:
           <ul>
@@ -66,9 +66,9 @@ export default {
           </ul>
       </p>
       </div>
-          <div class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-          <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-danger-500"  @click="confirmElimination">Accept</button>
-          <button data-bs-dismiss="modal" class="btn inline-flex justify-center text-white bg-green-500"  @click="cancelElimination">Cancel</button>
+          <div class="flex items-center space-x-2 rounded-b border-t border-slate-200 p-6 dark:border-slate-600">
+          <button data-bs-dismiss="modal" class="btn bg-danger-500 inline-flex justify-center text-white"  @click="confirmElimination">Accept</button>
+          <button data-bs-dismiss="modal" class="btn inline-flex justify-center bg-green-500 text-white"  @click="cancelElimination">Cancel</button>
       </div>
   </div>
   <DefaultTemplate>
@@ -148,6 +148,9 @@ export default {
                   <th scope="col" class="table-th">
                     Price
                   </th>
+                  <th scope="col" class="table-th">
+                    Action
+                  </th>
                 </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 bg-white dark:divide-slate-700 dark:bg-slate-800">
@@ -155,12 +158,12 @@ export default {
                   <td class="table-td">{{ product.id }}</td>
                   <td class="table-td">{{ product.brand.name }}</td>
                   <td class="table-td" v-if="product.images[0]">
-                    <img class="w-10 object-cover rounded-full" style="height: 42px; width: 42px" :src="'/images/' + product.images[0].file_name" alt="">
+                    <img class="w-10 rounded-full object-cover" style="height: 42px; width: 42px" :src="'/images/' + product.images[0].file_name" alt="">
                   </td>
                   <td class="table-td" v-else>Undefined</td>
                   <td class="table-td">{{ product.name }}</td>
-                  <td class="table-th  whitespace-nowrap">{{ product.sku }}</td>
-                  <td class="table-td table-td-website whitespace-nowrap">{{ product.stock }}</td>
+                  <td class="table-td whitespace-nowrap uppercase">{{ product.sku }}</td>
+                  <td class="table-td table-td-website whitespace-nowrap">{{ product.inventories.reduce((sum, current) => sum + Number(current.stock), 0) }}</td>
                   <td class="table-td table-td-website whitespace-nowrap">{{ product.price }}</td>
                   <td class="table-td">
                     <div class="dropstart relative">
