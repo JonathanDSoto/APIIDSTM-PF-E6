@@ -1,18 +1,18 @@
 <script>
-import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
-import { router } from '@inertiajs/vue3'
+  import DefaultTemplate from '@/Layouts/DefaultTemplate.vue'
+  import { router } from '@inertiajs/vue3'
 
-export default {
-  name: 'Show',
-  components: { DefaultTemplate },
-  props: {
-    shipment_agency: Object,
-    errors: Object,
-    success: null
-  },
-  methods: {
+  export default {
+    name: 'Show',
+    components: { DefaultTemplate },
+    props: {
+      shipping_company: Object,
+      errors: Object,
+      success: null
+    },
+    methods: {
+    }
   }
-}
 </script>
 
 <template>
@@ -50,9 +50,9 @@ export default {
           <div class="flex-1">
             <h4 class="mb-2 text-xl font-medium">
               <span class="block font-light">You are seeing</span>
-              <span class="block">{{ brand.name }}</span>
+              <span class="block">{{ shipping_company.name }}</span>
             </h4>
-            <p class="text-sm dark:text-slate-300">With the id: {{ brand.id }}</p>
+            <p class="text-sm dark:text-slate-300">With the id: {{ shipping_company.id }}</p>
           </div>
         </div>
 
@@ -61,11 +61,42 @@ export default {
             Creation Date
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white">
-            {{ new Date(brand.created_at).toISOString().slice(0, 10)  }}
+            {{ new Date(shipping_company.created_at).toISOString().slice(0, 10)  }}
           </div>
           <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_1" v-if="brand.create_author">By: {{ brand.create_author.name}}</div>
-            <div id="clmn_chart_1" v-else>By: -</div>
+            <div v-if="shipping_company.create_author">By: {{ shipping_company.create_author.name}}</div>
+            <div v-else>By: Unknown</div>
+          </div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Website
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white">
+            {{ shipping_company.website  }}
+          </div>
+        </div>
+
+        
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Phone
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white">
+            {{ shipping_company.phone  }}
+          </div>
+        </div>
+
+        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
+          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Email
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="shipping_company.email">
+            {{ shipping_company.email  }}
+          </div>
+          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
+            Undefined
           </div>
         </div>
 
@@ -74,71 +105,21 @@ export default {
             Modification Date
           </div>
           <div class="text-lg font-medium text-slate-900 dark:text-white">
-            {{ new Date(brand.updated_at).toISOString().slice(0, 10) }}
+            {{ new Date(shipping_company.updated_at).toISOString().slice(0, 10) }}
           </div>
-            <div v-if="brand.create_author">By: {{ brand.create_author.name }}</div>
+            <div v-if="shipping_company.update_author">By: {{ shipping_company.update_author.name }}</div>
             <div v-else>By: Unknown author</div>
         </div>
 
-        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
-          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Website
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.websites[0]">
-            <a>{{ brand.websites[0].website }}</a>
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            -
-          </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
-          </div>
+        <div>
+          <Link :href="`/shipping-companies/${shipping_company.id}/edit`" class="btn btn-dark m-1 inline-flex justify-center dark:bg-slate-700 dark:text-slate-300 ">
+          <span class="flex items-center">
+            <Icon class="text-xl ltr:mr-2 rtl:ml-2" icon="ph:plus-bold"/>
+            <span>Edit</span>
+          </span>
+          </Link>
         </div>
 
-        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
-          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Email
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.emails[0]">
-            {{ brand.emails[0].email }}
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            -
-          </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
-          </div>
-        </div>
-
-        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
-          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Phone
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.emails[0]">
-            {{ brand.emails[0].email }}
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            -
-          </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
-          </div>
-        </div>
-
-        <div class="rounded bg-slate-50 p-4 dark:bg-slate-900">
-          <div class="mb-1 text-sm font-medium text-slate-600 dark:text-slate-400">
-            Logo
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-if="brand.logo_file_name">
-            <img :src="'/images/' + brand.logo_file_name" alt="">
-          </div>
-          <div class="text-lg font-medium text-slate-900 dark:text-white" v-else>
-            -
-          </div>
-          <div class="ml-auto max-w-[124px]">
-            <div id="clmn_chart_2"></div>
-          </div>
-        </div>
       </div>
     </div>
   </DefaultTemplate>

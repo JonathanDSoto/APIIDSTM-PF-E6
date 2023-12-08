@@ -12,7 +12,6 @@ export default {
         website: null,
         email: null,
         phone: null,
-        logo: null
       }
     }
   },
@@ -21,11 +20,21 @@ export default {
   },
   methods: {
     submit () {
-      router.post('/brands', this.form)
+      router.post('/shipping-companies', this.form)
     },
     onFileChange (e) {
       this.form.logo = e.target.files[0]
-    }
+    },
+    isNumber(e) {
+      let char = String.fromCharCode(e.keyCode);
+      if (/^[0-9-]+$/.test(char)) return true;
+      else e.preventDefault();
+    },
+    isLetter(e) {
+      let char = String.fromCharCode(e.keyCode);
+      if (/^[A-Za-z\s]+$/.test(char)) return true;
+      else e.preventDefault();
+    },
   }
 }
 </script>
@@ -67,9 +76,9 @@ export default {
           </header>
           <div class="card-text h-full ">
             <form class="space-y-4" @submit.prevent="submit">
-              <div style="display: flex; gap: 10px; height: 50px;">
+              <div style="display: flex; gap: 10px;">
                   <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
-                  style="padding: 5px; border-radius: 10px;" >
+                  style="padding: 5px; border-radius: 10px;">
                       <div class="flex items-start">
                           <div>
                                   {{ error }}
@@ -79,7 +88,7 @@ export default {
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Name</label>
-                <input type="text" class="form-control" placeholder="" required v-model="form.name">
+                <input type="text" class="form-control" placeholder="" required v-model="form.name"  @keypress="isLetter($event)">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Website</label>
@@ -91,7 +100,7 @@ export default {
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Phone</label>
-                <input type="number" class="form-control" placeholder="" v-model="form.phone">
+                <input type="text" class="form-control" placeholder="" v-model="form.phone" @keypress="isNumber($event)">
               </div>
               <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
             </form>

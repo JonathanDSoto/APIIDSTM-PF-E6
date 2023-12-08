@@ -6,30 +6,39 @@ export default {
   name: 'Edit',
   components: { DefaultTemplate },
   props: {
-    shipment_agency: Object
+    shipping_company: Object
   },
   data () {
     return {
       form: {
-        name: this.brand.name,
-        website: this.brand.websites[0] !== undefined ? this.brand.websites[0].website : null,
-        email: this.brand.emails[0] !== undefined ? this.brand.emails[0].email : null,
-        phone: this.brand.phone_numbers[0] !== undefined ? this.brand.phone_numbers[0].phone_number : null,
-        logo: null
+        name: this.shipping_company.name,
+        website: this.shipping_company.website !== undefined ? this.shipping_company.website : null,
+        email: this.shipping_company.email !== undefined ? this.shipping_company.email : null,
+        phone: this.shipping_company.phone !== undefined ? this.shipping_company.phone : null,
       }
     }
   },
   props:{
-    shipment_agency: Object,
+    shipping_company: Object,
     errors: Object
   },
   methods: {
     submit () {
-      router.put('/shipment-agency/' + this.brand.id, this.form)
+      router.put('/shipping-companies/' + this.shipping_company.id, this.form)
     },
     onFileChange (e) {
       this.form.logo = e.target.files[0]
-    }
+    },
+    isNumber(e) {
+      let char = String.fromCharCode(e.keyCode);
+      if (/^[0-9-]+$/.test(char)) return true;
+      else e.preventDefault();
+    },
+    isLetter(e) {
+      let char = String.fromCharCode(e.keyCode);
+      if (/^[A-Za-z\s]+$/.test(char)) return true;
+      else e.preventDefault();
+    },
   }
 }
 </script>
@@ -69,7 +78,7 @@ export default {
           </header>
           <div class="card-text h-full ">
             <form class="space-y-4" @submit.prevent="submit">
-              <div style="display: flex; gap: 10px; height: 50px;">
+              <div style="display: flex; gap: 10px;">
                   <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
                   style="padding: 5px; border-radius: 10px;" >
                       <div class="flex items-start">
@@ -81,7 +90,7 @@ export default {
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Name</label>
-                <input type="text" class="form-control" placeholder="" required v-model="form.name">
+                <input type="text" class="form-control" placeholder="" required v-model="form.name" @keypress="isLetter($event)">
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Website</label>
@@ -93,7 +102,7 @@ export default {
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Phone</label>
-                <input type="number" class="form-control" placeholder="" v-model="form.phone">
+                <input type="text" class="form-control" placeholder="" v-model="form.phone" @keypress="isNumber($event)">
               </div>
               <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
             </form>
