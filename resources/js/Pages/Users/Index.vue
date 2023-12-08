@@ -2,13 +2,19 @@
     import DefaultTemplate from "@/layouts/DefaultTemplate.vue";
     import { router } from '@inertiajs/vue3'
     export default {
-        data() {
-          return {
-          };
+        data () {
+            return {
+                popUpDelete: false,
+                selectedId: 0,
+                selectedElement: null
+            }
         },
-        components: {DefaultTemplate,},
+        components: {DefaultTemplate},
         props:{
-
+          users: {
+                type: Array,
+                required: true
+            }
         },
         methods: {
           deleteConfirmation(userId){
@@ -126,11 +132,7 @@
                                 </th>
 
                                 <th scope="col" class=" table-th ">
-                                  First Name
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                  Last Name
+                                  Name
                                 </th>
 
                                 <th scope="col" class=" table-th ">
@@ -142,16 +144,12 @@
                                 </th>
 
                                 <th scope="col" class=" table-th ">
-                                   Last Connection
-                                </th>
-
-                                <th scope="col" class=" table-th ">
                                   Action
                                 </th>
                               </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                              <tr v-for="(user, index) in regularUsersArray" :key="index">
+                              <tr v-for="(user, index) in users" :key="index">
                                 <td class="table-td">{{ user.userID }}</td>
                                 <td class="table-td">
                                     <span class="flex">
@@ -159,23 +157,13 @@
                                         Espacio para la imagen de usuario
                                         <img src="images/all-img/customer_1.png" alt="1" class="object-cover w-full h-full rounded-full">
                                     </span> -->
-                                    <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user.firstName }}</span>
+                                    <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user.name }}</span>
                                     </span>
                                 </td>
-                                <td class="table-td ">{{ user.lastName }}</td>
-                                <td class="table-td ">
-                                    <div>
-                                      {{ user.email }}
-                                    </div>
-                                </td>
+                                <td class="table-td ">{{ user.email }}</td>
                                 <td class="table-td ">
                                     <div>
                                       {{ user.role }}
-                                    </div>
-                                </td>
-                                <td class="table-td ">
-                                    <div>
-                                      {{ user.lastConnection }}
                                     </div>
                                 </td>
                                 <td class="table-td">
@@ -207,188 +195,6 @@
                                           </li>
                                       </ul>
                                     </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="card">
-              <header class=" card-header noborder">
-                <h4 class="card-title">Moderators</h4>
-              </header>
-              <div class="card-body px-6 pb-6">
-                    <div class="overflow-x-auto -mx-6 dashcode-data-table">
-                      <span class=" col-span-8  hidden"></span>
-                      <span class="  col-span-4 hidden"></span>
-                      <div class="inline-block min-w-full align-middle">
-                        <div class="overflow-hidden ">
-                          <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700" id="data-table">
-                            <thead class=" border-t border-slate-100 dark:border-slate-800">
-                              <tr>
-                                <th scope="col" class=" table-th ">
-                                  Id
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                  First Name
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                  Last Name
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                  Country
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                   City
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                  Action
-                                </th>
-
-                              </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                              <tr v-for="(user, index) in moderatorsArray" :key="index">
-                                <td class="table-td">{{ user.userID }}</td>
-                                <td class="table-td">
-                                    <span class="flex">
-                                    <!-- <span class="w-7 h-7 rounded-full ltr:mr-3 rtl:ml-3 flex-none">
-                                        Espacio para la imagen de usuario
-                                        <img src="images/all-img/customer_1.png" alt="1" class="object-cover w-full h-full rounded-full">
-                                    </span> -->
-                                    <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user.firstName }}</span>
-                                    </span>
-                                </td>
-                                <td class="table-td ">{{ user.lastName }}</td>
-                                <td class="table-td ">
-                                    <div>
-                                      {{ user.country }}
-                                    </div>
-                                </td>
-                                <td class="table-td ">
-                                    <div>
-                                      {{ user.city }}
-                                    </div>
-                                </td>
-                                <td class="table-td ">
-                                  <div class="flex space-x-3 rtl:space-x-reverse">
-                                    <!-- PASS THE USER ID -->
-                                    <a :href="`/users/detailed-information/${user.userID}`">
-                                        <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                        </button>
-                                    </a>
-                                    <a :href="`/users/modify-information/${user.userID}`">
-                                        <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                        </button>
-                                    </a>
-                                    <button class="action-btn" type="button" @click="deleteConfirmation(user.userID)">
-                                      <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                    </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            <br>
-            <div id="content_layout">
-              <div class=" space-y-5">
-                <div class="card">
-                  <header class=" card-header noborder">
-                    <h4 class="card-title">Clients</h4>
-                  </header>
-                  <div class="card-body px-6 pb-6">
-                    <div class="overflow-x-auto -mx-6 dashcode-data-table">
-                      <span class=" col-span-8  hidden"></span>
-                      <span class="  col-span-4 hidden"></span>
-                      <div class="inline-block min-w-full align-middle">
-                        <div class="overflow-hidden ">
-                          <table class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700" id="data-table">
-                            <thead class=" border-t border-slate-100 dark:border-slate-800">
-                              <tr>
-                                <th scope="col" class=" table-th ">
-                                  Id
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                  First Name
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                  Last Name
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                  Country
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                   City
-                                </th>
-
-                                <th scope="col" class=" table-th ">
-                                  Action
-                                </th>
-
-                              </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                              <tr v-for="(user, index) in administratorsArray" :key="index">
-                                <td class="table-td">{{ user.userID }}</td>
-                                <td class="table-td">
-                                    <span class="flex">
-                                    <!-- <span class="w-7 h-7 rounded-full ltr:mr-3 rtl:ml-3 flex-none">
-                                        Espacio para la imagen de usuario
-                                        <img src="images/all-img/customer_1.png" alt="1" class="object-cover w-full h-full rounded-full">
-                                    </span> -->
-                                    <span class="text-sm text-slate-600 dark:text-slate-300 capitalize">{{ user.firstName }}</span>
-                                    </span>
-                                </td>
-                                <td class="table-td ">{{ user.lastName }}</td>
-                                <td class="table-td ">
-                                    <div>
-                                      {{ user.country }}
-                                    </div>
-                                </td>
-                                <td class="table-td ">
-                                    <div>
-                                      {{ user.city }}
-                                    </div>
-                                </td>
-                                <td class="table-td ">
-                                  <div class="flex space-x-3 rtl:space-x-reverse">
-                                    <!-- PASS THE USER ID -->
-                                    <a :href="`/users/detailed-information/${user.userID}`">
-                                        <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:eye"></iconify-icon>
-                                        </button>
-                                    </a>
-                                    <a :href="`/users/modify-information/${user.userID}`">
-                                        <button class="action-btn" type="button">
-                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                        </button>
-                                    </a>
-                                    <button class="action-btn" type="button" @click="deleteConfirmation(user.userID)">
-                                      <iconify-icon icon="heroicons:trash"></iconify-icon>
-                                    </button>
-                                  </div>
                                 </td>
                               </tr>
                             </tbody>

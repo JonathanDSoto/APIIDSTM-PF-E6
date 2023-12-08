@@ -7,6 +7,7 @@ export default {
   components: { DefaultTemplate },
   data () {
     return {
+      selectedFileName: '',
       form: {
         name: null,
         sku: null,
@@ -26,6 +27,13 @@ export default {
       router.post('/products', this.form)
     },
     onFileChange (e) {
+      const file = event.target.files[0];
+        if (file) {
+          this.selectedFileName = file.name;
+        } else {
+          this.selectedFileName = '';
+        }
+
       this.form.logo = e.target.files[0]
     }
   }
@@ -100,9 +108,31 @@ export default {
                 <input type="text" class="form-control" placeholder="" v-model="form.brand">
               </div>
               <div class="input-area relative pl-28">
-                <label for="largeInput" class="inline-inputLabel">Photo</label>
-                <input type="file" class="form-control" placeholder="" v-on:change="onFileChange">
-              </div>
+                    <div class="alert alert-danger light-mode" v-if="errors.profile_photo">
+                        <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                            <div class="flex-1">
+                            {{ errors.profile_photo }}
+                            </div>
+                        </div>
+                    </div>
+                    <label for="largeInput" class="inline-inputLabel">Photo</label>
+                    <div class="input-area">
+                      <div class="filegroup">
+                        <label>
+                          <span class="w-full h-[40px] file-control flex items-center custom-class">
+                            <span class="flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
+                              <div class="custom-file-input">
+                                <input type="file" class="w-full" ref="fileInput" name="basic" @change="onFileChange" style="display: none;">
+                                <p v-if="!selectedFileName">Choose a file or drop it here...</p>
+                                <span v-if="selectedFileName">{{ selectedFileName }}</span>
+                              </div>
+                            </span>
+                            <span class="file-name flex-none cursor-pointer border-l px-4 border-slate-200 dark:border-slate-700 h-full inline-flex items-center bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 text-sm rounded-tr rounded-br font-normal">Browse</span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
               <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
             </form>
           </div>

@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <label for="name" class="form-label">Name</label>
+                                <label for="name" class="form-label">Name*</label>
                                 <input id="name" type="text" class="form-control" v-model="form.name" @keypress="isLetter($event)" required>
                             </div>
                             
@@ -87,8 +87,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <label for="name" class="form-label">Email</label>
-                                <input id="name" type="text" class="form-control" v-model="form.email" @keypress="isLetter($event)" required>
+                                <label for="name" class="form-label">Email*</label>
+                                <input id="name" type="text" class="form-control" v-model="form.email" required>
                             </div>                            
                             <div class="input-area">
                                 <div class="alert alert-danger light-mode" v-if="errors.password">
@@ -98,8 +98,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <label for="name" class="form-label">Password</label>
-                                <input id="name" type="password" class="form-control" v-model="form.password "@keypress="isLetter($event)" required>
+                                <label for="name" class="form-label">Password*</label>
+                                <input id="name" type="password" class="form-control" v-model="form.password required>
                             </div>
                             <div class="input-area relative pl-28">
                                 <div class="alert alert-danger light-mode" v-if="errors.role">
@@ -123,29 +123,5 @@
                 </div>
             </div>
         </form>
-        <br>
-        <div class="xl:col-span-5 col-span-12 lg:col-span-7">
-                <div class="card h-full">
-                    <div class="card-header">
-                        <h4 class="card-title">Rules to Create a User</h4>
-                    </div>
-                    <div class="card-body p-6">
-                        <div>
-                          <ul>
-                            <li><strong>Name and Last Name:</strong> Collect the user's full name.</li>
-                            <li><strong>Age:</strong> Gather the user's age or date of birth.</li>
-                            <li><strong>Email:</strong> Request a unique and valid email address for user identification.</li>
-                            <li><strong>Address:</strong> Capture the complete address information of the user.</li>
-                            <li><strong>Phone Number:</strong> Collect a valid contact number for the user.</li>
-                            <li><strong>Password:</strong> Set a secure password for user authentication.</li>
-                            <li><strong>Country, State, City:</strong> Record the user's location details for geographical reference.</li>
-                            <li><strong>Role (User or Administrator):</strong> Define the user's role in the system (user or administrator).</li>
-                          </ul>
-                          <br>
-                          <p><strong>Warning:</strong> Adhering to these rules is crucial to ensure accurate user information and secure system access. Failure to follow these guidelines may result in incorrect user identification, compromised security, or improper system permissions.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
     </DefaultTemplate>
 </template>

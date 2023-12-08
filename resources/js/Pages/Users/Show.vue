@@ -4,10 +4,10 @@
         components: {
             DefaultTemplate,
         },
-        data() {
-            return {
-                user: this.$page.props.user,
-            }
+        props:{
+            user: Object,
+            errors: Object,
+            success: null
         },
     }
 </script>
