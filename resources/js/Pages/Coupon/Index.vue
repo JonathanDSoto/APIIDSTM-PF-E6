@@ -27,7 +27,7 @@
             },
             confirmElimination () {
                 this.popUpDelete = false
-                router.delete(`/categories/${this.selectedId}`)
+                router.delete(`/coupons/${this.selectedId}`)
             },
             formatCouponCode(code) {
                 const formattedCode = code.replace(/-/g, '');
