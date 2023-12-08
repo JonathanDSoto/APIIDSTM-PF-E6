@@ -89,18 +89,7 @@
                                 </div>
                                 <label for="name" class="form-label">Email*</label>
                                 <input id="name" type="text" class="form-control" v-model="form.email" required>
-                            </div>                            
-                            <div class="input-area">
-                                <div class="alert alert-danger light-mode" v-if="errors.password">
-                                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
-                                        <div class="flex-1">
-                                        {{ errors.password }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <label for="name" class="form-label">Password*</label>
-                                <input id="name" type="password" class="form-control" v-model="form.password required>
-                            </div>
+                            </div>  
                             <div class="input-area relative pl-28">
                                 <div class="alert alert-danger light-mode" v-if="errors.role">
                                     <div class="flex items-start space-x-3 rtl:space-x-reverse">

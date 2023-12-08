@@ -26,21 +26,13 @@
                         <br>
                     </div>
                     <div class="card p-6">
-                      <div class="card">
-                        <div class="card-body flex flex-col p-6">
-                          <div class="card-text h-full ">
-                            <div class="space-y-5">
-                              <div class="slider basic-carousel owl-carousel">
-                                <!-- Iterar sobre las imágenes dentro del slider -->
-                                <div v-for="image in product.images" :key="image.id">
-                                  <img class="w-full" :src="'/images/' + image.file_name" :alt="image.file_name">
-                                  <p>{{ image.file_name }}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                      
+                      <div class="space-y-5" style="height: 400px; overflow-y: auto;">
+                        <div style="display: flex; flex-direction: column;">
+                          <img v-for="image in product.images" class="h-full" style="height: 100px; flex: 0 0 auto;" :src="'/images/' + image.file_name">
                         </div>
                       </div>
+
                       <div class="flex justify-between mb-4">
                         <a href="#" class="inline-flex leading-5 text-slate-500 dark:text-slate-500 text-sm font-normal">
                           <span>

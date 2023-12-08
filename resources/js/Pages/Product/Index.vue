@@ -160,6 +160,7 @@ export default {
                   <td class="table-td" v-if="product.images[0]">
                     <img class="w-10 rounded-full object-cover" style="height: 42px; width: 42px" :src="'/images/' + product.images[0].file_name" alt="">
                   </td>
+                  
                   <td class="table-td" v-else>Undefined</td>
                   <td class="table-td">{{ product.name }}</td>
                   <td class="table-td whitespace-nowrap uppercase">{{ product.sku }}</td>
