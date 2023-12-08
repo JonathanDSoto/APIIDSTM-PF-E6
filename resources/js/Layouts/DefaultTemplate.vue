@@ -32,58 +32,85 @@
           <li class="sidebar-menu-title">MENU</li>
           <!-- Charts -->
           <li class="">
-            <Link href="/users" class="navItem">
-              <span class="flex items-center">
-                <Icon class=" nav-icon" icon="heroicons:user-group"/>
-                <span>Users</span>
-              </span>
-            </Link>
-            <Link href="/coupons" class="navItem">
-              <span class="flex items-center">
-                <Icon class=" nav-icon" icon="teenyicons:star-circle-outline"/>
-                <span>Coupons</span>
-              </span>
-            </Link>
-            <Link href="/categories" class="navItem">
-              <span class="flex items-center">
-                <Icon class=" nav-icon" icon="nimbus:accordion"/>
-                <span>Categories</span>
-              </span>
-            </Link>
             <Link href="/products" class="navItem">
               <span class="flex items-center">
-                <Icon class=" nav-icon" icon="ep:sell"/>
+                <Icon class=" nav-icon" icon="material-symbols:border-all-rounded"/>
                 <span>Products</span>
               </span>
             </Link>
-            <Link href="/customers" class="navItem">
+          </li>
+          <li>
+            <Link href="/inventory" class="navItem">
               <span class="flex items-center">
-                <Icon class=" nav-icon" icon="raphael:customer"/>
-                <span>Customers</span>
+                <Icon class=" nav-icon" icon="material-symbols:inventory-2"/>
+                <span>Inventory</span>
               </span>
             </Link>
+          </li>
+          <li>
             <Link href="/orders" class="navItem">
               <span class="flex items-center">
-                <Icon class=" nav-icon" icon="heroicons:wallet"/>
+                <Icon class=" nav-icon" icon="material-symbols:sticky-note-2"/>
                 <span>Orders</span>
               </span>
             </Link>
+          </li>
+          <li class="sidebar-menu-title">SHIPPING</li>
+          <li>
+            <Link href="/shipments" class="navItem">
+              <span class="flex items-center">
+                <Icon class=" nav-icon" icon="material-symbols:check-box"/>
+                <span>Shipments</span>
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/shipping-companies" class="navItem whitespace-nowrap">
+              <span class="flex items-center">
+                <Icon class=" nav-icon" icon="material-symbols:apartment-rounded"/>
+                <span>Companies</span>
+              </span>
+            </Link>
+          </li>
+          <li class="sidebar-menu-title">PEOPLE</li>
+          <li>
+            <Link href="/users" class="navItem">
+              <span class="flex items-center">
+                <Icon class=" nav-icon" icon="material-symbols:person"/>
+                <span>Users</span>
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/customers" class="navItem">
+              <span class="flex items-center">
+                <Icon class=" nav-icon" icon="material-symbols:group"/>
+                <span>Customers</span>
+              </span>
+            </Link>
+          </li>
+          <li class="sidebar-menu-title">OTHER</li>
+          <li>
             <Link href="/brands" class="navItem">
               <span class="flex items-center">
-                <Icon class=" nav-icon" icon="tabler:brand-cake"/>
+                <Icon class=" nav-icon" icon="material-symbols:brightness-empty-rounded"/>
                 <span>Brands</span>
               </span>
             </Link>
-            <Link href="/shipping-companies" class="navItem whitespace-nowrap">
+          </li>
+          <li>
+            <Link href="/categories" class="navItem">
               <span class="flex items-center">
-                <Icon class=" nav-icon" icon="mdi:cargo-ship"/>
-                <span>Shipping Companies</span>
+                <Icon class=" nav-icon" icon="material-symbols:event-list-rounded"/>
+                <span>Categories</span>
               </span>
             </Link>
-            <Link href="/shipments" class="navItem">
+          </li>
+          <li>
+            <Link href="/coupons" class="navItem">
               <span class="flex items-center">
-                <Icon class=" nav-icon" icon="streamline:shipment-check"/>
-                <span>Shipments</span>
+                <Icon class=" nav-icon" icon="material-symbols:more-rounded"/>
+                <span>Coupons</span>
               </span>
             </Link>
           </li>
@@ -100,8 +127,8 @@
             <div class="flex h-full items-center justify-between">
               <div class="vertical-box flex items-center space-x-4 rtl:space-x-reverse md:space-x-4">
                 <a href="/" class="mobile-logo inline-block xl:hidden">
-<!--                  <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="black_logo" alt="logo">-->
-<!--                  <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="white_logo" alt="logo">-->
+                  <!--                  <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="black_logo" alt="logo">-->
+                  <!--                  <img src="/images/logo/uabcs-logo.png" style="width: 10%" class="white_logo" alt="logo">-->
                   <img src="/images/logo/logo-c.svg" class="black_logo" alt="logo">
                   <img src="/images/logo/logo-c-white.svg" class="white_logo" alt="logo">
                 </a>
@@ -124,13 +151,13 @@
                 <a href="/" class="leading-0">
                   <span class="hidden xl:inline-block">
 <!--                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">-->
-<!--                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo" alt="logo">-->
+                    <!--                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo" alt="logo">-->
           <img src="/images/logo/logo-c.svg" class="black_logo" alt="logo">
           <img src="/images/logo/logo-c-white.svg" class="white_logo" alt="logo">
                   </span>
                   <span class="inline-block xl:hidden">
 <!--                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="black_logo " alt="logo">-->
-<!--                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo " alt="logo">-->
+                    <!--                    <img src="/images/logo/uabcs-logo.png" style="width: 20%" class="white_logo " alt="logo">-->
           <img src="/images/logo/logo-c.svg" class="black_logo" alt="logo">
           <img src="/images/logo/logo-c-white.svg" class="white_logo" alt="logo">
                   </span>
@@ -155,9 +182,9 @@
                   <button id="themeMood"
                           class="lg:bg-gray-500-f7 flex h-[28px] w-[28px] cursor-pointer flex-col items-center justify-center rounded-full bg-slate-50 text-[20px] text-slate-900 dark:bg-slate-900 dark:text-white lg:h-[32px] lg:w-[32px] lg:dark:bg-slate-900">
                     <Icon class="hidden text-xl text-slate-800 dark:block dark:text-white" id="moonIcon"
-                                  icon="line-md:sunny-outline-to-moon-alt-loop-transition" />
+                          icon="line-md:sunny-outline-to-moon-alt-loop-transition" />
                     <Icon class="block text-xl text-slate-800 dark:hidden dark:text-white" id="sunIcon"
-                                  icon="line-md:moon-filled-to-sunny-filled-loop-transition" />
+                          icon="line-md:moon-filled-to-sunny-filled-loop-transition" />
                   </button>
                 </div>
                 <!-- Profile DropDown Area -->
@@ -170,7 +197,7 @@
                     </div>
                     <span class="hidden flex-none items-center truncate text-sm font-normal text-slate-600 dark:text-white lg:flex">Albert Flores</span>
                     <svg aria-hidden="true" fill="none" stroke="currentColor" viewbox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+                         xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M19 9l-7 7-7-7"></path>
                     </svg>
