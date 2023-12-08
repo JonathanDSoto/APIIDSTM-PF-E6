@@ -86,9 +86,18 @@
                     <div class="text-slate-900 dark:text-white text-lg font-medium" >
                         {{ customer.email }}
                     </div>
-                    <div>
-                        <div v-if="customer.update_author">By: {{ customer.update_author.name }}</div>
-                        <div v-else>By: Unknown author</div>
+                </div>
+
+                
+                <div class="bg-slate-50 dark:bg-slate-900 rounded p-4">
+                    <div class="text-slate-600 dark:text-slate-400 text-sm mb-1 font-medium">
+                        Phone
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium" v-if="customer.phone_number">
+                        {{ customer.phone_number }}
+                    </div>
+                    <div class="text-slate-900 dark:text-white text-lg font-medium" v-else>
+                        Undefined
                     </div>
                 </div>
             </div>
