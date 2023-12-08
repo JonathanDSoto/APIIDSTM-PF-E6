@@ -66,35 +66,30 @@ export default {
           </header>
           <div class="card-text h-full ">
             <form class="space-y-4" @submit.prevent="submit">
-              <div style="display: flex; gap: 10px; height: 50px;">
-                  <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
-                  style="padding: 5px; border-radius: 10px;" >
-                      <div class="flex items-start">
-                          <div>
-                                  {{ error }}
-                          </div>
-                      </div>
-                  </div>
-              </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Customer</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.name" required>
+                <p v-if="errors.name" style="color: red;">{{ errors.name }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Total Price</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.website">
+                <p v-if="errors.website" style="color: red;">{{ errors.website }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Total Tax</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.phone">
+                <p v-if="errors.phone" style="color: red;">{{ errors.phone }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Total Discount</label>
                 <input type="email" class="form-control" placeholder="" v-model="form.email">
+                <p v-if="errors.email" style="color: red;">{{ errors.email }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Coupon</label>
-                <input type="email" class="form-control" placeholder="" v-model="form.email">
+                <input type="email" class="form-control" placeholder="" v-model="form.coupon">
+                <p v-if="errors.email" style="color: red;">{{ errors.email }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Status</label>

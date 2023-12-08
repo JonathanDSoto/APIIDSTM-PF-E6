@@ -75,30 +75,37 @@ export default {
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Customer</label>
                 <input type="number" class="form-control" placeholder="" required v-model="form.customer">
+                <p v-if="errors.customer" style="color: red;">{{ errors.customer }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Total Price</label>
                 <input type="text" class="form-control" placeholder="" required v-model="form.totalPrice">
+                <p v-if="errors.totalPrice" style="color: red;">{{ errors.totalPrice }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Total Tax</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.totalTax">
+                <p v-if="errors.totalTax" style="color: red;">{{ errors.totalTax }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Total Discount</label>
                 <input type="email" class="form-control" placeholder="" v-model="form.totalDiscount">
+                <p v-if="errors.totalDiscount" style="color: red;">{{ errors.totalDiscount }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Coupon</label>
                 <input type="number" class="form-control" placeholder="" v-model="form.coupon">
+                <p v-if="errors.coupon" style="color: red;">{{ errors.coupon }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Status</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.status">
+                <p v-if="errors.status" style="color: red;">{{ errors.status }}</p>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Notes</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.notes">
+                <p v-if="errors.notes" style="color: red;">{{ errors.notes }}</p>
               </div>
               <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
             </form>

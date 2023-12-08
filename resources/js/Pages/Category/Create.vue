@@ -62,15 +62,9 @@ export default {
                     <div class="card-text h-full ">
                         <form class="space-y-4" @submit.prevent="submit">
                             <div class="input-area relative pl-28">
-                                <div class="alert alert-danger light-mode" v-if="errors.name">
-                                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
-                                        <div class="flex-1">
-                                            {{ errors.name }}
-                                        </div>
-                                    </div>
-                                </div>
                                 <label for="nameInput" class="inline-inputLabel">Name*</label>
                                 <input type="text" class="form-control" placeholder="Sabritas" v-model="form.name" @keypress="isLetter($event)" required>
+                                <p v-if="errors.name" style="color: red;">{{ errors.name }}</p>
                             </div>
                             <button type="submit" class="btn inline-flex justify-center btn-dark ml-28">Submit</button>
                         </form>

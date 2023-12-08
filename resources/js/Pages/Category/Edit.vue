@@ -54,15 +54,9 @@ export default {
           <div class="card-text h-full ">
             <form class="space-y-4" @submit.prevent="submit">
               <div class="input-area relative pl-28">
-                <div class="alert alert-danger light-mode" v-if="errors.name">
-                    <div class="flex items-start space-x-3 rtl:space-x-reverse">
-                        <div class="flex-1">
-                          {{ errors.name }}
-                        </div>
-                    </div>
-                </div>
                 <label for="largeInput" class="inline-inputLabel">Name*</label>
                 <input type="text" class="form-control" placeholder="" v-model="form.name" pattern="[a-zA-Z]*" required>
+                <p v-if="errors.name" style="color: red;">{{ errors.name }}</p>
               </div>
               <button class="btn btn-dark ml-28 inline-flex justify-center">Submit</button>
             </form>
