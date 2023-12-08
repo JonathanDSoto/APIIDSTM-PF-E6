@@ -79,7 +79,6 @@ class CustomerController extends Controller
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
         $validated = $request->validated();
-
         if (isset($validated['profile_photo'])) {
             if ($customer->profile_photo_file_name) {
                 unlink(public_path('images/' . $customer->profile_photo_file_name));

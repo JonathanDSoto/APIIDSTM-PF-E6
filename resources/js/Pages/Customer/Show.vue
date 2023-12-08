@@ -64,7 +64,7 @@ const avatar = new UIAvatarSvg()
                         <div class="md:h-[186px] md:w-[186px] h-[140px] w-[140px] md:ml-0 md:mr-0 ml-auto mr-auto md:mb-0 mb-4 rounded-full ring-4
                                 ring-slate-100 relative">
                           <img v-if="customer.profile_photo_file_name" class="w-full h-full object-cover rounded-full" :src="'/images/' + customer.profile_photo_file_name" alt="" >
-                          <div class="w-full h-full object-cover rounded-full" v-html="this.getAvatar(customer.name, customer.last_name)"></div>
+                          <div v-else class="w-full h-full object-cover rounded-full" v-html="this.getAvatar(customer.name, customer.last_name)"></div>
                         </div>
                       </div>
                       <div class="flex-1">
@@ -181,36 +181,36 @@ const avatar = new UIAvatarSvg()
                               <div class="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
                                 Country
                               </div>
-                              <a href="mailto:someone@example.com" class="text-base text-slate-600 dark:text-slate-50">
+                              <div href="mailto:someone@example.com" class="text-base text-slate-600 dark:text-slate-50">
                                 {{ customer.country }}
-                              </a>
+                              </div>
                             </div>
                           </li>
                           <!-- end single list -->
                           <li class="flex space-x-3 rtl:space-x-reverse">
                             <div class="flex-none text-2xl text-slate-600 dark:text-slate-300">
-                              <iconify-icon icon="healthicons:city"></iconify-icon>
+                              <iconify-icon icon="material-symbols:location-city"></iconify-icon>
                             </div>
                             <div class="flex-1">
                               <div class="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
                                 City
                               </div>
-                              <a href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
+                              <div href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
                                 {{ customer.city }}
-                              </a>
+                              </div>
                             </div>
                           </li>
                         <li class="flex space-x-3 rtl:space-x-reverse">
                             <div class="flex-none text-2xl text-slate-600 dark:text-slate-300">
-                                <iconify-icon icon="arcticons:50-us-states-map"></iconify-icon>
+                                <iconify-icon icon="material-symbols:real-estate-agent-outline"></iconify-icon>
                             </div>
                             <div class="flex-1">
                                 <div class="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
                                     State
                                 </div>
-                                <a href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
+                                <div href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
                                     {{ customer.state }}
-                                </a>
+                                </div>
                             </div>
                         </li>
                         <li class="flex space-x-3 rtl:space-x-reverse">
@@ -221,13 +221,13 @@ const avatar = new UIAvatarSvg()
                                 <div class="uppercase text-xs text-slate-500 dark:text-slate-300 mb-1 leading-[12px]">
                                     Addresses
                                 </div>
-                                <a href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
+                                <div href="tel:0189749676767" class="text-base text-slate-600 dark:text-slate-50">
                                     <ol>
                                       <li>{{ customer.address_line_1 }}</li>
                                       <li>{{ customer.address_line_2 }}</li>
                                       <li>{{ customer.address_line_3 }}</li>
                                     </ol>
-                                </a>
+                                </div>
                             </div>
                         </li>
                         </ul>

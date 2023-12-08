@@ -5,12 +5,9 @@ import { router } from '@inertiajs/vue3'
 export default {
   name: 'Edit',
   components: { DefaultTemplate },
-  props: {
-    customer: Object
-  },
   data () {
     return {
-      selectedFileName: this.customer.profile_photo_file_name,
+      selectedFileName: '',
       form: {
         name: this.customer.name,
         last_name: this.customer.last_name,
@@ -24,7 +21,7 @@ export default {
         address_line_1: this.customer.address_line_1,
         address_line_2: this.customer.address_line_2,
         address_line_3: this.customer.address_line_3,
-        logo: this.customer.profile_photo_file_name
+        profile_photo: this.customer.profile_photo_file_name,
       }
     }
   },
@@ -34,9 +31,10 @@ export default {
   },
   methods: {
     submit () {
-      router.put('/customers/' + this.customer.id, this.form)
+      this.form.profile_photo = null;
+      router.put(`/customers/${this.customer.id}`, this.form);
     },
-    onFileChange (e) {
+      onFileChange (e) {
         const file = event.target.files[0];
         if (file) {
           this.selectedFileName = file.name;
@@ -44,8 +42,8 @@ export default {
           this.selectedFileName = '';
         }
 
-      this.form.logo = e.target.files[0]
-    },
+        this.form.profile_photo = e.target.files[0]
+      },
     isNumber(e) {
       let char = String.fromCharCode(e.keyCode);
       if (/^[0-9-]+$/.test(char)) return true;
@@ -106,7 +104,7 @@ export default {
                         </div>
                     </div>
                     <label for="largeInput" class="inline-inputLabel">Name*</label>
-                    <input type="text" class="form-control" placeholder="" required v-model="form.name" @keypress="isLetter($event)">
+                    <input type="text" class="form-control" placeholder="" v-model="form.name" @keypress="isLetter($event)">
                   </div>
                   <div class="input-area relative pl-28">
                     <div class="alert alert-danger light-mode" v-if="errors.last_name">
@@ -117,7 +115,7 @@ export default {
                         </div>
                     </div>
                     <label for="largeInput" class="inline-inputLabel">Last Name*</label>
-                    <input type="text" class="form-control" placeholder="" required v-model="form.last_name"  @keypress="isLetter($event)" >
+                    <input type="text" class="form-control" placeholder="" v-model="form.last_name"  @keypress="isLetter($event)" >
                   </div>
                   <div class="input-area relative pl-28">
                     <div class="alert alert-danger light-mode" v-if="errors.profile_photo">

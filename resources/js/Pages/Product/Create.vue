@@ -77,7 +77,7 @@ export default {
           </header>
           <div class="card-text h-full ">
             <form class="space-y-4" @submit.prevent="submit">
-              <div style="display: flex; gap: 10px; height: 50px;">
+              <div style="display: flex; gap: 10px;">
                   <div  v-for="(error, key) in errors" :key="key" class="alert-danger"
                   style="padding: 5px; border-radius: 10px;" >
                       <div class="flex items-start">
@@ -102,6 +102,26 @@ export default {
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Stock</label>
                 <input type="number" class="form-control" placeholder="" v-model="form.stock">
+              </div>
+              <div class="input-area relative pl-28">
+                <label for="largeInput" class="inline-inputLabel">Price</label>
+                <input type="number" class="form-control" placeholder="" v-model="form.price">
+              </div>
+              <div class="input-area relative pl-28">
+                  <div class="alert alert-danger light-mode" v-if="errors.sizes">
+                      <div class="flex items-start space-x-3 rtl:space-x-reverse">
+                          <div class="flex-1">
+                          {{ errors.sizes }}
+                          </div>
+                      </div>
+                  </div>
+                  <label for="booleanInput" class="inline-inputLabel">Sizes*</label>
+                  <select class="form-control" v-model="form.sizes" required>
+                      <option value="admin">Small</option>
+                      <option value="admin">Medium</option>
+                      <option value="user">Large</option>
+                      <option value="user">Extra Large</option>
+                  </select>
               </div>
               <div class="input-area relative pl-28">
                 <label for="largeInput" class="inline-inputLabel">Brand</label>

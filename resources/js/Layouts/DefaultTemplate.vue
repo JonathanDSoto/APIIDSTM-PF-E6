@@ -139,12 +139,6 @@
                 <button class="sidebarOpenButton !ml-0 hidden text-xl text-slate-900 rtl:rotate-180 dark:text-white">
                   <Icon icon="ph:arrow-right-bold"/>
                 </button>
-                <button
-                    class="search-modal flex items-center space-x-3 px-1 text-lg text-slate-800 focus:shadow-none focus:outline-none rtl:space-x-reverse dark:text-slate-300 xl:text-sm xl:text-slate-400"
-                    data-bs-toggle="modal" data-bs-target="#searchModal">
-                  <Icon icon="heroicons-outline:search"/>
-                  <span class="hidden xl:inline-block">Search...</span>
-                </button>
               </div>
               <!-- end vertcial -->
               <div class="horizental-box items-center space-x-4 rtl:space-x-reverse">
